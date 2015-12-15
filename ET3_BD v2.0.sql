@@ -470,9 +470,9 @@ CREATE TABLE IF NOT EXISTS `S_MATERIAS` (
 
 DROP TABLE IF EXISTS `S_NOTICIAS`;
 CREATE TABLE IF NOT EXISTS `S_NOTICIAS` (
-  `Titulo_Noticia` varchar(30) COLLATE latin1_spanish_ci NOT NULL,
+  `Titulo_Noticia` varchar(200) COLLATE latin1_spanish_ci NOT NULL,
   `Fecha_Noticia` date NOT NULL,
-  `Web_Noticia` varchar(20) COLLATE latin1_spanish_ci DEFAULT NULL,
+  `Web_Noticia` varchar(300) COLLATE latin1_spanish_ci DEFAULT NULL,
   `IDPDF_Noticia` varchar(10) COLLATE latin1_spanish_ci DEFAULT NULL,
   `Publicador_Noticia` varchar(20) COLLATE latin1_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
