@@ -5,7 +5,7 @@ Class BaseDatosControl
 	function __construct()
 	{
 		//$this->conexionBD = new mysqli('localhost','u207305927_gp4', '1234567','u207305927_gp4');// gestapp.hol.es
-		$this->conexionBD = new mysqli('localhost','gp4', 'gp4','gp4bd'); //maquina virtual
+		$this->conexionBD = new mysqli('localhost','gC', 'gC','ET3gC'); //maquina virtual
 		if ($this->conexionBD->connect_errno) {
 			throw new Exception('ERR CONECT BD=><br>Error: ' . $this->conexionBD->error);
 		}

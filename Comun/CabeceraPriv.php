@@ -60,15 +60,31 @@
 						A la vez almacenamos en $IndexIdiomaPageName la pagina donde nos encontramos
 					-->
 					<?php 
-						foreach ($MenuPrincipal as $k => $v)
+						foreach ($MenuPrincipalPrivados as $k => $v)
 						{
 							if ($PagID == $v)
 							{
-								echo '<li class="active"><a href="'.$controladores[$v].'">'.$idioma['PagName'.$v].'</a></li>';
+								/*echo '<li class="active">
+								<a onClick="document.getElementById(\''.$v.'\').submit();">'.$idioma['PagName'.$v].'</a>
+								<form id="'.$v.'" action="'.$controladores[$v].'" method="POST">
+								<input type="hidden" name="PagMenu" value="'.$v.'"/>
+								</form>
+								</li>';*/
+								echo '<li class="active">
+								<a href="'.$controladores[$v].'">'.$idioma['PagName'.$v].'</a>
+								</li>';
 							}
 							else
 							{
-								echo '<li><a href="'.$controladores[$v].'">'.$idioma['PagName'.$v].'</a></li>';
+								/*echo '<li>
+								<a onClick="document.getElementById(\''.$v.'\').submit();">'.$idioma['PagName'.$v].'</a>
+								<form id="'.$v.'" action="'.$controladores[$v].'" method="POST">
+								<input type="hidden" name="PagMenu" value="'.$v.'"/>
+								</form>
+								</li>';*/
+								echo '<li class="active">
+								<a href="'.$controladores[$v].'">'.$idioma['PagName'.$v].'</a>
+								</li>';
 							}
 						}
 					?>
@@ -78,7 +94,7 @@
 						</a>
 						<ul class="dropdown-menu">
 							<li role="presentation" class="dropdown-header"><?php echo $idioma['Intranet'] ?></li>
-						  <li><a href="<?php echo $controladores[$identificadores['Login']] ?>"><?php echo $idioma['Login'] ?></a></li>
+						  <li><a href="<?php echo $controladores[$identificadores['Login']] ?>"><?php echo $idioma['LogOUT'] ?></a></li>
 						  <li role="presentation" class="divider"></li>
 						  <li role="presentation" class="dropdown-header"><?php echo $idioma['Configuracion'] ?></li>
 						  <li><a href="#"><?php echo $idioma['Idioma'] ?></a></li>
@@ -108,6 +124,8 @@
 			</section>
 		';
 	}
+	
+	
 	if ( isset($_SESSION['error']))
 	{
 			if (strpos($_SESSION['error'],'=>'))
@@ -147,4 +165,5 @@
 		unset($_SESSION['error']);
 		unset($_SESSION['ok']);
 	}
+			
 	

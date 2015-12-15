@@ -40,7 +40,7 @@ function Display($idioma,$datosPrevios)
 			<tr>
 				<td >
 				<!-- LOGIN USER -->
-					<div id="etiqueta">
+					<div id="etiqueta">"<"
 						<?php echo $idioma['Login'];?>:
 					</div>
 				</td>
@@ -48,7 +48,9 @@ function Display($idioma,$datosPrevios)
 				
 				</td>
 				<td >
-				<!-- PASS USER -->
+				<!-- 
+				PASS USER 
+				-->
 					<div id="etiqueta">
 						<?php echo $idioma['Pass'];?>:
 					</div>
@@ -60,7 +62,7 @@ function Display($idioma,$datosPrevios)
 						echo '<input type="text" maxlength="20" legth="20" name="Login" onBlur="esVacio(this,\'LoginVacio\')" value="'.$datosPrevios->Login.'" width="100%"/>';
 						?>
 					<?php 
-						echo '<span id="LoginVacio" class="error">'.$idioma['DATOS VACIOS'].'</span>';
+						echo '<span id="LoginVacio"  class="error">'.$idioma['DATOS VACIOS']."</span>";
 					?>
 				</td>
 				<td>

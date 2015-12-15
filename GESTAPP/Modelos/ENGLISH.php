@@ -190,7 +190,14 @@ $Idioma = array(
 'Accesos' => 'Acces',
 'TIT TAB LIST A' => 'Lasts Access',
 'Fecha/Hora' => 'Date/Time',
-
+//-------------------------------------------------------------------------Errores
+'TestErrores' => 'Errors Test',
+'SubdirectorioAnalizar' => 'Subdirectory to analize',
+'NomPagTest' => 'Page Name',
+'ProcesarErrores' => 'Process',
+'TIT TEST' => 'Test configuration',
+'PropiedadesPeticion' => 'POST/GET Values',
+'ListaPaginasErrores' => 'Pages to Test',
 //-------------------------------------------------------------------------Terminologia
 'Aplicacion GESTAPP' => 'GESTAPP',
 'LOGIN' => 'Log in',
@@ -225,6 +232,53 @@ $Idioma = array(
 'ERR CON PERM F FILTRO' => 'Error obtainig Operations Permissions. Operations will not shown in Filter.',
 'ERR PER S' =>'Error con los permisos del directorio de subida.',
 'ERR PER D' =>'Error con los permisos del directorio de subida.',
-'EXPLICACION' => 'To use a Page with GESTAPP, you must add theese lines to your page on top code:<br><br>-"$miPaginaPorDefecto" -> Users without permission will be redirect to this page.<br>In this example, te redirect page is a your own WebSite Login, but you can especify a standar error page, etc...<br><br>-"GESTAPP/controlPages.php" -> RELATIVE path to integrate file GESTAPP.<br><br>In this example "MyUploadPage.php" will be upload to root apache directory, GESTAPP Application is located in a GESTAPP directory y root apache directory too. The "include" path is relative how you can see.'
+'EXPLICACION' => 'To use a Page with GESTAPP, you must add theese lines to your page on top code:<br><br>-"$miPaginaPorDefecto" -> Users without permission will be redirect to this page.<br>In this example, te redirect page is a your own WebSite Login, but you can especify a standar error page, etc...<br><br>-"GESTAPP/controlPages.php" -> RELATIVE path to integrate file GESTAPP.<br><br>In this example "MyUploadPage.php" will be upload to root apache directory, GESTAPP Application is located in a GESTAPP directory y root apache directory too. The "include" path is relative how you can see.',
+
+
+/*
+
+////////////////////////////////////
+
+PIXEL
+
+////////////////////////////////////
+
+*/
+
+
+'Barra_Titulo' => 'Pixel',
+
+//Nombres de Pagina PagName[ID]
+'PagNameH' => 'Home',
+'PagNameM' => 'Miembros',
+'PagNameP' => 'Prensa',
+'PagNameT' => 'Transferencia',
+'PagNameC' => 'Colaboraciones',
+'PagNameL' => 'Login',
+'PagNameHP' => 'Home',
+'PagNameMP' => 'Miembros',
+'PagNameAMP' => 'Alta Miembros',
+'PagNameMMP' => 'Modificar Miembro',
+'PagNamePP' => 'Prensa',
+'PagNameAPP' => 'Alta Noticia',
+'PagNameMPP' => 'Modificar Noticia',
+'PagNameTP' => 'Transferencia',
+'PagNameATP' => 'Alta Transferencia',
+'PagNameMTP' => 'Modificar Transferencia',
+'PagNameCP' => 'Colaboraciones',
+'PagNameACP' => 'Alta Colaboraciones',
+'PagNameMCP' => 'Modificar Colaboraciones',
+'PagNameG' => 'GESTAPP',
+'PagNameERRORPERM' => 'Error',
+
+//Resto de terminología
+'Otros' => 'Otros',
+'Intranet' => 'Intranet',
+'Login' => 'Login',
+'LogOUT' => 'LogOUT',
+'Configuracion' => 'Configuracion',
+'Idioma' => 'Idioma'
+
+
 )
 ?>

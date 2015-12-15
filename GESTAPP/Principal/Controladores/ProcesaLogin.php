@@ -29,21 +29,6 @@
 		exit;
 	}
 	
-	try{
-		$puedeAcceder = true;
-		//INNSTRUCCIONES DE CONTROL DE SI USUARIO PUEDE ACCEDER A APLICACION
-		
-		if (!$puedeAcceder)
-		{
-			$_SESSION['error'] = 'Solicite Permisos';
-			header("Location: Login.php");
-			exit;
-		}
-	}
-	catch(Exception $e)
-	{
-		
-	}
 	
 	try
 	{

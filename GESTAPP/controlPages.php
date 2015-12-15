@@ -1,12 +1,14 @@
 <?php
+
+//En este caso el controlador publico Elimina un posible sesion iniciada
 session_start();
 
 //se incluyen las funciones comunes
 include_once 'Comun/FuncionesComunes.php';
 
 //Se incluye la clase Acceso y la clase encargada de la conexion con la BD
-include 'Clases/BaseDatosControl.php';
-include 'Clases/Acceso.php';
+include_once 'Clases/BaseDatosControl.php';
+include_once 'Clases/Acceso.php';
 
 //recoje la variable establecida en las paginas que se integran
 global $miPaginaPorDefecto;

@@ -22,7 +22,7 @@ function DisplayContent($idioma,$noticias,$pagAct,$ultimaPagina)
 						<a href="ControladorWEB.php?PagMenu=<?php echo $identificadores['Prensa'];?>&NumPag=<?php echo ($pagAct-1 >= 1)?$pagAct-1:1;?>">Prev</a>
 					</li>
 					<?php
-					for ($i = $pagActual-5; $i < $pagActual+5;$i = $i+1 )
+					for ($i = $pagAct-5; $i < $pagAct+5;$i = $i+1 )
 					{
 						if ($i > 0 && $i <= ceil(count($noticias)/$NumporPags))
 						{
@@ -58,8 +58,8 @@ function DisplayContent($idioma,$noticias,$pagAct,$ultimaPagina)
 							<div class="col-md-12">
 								<blockquote>
 									<p>
-										'.$noticia->titulo.'
-									</p> <small> '.$noticia->fecha.', <cite> <a href="'.$noticia->fuenteenlace.'" >'.$noticia->fuente.'</a> </cite></small>
+										'.$noticia["Titulo_Noticia"].'
+									</p> <small> '.$noticia["Fecha_Noticia"].', <cite> <a href="'.$noticia["Web_Noticia"].'" >'.$idioma["Enlace"].'</a> </cite></small>
 								</blockquote>
 							</div>
 						</div>
@@ -76,7 +76,7 @@ function DisplayContent($idioma,$noticias,$pagAct,$ultimaPagina)
 						<a href="ControladorWEB.php?PagMenu=<?php echo $identificadores['Prensa'];?>&NumPag=<?php echo $pagAct-1;?>">Prev</a>
 					</li>
 					<?php
-					for ($i = $pagActual-5; $i < $pagActual+5;$i = $i+1 )
+					for ($i = $pagAct-5; $i < $pagAct+5;$i = $i+1 )
 					{
 						if ($i > 0 && $i <=ceil(count($noticias)/$NumporPags))
 						{

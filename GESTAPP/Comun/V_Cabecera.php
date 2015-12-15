@@ -68,6 +68,7 @@
 							</li>
 						</ul>
 					</li>
+					<li><a href="../../ModuloErrores/Controladores/testErrores.php"><?php echo $idioma['TestErrores']?></a></li>
 					<li><a href="../../Principal/Controladores/Login.php"><?php echo $idioma['Salir']?></a></li>
 				</ul>
 				</span>

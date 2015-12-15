@@ -1,6 +1,6 @@
 <?php
 
-Class Miembros
+Class MiembrosPrivada
 {
 
 function __construct()
@@ -65,12 +65,10 @@ function DisplayContent($idioma,$arrayObjetos)
 									
 				</div>
 	</section>
-	<?php
+<?php
+	
 
 }
-
-
-
 
 	private function mostrarMiembro($miembros)
 	{
@@ -164,7 +162,7 @@ function DisplayContent($idioma,$arrayObjetos)
 							<!-- Team Member -->
 							<div class="team-member">
 								<!-- Image -->
-								<!-- <img class="img-responsive center-block" src="" alt="">-->
+								<!--<img class="img-responsive center-block" src="" alt="">-->
 								<!-- Name -->
 								<h4>'.$miembros[$i - $Comienzo]["Login"].'</h4>
 								<span class="deg">'.$miembros[$i - $Comienzo]["USU_email"].'</span> 
@@ -190,6 +188,30 @@ function DisplayContent($idioma,$arrayObjetos)
 	}
 }
 
-	
+$miembros = array();
+	//Consultamos datos
+	try
+	{
+		$consulta = $_TABLAMIEMBRO->ListadoRegistros(" where Login IN (Select login from HACE_DE where ROL_nombre = '".$ROLMIEMBRO."')");
+		//Con los datos los cargamos en el array
+		for ($i = 0; $i < $consulta->num_rows ;$i++)
+		{
+			$miembros[] = $consulta->fetch_assoc();
+		}
+	}
+	catch(Exception $e)
+	{
+		$errorRescrito = explode("=>",$e->getMessage());
+		$_SESSION['error'] = 'CON ERR MIEMBROS'."=>".$errorRescrito[1];
+	}
+
+
+	//Inicializamos la vista Correspondiente
+	$princ_view = new MiembrosPrivada();
+
+	//Se procede a la creacion de la vista
+	include_once$RutaRelativaControlador.'Comun/CabeceraPriv.php';
+	$princ_view->DisplayContent($idioma,$miembros);
+	include_once$RutaRelativaControlador.'Comun/Pie.php';
 
 ?>

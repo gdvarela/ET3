@@ -136,10 +136,9 @@ function esUbiCorrecta(elemento1,idERROR,idERROR2)
 			document.getElementById('validForm').disabled = false;
 	}
 	
-	primCar = valora.charAt(0);
 	ext1 = valora.substring(valora.length-3, valora.length);
 	ext2 = valora.substring(valora.length-4, valora.length);
-	if (primCar != "/" || (ext1.toLowerCase() != "php" && ext2.toLowerCase() != "html") )
+	if ((ext1.toLowerCase() != "php" && ext2.toLowerCase() != "html") )
 	{
 		document.getElementById(idERROR2).style.display = 'inline';
 		document.getElementById('validForm').disabled = true;

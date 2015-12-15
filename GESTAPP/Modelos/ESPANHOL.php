@@ -185,6 +185,16 @@ $Idioma = array(
 'Accesos' => 'Accesos',
 'TIT TAB LIST A' => 'Ultimos Accesos',
 'Fecha/Hora' => 'Fecha/Hora',
+//-------------------------------------------------------------------------Errores
+'TestErrores' => 'Test de Errores',
+'SubdirectorioAnalizar' => 'Subdirectorio a analizar',
+'NomPagTest' => 'Nombre Página',
+'ProcesarErrores' => 'Procesar',
+'TIT TEST' => 'Configuración de pruebas',
+'PropiedadesPeticion' => 'Valores de POST/GET',
+'ListaPaginasErrores' => 'Paginas a Testear',
+
+
 
 //-------------------------------------------------------------------------Terminologia
 'Aplicacion GESTAPP' => 'Aplicacion GESTAPP',
@@ -220,6 +230,55 @@ $Idioma = array(
 'ERR CON PERM F FILTRO' => 'Error obteniendo los permisos sobre las Funcionalidades, éstas non se mostraran en el filtro por seguridad.',
 'ERR PER S' =>'Error con los permisos del directorio de subida.',
 'ERR PER D' =>'Error con los permisos del directorio de subida.',
-'EXPLICACION' => 'Para integrar una determinada pagina con la aplicación GESTAPP, simplemente añadir al principio esas dos lineas siendo:<br><br>-"$miPaginaPorDefecto" -> Pagina a la que se redigira el usuario en caso de no tener permisos.<br>En este ejemplo se usa "Login.php" que seria la pagina de login de su porpio sitio web, pero tambien puede usar una pagina de error estándar, etc...<br><br>-"GESTAPP/controlPages.php" -> Dirección RELATIVA al fichero que se usa para la integración.<br><br>En este ejemplo "MiPaginaSubir.php" se esta subiendo al directorio raiz del servidor apache, estando ubicada la aplicacion GESTAPP en una carpeta con el mismo nombre como se puede observar en la ruta relativa.'
+'EXPLICACION' => 'Para integrar una determinada pagina con la aplicación GESTAPP, simplemente añadir al principio esas dos lineas siendo:<br><br>-"$miPaginaPorDefecto" -> Pagina a la que se redigira el usuario en caso de no tener permisos.<br>En este ejemplo se usa "Login.php" que seria la pagina de login de su porpio sitio web, pero tambien puede usar una pagina de error estándar, etc...<br><br>-"GESTAPP/controlPages.php" -> Dirección RELATIVA al fichero que se usa para la integración.<br><br>En este ejemplo "MiPaginaSubir.php" se esta subiendo al directorio raiz del servidor apache, estando ubicada la aplicacion GESTAPP en una carpeta con el mismo nombre como se puede observar en la ruta relativa.',
+
+/*
+
+////////////////////////////////////
+
+PIXEL
+
+////////////////////////////////////
+
+*/
+
+
+'Barra_Titulo' => 'Pixel',
+
+//Nombres de Pagina PagName[ID]
+'PagNameH' => 'Home',
+'PagNameM' => 'Miembros',
+'PagNameP' => 'Prensa',
+'PagNameT' => 'Transferencia',
+'PagNameC' => 'Colaboraciones',
+'PagNameL' => 'Login',
+'PagNameHP' => 'Home',
+'PagNameMP' => 'Miembros',
+'PagNameAMP' => 'Alta Miembros',
+'PagNameMMP' => 'Modificar Miembro',
+'PagNamePP' => 'Prensa',
+'PagNameAPP' => 'Alta Noticia',
+'PagNameMPP' => 'Modificar Noticia',
+'PagNameTP' => 'Transferencia',
+'PagNameATP' => 'Alta Transferencia',
+'PagNameMTP' => 'Modificar Transferencia',
+'PagNameCP' => 'Colaboraciones',
+'PagNameACP' => 'Alta Colaboraciones',
+'PagNameMCP' => 'Modificar Colaboraciones',
+'PagNameG' => 'GESTAPP',
+'PagNameERRORPERM' => '¡Lo Sentimos!',
+
+//Resto de terminología
+'Otros' => 'Otros',
+'Intranet' => 'Intranet',
+'Login' => 'Login',
+'LogOUT' => 'LogOUT',
+'Configuracion' => 'Configuracion',
+'Idioma' => 'Idioma',
+'Grupo' => 'Grupo',
+'Enlace' => 'Enlace',
+'CON ERR MIEMBROS' => 'Error en la obtencion de los miembros',
+'CON ERR NOTICIAS' => 'Error en la obtencion de las noticias'
+
 )
 ?>

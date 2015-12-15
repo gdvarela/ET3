@@ -19,7 +19,7 @@ function Display($idioma,$datosMod,$claveMod)
 		<div><a href="ConsUsuarios.php"> > <?php echo $idioma['Usuarios']?></a> </div> <div id="histAct"> >  <?php echo $idioma['Editar Usuario']?></div>
 			<img onClick="window.history.back()" id="historialAtras" src="../../Imagenes/historyBack.png" />
 	</div>
-	<!-- A partir de aqui meteis vuestro codigo -->
+	<!--A partir de aqui meteis vuestro codigo -->
 	
 	<form action='procesaModUsu.php' method='POST' onSubmit="return validarForm()"  >
 		
@@ -186,7 +186,7 @@ function Display($idioma,$datosMod,$claveMod)
 												echo '<td><input type="checkbox" name="ckbxP_' . $var . '" /></td>';
 												
 											}
-											echo '</tr>';
+											echo "</tr>";
 										}
 										
 									?>

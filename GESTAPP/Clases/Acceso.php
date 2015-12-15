@@ -1,5 +1,5 @@
 <?php
-include_once '../../Clases/BaseDatosControl.php';
+include_once 'BaseDatosControl.php';
 
 Class Acceso
 {
@@ -27,6 +27,10 @@ Class Acceso
 	public static function  ConPermisosSinRed($Login,$pag)
 	{
 		$BD = new BaseDatosControl();
+		
+		$rutaSpliteada = (explode('/',$pag));
+		
+		$pag = $rutaSpliteada[count($rutaSpliteada)-1];
 		
 		$consultaDePermisos = $BD->OperacionGenericaBD("select distinct t1.Login
 												FROM HACE_DE as t1 , PERMITE as t2, IMPLEMENTADA_EN as t3,PAGINAS as t4
@@ -73,6 +77,10 @@ Class Acceso
 	// se le ha denegado el acceso o no.
 	public static function  RegistraAcceso($Login,$pag,$permiso){
 		$BD = new BaseDatosControl();
+		
+		$rutaSpliteada = (explode('/',$pag));
+		
+		$pag = $rutaSpliteada[count($rutaSpliteada)-1];
 		
 		$consultaDeNombrePagina = $BD->OperacionGenericaBD("select * FROM PAGINAS where PAG_ubicacion = '$pag'",'ERR ALT A');
 		if ($consultaDeNombrePagina->num_rows > 0)
