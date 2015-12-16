@@ -77,6 +77,10 @@ INSERT INTO `FUNCIONALIDADES` (`FUN_nombre`, `FUN_descripcion`) VALUES
 ('Solo ConsMod (G)', 'Consulta y Modificacion de datos, sin permisos de Alta o Borrado.'),
 ('Solo Consulta (G)', 'Consulta sobre los datos'),
 
+('Testeo', 'Realizacion de test sobre las paginas'),
+
+
+
 ('Administrar PIXEL', 'Todo Pixel'),
 ('Usar PIXEL', 'Funcionalidad que tendran los miembros de PIXEL que no sean adminsitradores');
 
@@ -101,6 +105,7 @@ INSERT INTO `HACE_DE` (`Login`, `ROL_nombre`) VALUES
 ('test', 'Tester (G)'),
 
 ('adpix', 'Admin PIXEL'),
+('adpix', 'Administrador (G)'),
 ('fran', 'Miembro PIXEL');
 -- --------------------------------------------------------
 
@@ -183,6 +188,8 @@ INSERT INTO `IMPLEMENTADA_EN` (`FUN_nombre`, `PAG_nombre`) VALUES
 ('Solo ConsMod (G)', 'Vista Usuarios (G)'),
 ('Solo Consulta (G)', 'Vista Usuarios (G)'),
 
+('Testeo', 'Comprobacion Errores'),
+
 ('Administrar PIXEL', 'Home Pixel'),
 ('Administrar PIXEL', 'Miembros Pixel'),
 ('Administrar PIXEL', 'Alta Miembros Pixel'),
@@ -240,6 +247,7 @@ INSERT INTO `PAGINAS` (`PAG_nombre`, `PAG_ubicacion`, `PAG_descripcion`) VALUES
 ('Vista Paginas (G)', 'ConsPaginas.php', 'Consultar Paginas'),
 ('Vista Roles (G)', 'ConsRoles.php', 'Consultar Roles'),
 ('Vista Usuarios (G)', 'ConsUsuarios.php', 'Consultar Usuarios'),
+('Comprobacion Errores', 'testErrores.php', 'Pagina de realizacion de test'),
 
 ('Home Pixel', 'C_HomeP.php', 'Pagina Principal'),
 ('Miembros Pixel', 'C_MiembrosP.php', 'Miembros Funcionalidad'),
@@ -273,12 +281,13 @@ CREATE TABLE IF NOT EXISTS `PERMITE` (
 
 INSERT INTO `PERMITE` (`ROL_nombre`, `FUN_nombre`) VALUES
 ('Administrador (G)', 'Acceso Total (G)'),
+('Administrador (G)', 'Testeo'),
 
 ('Tester (G)', 'Acceso Total (G)'),
 ('Tester (G)', 'Administrar PIXEL'),
+('Tester (G)', 'Testeo'),
 
 ('Admin PIXEL', 'Administrar PIXEL'),
-('Admin PIXEL', 'Acceso Total (G)'),
 
 ('Miembro PIXEL', 'Usar PIXEL');
 -- --------------------------------------------------------

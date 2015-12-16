@@ -80,7 +80,7 @@ function DisplayContent($idioma,$noticias,$pagAct,$ultimaPagina)
 								<blockquote>
 									<p>
 										'.$noticia["Titulo_Noticia"].'
-									</p> <small> '.$noticia["Fecha_Noticia"].', <cite> <a href="'.$noticia["Web_Noticia"].'" >'.$idioma["Enlace"].'</a> </cite></small>
+									</p> <small> '.$noticia["Fecha_Noticia"].', <cite> <a href="'.$noticia["Web_Noticia"].'" target="_blank" >'.$idioma["Enlace"].'</a> </cite></small>
 								</blockquote>
 							</div>
 						</div>

@@ -53,6 +53,7 @@ $identificadoresPrivados = array(
 'Miembros' => 'MP',
 'AMiembros' => 'AMP',
 'MMiembros' => 'MMP',
+'DMiembros' => 'DMP',
 'Prensa'=> 'PP',
 'APrensa'=> 'APP',
 'MPrensa'=> 'MPP',
@@ -127,7 +128,13 @@ $controladores = array(
 	$identificadoresPrivados['Miembros'] => $RutaRelativaControlador.'Controladores/Privada/C_MiembrosP.php',
 	$identificadoresPrivados['Prensa'] => $RutaRelativaControlador.'Controladores/Privada/C_PrensaP.php',
 	$identificadoresPrivados['Transferencia'] => $RutaRelativaControlador.'Controladores/Privada/C_TransferenciaP.php',
-	$identificadoresPrivados['Colaboraciones'] => $RutaRelativaControlador.'Controladores/Privada/C_ColaboracionesP.php'
+	$identificadoresPrivados['Colaboraciones'] => $RutaRelativaControlador.'Controladores/Privada/C_ColaboracionesP.php',
+	
+	$identificadoresPrivados['AMiembros'] => $RutaRelativaControlador.'Controladores/Privada/C_AltaMiembrosP.php',
+	
+	$identificadoresPrivados['MMiembros'] => $RutaRelativaControlador.'Controladores/Privada/C_ModMiembrosP.php',
+	
+	$identificadoresPrivados['DMiembros'] => $RutaRelativaControlador.'Controladores/Privada/C_DelMiembrosP.php'
 );
 
 $procesadores = array(
@@ -136,7 +143,7 @@ $procesadores = array(
 
 //Variable que contiene la pagina o controlador que tomara el control en caso de error de permisos
 $PaginaError = $controladores[$identificadoresPrivados['ERRORPERM']];
-
+$imagenFondo = "http://www.lksur.com.uy/imagenes/t1.jpg";
 include_once $RutaRelativaControlador."Clases/TablaBD.php";
 $ROLMIEMBRO = "Miembro PIXEL";
 $_TABLAMIEMBRO = new TablaBD(

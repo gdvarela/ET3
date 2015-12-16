@@ -53,13 +53,13 @@ function DisplayContent($idioma,$arrayObjetos)
 							<div class="col-md-12">
 							<!-- Heading -->
 								<div class="block-heading-six">
-									<h3 class="bg-color"><?php $idioma['Grupo'] ?></h3>
+									<h3 class="bg-color"><?php echo $idioma['Grupo'] ?></h3>
 								</div>
 								<br>'
 							<?php 
 								$this->mostrarMiembro($arrayObjetos);
 							?>
-							</div>
+							
 						</div>
 					</div>
 									

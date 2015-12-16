@@ -278,7 +278,8 @@ PIXEL
 'Grupo' => 'Grupo',
 'Enlace' => 'Enlace',
 'CON ERR MIEMBROS' => 'Error en la obtencion de los miembros',
-'CON ERR NOTICIAS' => 'Error en la obtencion de las noticias'
-
+'CON ERR NOTICIAS' => 'Error en la obtencion de las noticias',
+'Alta_Miembro' => 'Alta Miembro',
+'Elim_Sel' => 'Eliminar Seleccionados'
 )
 ?>
