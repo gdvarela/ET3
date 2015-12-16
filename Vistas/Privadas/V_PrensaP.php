@@ -36,6 +36,14 @@ function DisplayContent($idioma,$noticias,$pagAct,$ultimaPagina)
 	?>
 	<section id="content">
 	<div class="container">
+			<div class="row"> <!--style="background-color:#434F6A;"--> 
+			<div class="col-md-3" >
+			<img style="display:inline" src="<?php echo $RutaRelativaControlador?>img/engranaje2.svg.png"
+			  class="img-responsive">
+			  <a style="display:inline" class="btn btn-warning" href="<?php echo $controladores[$identificadoresPrivados["APrensa"]]?>"><?php echo $idioma['Alta_Prensa']; ?></a>
+			</div>
+			<div class="col-md-9"></div>
+		  </div>
 		<div class="row">
 			<div class="col-md-12">
 				<ul class="pagination">
@@ -76,11 +84,21 @@ function DisplayContent($idioma,$noticias,$pagAct,$ultimaPagina)
 							continue;
 						echo '
 						<div class="row">
-							<div class="col-md-12">
+						<div class="col-md-1">
+							<form id="'.$noticia["Titulo_Noticia"].'" action="'.$controladores[$identificadoresPrivados["MPrensa"]].'" method="POST">
+								<input type="hidden" name="MOD" value="'.$noticia["Titulo_Noticia"].'" />
+								</form>
+								<img style="display:inline" onClick="document.getElementById(\''.$noticia["Titulo_Noticia"].'\').submit();" src="'.$RutaRelativaControlador.'img/editar.png"
+							class="img-responsive pull-right"></img>
+							</div>
+							<div class="col-md-11">
+							
 								<blockquote>
 									<p>
 										'.$noticia["Titulo_Noticia"].'
-									</p> <small> '.$noticia["Fecha_Noticia"].', <cite> <a href="'.$noticia["Web_Noticia"].'" target="_blank" >'.$idioma["Enlace"].'</a> </cite></small>
+									</p> <small> '.$noticia["Fecha_Noticia"].', <cite> <a href="'.$noticia["Web_Noticia"].'" target="_blank" >'.$idioma["Enlace"].'</a> </cite>
+									
+									</small>
 								</blockquote>
 							</div>
 						</div>

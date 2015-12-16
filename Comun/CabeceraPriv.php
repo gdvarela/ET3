@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
 <meta charset="utf-8">
 <title><?php echo $idioma['Barra_Titulo']; ?></title>
@@ -35,7 +35,7 @@
     <![endif]-->
 
 </head>
-<body ><!--style="background-image: url('<?php echo $imagenFondo;?>'); background-position: center center; background-repeat: no-repeat; background-attachment: fixed; background-size: cover;"> -->
+<body ><!--style="background-image: url(''); background-position: center center; background-repeat: no-repeat; background-attachment: fixed; background-size: cover;"> -->
 <div id="wrapper">
 	<!-- start header -->
 		<header>
@@ -108,7 +108,7 @@
 	<!-- end header -->
 	<?php 
 	// En caso de no estar en HOME añadimos el recuadrito azul con el nombre de la pagina
-	if ($PagID != 'H')
+	if ($PagID != 'HP')
 	{
 		echo '
 			<section id="inner-headline">

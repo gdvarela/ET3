@@ -70,13 +70,31 @@ function DisplayContent($idioma,$arrayObjetos)
 }
 
 
-
+	private function CuadroUsuario($tam,$miembro)
+	{
+		global $controladores;
+		global $identificadoresPrivados;
+		global $RutaRelativaControlador;
+		echo '
+		
+		<div class="col-md-'.$tam.'">
+			<!-- Team Member -->
+			<div class="team-member">
+				<!-- Image -->
+				<img class="img-responsive center-block" src="'.$RutaRelativaControlador.'img/user.png" alt="">
+				<!-- Name -->
+				<h4>'.$miembro["USU_apellido"].', '.$miembro["USU_nombre"].'</h4>
+				<span class="deg">'.$miembro["USU_email"].'</span> 
+			</div>
+		</div>
+		';
+	}
 
 	private function mostrarMiembro($miembros)
 	{
 		global $RutaRelativaControlador;
 		
-		$espacioMiembro = 2;
+		$espacioMiembro = 3;
 		$miembrosPorFIla = 12/$espacioMiembro;
 		$total = count($miembros);
 		
@@ -87,13 +105,13 @@ function DisplayContent($idioma,$arrayObjetos)
 			{
 				$mSub[] = $miembros[$i];
 			}
-			mostrarMiembro($mSub);
+			$this->mostrarMiembro($mSub);
 			$mSub2 = array();
 			for ($i = $miembrosPorFIla; $i < $total;$i = $i+1)
 			{
 				$mSub2[] = $miembros[$i];
 			}
-			mostrarMiembro($mSub2);
+			$this->mostrarMiembro($mSub2);
 			
 			return;
 		}
@@ -118,18 +136,7 @@ function DisplayContent($idioma,$arrayObjetos)
 			}
 			for (;$i < $Comienzo+$total;$i = $i+1)
 			{
-				echo '
-						<div class="col-md-'.$espacioMiembro.'">
-							<!-- Team Member -->
-							<div class="team-member">
-								<!-- Image -->
-								<!-- <img class="img-responsive center-block" src="" alt=""> -->
-								<!-- Name -->
-								<h4>'.$miembros[$i - $Comienzo]["Login"].'</h4>
-								<span class="deg">'.$miembros[$i - $Comienzo]["USU_email"].'</span> 
-							</div>
-						</div>
-						';
+				$this->CuadroUsuario($espacioMiembro,$miembros[$i - $Comienzo]);
 			}
 			for (;$i < $miembrosPorFIla ;$i = $i+1)
 			{
@@ -159,18 +166,7 @@ function DisplayContent($idioma,$arrayObjetos)
 			}
 			for (;$i < $Comienzo+$total;$i = $i+1)
 			{
-				echo '
-						<div class="col-md-'.$espacioMiembro.'">
-							<!-- Team Member -->
-							<div class="team-member">
-								<!-- Image -->
-								<!-- <img class="img-responsive center-block" src="" alt="">-->
-								<!-- Name -->
-								<h4>'.$miembros[$i - $Comienzo]["Login"].'</h4>
-								<span class="deg">'.$miembros[$i - $Comienzo]["USU_email"].'</span> 
-							</div>
-						</div>
-						';
+				$this->CuadroUsuario($espacioMiembro,$miembros[$i - $Comienzo]);
 			}
 			for (;$i < $miembrosPorFIla ;$i = $i+1)
 			{

@@ -1,6 +1,6 @@
 <?php
 
-Class AltaMiembrosPrivada
+Class AltaPrensaPrivada
 {
 
 function __construct()
@@ -9,20 +9,21 @@ function __construct()
 
 function DisplayContent($idioma)
 {
+	global $NumporPags;
 	global $formularios;
 	global $procesadores;
-	global $controladores;
 	global $identificadoresPrivados;
+	global $controladores;
 	global $RutaRelativaControlador;
 	//Aqui va el cuerpo principal de la pagina
 ?>
 	<section id="content">
 		<div class="container">
-			<div class="row">
+					  <div class="row">
 				<div class="col-md-12">
-					<form role="form" action="<?php echo $procesadores[$identificadoresPrivados["AMiembros"]]?>" method="POST">
+					<form role="form" action="<?php echo $procesadores[$identificadoresPrivados["APrensa"]]?>" method="POST">
 					<?php
-					foreach($formularios[$identificadoresPrivados["AMiembros"]] as $campos)
+					foreach($formularios[$identificadoresPrivados["APrensa"]] as $campos)
 					{
 						switch ($campos[1])
 						{
@@ -41,13 +42,14 @@ function DisplayContent($idioma)
 								<label for="sel1">'.$idioma[$campos[0]].'</label>
 								  <select name="'.$campos[0].'" class="form-control" id="sel1">
 								  ';
-								  switch (explode(":",$campos[2])[0])
+								  switch (explode(":",$campos[3])[0])
 								  {
 									  case "sql":
-									  $opciones = TablaBD::ConsultaGenerica(explode(":",$campos[2])[1]);
-									  for ($i = 0 ; i < $opciones->num_rows;$i = $i +1)
+									  $opciones = TablaBD::ConsultaGenerica(explode(":",$campos[3])[1]);
+									  for ($i = 0 ; $i < $opciones->num_rows;$i = $i +1)
 									  {
-										  echo '<option>'.($opciones->fetch_assoc())[0].'</option>';
+										  $dato = $opciones->fetch_assoc();
+										  echo '<option>'.$dato[array_keys($dato)[0]].'</option>';
 									  }
 									  break;
 								  }
@@ -87,14 +89,42 @@ function DisplayContent($idioma)
 	
 
 }
+
 }
+	$noticias = array ();
+		//Consultamos datos
+		try
+		{
+			$consulta = $_TABLANOTICIAS->ListadoRegistros("");
+			//Con los datos los cargamos en el array
+			for ($i = 0; $i < $consulta->num_rows ;$i++)
+			{
+				$noticias[] = $consulta->fetch_assoc();
+			}
+		}
+		catch(Exception $e)
+		{
+			$errorRescrito = explode("=>",$e->getMessage());
+			$_SESSION['error'] = 'CON ERR NOTICIAS'."=>".$errorRescrito[1];
+		}
 
-	//Inicializamos la vista Correspondiente
-	$princ_view = new AltaMiembrosPrivada();
+		
+		
+		$pagCargar = 1;
+		if (isset($_POST['NumPag']))
+		{
+			$pagCargar =$_POST['NumPag'];
+			if ($pagCargar < 1)
+				$pagCargar = 1;
+			
+			if($pagCargar > ceil(count($noticias)/$NumporPags))
+				$pagCargar = ceil(count($noticias)/$NumporPags);
+		}
+//Inicializamos la vista Correspondiente
+$princ_view = new AltaPrensaPrivada();
 
-	//Se procede a la creacion de la vista
-	include_once$RutaRelativaControlador.'Comun/CabeceraPriv.php';
-	$princ_view->DisplayContent($idioma);
-	include_once$RutaRelativaControlador.'Comun/Pie.php';
-
+//Se procede a la creacion de la vista
+include_once$RutaRelativaControlador.'Comun/CabeceraPriv.php';
+$princ_view->DisplayContent($idioma);
+include_once$RutaRelativaControlador.'Comun/Pie.php';
 ?>

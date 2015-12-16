@@ -57,6 +57,7 @@ $identificadoresPrivados = array(
 'Prensa'=> 'PP',
 'APrensa'=> 'APP',
 'MPrensa'=> 'MPP',
+'DPrensa' => 'DPP',
 'Transferencia'=> 'TP',
 'ATransferencia'=> 'ATP',
 'MTransferencia'=> 'MTP',
@@ -131,36 +132,24 @@ $controladores = array(
 	$identificadoresPrivados['Colaboraciones'] => $RutaRelativaControlador.'Controladores/Privada/C_ColaboracionesP.php',
 	
 	$identificadoresPrivados['AMiembros'] => $RutaRelativaControlador.'Controladores/Privada/C_AltaMiembrosP.php',
+	$identificadoresPrivados['APrensa'] => $RutaRelativaControlador.'Controladores/Privada/C_AltaPrensaP.php',
 	
 	$identificadoresPrivados['MMiembros'] => $RutaRelativaControlador.'Controladores/Privada/C_ModMiembrosP.php',
-	
-	$identificadoresPrivados['DMiembros'] => $RutaRelativaControlador.'Controladores/Privada/C_DelMiembrosP.php'
+	$identificadoresPrivados['MPrensa'] => $RutaRelativaControlador.'Controladores/Privada/C_ModPrensaP.php',
 );
 
 $procesadores = array(
 	$identificadores['Login'] => $RutaRelativaControlador.'Controladores/Publica/Procesadores/ProcesaV_Login.php',
+	
 	$identificadoresPrivados['AMiembros'] => $RutaRelativaControlador.'Controladores/Publica/Procesadores/ProcesaAltaMiembrosP.php',
 	$identificadoresPrivados['MMiembros'] => $RutaRelativaControlador.'Controladores/Publica/Procesadores/ProcesaModMiembrosP.php',
-	$identificadoresPrivados['DMiembros'] => $RutaRelativaControlador.'Controladores/Publica/Procesadores/ProcesaDelMiembrosP.php'
+	$identificadoresPrivados['DMiembros'] => $RutaRelativaControlador.'Controladores/Publica/Procesadores/ProcesaDelMiembrosP.php',
+	
+	$identificadoresPrivados['APrensa'] => $RutaRelativaControlador.'Controladores/Publica/Procesadores/ProcesaAltaPrensaP.php',
+	$identificadoresPrivados['MPrensa'] => $RutaRelativaControlador.'Controladores/Publica/Procesadores/ProcesaModPrensaP.php',
+	$identificadoresPrivados['DPrensa'] => $RutaRelativaControlador.'Controladores/Publica/Procesadores/ProcesaDelPrensaP.php'
 );
-//Este array contiene los campos que se mostran en lso distintos formularios de alta de la aplicacion.
-// cada elemento de formularios alta es un array con cada uno de los campos del formulario array([PROPIEDAD NAME, PROPEIDAD TYPE, OTROS PARAMETROS QUE SE INCRUSTARAN EN EL HTML])
-$formularios = array(
-	$identificadoresPrivados['AMiembros'] => 
-	array(
-		array( 'MA.Login','text', ""),
-		array( 'MA.Pass','Pass', ""),
-		array( 'MA.USU_nombre','text', ""),
-		array( 'MA.USU_apellido','text', ""),
-		array( 'MA.USU_email','email', ""),
-		array( 'MA.USU_fecha_alta','date', ""),
-		array( 'MA.Web_Usuario','text', ""),
-		array( 'MA.Departamento_Usuario','text', ""),
-		array( 'MA.Descripcion_Usuario','textarea', ""),
-		array( 'MA.Telefono_Usuario','number', ""),
-		array( 'MA.Movil_Usuario','number', "")
-	)
-);
+
 
 //Variable que contiene la pagina o controlador que tomara el control en caso de error de permisos
 $PaginaError = $controladores[$identificadoresPrivados['ERRORPERM']];
@@ -194,7 +183,58 @@ $_TABLANOTICIAS = new TablaBD(
 	"Publicador_Noticia" => ""
 	),
 array(0)
-)
+);
+
+//Este array contiene los campos que se mostran en lso distintos formularios de alta de la aplicacion.
+// cada elemento de formularios alta es un array con cada uno de los campos del formulario array([PROPIEDAD NAME, PROPEIDAD TYPE, OTROS PARAMETROS QUE SE INCRUSTARAN EN EL HTML])
+$formularios = array(
+	$identificadoresPrivados['AMiembros'] => 
+	array(
+		array( 'MA.Login','text', ""),
+		array( 'MA.Pass','Pass', ""),
+		array( 'MA.USU_nombre','text', ""),
+		array( 'MA.USU_apellido','text', ""),
+		array( 'MA.USU_email','email', ""),
+		array( 'MA.USU_fecha_alta','date', ""),
+		array( 'MA.Web_Usuario','text', ""),
+		array( 'MA.Departamento_Usuario','text', ""),
+		array( 'MA.Descripcion_Usuario','textarea', ""),
+		array( 'MA.Telefono_Usuario','number', ""),
+		array( 'MA.Movil_Usuario','number', "")
+	),
+	$identificadoresPrivados['MMiembros'] => 
+	array(
+		array( 'MA.Login','text', ""),
+		array( 'MA.Pass','Pass', ""),
+		array( 'MA.USU_nombre','text', ""),
+		array( 'MA.USU_apellido','text', ""),
+		array( 'MA.USU_email','email', ""),
+		array( 'MA.USU_fecha_alta','date', ""),
+		array( 'MA.Web_Usuario','text', ""),
+		array( 'MA.Departamento_Usuario','text', ""),
+		array( 'MA.Descripcion_Usuario','textarea', ""),
+		array( 'MA.Telefono_Usuario','number', ""),
+		array( 'MA.Movil_Usuario','number', "")
+	),
+	$identificadoresPrivados['APrensa'] => 
+	array(
+		array( 'MP.Titulo_Noticia','text', ""),
+		array( 'MP.Fecha_Noticia','date', ""),
+		array( 'MP.Web_Noticia','text', ""),
+		array( 'MP.IDPDF_Noticia','text', ""),
+		array( 'MP.Publicador_Noticia','select', "","sql:Select * from USUARIOS where Login IN (Select login from HACE_DE where ROL_nombre = '".$ROLMIEMBRO."')")
+	),
+	$identificadoresPrivados['MPrensa'] => 
+	array(
+		array( 'MP.Titulo_Noticia','text', ""),
+		array( 'MP.Fecha_Noticia','date', ""),
+		array( 'MP.Web_Noticia','text', ""),
+		array( 'MP.IDPDF_Noticia','text', ""),
+		array( 'MP.Publicador_Noticia','select', "","sql:Select * from USUARIOS where Login IN (Select login from HACE_DE where ROL_nombre = '".$ROLMIEMBRO."')")
+	)
+);
+
+
 
 ?>
 

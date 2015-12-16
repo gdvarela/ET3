@@ -106,6 +106,12 @@ INSERT INTO `HACE_DE` (`Login`, `ROL_nombre`) VALUES
 
 ('adpix', 'Admin PIXEL'),
 ('adpix', 'Administrador (G)'),
+('guille', 'Miembro PIXEL'),
+('luis', 'Miembro PIXEL'),
+('samu', 'Miembro PIXEL'),
+('yvan', 'Miembro PIXEL'),
+('pabloh', 'Miembro PIXEL'),
+('pablog', 'Miembro PIXEL'),
 ('fran', 'Miembro PIXEL');
 -- --------------------------------------------------------
 
@@ -492,9 +498,9 @@ CREATE TABLE IF NOT EXISTS `S_NOTICIAS` (
 
 INSERT INTO `S_NOTICIAS` (`Titulo_Noticia`, `Fecha_Noticia`, `Web_Noticia`, `IDPDF_Noticia`, `Publicador_Noticia`) VALUES
 ('Madrid: Suspenso General', '2015-12-15', 'http://www.marca.com/futbol/real-madrid/2015/12/15/566ffad9e2704e8f758b467e.html',NULL,NULL),
-('La Muerte, herida leve con su propia guadaña en un accidente laboral', '2015-12-15', 'http://www.elmundotoday.com/2015/12/la-muerte-herida-leve-con-su-propia-guadana-en-un-accidente-laboral/',NULL,NULL),
+('La Muerte, herida leve con su propia guadana en un accidente laboral', '2015-12-15', 'http://www.elmundotoday.com/2015/12/la-muerte-herida-leve-con-su-propia-guadana-en-un-accidente-laboral/',NULL,NULL),
 ('Nos colamos en la casa de Donatello de Las Tortugas Ninja', '2015-12-15', 'http://www.elmundotoday.com/2015/12/nos-colamos-en-la-casa-de-donatello-de-las-tortugas-ninja/',NULL,NULL),
-('El cajón de los cables ya ocupa una habitación entera en el 68,7% de los hogares españoles', '2015-12-15', 'http://www.elmundotoday.com/2015/12/el-cajon-de-los-cables-ya-ocupa-una-habitacion-entera-en-el-687-de-los-hogares-espanoles/',NULL,NULL);
+('El cajon de los cables ya ocupa una habitacion entera en el 68,7% de los hogares espanoles', '2015-12-15', 'http://www.elmundotoday.com/2015/12/el-cajon-de-los-cables-ya-ocupa-una-habitacion-entera-en-el-687-de-los-hogares-espanoles/',NULL,NULL);
 
 
 -- --------------------------------------------------------
@@ -669,7 +675,14 @@ INSERT INTO `USUARIOS` (`Login`, `Pass`, `USU_nombre`, `USU_apellido`, `USU_emai
 ('admin', '12345678', 'GESTAPP', 'Gestor', 'admin@admin.com', '2015-10-16', '', NULL, NULL, NULL, NULL),
 ('test', '12345678', 'TEST', 'TESTUNIT', 'text@TCN.com', '2015-10-16', '', NULL, NULL, NULL, NULL),
 ('adpix', '12345678', 'ET3', 'Aministrador Grupo Investigacion', 'admin@pixel.com','2015-10-16','', NULL, NULL, NULL, NULL),
-('fran', '12345678', 'Fran', 'Rojas Rodriguez', 'frrodriguez@esei.uvigo.es','2015-12-15','', NULL, NULL, NULL, NULL);
+('fran', '12345678', 'Fran', 'Rojas Rodriguez', 'frrodriguez@esei.uvigo.es','2015-12-15','', NULL, NULL, NULL, NULL),
+('guille', '12345678', 'Guillermo', 'Rojas Rodriguez', 'frrodriguez@esei.uvigo.es','2015-12-15','', NULL, NULL, NULL, NULL),
+('yvan', '12345678', 'Yvan', 'Rojas Rodriguez', 'frrodriguez@esei.uvigo.es','2015-12-15','', NULL, NULL, NULL, NULL),
+('pablog', '12345678', 'Pablo', 'Gonzalez Suarez', 'frrodriguez@esei.uvigo.es','2015-12-15','', NULL, NULL, NULL, NULL),
+('pabloh', '12345678', 'Pablo', 'Rodriguez Hermida', 'frrodriguez@esei.uvigo.es','2015-12-15','', NULL, NULL, NULL, NULL),
+('luis', '12345678', 'Luis', 'Raña Cortizo', 'frrodriguez@esei.uvigo.es','2015-12-15','', NULL, NULL, NULL, NULL),
+('samu', '12345678', 'Samuel', 'Ramilo Conde', 'frrodriguez@esei.uvigo.es','2015-12-15','', NULL, NULL, NULL, NULL);
+
 
 -- --------------------------------------------------------
 

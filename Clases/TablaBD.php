@@ -162,5 +162,14 @@ Class TablaBD
 				
 	}
 	
+	public static function ConsultaGenerica($SQL)
+	{
+		$BD = new BaseDatosControl();
+		$sql = $SQL;
+		
+		$consulta = $BD->OperacionGenericaBD($sql,'ERR EXIST');
+		return $consulta;
+	}
+	
 }
 ?>

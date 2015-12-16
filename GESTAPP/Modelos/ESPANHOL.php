@@ -281,6 +281,7 @@ PIXEL
 'CON ERR MIEMBROS' => 'Error en la obtencion de los miembros',
 'CON ERR NOTICIAS' => 'Error en la obtencion de las noticias',
 'Alta_Miembro' => 'Alta Miembro',
+'Alta_Prensa' => 'Alta Noticia',
 'Elim_Sel' => 'Eliminar Seleccionados',
 
 //Alta Miembro- Mod Miembro
@@ -295,6 +296,13 @@ PIXEL
 'MA.Descripcion_Usuario' => 'Descripcion o Biografía',
 'MA.Telefono_Usuario' => 'Telefono',
 'MA.Movil_Usuario' => 'Telefono Movil',
+
+//Alta Prensa- Mod Prensa
+'MP.Titulo_Noticia' => 'Titulo Noticia',
+'MP.Fecha_Noticia' => 'Fecha de la Noticia',
+'MP.Web_Noticia' => 'WEB de origen o Fuente',
+'MP.IDPDF_Noticia' => ' ID PDF',
+'MP.Publicador_Noticia' => 'Miembro Publicador',
 
 //Pagina HOME
 

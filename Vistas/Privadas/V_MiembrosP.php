@@ -23,11 +23,6 @@ function DisplayContent($idioma,$arrayObjetos)
 						  class="img-responsive">
 						  <a style="display:inline" class="btn btn-warning" href="<?php echo $controladores[$identificadoresPrivados["AMiembros"]]?>"><?php echo $idioma['Alta_Miembro']; ?></a>
 						</div>
-						<!-- <div class="col-md-3">
-						<img style="display:inline" src="<?php echo $RutaRelativaControlador?>img/engranaje2.svg.png"
-						  class="img-responsive">
-						  <a style="display:inline" class="btn btn-warning"  href="<?php echo $controladores[$identificadoresPrivados["DMiembros"]]?>"><?php echo $idioma['Elim_Sel']; ?></a>
-						</div>-->
 						<div class="col-md-9"></div>
 					  </div>
 					  <div class="row"> 
@@ -68,7 +63,7 @@ function DisplayContent($idioma,$arrayObjetos)
 								<div class="block-heading-six">
 									<h3 class="bg-color"><?php echo $idioma['Grupo']; ?></h3>
 								</div>
-								<br>'
+								<br>
 							<?php 
 								$this->mostrarMiembro($arrayObjetos);
 							?>
@@ -88,16 +83,17 @@ function DisplayContent($idioma,$arrayObjetos)
 		global $identificadoresPrivados;
 		global $RutaRelativaControlador;
 		echo '
-		<form id="'.$miembro["Login"].'" action="'.$controladores[$identificadoresPrivados["MMiembros"]].'" method=POST>
-			<input type="hidden" name="userMOD" value="'.$miembro["Login"].'" />
-		</form>
+		
 		<div class="col-md-'.$tam.'">
 			<!-- Team Member -->
+			<form id="'.$miembro["Login"].'" action="'.$controladores[$identificadoresPrivados["MMiembros"]].'" method="POST">
+			<input type="hidden" name="MOD" value="'.$miembro["Login"].'" />
+		</form>
 			<div class="team-member">
 				<!-- Image -->
 				<img class="img-responsive center-block" onClick="document.getElementById(\''.$miembro["Login"].'\').submit();"  src="'.$RutaRelativaControlador.'img/user.png" alt="">
 				<!-- Name -->
-				<h4>'.$miembro["Login"].'</h4>
+				<h4>'.$miembro["USU_apellido"].', '.$miembro["USU_nombre"].'</h4>
 				<span class="deg">'.$miembro["USU_email"].'</span> 
 			</div>
 		</div>
@@ -108,7 +104,7 @@ function DisplayContent($idioma,$arrayObjetos)
 	{
 		global $RutaRelativaControlador;
 		
-		$espacioMiembro = 2;
+		$espacioMiembro = 3;
 		$miembrosPorFIla = 12/$espacioMiembro;
 		$total = count($miembros);
 		
@@ -119,13 +115,13 @@ function DisplayContent($idioma,$arrayObjetos)
 			{
 				$mSub[] = $miembros[$i];
 			}
-			mostrarMiembro($mSub);
+			$this->mostrarMiembro($mSub);
 			$mSub2 = array();
 			for ($i = $miembrosPorFIla; $i < $total;$i = $i+1)
 			{
 				$mSub2[] = $miembros[$i];
 			}
-			mostrarMiembro($mSub2);
+			$this->mostrarMiembro($mSub2);
 			
 			return;
 		}
@@ -201,7 +197,7 @@ function DisplayContent($idioma,$arrayObjetos)
 	
 }
 
-	$miembros = array();
+	$miembrosWEB = array();
 	//Consultamos datos
 	try
 	{
@@ -209,7 +205,7 @@ function DisplayContent($idioma,$arrayObjetos)
 		//Con los datos los cargamos en el array
 		for ($i = 0; $i < $consulta->num_rows ;$i++)
 		{
-			$miembros[] = $consulta->fetch_assoc();
+			$miembrosWEB[] = $consulta->fetch_assoc();
 		}
 	}
 	catch(Exception $e)
@@ -224,7 +220,7 @@ function DisplayContent($idioma,$arrayObjetos)
 
 	//Se procede a la creacion de la vista
 	include_once$RutaRelativaControlador.'Comun/CabeceraPriv.php';
-	$princ_view->DisplayContent($idioma,$miembros);
+	$princ_view->DisplayContent($idioma,$miembrosWEB);
 	include_once$RutaRelativaControlador.'Comun/Pie.php';
 
 ?>

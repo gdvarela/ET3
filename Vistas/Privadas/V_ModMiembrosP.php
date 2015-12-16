@@ -26,7 +26,7 @@ function DisplayContent($idioma,$miembro)
 					<form role="form" action="<?php echo $procesadores[$identificadoresPrivados["MMiembros"]]?>">
 					<input type="hidden" name="ClaveAnt" value="<?php echo $miembro["Login"]?>" />
 					<?php
-					foreach($formularios[$identificadoresPrivados["AMiembros"]] as $campos)
+					foreach($formularios[$identificadoresPrivados["MMiembros"]] as $campos)
 					{
 						switch ($campos[1])
 						{
@@ -77,7 +77,7 @@ function DisplayContent($idioma,$miembro)
 }
 
 	$miembro;
-	$login = $_POST["userMOD"];
+	$login = $_POST["MOD"];
 	//Consultamos datos
 	try
 	{

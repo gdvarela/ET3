@@ -35,7 +35,7 @@
     <![endif]-->
 
 </head>
-<body style="background-image: url('<?php echo $imagenFondo;?>'); background-position: center center; background-repeat: no-repeat; background-attachment: fixed; background-size: cover;">
+<body><!-- style="background-image: url(''); background-position: center center; background-repeat: no-repeat; background-attachment: fixed; background-size: cover;">-->
 <div id="wrapper">
 	<!-- start header -->
 		<header>
