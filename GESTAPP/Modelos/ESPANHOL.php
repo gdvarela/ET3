@@ -298,6 +298,9 @@ PIXEL
 
 //Pagina HOME
 
+'Globex' => 'Globex',
+'Generación Lógica Opeativa para Bases de Empresas X' => 'Generación Lógica Opeativa para Bases de Empresas X',
+'Ourense' =>'Ourense',
 'Somos' => 'Somos',
 'Ubicados en' => 'Ubicados en',
 'Escuela Superior de Ingienería Informática' => 'Escuela Superior de Ingienería Informática',
