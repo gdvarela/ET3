@@ -295,5 +295,37 @@ PIXEL
 'MA.Descripcion_Usuario' => 'Descripcion o Biografía',
 'MA.Telefono_Usuario' => 'Telefono',
 'MA.Movil_Usuario' => 'Telefono Movil'
+
+//Pagina HOME
+
+'Somos' => 'Somos',
+'Ubicados en' => 'Ubicados en',
+'Escuela Superior de Ingienería Informática' => 'Escuela Superior de Ingienería Informática',
+'Nuestro equipo' => 'Nuestro equipo',
+'Alumnos' => 'Alumnos',
+'UVIGO' => 'Universidad de Vigo',
+'Diez años desarrollando sistemas informáticos' => 'Diez años desarrollando sistemas informáticos',
+
+'Desarrolo Web' => 'Desarrolo Web',
+'Diseño de interface' => 'Diseño de interface',
+'Interacción' => 'Interacción',
+'Experiencia de usuario' => 'Experiencia de usuario',
+
+'Texto 1' => 'Desarrollo web es un término amplio que define la creación de sitios web para Internet o una intranet.',
+'Texto 2' => 'Diseño de computadoras, aplicaciones, máquinas, dispositivos de comunicación móvil, aplicaciones de software, y sitios web enfocado en la experiencia de usuario y la interacción.',
+'Texto 3' =>  'La interacción es una acción recíproca entre dos o más objetos, sustancias, personas o agentes.',
+'Texto 4' => 'Conjunto de factores y elementos relativos a la interacción del usuario, con un entorno o dispositivo concretos, cuyo resultado es la generación de una percepción positiva o negativa de dicho servicio, producto o dispositivo.',
+
+'Trabajos recientes' => 'Trabajos recientes',
+'Trabajo 1' => 'Diseño de aplicaciones móviles',
+'Trabajo 2' => 'Diseño hardware especializado',
+'Trabajo 3' => 'Desarrolo de software para transporte',
+'Trabajo 4' => 'Diseño de PowerPoints de gatitos',
+
+//Textos Home
+
+'Texto Principal' => 'La informática es una ciencia que estudia métodos, técnicas, procesos, con el fin de almacenar, procesar y transmitir información y datos en formato digital. Se define como la rama de la tecnología que estudia el tratamiento automático de la información.'
+
+
 )
 ?>

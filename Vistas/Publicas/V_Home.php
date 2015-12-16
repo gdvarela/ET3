@@ -21,27 +21,27 @@ function DisplayContent($idioma)
                 <img src="<?php echo $RutaRelativaControlador?>img/slides/1.jpg" alt="" />
                 <div class="flex-caption">
                    <div class="item_introtext">
-					<span>Our Works is</span>
-					<strong>Elegant?</strong>
-					<p>Go through our website for more</p> </div>
+					<span><?php echo $idioma['Somos'] ?></span>
+					<strong><?php echo $idioma['Globex'] ?></strong>
+					<p><?php echo $idioma['Generación Lógica Opeativa para Bases de Empresas X'] ?></p> </div>
                 </div>
               </li>
               <li>
                 <img src="<?php echo $RutaRelativaControlador?>img/slides/2.jpg" alt="" />
                 <div class="flex-caption">
                      <div class="item_introtext">
-					<span>We Use</span>
-					<strong>Bootstrap?</strong>
-					<p>Go through our website for more</p> </div>
+					<span><?php echo $idioma['Ubicados en'] ?></span>
+					<strong><?php echo $idioma['Ourense'] ?></strong>
+					<p><?php echo $idioma['Escuela Superior de Ingienería Informática'] ?></p> </div>
                 </div>
               </li>
               <li>
                 <img src="<?php echo $RutaRelativaControlador?>img/slides/3.jpg" alt="" />
                 <div class="flex-caption">
                      <div class="item_introtext">
-					<span>We use</span>
-					<strong>Responsive?</strong>
-					<p>Go through our website for more</p> </div>
+					<span><?php echo $idioma['Nuestro equipo'] ?></span>
+					<strong><?php echo $idioma['Alumnos'] ?><strong>
+					<p><?php echo $idioma['UVIGO'] ?></p> </div>
                 </div>
               </li>
             </ul>
@@ -53,7 +53,7 @@ function DisplayContent($idioma)
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-12">
-				<div class="aligncenter"><h1 class="aligncenter">Our Featured Services</h1><span class="clear spacer_responsive_hide_mobile " style="height:13px;display:block;"></span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores quae porro consequatur aliquam, incidunt eius magni provident, doloribus omnis minus temporibus perferendis nesciunt quam repellendus nulla nemo ipsum odit corrupti consequuntur possimus, vero mollitia velit ad consectetur. Alias, laborum excepturi nihil autem nemo numquam, ipsa architecto non, magni consequuntur quam.</div>
+				<div class="aligncenter"><h1 class="aligncenter"><?php echo $idioma['Diez años desarrollando sistemas informáticos'] ?></h1><span class="clear spacer_responsive_hide_mobile " style="height:13px;display:block;"><?php echo $idioma['Texto Principal'] ?></span></div>
 			</div>
 		</div>
 	</div>
@@ -64,48 +64,48 @@ function DisplayContent($idioma)
 		<div class="skill-home"> <div class="skill-home-solid clearfix"> 
 		<div class="col-md-3 text-center">
 		<span class="icons c1"><i class="fa fa-trophy"></i></span> <div class="box-area">
-		<h3>Web Development</h3> <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores quae porro consequatur aliquam, incidunt eius magni provident</p></div>
+		<h3><?php echo $idioma['Desarrolo Web'] ?></h3> <p><?php echo $idioma['Texto 1'] ?></p></div>
 		</div>
 		<div class="col-md-3 text-center"> 
 		<span class="icons c2"><i class="fa fa-picture-o"></i></span> <div class="box-area">
-		<h3>UI Design</h3> <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores quae porro consequatur aliquam, incidunt eius magni provident</p></div>
+		<h3><?php echo $idioma['Diseño de interface'] ?></h3> <p><?php echo $idioma['Texto 2'] ?></p></div>
 		</div>
 		<div class="col-md-3 text-center"> 
 		<span class="icons c3"><i class="fa fa-desktop"></i></span> <div class="box-area">
-		<h3>Interaction</h3> <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores quae porro consequatur aliquam, incidunt eius magni provident</p></div>
+		<h3><?php echo $idioma['Interacción'] ?></h3> <p><?php echo $idioma['Texto 3'] ?></p></div>
 		</div>
 		<div class="col-md-3 text-center"> 
 		<span class="icons c4"><i class="fa fa-globe"></i></span> <div class="box-area">
-		<h3>User Experiance</h3> <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores quae porro consequatur aliquam, incidunt eius magni provident</p>
+		<h3><?php echo $idioma['Experiencia de usuario'] ?></h3> <p><?php echo $idioma['Texto 4'] ?></p>
 		</div></div>
 		</div></div>
 		</div> 
 		<!-- Portfolio Projects -->
 		<div class="row">
 			<div class="col-lg-12">
-				<h4 class="heading">Recent Works</h4>
+				<h4 class="heading"><?php echo $idioma['Trabajos recientes'] ?></h4>
 				<div class="row">
 					<section id="projects">
 					<ul id="thumbs" class="portfolio"> 
 						<li class="col-lg-3 design" data-id="id-0" data-type="web">
 						<div class="item-thumbs">					 
 						<img src="<?php echo $RutaRelativaControlador?>img/works/1.jpg" alt=""><br>
-						<p>Blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et.</p>
+						<p><?php echo $idioma['Trabajo 1'] ?></p>
 						</div>
 						</li> 
 						<!-- Item Project and Filter Name -->
 						<li class="item-thumbs col-lg-3 design" data-id="id-1" data-type="icon">
 						<img src="<?php echo $RutaRelativaControlador?>img/works/2.jpg" alt=""><br>
-						<p>Blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et.</p>
+						<p><?php echo $idioma['Trabajo 2'] ?><p>
 						</li> 
 						<li class="item-thumbs col-lg-3 photography" data-id="id-2" data-type="illustrator">
 						<img src="<?php echo $RutaRelativaControlador?>img/works/3.jpg" alt=""><br>
-						<p>Blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et.</p>
+						<p><?php echo $idioma['Trabajo 3'] ?></p>
 						</li>
 						
 						<li class="item-thumbs col-lg-3 photography" data-id="id-2" data-type="illustrator">					
 						<img src="<?php echo $RutaRelativaControlador?>img/works/4.jpg" alt=""><br>
-						<p>Blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et.</p>
+						<p><?php echo $idioma['Trabajo 4'] ?></p>
 						</li>
 						<!-- End Item Project -->
 					</ul>
@@ -116,6 +116,7 @@ function DisplayContent($idioma)
 
 	</div>
 	</section>
+	<!--
 	<div class="testimonial-area">
     <div class="testimonial-solid">
         <div class="container">
@@ -165,9 +166,11 @@ function DisplayContent($idioma)
                         </p>
                     </div>
                 </div>
+				
             </div>
         </div>
     </div>
+	-->
 </div>
 
 <?php
