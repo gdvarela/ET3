@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 $Idioma = array(
 //-------------------------------------------------------------------------Login
 'ERR Pass' => 'Pass incorrecta.',
@@ -294,7 +294,7 @@ PIXEL
 'MA.Departamento_Usuario' => 'Departamento',
 'MA.Descripcion_Usuario' => 'Descripcion o Biografía',
 'MA.Telefono_Usuario' => 'Telefono',
-'MA.Movil_Usuario' => 'Telefono Movil'
+'MA.Movil_Usuario' => 'Telefono Movil',
 
 //Pagina HOME
 
