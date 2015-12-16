@@ -270,6 +270,7 @@ PIXEL
 
 //Resto de terminología
 'Otros' => 'Otros',
+'Cancelar'=>'Cancelar',
 'Intranet' => 'Intranet',
 'Login' => 'Login',
 'LogOUT' => 'LogOUT',
@@ -280,6 +281,19 @@ PIXEL
 'CON ERR MIEMBROS' => 'Error en la obtencion de los miembros',
 'CON ERR NOTICIAS' => 'Error en la obtencion de las noticias',
 'Alta_Miembro' => 'Alta Miembro',
-'Elim_Sel' => 'Eliminar Seleccionados'
+'Elim_Sel' => 'Eliminar Seleccionados',
+
+//Alta Miembro- Mod Miembro
+'MA.Login' => 'Login',
+'MA.Pass' => 'Contraseña',
+'MA.USU_nombre' => 'Nombre de Usuario',
+'MA.USU_apellido' => ' Apellido',
+'MA.USU_email' => 'Correo Electronico',
+'MA.USU_fecha_alta' => 'Fecha de Alta',
+'MA.Web_Usuario' => 'Web Personal',
+'MA.Departamento_Usuario' => 'Departamento',
+'MA.Descripcion_Usuario' => 'Descripcion o Biografía',
+'MA.Telefono_Usuario' => 'Telefono',
+'MA.Movil_Usuario' => 'Telefono Movil'
 )
 ?>

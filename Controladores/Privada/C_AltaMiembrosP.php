@@ -32,14 +32,14 @@ $RutaRelativaControlador = getRuta();
 include_once $RutaRelativaControlador.'Comun/ArchivoComun.php';
 
 $miPaginaPorDefecto = $PaginaError;
-include_once$RutaRelativaControlador.'GESTAPP/controlPages.php';
+include_once $RutaRelativaControlador.'GESTAPP/controlPages.php';
 
 
 //Cargamos el idioma a utilizar en el controlador
 $idioma = CargarIdioma2($RutaRelativaControlador);
 
 //Variable que almacenara el identificador de la pagina actual, se establece su valor en el SWITCH
-$PagID = "AMP";
+$PagID = $identificadoresPrivados["AMiembros"];
 
 //Se incluye la vista concreta que se desea mostrar, utilizando el array
 // el array vistas se encuentra en el archivo ArchivoComun.php

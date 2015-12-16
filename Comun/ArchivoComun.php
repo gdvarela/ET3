@@ -138,7 +138,28 @@ $controladores = array(
 );
 
 $procesadores = array(
-	$identificadores['Login'] => $RutaRelativaControlador.'Controladores/Publica/Procesadores/ProcesaV_Login.php'
+	$identificadores['Login'] => $RutaRelativaControlador.'Controladores/Publica/Procesadores/ProcesaV_Login.php',
+	$identificadoresPrivados['AMiembros'] => $RutaRelativaControlador.'Controladores/Publica/Procesadores/ProcesaAltaMiembrosP.php',
+	$identificadoresPrivados['MMiembros'] => $RutaRelativaControlador.'Controladores/Publica/Procesadores/ProcesaModMiembrosP.php',
+	$identificadoresPrivados['DMiembros'] => $RutaRelativaControlador.'Controladores/Publica/Procesadores/ProcesaDelMiembrosP.php'
+);
+//Este array contiene los campos que se mostran en lso distintos formularios de alta de la aplicacion.
+// cada elemento de formularios alta es un array con cada uno de los campos del formulario array([PROPIEDAD NAME, PROPEIDAD TYPE, OTROS PARAMETROS QUE SE INCRUSTARAN EN EL HTML])
+$formularios = array(
+	$identificadoresPrivados['AMiembros'] => 
+	array(
+		array( 'MA.Login','text', ""),
+		array( 'MA.Pass','Pass', ""),
+		array( 'MA.USU_nombre','text', ""),
+		array( 'MA.USU_apellido','text', ""),
+		array( 'MA.USU_email','email', ""),
+		array( 'MA.USU_fecha_alta','date', ""),
+		array( 'MA.Web_Usuario','text', ""),
+		array( 'MA.Departamento_Usuario','text', ""),
+		array( 'MA.Descripcion_Usuario','textarea', ""),
+		array( 'MA.Telefono_Usuario','number', ""),
+		array( 'MA.Movil_Usuario','number', "")
+	)
 );
 
 //Variable que contiene la pagina o controlador que tomara el control en caso de error de permisos
