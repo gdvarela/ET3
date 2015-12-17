@@ -353,6 +353,8 @@ PIXEL
 'Nuestras Oficinas' => 'Nuestras Oficinas',
 'Enlaces de interes' => 'Enlaces de interes',
 'Contactanos' => 'Contactanos',
+'Noticias Recientes' => 'Noticias Recientes',
+'Ultimas publicaciones' => ' Ultimas publicaciones',
 'Carrera' => 'Carrera',
 'Politica de privacidad' => 'Politica de privacidad',
 'Terminos y Condiciones' => 'Terminos y Condiciones',
