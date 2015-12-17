@@ -41,13 +41,14 @@ function DisplayContent($idioma)
 								<label for="sel1">'.$idioma[$campos[0]].'</label>
 								  <select name="'.$campos[0].'" class="form-control" id="sel1">
 								  ';
-								  switch (explode(":",$campos[2])[0])
+								  switch (explode(":",$campos[3])[0])
 								  {
 									  case "sql":
-									  $opciones = TablaBD::ConsultaGenerica(explode(":",$campos[2])[1]);
+									  $opciones = TablaBD::ConsultaGenerica(explode(":",$campos[3])[1]);
 									  for ($i = 0 ; i < $opciones->num_rows;$i = $i +1)
 									  {
-										  echo '<option>'.($opciones->fetch_assoc())[0].'</option>';
+										  $dato = $opciones->fetch_assoc();
+										  echo '<option>'.$dato[array_keys($dato)[0]].'</option>';
 									  }
 									  break;
 								  }

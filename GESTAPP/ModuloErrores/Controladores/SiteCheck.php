@@ -90,7 +90,7 @@ class SiteCheck
 		foreach($this->Paginas as $pagina)
 		{
 			$page = $this->fetchPage($pagina);
-			/*
+			
 			if (!empty($page["error"]))
 			{ 
 				//report an un-expected error
@@ -106,7 +106,7 @@ class SiteCheck
 				//report PHP page errors
 				$errors = $this->checkForErrors($page["content"]);			
 				$this->reportWriter->addItem($pagina, $errors);								
-			}*/
+			}
 		}
 		
 		$this->reportWriter->endReport();
@@ -117,8 +117,9 @@ class SiteCheck
 		$this->reportWriter->startReport();
 		foreach($this->Paginas as $pagina)
 		{
-			$page = $this->fetchPage($pagina);
 			
+			echo $pagina->getUrlMostrar();
+			$page = $this->fetchPage($pagina);
 			if (!empty($page["error"]))
 			{ 
 				//report an un-expected error
@@ -137,7 +138,7 @@ class SiteCheck
 			}
 		}
 		
-		//$this->reportWriter->endReport();
+		$this->reportWriter->endReport();
 		return $ret;
 	}
 	/**
@@ -183,25 +184,28 @@ class SiteCheck
 	*/
 	function fetchPage($pagina)
 	{
+		$header = "";
 		$host = $pagina->host;
 		$port = $pagina->port;
 		$content = "";
 		//open the socket and send our HTTP request
+		echo $host." | " .$port;
 		$fp = fsockopen($host, $port, $errno, $errstr, 10);
 		$inicio = NULL;
-		$timeout = 10;
+		$timeout = ini_get('default_socket_timeout');
 		$output="";
 		if ($fp)
 		{
 			//fwrite($fp, $pagina->request);
 			fputs( $fp, $pagina->request ); 
-			
+			echo $pagina->request ;
 			$cont = 0;
-			while (!$this->feof_segura($fp, $inicio) && (microtime(true) - $inicio) < $timeout)
+			//while (!feof($fp))
+			while(!$this->feof_segura($fp, $inicio) && (microtime(true) - $inicio) < $timeout)
 			{
 				
-				$output=fgets($fp, 255);
-				echo $cont." ".$output." ".$content.";";
+				$output=fgets($fp, 4096);
+				echo $cont." ".$output." ".$content.";".AAAAAAAAAAAA;
 				$content.=$output;
 				
 				//determine whether we have reached the end of the header section
@@ -230,6 +234,7 @@ class SiteCheck
 	*/
 	function getHeaders($headers)
 	{
+		$hdrs = array();
 		$array = explode("\n",$headers);	
 		for($i=0;$i<count($array);$i++)
 		{

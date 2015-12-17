@@ -1,7 +1,7 @@
 <?php
-include ("SiteCheck.php");
+/*include ("SiteCheck.php");
 		include ("URLSourceArray.php");
-		include ("ReportWriterHTML.php");
+		include ("ReportWriterHTML.php");*/
 Class TestErrores
 {
 

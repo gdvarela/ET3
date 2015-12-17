@@ -155,13 +155,13 @@
 		
 		unset($_SESSION['error']);
 		unset($_SESSION['ok']);
-		echo'<p style="margin:60 0 0 0;background-color:#F5D487;padding-left:30px;"><font color=red>  &nbsp;&nbsp;&nbsp;&nbsp;    '. $error. '</font></p>';
+		echo'<p style="margin:0 0 0 0;background-color:#F5D487;padding-left:30px;"><font color=red>  &nbsp;&nbsp;&nbsp;&nbsp;    '. $error. '</font></p>';
 		
 	}
 	else if (isset($_SESSION['ok']))
 	{
 		$bien = $idioma[$_SESSION['ok']];
-		echo'<p style="margin:60 0 0 0;background-color:#8CFF96;padding-left:30px;"><font color=green>  &nbsp;&nbsp;&nbsp;&nbsp;    '. $bien. '</font></p>';
+		echo'<p style="margin:0 0 0 0;background-color:#8CFF96;padding-left:30px;"><font color=green>  &nbsp;&nbsp;&nbsp;&nbsp;    '. $bien. '</font></p>';
 		unset($_SESSION['error']);
 		unset($_SESSION['ok']);
 	}

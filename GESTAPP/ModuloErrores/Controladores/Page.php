@@ -30,14 +30,14 @@ class Page
 		
 		//Generamos la petición en función del método
 		if ( $method == "GET" ) {
-			$this->request  = "$method ".$this->name.$getValues." HTTP/1.1\r\n"; 
+			$this->request  = "$method ".$this->name.$getValues." HTTP/1.0\r\n"; 
 		}
 		else
 		{
-			$this->request  = "$method ".$this->name." HTTP/1.1\r\n"; 
+			$this->request  = "$method ".$this->name." HTTP/1.0\r\n"; 
 		}
 		
-	
+		$this->request .= "Accept: text/html\r\n"; 
 		$this->request .= "Host: $host\r\n"; 
 		$cookies = "Cookie:";
 		foreach($_COOKIE as $key => $value)
