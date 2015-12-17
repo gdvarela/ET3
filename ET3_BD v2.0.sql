@@ -415,12 +415,18 @@ CREATE TABLE IF NOT EXISTS `S_CONTRATO` (
 DROP TABLE IF EXISTS `S_EMPRESAS`;
 CREATE TABLE IF NOT EXISTS `S_EMPRESAS` (
   `IDEmpresa` varchar(10) COLLATE latin1_spanish_ci NOT NULL,
-  `Web_Empresa` varchar(50) COLLATE latin1_spanish_ci NOT NULL,
-  `Nombre_Empresa` varchar(50) COLLATE latin1_spanish_ci NOT NULL,
+  `Web_Empresa` varchar(500) COLLATE latin1_spanish_ci NOT NULL,
+  `Nombre_Empresa` varchar(500) COLLATE latin1_spanish_ci NOT NULL,
   `IDImagen_Empresa` varchar(10) COLLATE latin1_spanish_ci NOT NULL,
   `IDParticipante` varchar(10) COLLATE latin1_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 
+INSERT INTO `S_EMPRESAS` (`IDEmpresa`, `Web_Empresa`, `Nombre_Empresa`, `IDImagen_Empresa`, `IDParticipante`) VALUES
+('1', 'http://www.marca.com/',"INSA S. L.", "imagen2.jpg","1");
+INSERT INTO `S_EMPRESAS` (`IDEmpresa`, `Web_Empresa`, `Nombre_Empresa`, `IDImagen_Empresa`, `IDParticipante`) VALUES
+('2', 'http://www.marca.com/',"INSA S. L. 2", "imagen2.jpg","12");
+INSERT INTO `S_EMPRESAS` (`IDEmpresa`, `Web_Empresa`, `Nombre_Empresa`, `IDImagen_Empresa`, `IDParticipante`) VALUES
+('3', 'http://www.marca.com/',"INSA S. L. 3", "imagen2.jpg","13");
 -- --------------------------------------------------------
 
 --
@@ -430,12 +436,18 @@ CREATE TABLE IF NOT EXISTS `S_EMPRESAS` (
 DROP TABLE IF EXISTS `S_GRUPOS`;
 CREATE TABLE IF NOT EXISTS `S_GRUPOS` (
   `IDGrupo` varchar(10) COLLATE latin1_spanish_ci NOT NULL,
-  `Web_Grupo` varchar(30) COLLATE latin1_spanish_ci NOT NULL,
+  `Web_Grupo` varchar(300) COLLATE latin1_spanish_ci NOT NULL,
   `IDImagen_Grupo` varchar(10) COLLATE latin1_spanish_ci NOT NULL,
-  `Nombre_Grupo` varchar(20) COLLATE latin1_spanish_ci NOT NULL,
+  `Nombre_Grupo` varchar(200) COLLATE latin1_spanish_ci NOT NULL,
   `IDParticipante` varchar(10) COLLATE latin1_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 
+INSERT INTO `S_GRUPOS` (`IDGrupo`, `Web_Grupo`, `IDImagen_Grupo`, `Nombre_Grupo`, `IDParticipante`) VALUES
+('1', 'http://sing.ei.uvigo.es', "imagen3.jpg","SING","1");
+INSERT INTO `S_GRUPOS` (`IDGrupo`, `Web_Grupo`, `IDImagen_Grupo`, `Nombre_Grupo`, `IDParticipante`) VALUES
+('2', 'http://sing.ei.uvigo.es', "imagen3.jpg","SING2","12");
+INSERT INTO `S_GRUPOS` (`IDGrupo`, `Web_Grupo`, `IDImagen_Grupo`, `Nombre_Grupo`, `IDParticipante`) VALUES
+('3', 'http://sing.ei.uvigo.es', "imagen3.jpg","SING3","13");
 -- --------------------------------------------------------
 
 --
@@ -445,11 +457,20 @@ CREATE TABLE IF NOT EXISTS `S_GRUPOS` (
 DROP TABLE IF EXISTS `S_INSTITUCIONES`;
 CREATE TABLE IF NOT EXISTS `S_INSTITUCIONES` (
   `IDInstitucion` varchar(10) COLLATE latin1_spanish_ci NOT NULL,
-  `Web_Institucion` varchar(30) COLLATE latin1_spanish_ci NOT NULL,
+  `Web_Institucion` varchar(300) COLLATE latin1_spanish_ci NOT NULL,
   `IDImagen_Institucion` varchar(10) COLLATE latin1_spanish_ci NOT NULL,
-  `Nombre_Institucion` varchar(20) COLLATE latin1_spanish_ci NOT NULL,
+  `Nombre_Institucion` varchar(200) COLLATE latin1_spanish_ci NOT NULL,
   `IDParticipante` varchar(10) COLLATE latin1_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
+
+
+INSERT INTO `S_INSTITUCIONES` (`IDInstitucion`, `Web_Institucion`, `IDImagen_Institucion`, `Nombre_Institucion`, `IDParticipante`) VALUES
+('1', 'http://www.marca.com/', "imagen.jpg","CNI","1");
+INSERT INTO `S_INSTITUCIONES` (`IDInstitucion`, `Web_Institucion`, `IDImagen_Institucion`, `Nombre_Institucion`, `IDParticipante`) VALUES
+('2', 'http://www.marca.com/', "imagen.jpg","CNI2","12");
+INSERT INTO `S_INSTITUCIONES` (`IDInstitucion`, `Web_Institucion`, `IDImagen_Institucion`, `Nombre_Institucion`, `IDParticipante`) VALUES
+('3', 'http://www.marca.com/', "imagen.jpg","CNI3","13");
+
 
 -- --------------------------------------------------------
 
@@ -520,13 +541,13 @@ CREATE TABLE IF NOT EXISTS `S_OFRECE` (
 --
 -- Estructura de tabla para la tabla `S_PARTICIPANTES`
 --
-
+/*
 DROP TABLE IF EXISTS `S_PARTICIPANTES`;
 CREATE TABLE IF NOT EXISTS `S_PARTICIPANTES` (
   `IDParticipantes` varchar(10) COLLATE latin1_spanish_ci NOT NULL,
   `Tipo_Participante` enum('Empresa','Institucion','Grupo','') COLLATE latin1_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
-
+*/
 -- --------------------------------------------------------
 
 --
@@ -819,10 +840,10 @@ ALTER TABLE `S_OFRECE`
 --
 -- Indices de la tabla `S_PARTICIPANTES`
 --
+/*
 ALTER TABLE `S_PARTICIPANTES`
  ADD PRIMARY KEY (`IDParticipantes`);
-
---
+ */
 -- Indices de la tabla `S_PATENTE`
 --
 ALTER TABLE `S_PATENTE`
@@ -916,10 +937,11 @@ ADD CONSTRAINT `FK_PER_ROL` FOREIGN KEY (`ROL_nombre`) REFERENCES `ROLES` (`ROL_
 --
 -- Filtros para la tabla `S_ASIGNADO`
 --
+/*
 ALTER TABLE `S_ASIGNADO`
 ADD CONSTRAINT `S_ASIGNADO_ibfk_2` FOREIGN KEY (`IDParticipante`) REFERENCES `S_PARTICIPANTES` (`IDParticipantes`) ON DELETE CASCADE ON UPDATE CASCADE,
 ADD CONSTRAINT `S_ASIGNADO_ibfk_1` FOREIGN KEY (`IDProyecto`) REFERENCES `S_PROYECTO` (`IDProyecto`) ON DELETE CASCADE ON UPDATE CASCADE;
-
+*/
 --
 -- Filtros para la tabla `S_CONTRATO`
 --
@@ -929,15 +951,17 @@ ADD CONSTRAINT `S_CONTRATO_ibfk_1` FOREIGN KEY (`IDEmpresa`) REFERENCES `S_EMPRE
 --
 -- Filtros para la tabla `S_EMPRESAS`
 --
+/*
 ALTER TABLE `S_EMPRESAS`
 ADD CONSTRAINT `S_EMPRESAS_ibfk_1` FOREIGN KEY (`IDParticipante`) REFERENCES `S_PARTICIPANTES` (`IDParticipantes`) ON DELETE CASCADE ON UPDATE CASCADE;
-
+*/
 --
 -- Filtros para la tabla `S_GRUPOS`
 --
+/*
 ALTER TABLE `S_GRUPOS`
 ADD CONSTRAINT `S_GRUPOS_ibfk_1` FOREIGN KEY (`IDParticipante`) REFERENCES `S_PARTICIPANTES` (`IDParticipantes`) ON DELETE CASCADE ON UPDATE CASCADE;
-
+*/
 --
 -- Filtros para la tabla `S_OFRECE`
 --

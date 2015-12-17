@@ -19,12 +19,12 @@ function DisplayContent($idioma,$miembro)
 	<section id="content">
 		<div class="container">
 			<form id="borrarActual" action="<?php echo $procesadores[$identificadoresPrivados["DMiembros"]]?>" method="POST">
-						<input type="hidden" name="BORRAR" value="<?php echo $miembro["Login"]?>"/>
+						<input type="hidden" name="BORRAR" value="Login=><?php echo $miembro["Login"]?>"/>
 			</form>
 			<div class="row">
 				<div class="col-md-12">
-					<form role="form" action="<?php echo $procesadores[$identificadoresPrivados["MMiembros"]]?>">
-					<input type="hidden" name="ClaveAnt" value="<?php echo $miembro["Login"]?>" />
+					<form role="form" action="<?php echo $procesadores[$identificadoresPrivados["MMiembros"]]?>" method="POST">
+					<input type="hidden" name="ClaveAnt" value="Login=><?php echo $miembro["Login"]?>" />
 					<?php
 					foreach($formularios[$identificadoresPrivados["MMiembros"]] as $campos)
 					{
@@ -35,7 +35,7 @@ function DisplayContent($idioma,$miembro)
 								<div class="form-group">
 									<label class="control-label">'.$idioma[$campos[0]].'</label>
 									<textarea class="form-control" name="'.$campos[0].'" '.$campos[2].'">
-									'.$miembro[explode(".",$campos[0])[1]].'
+									'.$miembro[explode("-",$campos[0])[1]].'
 									</textarea>
 								</div>
 								';
@@ -44,7 +44,7 @@ function DisplayContent($idioma,$miembro)
 							echo '
 								<div class="form-group">
 									<label class="control-label">'.$idioma[$campos[0]].'</label>
-									<input  type="'.$campos[1].'" name="'.$campos[0].'" value="'.$miembro[explode(".",$campos[0])[1]].'" '.$campos[2].' >
+									<input  type="'.$campos[1].'" name="'.$campos[0].'" value="'.$miembro[explode("-",$campos[0])[1]].'" '.$campos[2].' >
 								</div>
 								';
 							break;
@@ -52,7 +52,7 @@ function DisplayContent($idioma,$miembro)
 							echo '
 								<div class="form-group">
 									<label class="control-label">'.$idioma[$campos[0]].'</label>
-									<input  type="'.$campos[1].'" class="form-control" value="'.$miembro[explode(".",$campos[0])[1]].'" name="'.$campos[0].'" '.$campos[2].' >
+									<input  type="'.$campos[1].'" class="form-control" value="'.$miembro[explode("-",$campos[0])[1]].'" name="'.$campos[0].'" '.$campos[2].' >
 								</div>
 								';
 							break;

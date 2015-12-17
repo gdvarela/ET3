@@ -27,7 +27,7 @@ function DisplayContent($idioma,$noticia)
 					<form role="form" action="<?php echo $procesadores[$identificadoresPrivados["MPrensa"]]?>" method="POST">
 					<input type="hidden" name="ClaveAnt" value="Titulo_Noticia=><?php echo $noticia["Titulo_Noticia"]?>" />
 					<?php
-					foreach($formularios[$identificadoresPrivados["MPrensa"]] as $campos)
+					foreach($formularios[$identificadoresPrivados["MColaboraciones"].$_POST["TIPO"]] as $campos)
 					{
 						switch ($campos[1])
 						{

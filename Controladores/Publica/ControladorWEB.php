@@ -125,13 +125,13 @@ switch($PagID)
 		$princ_view = new Prensa();
 		$princ_view->DisplayContent($idioma,$noticias,$pagCargar,ceil(count($noticias)/$NumporPags));
 	break;
-	case $identificadores['Transferencia']:
+	case $identificadores['Transferencias']:
 		$princ_view = new Transferencia();
 		$princ_view->DisplayContent($idioma);
 	break;
 	case $identificadores['Colaboraciones']:
 		$princ_view = new Colaboraciones();
-		$princ_view->DisplayContent($idioma);
+		$princ_view->DisplayContent($idioma,$e,$in,$g);
 	break;
 	case $identificadores['Login']:
 		$princ_view = new Login();

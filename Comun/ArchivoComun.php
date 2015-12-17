@@ -22,13 +22,13 @@ function CargarIdioma2($Ruta)
 	switch ($_SESSION['idioma'])
 	{
 	case 'ESPANHOL':
-		include_once$Ruta.'GESTAPP/Modelos/ESPANHOL.php';
+		include_once $Ruta.'GESTAPP/Modelos/ESPANHOL.php';
 		break;
 	case 'GALEGO':
-		include_once$Ruta.'GESTAPP/Modelos/GALEGO.php';
+		include_once $Ruta.'GESTAPP/Modelos/GALEGO.php';
 		break;
 	case 'ENGLISH':
-		include_once$Ruta.'GESTAPP/Modelos/ENGLISH.php';
+		include_once $Ruta.'GESTAPP/Modelos/ENGLISH.php';
 		break;
 	DEFAULT:
 		break;
@@ -42,7 +42,7 @@ $identificadores = array(
 'Home' => 'H',
 'Miembros' => 'M',
 'Prensa'=> 'P',
-'Transferencia'=> 'T',
+'Transferencias'=> 'T',
 'Colaboraciones'=> 'C',
 'Login' => 'L'
 
@@ -58,12 +58,14 @@ $identificadoresPrivados = array(
 'APrensa'=> 'APP',
 'MPrensa'=> 'MPP',
 'DPrensa' => 'DPP',
-'Transferencia'=> 'TP',
-'ATransferencia'=> 'ATP',
-'MTransferencia'=> 'MTP',
+'Transferencias'=> 'TP',
+'ATransferencias'=> 'ATP',
+'MTransferencias'=> 'MTP',
+'DTransferencias'=> 'DTP',
 'Colaboraciones'=> 'CP',
 'AColaboraciones'=> 'ACP',
 'MColaboraciones'=> 'MCP',
+'DColaboraciones'=> 'DCP',
 'Administracion'=> 'G',
 'ERRORPERM' => 'ERRORPERM'
 );
@@ -74,7 +76,7 @@ $MenuPrincipal = array(
 'Home' => $identificadores['Home'],
 'Miembros' => $identificadores['Miembros'],
 'Prensa'=> $identificadores['Prensa'],
-'Transferencia'=> $identificadores['Transferencia'],
+'Transferencias'=> $identificadores['Transferencias'],
 'Colaboraciones'=> $identificadores['Colaboraciones']
 );
 
@@ -84,7 +86,7 @@ $MenuPrincipalPrivados = array(
 'Home' => $identificadoresPrivados['Home'],
 'Miembros' => $identificadoresPrivados['Miembros'],
 'Prensa'=> $identificadoresPrivados['Prensa'],
-'Transferencia'=> $identificadoresPrivados['Transferencia'],
+'Transferencias'=> $identificadoresPrivados['Transferencias'],
 'Colaboraciones'=> $identificadoresPrivados['Colaboraciones'],
 'Administracion'=> $identificadoresPrivados['Administracion']
 );
@@ -94,7 +96,7 @@ $vistas = array(
 	$identificadores['Home'] => $RutaRelativaControlador.'Vistas/Publicas/V_Home.php',
 	$identificadores['Miembros'] => $RutaRelativaControlador.'Vistas/Publicas/V_Miembros.php',
 	$identificadores['Prensa'] => $RutaRelativaControlador.'Vistas/Publicas/V_Prensa.php',
-	$identificadores['Transferencia'] => $RutaRelativaControlador.'Vistas/Publicas/V_Transferencia.php',
+	$identificadores['Transferencias'] => $RutaRelativaControlador.'Vistas/Publicas/V_Transferencia.php',
 	$identificadores['Colaboraciones'] => $RutaRelativaControlador.'Vistas/Publicas/V_Colaboraciones.php',
 	$identificadores['Login'] => $RutaRelativaControlador.'Vistas/Publicas/V_Login.php',
 	
@@ -107,9 +109,9 @@ $vistas = array(
 	$identificadoresPrivados['Prensa'] => $RutaRelativaControlador.'Vistas/Privadas/V_PrensaP.php',
 	$identificadoresPrivados['APrensa'] => $RutaRelativaControlador.'Vistas/Privadas/V_AltaPrensaP.php',
 	$identificadoresPrivados['MPrensa'] => $RutaRelativaControlador.'Vistas/Privadas/V_ModPrensaP.php',
-	$identificadoresPrivados['Transferencia'] => $RutaRelativaControlador.'Vistas/Privadas/V_TransferenciaP.php',
-	$identificadoresPrivados['ATransferencia'] => $RutaRelativaControlador.'Vistas/Privadas/V_AltaTransferenciaP.php',
-	$identificadoresPrivados['MTransferencia'] => $RutaRelativaControlador.'Vistas/Privadas/V_ModTransferenciaP.php',
+	$identificadoresPrivados['Transferencias'] => $RutaRelativaControlador.'Vistas/Privadas/V_TransferenciasP.php',
+	$identificadoresPrivados['ATransferencias'] => $RutaRelativaControlador.'Vistas/Privadas/V_AltaTransferenciasP.php',
+	$identificadoresPrivados['MTransferencias'] => $RutaRelativaControlador.'Vistas/Privadas/V_ModTransferenciasP.php',
 	$identificadoresPrivados['Colaboraciones'] => $RutaRelativaControlador.'Vistas/Privadas/V_ColaboracionesP.php',
 	$identificadoresPrivados['AColaboraciones'] => $RutaRelativaControlador.'Vistas/Privadas/V_AltaColaboracionesP.php',
 	$identificadoresPrivados['MColaboraciones'] => $RutaRelativaControlador.'Vistas/Privadas/V_ModColaboracionesP.php'
@@ -122,38 +124,51 @@ $controladores = array(
 	$identificadores['Home'] => $RutaRelativaControlador.'Controladores/Publica/ControladorWEB.php?PagMenu='.$identificadores['Home'],
 	$identificadores['Miembros'] => $RutaRelativaControlador.'Controladores/Publica/ControladorWEB.php?PagMenu='.$identificadores['Miembros'],
 	$identificadores['Prensa'] => $RutaRelativaControlador.'Controladores/Publica/ControladorWEB.php?PagMenu='.$identificadores['Prensa'],
-	$identificadores['Transferencia'] => $RutaRelativaControlador.'Controladores/Publica/ControladorWEB.php?PagMenu='.$identificadores['Transferencia'],
+	$identificadores['Transferencias'] => $RutaRelativaControlador.'Controladores/Publica/ControladorWEB.php?PagMenu='.$identificadores['Transferencias'],
 	$identificadores['Colaboraciones'] => $RutaRelativaControlador.'Controladores/Publica/ControladorWEB.php?PagMenu='.$identificadores['Colaboraciones'],
 	$identificadores['Login'] => $RutaRelativaControlador.'Controladores/Publica/ControladorWEB.php?PagMenu='.$identificadores['Login'],
 	$identificadoresPrivados['Home'] => $RutaRelativaControlador.'Controladores/Privada/C_HomeP.php',
 	$identificadoresPrivados['Miembros'] => $RutaRelativaControlador.'Controladores/Privada/C_MiembrosP.php',
 	$identificadoresPrivados['Prensa'] => $RutaRelativaControlador.'Controladores/Privada/C_PrensaP.php',
-	$identificadoresPrivados['Transferencia'] => $RutaRelativaControlador.'Controladores/Privada/C_TransferenciaP.php',
+	$identificadoresPrivados['Transferencias'] => $RutaRelativaControlador.'Controladores/Privada/C_TransferenciaP.php',
 	$identificadoresPrivados['Colaboraciones'] => $RutaRelativaControlador.'Controladores/Privada/C_ColaboracionesP.php',
 	
 	$identificadoresPrivados['AMiembros'] => $RutaRelativaControlador.'Controladores/Privada/C_AltaMiembrosP.php',
 	$identificadoresPrivados['APrensa'] => $RutaRelativaControlador.'Controladores/Privada/C_AltaPrensaP.php',
+	$identificadoresPrivados['AColaboraciones'] => $RutaRelativaControlador.'Controladores/Privada/C_AltaColaboracionesP.php',
+	$identificadoresPrivados['ATransferencias'] => $RutaRelativaControlador.'Controladores/Privada/C_AltaTransferenciasP.php',
 	
 	$identificadoresPrivados['MMiembros'] => $RutaRelativaControlador.'Controladores/Privada/C_ModMiembrosP.php',
 	$identificadoresPrivados['MPrensa'] => $RutaRelativaControlador.'Controladores/Privada/C_ModPrensaP.php',
+	$identificadoresPrivados['MColaboraciones'] => $RutaRelativaControlador.'Controladores/Privada/C_ModColaboracionesP.php',
+	$identificadoresPrivados['MTransferencias'] => $RutaRelativaControlador.'Controladores/Privada/C_ModTranferenciasP.php'
+	
 );
 
 $procesadores = array(
 	$identificadores['Login'] => $RutaRelativaControlador.'Controladores/Publica/Procesadores/ProcesaV_Login.php',
 	
-	$identificadoresPrivados['AMiembros'] => $RutaRelativaControlador.'Controladores/Publica/Procesadores/ProcesaAltaMiembrosP.php',
-	$identificadoresPrivados['MMiembros'] => $RutaRelativaControlador.'Controladores/Publica/Procesadores/ProcesaModMiembrosP.php',
-	$identificadoresPrivados['DMiembros'] => $RutaRelativaControlador.'Controladores/Publica/Procesadores/ProcesaDelMiembrosP.php',
+	$identificadoresPrivados['AMiembros'] => $RutaRelativaControlador.'Controladores/Privada/Procesadores/ProcesaAltaMiembrosP.php',
+	$identificadoresPrivados['MMiembros'] => $RutaRelativaControlador.'Controladores/Privada/Procesadores/ProcesaModMiembrosP.php',
+	$identificadoresPrivados['DMiembros'] => $RutaRelativaControlador.'Controladores/Privada/Procesadores/ProcesaDelMiembrosP.php',
 	
-	$identificadoresPrivados['APrensa'] => $RutaRelativaControlador.'Controladores/Publica/Procesadores/ProcesaAltaPrensaP.php',
-	$identificadoresPrivados['MPrensa'] => $RutaRelativaControlador.'Controladores/Publica/Procesadores/ProcesaModPrensaP.php',
-	$identificadoresPrivados['DPrensa'] => $RutaRelativaControlador.'Controladores/Publica/Procesadores/ProcesaDelPrensaP.php'
+	$identificadoresPrivados['APrensa'] => $RutaRelativaControlador.'Controladores/Privada/Procesadores/ProcesaAltaPrensaP.php',
+	$identificadoresPrivados['MPrensa'] => $RutaRelativaControlador.'Controladores/Privada/Procesadores/ProcesaModPrensaP.php',
+	$identificadoresPrivados['DPrensa'] => $RutaRelativaControlador.'Controladores/Privada/Procesadores/ProcesaDelPrensaP.php',
+	
+	$identificadoresPrivados['AColaboraciones'] => $RutaRelativaControlador.'Controladores/Privada/Procesadores/ProcesaAltaColaboracionesP.php',
+	$identificadoresPrivados['MColaboraciones'] => $RutaRelativaControlador.'Controladores/Privada/Procesadores/ProcesaModColaboracionesP.php',
+	$identificadoresPrivados['DColaboraciones'] => $RutaRelativaControlador.'Controladores/Privada/Procesadores/ProcesaDelColaboracionesP.php',
+	
+	$identificadoresPrivados['ATransferencias'] => $RutaRelativaControlador.'Controladores/Privada/Procesadores/ProcesaAltaTransferenciasP.php',
+	$identificadoresPrivados['MTransferencias'] => $RutaRelativaControlador.'Controladores/Privada/Procesadores/ProcesaModTransferenciasP.php',
+	$identificadoresPrivados['DTransferencias'] => $RutaRelativaControlador.'Controladores/Privada/Procesadores/ProcesaDelTransferenciasP.php'
 );
 
 
 //Variable que contiene la pagina o controlador que tomara el control en caso de error de permisos
 $PaginaError = $controladores[$identificadoresPrivados['ERRORPERM']];
-$imagenFondo = "http://www.lksur.com.uy/imagenes/t1.jpg";
+$imagenFondo = "";
 include_once $RutaRelativaControlador."Clases/TablaBD.php";
 $ROLMIEMBRO = "Miembro PIXEL";
 $_TABLAMIEMBRO = new TablaBD(
@@ -185,52 +200,135 @@ $_TABLANOTICIAS = new TablaBD(
 array(0)
 );
 
+$_TABLAEMPRESAS = new TablaBD(
+"S_EMPRESAS",
+	array(
+	"IDEmpresa" => "",
+	"Web_Empresa" => "",
+	"Nombre_Empresa" => "",
+	"IDImagen_Empresa" => "",
+	"IDParticipante" => ""
+	),
+array(0)
+);
+
+$_TABLAGRUPOS = new TablaBD(
+"S_GRUPOS",
+	array(
+	"IDGrupo" => "",
+	"Web_Grupo" => "",
+	"IDImagen_Grupo" => "",
+	"Nombre_Grupo" => "",
+	"IDParticipante" => ""
+	),
+array(0)
+);
+
+$_TABLAINSTITUCIONES = new TablaBD(
+"S_INSTITUCIONES",
+	array(
+	"IDInstitucion" => "",
+	"Web_Institucion" => "",
+	"IDImagen_Institucion" => "",
+	"Nombre_Institucion" => "",
+	"IDParticipante" => ""
+	),
+array(0)
+);
+
 //Este array contiene los campos que se mostran en lso distintos formularios de alta de la aplicacion.
 // cada elemento de formularios alta es un array con cada uno de los campos del formulario array([PROPIEDAD NAME, PROPEIDAD TYPE, OTROS PARAMETROS QUE SE INCRUSTARAN EN EL HTML])
 $formularios = array(
 	$identificadoresPrivados['AMiembros'] => 
 	array(
-		array( 'MA.Login','text', ""),
-		array( 'MA.Pass','Pass', ""),
-		array( 'MA.USU_nombre','text', ""),
-		array( 'MA.USU_apellido','text', ""),
-		array( 'MA.USU_email','email', ""),
-		array( 'MA.USU_fecha_alta','date', ""),
-		array( 'MA.Web_Usuario','text', ""),
-		array( 'MA.Departamento_Usuario','text', ""),
-		array( 'MA.Descripcion_Usuario','textarea', ""),
-		array( 'MA.Telefono_Usuario','number', ""),
-		array( 'MA.Movil_Usuario','number', "")
+		array( 'MA-Login','text', ""),
+		array( 'MA-Pass','Pass', ""),
+		array( 'MA-USU_nombre','text', ""),
+		array( 'MA-USU_apellido','text', ""),
+		array( 'MA-USU_email','email', ""),
+		array( 'MA-USU_fecha_alta','date', ""),
+		array( 'MA-Web_Usuario','text', ""),
+		array( 'MA-Departamento_Usuario','text', ""),
+		array( 'MA-Descripcion_Usuario','textarea', ""),
+		array( 'MA-Telefono_Usuario','number', ""),
+		array( 'MA-Movil_Usuario','number', "")
 	),
 	$identificadoresPrivados['MMiembros'] => 
 	array(
-		array( 'MA.Login','text', ""),
-		array( 'MA.Pass','Pass', ""),
-		array( 'MA.USU_nombre','text', ""),
-		array( 'MA.USU_apellido','text', ""),
-		array( 'MA.USU_email','email', ""),
-		array( 'MA.USU_fecha_alta','date', ""),
-		array( 'MA.Web_Usuario','text', ""),
-		array( 'MA.Departamento_Usuario','text', ""),
-		array( 'MA.Descripcion_Usuario','textarea', ""),
-		array( 'MA.Telefono_Usuario','number', ""),
-		array( 'MA.Movil_Usuario','number', "")
+		array( 'MA-Login','text', ""),
+		array( 'MA-Pass','Pass', ""),
+		array( 'MA-USU_nombre','text', ""),
+		array( 'MA-USU_apellido','text', ""),
+		array( 'MA-USU_email','email', ""),
+		array( 'MA-Web_Usuario','text', ""),
+		array( 'MA-Departamento_Usuario','text', ""),
+		array( 'MA-Descripcion_Usuario','textarea', ""),
+		array( 'MA-Telefono_Usuario','number', ""),
+		array( 'MA-Movil_Usuario','number', "")
 	),
 	$identificadoresPrivados['APrensa'] => 
 	array(
-		array( 'MP.Titulo_Noticia','text', ""),
-		array( 'MP.Fecha_Noticia','date', ""),
-		array( 'MP.Web_Noticia','text', ""),
-		array( 'MP.IDPDF_Noticia','text', ""),
-		array( 'MP.Publicador_Noticia','select', "","sql:Select * from USUARIOS where Login IN (Select login from HACE_DE where ROL_nombre = '".$ROLMIEMBRO."')")
+		array( 'MP-Titulo_Noticia','text', ""),
+		array( 'MP-Fecha_Noticia','date', ""),
+		array( 'MP-Web_Noticia','text', ""),
+		array( 'MP-IDPDF_Noticia','text', ""),
+		array( 'MP-Publicador_Noticia','select', "","sql:Select * from USUARIOS where Login IN (Select login from HACE_DE where ROL_nombre = '".$ROLMIEMBRO."')")
 	),
 	$identificadoresPrivados['MPrensa'] => 
 	array(
-		array( 'MP.Titulo_Noticia','text', ""),
-		array( 'MP.Fecha_Noticia','date', ""),
-		array( 'MP.Web_Noticia','text', ""),
-		array( 'MP.IDPDF_Noticia','text', ""),
-		array( 'MP.Publicador_Noticia','select', "","sql:Select * from USUARIOS where Login IN (Select login from HACE_DE where ROL_nombre = '".$ROLMIEMBRO."')")
+		array( 'MP-Titulo_Noticia','text', ""),
+		array( 'MP-Fecha_Noticia','date', ""),
+		array( 'MP-Web_Noticia','text', ""),
+		array( 'MP-IDPDF_Noticia','text', ""),
+		array( 'MP-Publicador_Noticia','select', "","sql:Select * from USUARIOS where Login IN (Select login from HACE_DE where ROL_nombre = '".$ROLMIEMBRO."')")
+	),
+	$identificadoresPrivados['AColaboraciones']."E" => 
+	array(
+		array( 'MP-IDEmpresa','text', ""),
+		array( 'MP-Web_Empresa','text', ""),
+		array( 'MP-Nombre_Empresa','text', ""),
+		array( 'MP-IDImagen_Empresa','text', ""),
+		array( 'MP-IDParticipante','text', "","sql:Select * from USUARIOS where Login IN (Select login from HACE_DE where ROL_nombre = '".$ROLMIEMBRO."')")
+	),
+	$identificadoresPrivados['AColaboraciones']."G" => 
+	array(
+		array( 'MP-IDGrupo','text', ""),
+		array( 'MP-Web_Grupo','text', ""),
+		array( 'MP-IDImagen_Grupo','text', ""),
+		array( 'MP-Nombre_Grupo','text', ""),
+		array( 'MP-IDParticipante','text', "","sql:Select * from USUARIOS where Login IN (Select login from HACE_DE where ROL_nombre = '".$ROLMIEMBRO."')")
+	),
+	$identificadoresPrivados['AColaboraciones']."I" => 
+	array(
+		array( 'MP-IDInstitucion','text', ""),
+		array( 'MP-Web_Institucion','text', ""),
+		array( 'MP-IDImagen_Institucion','text', ""),
+		array( 'MP-Nombre_Institucion','text', ""),
+		array( 'MP-IDParticipante','text', "","sql:Select * from USUARIOS where Login IN (Select login from HACE_DE where ROL_nombre = '".$ROLMIEMBRO."')")
+	),
+	$identificadoresPrivados['MColaboraciones']."E" => 
+	array(
+		array( 'MP-IDEmpresa','text', ""),
+		array( 'MP-Web_Empresa','text', ""),
+		array( 'MP-Nombre_Empresa','text', ""),
+		array( 'MP-IDImagen_Empresa','text', ""),
+		array( 'MP-IDParticipante','text', "","sql:Select * from USUARIOS where Login IN (Select login from HACE_DE where ROL_nombre = '".$ROLMIEMBRO."')")
+	),
+	$identificadoresPrivados['MColaboraciones']."G" => 
+	array(
+		array( 'MP-IDGrupo','text', ""),
+		array( 'MP-Web_Grupo','text', ""),
+		array( 'MP-IDImagen_Grupo','text', ""),
+		array( 'MP-Nombre_Grupo','text', ""),
+		array( 'MP-IDParticipante','text', "","sql:Select * from USUARIOS where Login IN (Select login from HACE_DE where ROL_nombre = '".$ROLMIEMBRO."')")
+	),
+	$identificadoresPrivados['MColaboraciones']."I" => 
+	array(
+		array( 'MP-IDInstitucion','text', ""),
+		array( 'MP-Web_Institucion','text', ""),
+		array( 'MP-IDImagen_Institucion','text', ""),
+		array( 'MP-Nombre_Institucion','text', ""),
+		array( 'MP-IDParticipante','text', "","sql:Select * from USUARIOS where Login IN (Select login from HACE_DE where ROL_nombre = '".$ROLMIEMBRO."')")
 	)
 );
 

@@ -7,113 +7,61 @@ function __construct()
 {
 }
 
-function DisplayContent($idioma)
+function DisplayContent($idioma,$Emp,$Ins,$Grup)
 {
 	global $RutaRelativaControlador;
 	//Aqui va el cuerpo principal de la pagina
 ?>
 	<section id="content">
 		<div class="container content">		
-        <!-- Service Blcoks -->
-		<div class="row">
-	
-	<div class="col-md-12">
-			<article class="item column-1"> 
-<!--  title/author -->
-<header class="item_header">
-	<h3>Our Best Services</h3></header>
-<!-- Introtext -->
-<div>
-	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores quae porro consequatur aliquam, incidunt eius magni provident, doloribus omnis minus temporibus perferendis nesciunt quam repellendus nulla nemo ipsum odit corrupti consequuntur possimusLorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores quae porro consequatur aliquam, incidunt eius magni provident, doloribus omnis minus temporibus perferendis nesciunt quam repellendus nulla nemo ipsum odit corrupti consequuntur possimus</p>
-
-<ul class="item_list">
-	<li><a href="#">Consultancy Services</a></li>
-	<li><a href="#">Business Plan Progress</a></li>
-	<li><a href="#">Best Marketing Business Plans</a></li>
-	<li><a href="#">International Expansion Plans</a></li>
-	<li><a href="#">Franchise Assessment Team</a></li>
-	<li><a href="#">National Opportunities Investment Growth</a></li>
-</ul></div>
-<!-- info BOTTOM -->
-			</article><!-- end item -->
-					</div>
-					</div>
-					
-        <div class="row service-v1 margin-bottom-40">
-            <div class="col-md-4 md-margin-bottom-40">
-               <img class="img-responsive" src="<?php echo $RutaRelativaControlador?>img/service1.jpg" alt="">   
-                <h3>Web Development</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores quae porro consequatur aliquam, incidunt eius magni provident, doloribus omnis minus temporibus perferendis nesciunt quam repellendus nulla nemo ipsum odit corrupti consequuntur possimus</p>        
-            </div>
+        <div class="row">
             <div class="col-md-4">
-                <img class="img-responsive" src="<?php echo $RutaRelativaControlador?>img/service2.jpg" alt="">            
-                <h3>Mobile Development</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores quae porro consequatur aliquam, incidunt eius magni provident, doloribus omnis minus temporibus perferendis nesciunt quam repellendus nulla nemo ipsum odit corrupti consequuntur possimus</p>        
-            </div>
-            <div class="col-md-4 md-margin-bottom-40">
-              <img class="img-responsive" src="<?php echo $RutaRelativaControlador?>img/service3.jpg" alt="">  
-                <h3>Responsive Design</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores quae porro consequatur aliquam, incidunt eius magni provident, doloribus omnis minus temporibus perferendis nesciunt quam repellendus nulla nemo ipsum odit corrupti consequuntur possimus</p>        
-            </div>
-        </div>
-        <!-- End Service Blcoks -->
-
-        <hr class="margin-bottom-50">
-
-        <!-- Info Blcoks -->
-        <div class="row">
-            <div class="col-sm-4 info-blocks">
-                <i class="icon-info-blocks fa fa-bell-o"></i>
-                <div class="info-blocks-in">
-                    <h3>Awesome Design</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores quae porro consequatur aliquam, incidunt</p>
+              <div class="panel panel-primary">
+                <div class="panel-heading">
+                  <h3 class="panel-title"><?php echo $idioma["Empresa"]."s"?></h3>
                 </div>
+				<ul class="list-group">
+				<?php
+					foreach($Emp as $e)
+					{
+						echo '<li class="list-group-item">'.$e["Nombre_Empresa"].'<br>-<a href="'.$e["Web_Empresa"].'" target="_blank">WEB</a></li>';
+					}
+				?>
+					
+				  </ul>
+              </div>
             </div>
-            <div class="col-sm-4 info-blocks">
-                <i class="icon-info-blocks fa fa-hdd-o"></i>
-                <div class="info-blocks-in">
-                    <h3>FontAwesome</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores quae porro consequatur aliquam, incidunt</p>
+			<div class="col-md-4">
+              <div class="panel panel-primary">
+                <div class="panel-heading">
+                  <h3 class="panel-title"><?php echo $idioma["Institucion"]."es"?></h3>
                 </div>
+				<ul class="list-group">
+					<?php
+					foreach($Ins as $e)
+					{
+						echo '<li class="list-group-item">'.$e["Nombre_Institucion"].'<br>-<a href="'.$e["Web_Institucion"].'" target="_blank">WEB</a></li>';
+					}
+				?>
+				  </ul>
+              </div>
             </div>
-            <div class="col-sm-4 info-blocks">
-                <i class="icon-info-blocks fa fa-lightbulb-o"></i>
-                <div class="info-blocks-in">
-                    <h3>Bootstrap</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores quae porro consequatur aliquam, incidunt</p>
+			<div class="col-md-4">
+              <div class="panel panel-primary">
+                <div class="panel-heading">
+                  <h3 class="panel-title"><?php echo $idioma["Grupo"]."s"?></h3>
                 </div>
+				<ul class="list-group">
+					<?php
+					foreach($Grup as $e)
+					{
+						echo '<li class="list-group-item">'.$e["Nombre_Grupo"].'<br>-<a href="'.$e["Web_Grupo"].'" target="_blank">WEB</a></li>';
+					}
+				?>
+				  </ul>
+              </div>
             </div>
-        </div>
-        <!-- End Info Blcoks -->
-
-       
-        <!-- Info Blcoks -->
-        <div class="row">
-            <div class="col-sm-4 info-blocks">
-                <i class="icon-info-blocks fa fa-code"></i>
-                <div class="info-blocks-in">
-                    <h3>SEO Ready</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores quae porro consequatur aliquam, incidunt</p>
-                </div>
-            </div>
-            <div class="col-sm-4 info-blocks">
-                <i class="icon-info-blocks fa fa-compress"></i>
-                <div class="info-blocks-in">
-                    <h3>Fully Responsive</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores quae porro consequatur aliquam, incidunt</p>
-                </div>
-            </div>
-            <div class="col-sm-4 info-blocks">
-                <i class="icon-info-blocks fa fa-html5"></i>
-                <div class="info-blocks-in">
-                    <h3>CSS3 + HTML5</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores quae porro consequatur aliquam, incidunt</p>
-                </div>
-            </div>
-        </div>
-        <!-- End Info Blcoks -->
-
-        
+          </div>
     </div>
     </section>
 	<?php
@@ -121,5 +69,37 @@ function DisplayContent($idioma)
 }
 
 }
+	$e = array();
+	$in = array();
+	$g = array();
+	//Consultamos datos
+	try
+	{
+		$consulta = $_TABLAEMPRESAS->ListadoRegistros("");
+		//Con los datos los cargamos en el array
+		for ($i = 0; $i < $consulta->num_rows ;$i++)
+		{
+			$e[] = $consulta->fetch_assoc();
+		}
+		$consulta = $_TABLAGRUPOS->ListadoRegistros("");
+		//Con los datos los cargamos en el array
+		for ($i = 0; $i < $consulta->num_rows ;$i++)
+		{
+			$g[] = $consulta->fetch_assoc();
+		}
+		$consulta = $_TABLAINSTITUCIONES->ListadoRegistros("");
+		//Con los datos los cargamos en el array
+		for ($i = 0; $i < $consulta->num_rows ;$i++)
+		{
+			$in[] = $consulta->fetch_assoc();
+		}
+	}
+	catch(Exception $e)
+	{
+		$errorRescrito = explode("=>",$e->getMessage());
+		$_SESSION['error'] = 'CON ERR MIEMBROS'."=>".$errorRescrito[1];
+	}
+
+
 
 ?>

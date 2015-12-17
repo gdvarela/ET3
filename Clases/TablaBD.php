@@ -24,41 +24,58 @@ Class TablaBD
 	
 	//Actualiza con los datos de este objeto la base de datos
 	// El metodo recibe como parametro la clave primaria previa al update
-	public function Update($ClavesAnt)
+	public function Update($datos)
 	{
-		$BD = new BaseDatosControl();
 		
-		$sql = "UPDATE  ".$nombreTabla." SET ";
-		foreach ($this->arrayCampos as $k => $v)
-		{
-			$sql = $sql. " ".$k." =  '".$v."'";
-		}
-		//PENDIENTE DE REVISAR CQUE SE RECIVE POR CLAVESANT array("123123123123",123,123)
+		$BD = new BaseDatosControl();
+		print_r($datos);
+		$sql = "UPDATE  ".$this->nombreTabla." SET ";
 		$primero = true;
-		foreach ($this->arrayClaves as $v)
+		foreach ($datos as $k => $v)
+		{
+			if ($k == "ClaveAnt")
+				continue;
+			
+			if ($primero)
+			{
+				$primero =false;
+				$k = explode("-",$k)[1];
+				$sql = $sql. " ".$k." =  '".$v."'";
+				continue;
+			}
+			$k = explode("-",$k)[1];
+			$sql = $sql. ", ".$k." =  '".$v."'";
+		}
+		
+		$ClavesAnt = explode(";",$datos["ClaveAnt"]);
+		
+		$primero = true;
+		foreach ($ClavesAnt as $v)
 		{
 			if ($primero)
 			{
 				$primero =false;
-				$sql = $sql." WHERE  ".array_keys($arrayCampos)[$v] ." =  '".$ClavesAnt[$v]."'";
+				$sql = $sql." WHERE  ".explode("=>",$v)[0]." =  '".explode("=>",$v)[1]."'";
 				continue;
 			}
-			$sql = $sql. " AND  ".array_keys($arrayCampos)[$v] ." =  '".$ClavesAnt[$v]."'";
+			$sql = $sql. " AND  ".explode("=>",$v)[0]." =  '".explode("=>",$v)[1]."'";
 		}
-		
+		echo $sql;
 		$BD->OperacionGenericaBD($sql,'ACT ERR U');
 	}
 
 	
 	//Almancena el objeto como un nuevo registro en la base de datos
-	public function AlmacenarBD()
+	public function AlmacenarBD($datos)
 	{
 		$BD = new BaseDatosControl();
 	
-		$sql = "Insert into ".$nombreTabla." ";
+		$sql = "Insert into ".$this->nombreTabla." ";
 		$primero = true;
-		foreach (array_keys($this->arrayClaves) as $k)
+		foreach (array_keys($datos) as $k)
 		{
+			
+			$k = explode("-",$k)[1];
 			if ($primero)
 			{
 				$primero =false;
@@ -67,39 +84,43 @@ Class TablaBD
 			}
 			$sql = $sql. ",".$k;
 		}
-		$sql = ") values";
+		$sql = $sql.") values";
 		
 		$primero = true;
-		foreach ($this->arrayCampos as $k => $v)
+		foreach ($datos as $k => $v)
 		{
 			if ($primero)
 			{
 				$primero =false;
-				$sql = $sql." (".$v;
+				$sql = $sql." ('".$v;
 				continue;
 			}
-			$sql = $sql. ",".$v;
+			$sql = $sql. "','".$v;
 		}
-		$sql = ")";
+		$sql =$sql. "')";
+		echo $sql;
 		$BD->OperacionGenericaBD($sql,"");
 	}
 
-	public function EliminarRegistro($ClavesBusqueda)
+	public function EliminarRegistro($datos)
 	{
 		$BD = new BaseDatosControl();
 		
-		$sql = "DELETE FROM ".$n." ";
+		$ClavesBusqueda = explode(";",$datos["BORRAR"]);
+		
+		$sql = "DELETE FROM ".$this->nombreTabla." ";
 		$primero = true;
-		foreach ($this->arrayClaves as $v)
+		foreach ($ClavesBusqueda as $v)
 		{
 			if ($primero)
 			{
 				$primero =false;
-				$sql = $sql." WHERE  ".array_keys($arrayCampos)[$v] ." =  '".$ClavesBusqueda[$v]."'";
+				$sql = $sql." WHERE  ".explode("=>",$v)[0]." =  '".explode("=>",$v)[1]."'";
 				continue;
 			}
-			$sql = $sql. " AND  ".array_keys($arrayCampos)[$v] ." =  '".$ClavesBusqueda[$v]."'";
+			$sql = $sql. " AND  ".explode("=>",$v)[0]." =  '".explode("=>",$v)[1]."'";
 		}
+		echo $sql;
 		
 		
 		$BD->OperacionGenericaBD($sql,'');

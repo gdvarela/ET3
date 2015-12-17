@@ -285,25 +285,54 @@ PIXEL
 'Elim_Sel' => 'Eliminar Seleccionados',
 
 //Alta Miembro- Mod Miembro
-'MA.Login' => 'Login',
-'MA.Pass' => 'Contraseña',
-'MA.USU_nombre' => 'Nombre de Usuario',
-'MA.USU_apellido' => ' Apellido',
-'MA.USU_email' => 'Correo Electronico',
-'MA.USU_fecha_alta' => 'Fecha de Alta',
-'MA.Web_Usuario' => 'Web Personal',
-'MA.Departamento_Usuario' => 'Departamento',
-'MA.Descripcion_Usuario' => 'Descripcion o Biografía',
-'MA.Telefono_Usuario' => 'Telefono',
-'MA.Movil_Usuario' => 'Telefono Movil',
+'MA-Login' => 'Login',
+'MA-Pass' => 'Contraseña',
+'MA-USU_nombre' => 'Nombre de Usuario',
+'MA-USU_apellido' => ' Apellido',
+'MA-USU_email' => 'Correo Electronico',
+'MA-USU_fecha_alta' => 'Fecha de Alta',
+'MA-Web_Usuario' => 'Web Personal',
+'MA-Departamento_Usuario' => 'Departamento',
+'MA-Descripcion_Usuario' => 'Descripcion o Biografía',
+'MA-Telefono_Usuario' => 'Telefono',
+'MA-Movil_Usuario' => 'Telefono Movil',
 
 //Alta Prensa- Mod Prensa
-'MP.Titulo_Noticia' => 'Titulo Noticia',
-'MP.Fecha_Noticia' => 'Fecha de la Noticia',
-'MP.Web_Noticia' => 'WEB de origen o Fuente',
-'MP.IDPDF_Noticia' => ' ID PDF',
-'MP.Publicador_Noticia' => 'Miembro Publicador',
+'MP-Titulo_Noticia' => 'Titulo Noticia',
+'MP-Fecha_Noticia' => 'Fecha de la Noticia',
+'MP-Web_Noticia' => 'WEB de origen o Fuente',
+'MP-IDPDF_Noticia' => ' ID PDF',
+'MP-Publicador_Noticia' => 'Miembro Publicador',
 
+//COLABORACIONES
+
+'MP-IDEmpresa'=>"Identificador",
+	 'MP-Web_Empresa'=>"Sito Web",
+	 'MP-Nombre_Empresa'=>"Nombre Corporativo",
+	 'MP-IDImagen_Empresa'=>"Imagen",
+	 'MP-IDParticipante'=>"Identificador",
+
+	 'MP-IDGrupo'=>"Nombre Grupo",
+	 
+	 'MP-Nombre_Grupo'=>"Nombre Grupo",
+	 'MP-Web_Grupo'=>"Sito Web",
+	 'MP-IDImagen_Grupo'=>"Imagen Grupo",
+	 'MP-IDParticipante'=>"Identificador",
+
+
+	 'MP-IDInstitucion'=>"Identificador",
+	 'MP-Web_Institucion'=>"Sito Web",
+	 'MP-IDImagen_Institucion'=>"Imagen Institucion",
+	 'MP-Nombre_Institucion'=>"Nombre Institucion",
+	 'MP-IDParticipante'=>"Identificador",
+	
+	"Empresa" => "Empresa",
+	"Institucion" => "Institucion",
+	"Grupo" => "Grupo",
+	
+'Alta_INST' => "Añadir Institucion",
+'Alta_EMPRE' => "Añadir Empresa",
+'Alta_GRUPO' => "Añadir Grupo",
 //Pagina HOME
 
 'Globex' => 'Globex',
@@ -360,5 +389,5 @@ PIXEL
 'Terminos y Condiciones' => 'Terminos y Condiciones',
 'Ultimos eventos' => 'Ultimos eventos'
 
-)
+);
 ?>
