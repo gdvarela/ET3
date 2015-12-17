@@ -116,7 +116,6 @@ function DisplayContent($idioma)
 
 	</div>
 	</section>
-	<!--
 	<div class="testimonial-area">
     <div class="testimonial-solid">
         <div class="container">
@@ -142,35 +141,34 @@ function DisplayContent($idioma)
                 </ol>
                 <div class="carousel-inner">
                     <div class="item">
-                        <p>Blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi.</p>
+                        <p><?php echo $idioma['Cita 1'] ?></p>
                         <p>
-                            <b>- Mark John -</b>
+                            <b><?php echo $idioma['Homer Simpson'] ?></b>
                         </p>
                     </div>
                     <div class="item">
-                        <p>Blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi.</p>
+                        <p><?php echo $idioma['Cita 2'] ?></p>
                         <p>
-                            <b>- Jaison Warner -</b>
+                            <b><?php echo $idioma['Stave Ballmer']?></b>
                         </p>
                     </div>
                     <div class="item active">
-                        <p>Blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi.</p>
+                        <p><?php echo $idioma['Cita 3'] ?></p>
                         <p>
-                            <b>- Tony Antonio -</b>
+                            <b><?php echo $idioma['Mariano Rajoy']?></b>
                         </p>
                     </div>
                     <div class="item">
-                        <p>Blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi.</p>
+                        <p><?php echo $idioma['Cita 4'] ?></p>
                         <p>
-                            <b>- Leena Doe -</b>
+                            <b><?php echo $idioma['C-3PO']?></b>
                         </p>
                     </div>
                 </div>
-				
             </div>
         </div>
     </div>
-	-->
+	
 </div>
 
 <?php

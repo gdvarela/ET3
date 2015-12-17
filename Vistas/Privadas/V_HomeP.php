@@ -116,6 +116,60 @@ function DisplayContent($idioma)
 
 	</div>
 	</section>
+	<div class="testimonial-area">
+    <div class="testimonial-solid">
+        <div class="container">
+            <div class="testi-icon-area">
+                <div class="quote">
+                    <i class="fa fa-microphone"></i>
+                </div>
+            </div>
+            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li data-target="#carousel-example-generic" data-slide-to="0" class="">
+                        <a href="#"></a>
+                    </li>
+                    <li data-target="#carousel-example-generic" data-slide-to="1" class="">
+                        <a href="#"></a>
+                    </li>
+                    <li data-target="#carousel-example-generic" data-slide-to="2" class="active">
+                        <a href="#"></a>
+                    </li>
+                    <li data-target="#carousel-example-generic" data-slide-to="3" class="">
+                        <a href="#"></a>
+                    </li>
+                </ol>
+                <div class="carousel-inner">
+                    <div class="item">
+                        <p><?php echo $idioma['Cita 1'] ?></p>
+                        <p>
+                            <b><?php echo $idioma['Homer Simpson'] ?></b>
+                        </p>
+                    </div>
+                    <div class="item">
+                        <p><?php echo $idioma['Cita 2'] ?></p>
+                        <p>
+                            <b><?php echo $idioma['Stave Ballmer']?></b>
+                        </p>
+                    </div>
+                    <div class="item active">
+                        <p><?php echo $idioma['Cita 3'] ?></p>
+                        <p>
+                            <b><?php echo $idioma['Mariano Rajoy']?></b>
+                        </p>
+                    </div>
+                    <div class="item">
+                        <p><?php echo $idioma['Cita 4'] ?></p>
+                        <p>
+                            <b><?php echo $idioma['C-3PO']?></b>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+	
+</div>
 <?php
 	
 

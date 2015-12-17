@@ -335,8 +335,28 @@ PIXEL
 
 //Textos Home
 
-'Texto Principal' => 'La informática es una ciencia que estudia métodos, técnicas, procesos, con el fin de almacenar, procesar y transmitir información y datos en formato digital. Se define como la rama de la tecnología que estudia el tratamiento automático de la información.'
+'Texto Principal' => 'La informática es una ciencia que estudia métodos, técnicas, procesos, con el fin de almacenar, procesar y transmitir información y datos en formato digital. Se define como la rama de la tecnología que estudia el tratamiento automático de la información.',
 
+//Citas HOME
+
+'Homer Simpson' => 'Homer Simpson',
+'Cita 1' => 'Tendrá todo el dinero del mundo, pero hay algo que nunca podrá comprar... un dinosaurio',
+'Stave Ballmer' => 'Stave Ballmer',
+'Cita 2' => 'Developers, developers, developers, developers, developers, developers, developers, developers, developers, developers, developers, developers, developers, developers, developers, developers, developers, developers, developers, developers, developers,...!!!!!!!',
+'Mariano Rajoy' => 'Mariano Rajoy',
+'Cita 3' => 'Es el vecino el que elige el alcalde y es el alcalde el que quiere que sean los vecinos el alcalde',
+'C-3PO' => 'C-3PO',
+'Cita 4' => 'El amo Luke estará bien... Para tratarse de un ser humano, es bastante ingenioso.',
+
+//Pie Pagina
+
+'Nuestras Oficinas' => 'Nuestras Oficinas',
+'Enlaces de interes' => 'Enlaces de interes',
+'Contactanos' => 'Contactanos',
+'Carrera' => 'Carrera',
+'Politica de privacidad' => 'Politica de privacidad',
+'Terminos y Condiciones' => 'Terminos y Condiciones',
+'Ultimos eventos' => 'Ultimos eventos'
 
 )
 ?>
