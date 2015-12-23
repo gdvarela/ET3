@@ -195,6 +195,7 @@ INSERT INTO `IMPLEMENTADA_EN` (`FUN_nombre`, `PAG_nombre`) VALUES
 ('Solo Consulta (G)', 'Vista Usuarios (G)'),
 
 ('Testeo', 'Comprobacion Errores'),
+('Testeo', 'Comprobacion Errores Form'),
 
 ('Administrar PIXEL', 'Home Pixel'),
 ('Administrar PIXEL', 'Miembros Pixel'),
@@ -254,6 +255,7 @@ INSERT INTO `PAGINAS` (`PAG_nombre`, `PAG_ubicacion`, `PAG_descripcion`) VALUES
 ('Vista Roles (G)', 'ConsRoles.php', 'Consultar Roles'),
 ('Vista Usuarios (G)', 'ConsUsuarios.php', 'Consultar Usuarios'),
 ('Comprobacion Errores', 'testErrores.php', 'Pagina de realizacion de test'),
+('Comprobacion Errores Form', 'testErrores2.php', 'Pagina de realizacion de test'),
 
 ('Home Pixel', 'C_HomeP.php', 'Pagina Principal'),
 ('Miembros Pixel', 'C_MiembrosP.php', 'Miembros Funcionalidad'),

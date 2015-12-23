@@ -186,7 +186,6 @@ $Idioma = array(
 'TIT TAB LIST A' => 'Ultimos Accesos',
 'Fecha/Hora' => 'Fecha/Hora',
 //-------------------------------------------------------------------------Errores
-'TestErrores' => 'Test de Errores',
 'SubdirectorioAnalizar' => 'Subdirectorio a analizar',
 'NomPagTest' => 'Nombre Página',
 'ProcesarErrores' => 'Procesar',
@@ -242,8 +241,42 @@ PIXEL
 
 */
 
+'TestErrores' => 'Errores PHP',
+'TestErrores2' => 'Errores Formulario',
+'Aclaracion' => 'Url del JSON de los datos de las pruebas',
+'Enviar' => 'Enviar',
+'Resultados parciales:' => 'Resultados parciales:',
+'Resultados totales:' => 'Resultados totales:',
+'Resultados totales:' => 'Resultados totales:',
+'Estadísticas:' => 'Estadísticas:',
+'Total tests incorrectos:' => 'Total tests incorrectos:',
+'Total tests:' => 'Total tests:',
+'Total campos erróneos:' => 'Total campos erróneos:',
+'Total campos:' => 'Total campos:',
+'Total formularios erróneos:' => 'Total formularios erróneos:',
+'Total formularios:' => 'Total formularios:',
+'Total páginas erróneas:' => 'Total páginas erróneas:',
+'Total páginas:' => 'Total páginas:',
+'Tabla resultados:' => 'Tabla resultados:',
+'Errores:' => 'Errores:',
+'Tests' => 'Tests',
+
+
+
+
+
+
+
+
+
+
+
 
 'Barra_Titulo' => 'Pixel',
+
+
+
+
 
 //Nombres de Pagina PagName[ID]
 'PagNameH' => 'Home',
