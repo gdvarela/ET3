@@ -79,46 +79,12 @@ class SiteCheck
 		$this->reportWriter = $reportWriter;
 	}
 	
-	/**
-	* This is the main method for this class. When it is invoked the SiteChecker
-	* will proceed to check all the URLs provided by the URLSource, with the 
-	* results being sent to the ReportWriter.
-	*/
-	function runCheck()
-	{
-		$this->reportWriter->startReport();
-		foreach($this->Paginas as $pagina)
-		{
-			$page = $this->fetchPage($pagina);
-			
-			if (!empty($page["error"]))
-			{ 
-				//report an un-expected error
-				$this->reportWriter->addItemMessage(false, $pagina, $page["error"]);
-			} 
-			else if ($page["headers"]["status_code"]!=200)
-			{
-				//report an HTTP error
-				$this->reportWriter->addItemMessage(false, $pagina, "Page not loaded, error code: ".$page["headers"]["status_code"]);
-			}
-			else
-			{
-				//report PHP page errors
-				$errors = $this->checkForErrors($page["content"]);			
-				$this->reportWriter->addItem($pagina, $errors);								
-			}
-		}
-		
-		$this->reportWriter->endReport();
-	}
 	function runCheck2()
 	{
 		$ret = "";
-		$this->reportWriter->startReport();
 		foreach($this->Paginas as $pagina)
 		{
 			
-			echo $pagina->getUrlMostrar();
 			$page = $this->fetchPage($pagina);
 			if (!empty($page["error"]))
 			{ 
@@ -138,7 +104,6 @@ class SiteCheck
 			}
 		}
 		
-		$this->reportWriter->endReport();
 		return $ret;
 	}
 	/**
@@ -169,13 +134,6 @@ class SiteCheck
 		
 		return $pageErrors;
 	}
-	
-	function feof_segura($fp, &$inicio = NULL) {
-		$inicio = microtime(true);
-
-		return feof($fp);
-	}
-	
 	/**
 	* This method retreives the HTML docment referred to by the URL. It
 	* also extracts the header information.
@@ -188,70 +146,11 @@ class SiteCheck
 		$host = $pagina->host;
 		$port = $pagina->port;
 		$content = "";
-		//open the socket and send our HTTP request
-		echo $host." | " .$port;
 		$fp = fsockopen($host, $port, $errno, $errstr, 10);
-		$inicio = NULL;
-		$timeout = ini_get('default_socket_timeout');
 		$output="";
-		if ($fp)
-		{
-			//fwrite($fp, $pagina->request);
-			fputs( $fp, $pagina->request ); 
-			echo $pagina->request ;
-			$cont = 0;
-			//while (!feof($fp))
-			while(!$this->feof_segura($fp, $inicio) && (microtime(true) - $inicio) < $timeout)
-			{
-				
-				$output=fgets($fp, 4096);
-				echo $cont." ".$output." ".$content.";".AAAAAAAAAAAA;
-				$content.=$output;
-				
-				//determine whether we have reached the end of the header section
-				if (!isset($header))	
-					if($output=="\n" || $output == "\r\n" || $output == "\n\l")
-				{
-			    	$header = $content;
-					$content = '';
-				}	
-			}
-			print_r($_COOKIE);
-			
-				
-			fclose($fp);	
-			return array("headers" => $this->getHeaders($header), "content" => $content);
-		}
-		else
-			return array("error" => "Unable to open a connection");
+		return $pagina->peticion_http();
 	}
 	
-	/**
-	* This method takes the raw header information and splits it into
-	* an array
-	*
-	* @param string	 $headers the header in a raw format
-	*/
-	function getHeaders($headers)
-	{
-		$hdrs = array();
-		$array = explode("\n",$headers);	
-		for($i=0;$i<count($array);$i++)
-		{
-			if(  ereg("([A-Za-z]+)/([0-9]\.[0-9]) +([0-9]+) +([A-Za-z]+)",$array[$i],$r)  )
-			{
-				$hdrs['version'] = trim($r[2]);
-				$hdrs['status_code'] = (int)trim($r[3]);
-				$hdrs['status_text'] = trim($r[4]);
-	    	}
-	    	elseif(ereg("([^:]*): +(.*)",$array[$i],$r))
-	    	{
-				$hdr = eregi_replace("-","_",trim(strtolower($r[1])));
-				$hdrs[$hdr] = trim($r[2]);
-		    }
-		}	
-	 	return $hdrs;
-	}
 	
 }
 ?>

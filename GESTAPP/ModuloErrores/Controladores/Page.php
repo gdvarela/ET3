@@ -5,67 +5,131 @@ class Page
 	var $port;
 	var $host;
 	var $name;
-	
+	var $datos;
+	var $method;
+	var $cookies = "";
 	function Page($namea,$method,$values,$port,$host)
 	{
-		$method = strtoupper($method); 
+		$this->method = strtoupper($method); 
 		$this->port = $port;
 		$this->host = $host;
 		
 		$this->name = $namea;
 		
-		$getValues = "";
-		if ( $method == "GET" ) {
-			//getValues es el String de peticion para GET o POST. En caso de GET se empieza por el simbolo ?
-			$getValues = '?'; 
-		}
-		
-		//Cada par {propiedad}={valor} es añadido a la peticion <<1>>
-		foreach( $values AS $prop => $value ){ 
-			$getValues .= urlencode( $prop ) . "=" . urlencode( $value ) . '&'; 
-		}
+		if ( $this->method == "GET" ) {
 			
-		//Se elimina el ultimo & añadido en el paso anterior(1).
-		$getValues = substr( $getValues, 0, -1 );
-		
-		//Generamos la petición en función del método
-		if ( $method == "GET" ) {
-			$this->request  = "$method ".$this->name.$getValues." HTTP/1.0\r\n"; 
+			$this->name .= '?'; 
+			
+			//Cada par {propiedad}={valor} es añadido a la peticion <<1>>
+			foreach( $values AS $prop => $value ){ 
+				$this->name .= urlencode( $prop ) . "=" . urlencode( $value ) . '&'; 
+			}
+			
+			//Se elimina el ultimo & añadido en el paso anterior(1).
+			$this->name = substr( $this->name, 0, -1 );
+			
 		}
 		else
 		{
-			$this->request  = "$method ".$this->name." HTTP/1.0\r\n"; 
+			$this->datos = $values;
 		}
 		
-		$this->request .= "Accept: text/html\r\n"; 
-		$this->request .= "Host: $host\r\n"; 
-		$cookies = "Cookie:";
+		$cokies = "Cookie:";
 		foreach($_COOKIE as $key => $value)
 		{
-			$cookies .= " ". $key  . "=" . $value  . ';'; 
+			if ($key == "PHPSESSID")
+			$cokies .= " ". $key  . "=" . $value  . ';'; 
 		}
-		$cookies = substr( $cookies, 0, -1 );
-		$cookies .="\r\n"; 
+		$cokies .= " TEST=1;"; 
+		$cokies = substr( $cokies, 0, -1 );
+		$cokies .="\r\n"; 
 		
-		if (sizeof($_COOKIE) > 0)
-			$this->request .= $cookies; 
-		
-		if ( $method == "POST" ) { 
-			$lenght = strlen( $getValues ); 
-			$this->request .= "Content-Type: application/x-www-form-urlencoded\r\n"; 
-			$this->request .= "Content-Length: $lenght\r\n"; 
-			$this->request .= "\r\n"; 
-			$this->request .= $getValues; 
-		} 
-		else{
-			$this->request .= "\r\n"; 
-		}
-		echo $this->request;
+			$this->cookies .= $cokies; 
 	}
 	
 	function getUrlMostrar()
 	{
 		return "http://".$this->host.":".$this->port.$this->name;
+	}
+	function getUrlFile()
+	{
+		return "file:///".$this->host.":".$this->port.$this->name;
+	}
+	function getDatosPrueba()
+	{
+		if ($this->datos == "")
+		{
+			return "<br>Metodo: ".$this->method ."<br>".$this->cookies;
+		}
+		else
+		{
+			$Datos = "";
+			foreach($this->datos as $key => $value)
+			{
+				$Datos .= $key  . "=" . $value  . ', '; 
+			}
+			return "<br>Metodo: ".$this->method ."<br>Valores: ". $Datos."<br>".$this->cookies;
+		}
+		
+	}
+	function peticion_http ()
+	{
+		ini_set('default_socket_timeout', 60);
+		$url =$this->getUrlMostrar();
+		if (sizeof($this->datos) > 0)
+			$data_url = http_build_query ($this->datos);
+		else
+			$data_url = "";
+		$data_len = strlen ($data_url);
+
+		if ($this->method == "POST")
+				return array (
+				'content'=>file_get_contents ($url, false, stream_context_create (
+																array (
+																	'http'=>array (
+																		'method'=>$this->method, 
+																		'timeout' => 10,
+																		'header'=>"Content-Type: application/x-www-form-urlencoded\r\nConnection: close\r\nContent-Length: $data_len\r\n".$this->cookies,
+																		'content'=>$data_url
+																	)
+																)
+															)
+												), 
+				'headers'=>$this->getHeaders($http_response_header)
+				);
+		else
+			return array (
+				'content'=>file_get_contents ($url, false, stream_context_create (
+																array (
+																	'http'=>array (
+																		'method'=>$this->method, 
+																		'timeout' => 10,
+																		'header'=>"Connection: close\r\n".$this->cookies
+																	)
+																)
+															)
+												), 
+				'headers'=>$this->getHeaders($http_response_header)
+				);
+	}
+	function getHeaders($array)
+	{
+		$hdrs = array();	
+		for($i=0;$i<count($array);$i++)
+		{
+			if(  ereg("([A-Za-z]+)/([0-9]\.[0-9]) +([0-9]+) +([A-Za-z]+)",$array[$i],$r)  )
+			{
+				$hdrs['version'] = trim($r[2]);
+				$hdrs['status_code'] = (int)trim($r[3]);
+				$hdrs['status_text'] = trim($r[4]);
+	    	}
+	    	elseif(ereg("([^:]*): +(.*)",$array[$i],$r))
+	    	{
+				$hdr = eregi_replace("-","_",trim(strtolower($r[1])));
+				$hdrs[$hdr] = trim($r[2]);
+		    }
+		}	
+	 	return $hdrs;
 	}
 }
 ?>

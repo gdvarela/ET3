@@ -32,7 +32,7 @@ $RutaRelativaControlador = getRuta();
 include_once $RutaRelativaControlador.'Comun/ArchivoComun.php';
 
 $miPaginaPorDefecto = $controladores[$identificadoresPrivados["Prensa"]];
-include_once$RutaRelativaControlador.'GESTAPP/controlPages.php';
+include_once $RutaRelativaControlador.'GESTAPP/controlPages.php';
 
 
 //Cargamos el idioma a utilizar en el controlador

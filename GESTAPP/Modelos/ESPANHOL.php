@@ -260,8 +260,7 @@ PIXEL
 'Tabla resultados:' => 'Tabla resultados:',
 'Errores:' => 'Errores:',
 'Tests' => 'Tests',
-
-
+'Resultados' => "Resultados",
 
 
 
@@ -366,6 +365,9 @@ PIXEL
 'Alta_INST' => "Añadir Institucion",
 'Alta_EMPRE' => "Añadir Empresa",
 'Alta_GRUPO' => "Añadir Grupo",
+
+'ID Part REP' =>"El ID de participante ya existe",
+'ID CONCRETO REPETIDO' => "El ID de Empresa/Institucion o Grupo ya Existe",
 //Pagina HOME
 
 'Globex' => 'Globex',

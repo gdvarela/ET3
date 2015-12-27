@@ -54,7 +54,13 @@ function DisplayContent($idioma,$Emp,$Ins,$Grup)
 				<?php
 					foreach($Emp as $e)
 					{
-						echo '<li class="list-group-item">'.$e["Nombre_Empresa"].'<br>-<a href="'.$e["Web_Empresa"].'" target="_blank">WEB</a></li>';
+						echo '<form id="'.$e["IDEmpresa"].'E" action="'.$controladores[$identificadoresPrivados["MColaboraciones"]].'" method="POST">
+								<input type="hidden" name="MOD" value="'.$e["IDEmpresa"].'" />
+								<input type="hidden" name="TIPO" value="E" />
+								</form>';
+						echo '<li class="list-group-item">'.$e["Nombre_Empresa"].'<br>-<a href="'.$e["Web_Empresa"].'" target="_blank">WEB</a>
+						<img style="display:inline" onClick="document.getElementById(\''.$e["IDEmpresa"].'E\').submit();" src="'.$RutaRelativaControlador.'img/editar.png"
+							class="img-responsive pull-right"></img></li>';
 					}
 				?>
 					
@@ -70,7 +76,13 @@ function DisplayContent($idioma,$Emp,$Ins,$Grup)
 					<?php
 					foreach($Ins as $e)
 					{
-						echo '<li class="list-group-item">'.$e["Nombre_Institucion"].'<br>-<a href="'.$e["Web_Institucion"].'" target="_blank">WEB</a></li>';
+						echo '<form id="'.$e["IDInstitucion"].'I" action="'.$controladores[$identificadoresPrivados["MColaboraciones"]].'" method="POST">
+								<input type="hidden" name="MOD" value="'.$e["IDInstitucion"].'" />
+								<input type="hidden" name="TIPO" value="I" />
+								</form>';
+						echo '<li class="list-group-item">'.$e["Nombre_Institucion"].'<br>-<a href="'.$e["Web_Institucion"].'" target="_blank">WEB</a>
+						<img style="display:inline" onClick="document.getElementById(\''.$e["IDInstitucion"].'I\').submit();" src="'.$RutaRelativaControlador.'img/editar.png"
+							class="img-responsive pull-right"></img></li>';
 					}
 				?>
 				  </ul>
@@ -85,7 +97,13 @@ function DisplayContent($idioma,$Emp,$Ins,$Grup)
 					<?php
 					foreach($Grup as $e)
 					{
-						echo '<li class="list-group-item">'.$e["Nombre_Grupo"].'<br>-<a href="'.$e["Web_Grupo"].'" target="_blank">WEB</a></li>';
+						echo '<form id="'.$e["IDGrupo"].'G" action="'.$controladores[$identificadoresPrivados["MColaboraciones"]].'" method="POST">
+								<input type="hidden" name="MOD" value="'.$e["IDGrupo"].'" />
+								<input type="hidden" name="TIPO" value="G" />
+								</form>';
+						echo '<li class="list-group-item">'.$e["Nombre_Grupo"].'<br>-<a href="'.$e["Web_Grupo"].'" target="_blank">WEB</a>
+						<img style="display:inline" onClick="document.getElementById(\''.$e["IDGrupo"].'G\').submit();" src="'.$RutaRelativaControlador.'img/editar.png"
+							class="img-responsive pull-right"></img></li>';
 					}
 				?>
 				  </ul>

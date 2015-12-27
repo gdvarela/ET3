@@ -26,43 +26,20 @@ class ReportWriterHTML extends ReportWriter
 	function endReport() {
 		flush();
 	}	
-	
-	function addItem($pagina, $errors)
-	{
 		
-		$url = $pagina->getUrlMostrar();
-		$colour = (is_null($errors) || count($errors)==0? "#ccffcc" : "#ffcccc");
-		
-		echo "<div style=\"margin: 2px; background-color:$colour; font-size:12px; border-bottom: 1px solid #000000\">";
-		
-		echo "<div><a href=\"$url\">$url</a></div>";
-		
-		$message="";
-		//if we have any errors, create a small report
-		if(!is_null($errors) && count($errors)>0)
-		{
-			while (list(, $error) = each($errors)) 
-			{
-				$message.="<b>".$error->getType()."</b>: ".$error->getMessage()." "."<a href=\"file:///".
-								$error->getFile()."\">".$error->getFile()."</a> at line <b>".$error->getLine()."</b><br/>";
-			}
-		}
-		echo "<div style=\"margin-left:50px;\">Peticion HTTP Asociada: $pagina->request<br>$message</div>";
-		echo "</div>";
-		
-		flush();	
-	}	
 	function addItem2($pagina, $errors)
 	{
 		$ret = "";
 		$url = $pagina->getUrlMostrar();
+		$url2 = $pagina->getUrlFile();
+		$datosPrueba = $pagina->getDatosPrueba();
 		$colour = (is_null($errors) || count($errors)==0? "#ccffcc" : "#ffcccc");
 		
 	
 		$ret .= "<div style=\"margin: 2px; background-color:$colour; font-size:12px; border-bottom: 1px solid #000000\">";
 		
 		
-		$ret .= "<div><a href=\"$url\">$url</a></div>";		
+		$ret .= "<div><a style=\"color:black;\" href=\"$url\"><b><i>$url</i></b></a>$datosPrueba</div>";		
 		
 		$message="";
 		//if we have any errors, create a small report
@@ -70,34 +47,25 @@ class ReportWriterHTML extends ReportWriter
 		{
 			while (list(, $error) = each($errors)) 
 			{
-				$message.="<b>".$error->getType()."</b>: ".$error->getMessage()." "."<a href=\"file:///".
-								$error->getFile()."\">".$error->getFile()."</a> at line <b>".$error->getLine()."</b><br/>";
+				$message.="<b>".$error->getType()."</b>: ".$error->getMessage()." "."<a href=\"$url2\">".$error->getFile()."</a> at line <b>".$error->getLine()."</b><br/>";
 			}
 		}
-		$ret .= "<div style=\"margin-left:50px;\">Peticion HTTP Asociada: $pagina->request<br>$message</div>";
+		$ret .= "<div style=\"margin-left:50px;\">$message</div>";
 		$ret .= "</div>";
 		
 		
 		return $ret;		
 	}
-	function addItemMessage($success, $pagina, $message)
-	{
-		$colour = ($success? "#ccffcc" : "#ffcccc");
-		$url = $pagina->getUrlMostrar();
-		echo "<div style=\"margin: 2px; background-color:$colour; font-size:12px; border-bottom: 1px solid #000000\">";
-		echo "<div><a href=\"$url\">$url</a></div>";
-		echo "<div style=\"margin-left:50px;\">$message</div>";
-		echo "</div>";
 		
-		flush();	
-	}	
 	function addItemMessage2($success, $pagina, $message)
 	{
 		$ret = "";
 		$colour = ($success? "#ccffcc" : "#ffcccc");
 		$url = $pagina->getUrlMostrar();
+		$url2 = $pagina->getUrlFile();
+		$datosPrueba = $pagina->getDatosPrueba();
 		$ret .= "<div style=\"margin: 2px; background-color:$colour; font-size:12px; border-bottom: 1px solid #000000\">";
-		$ret .= "<div><a href=\"$url\">$url</a></div>";
+		$ret .= "<div><a style=\"color:black;\" href=\"$url\"><b><i>$url</i></b></a>$datosPrueba</div>";
 		$ret .= "<div style=\"margin-left:50px;\">$message</div>";
 		$ret .= "</div>";
 		return $ret;

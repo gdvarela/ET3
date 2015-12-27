@@ -29,9 +29,6 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 		);
 		
 	$siteCheck = new SiteCheck($urlSource, new ReportWriterHTML(), 80, $_SERVER['SERVER_NAME']);
-	//$siteCheck->runCheck();
 	$_SESSION["Resultado"]=$siteCheck->runCheck2();
-	//echo $siteCheck->runCheck2();
-	//$_SESSION["Resultado"]=;
 	header ("Location: testErrores.php");
 ?>

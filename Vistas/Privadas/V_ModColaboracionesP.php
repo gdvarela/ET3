@@ -1,13 +1,13 @@
 <?php
 
-Class AltaPrensaPrivada
+Class ModColaboracionesPrivada
 {
 
 function __construct()
 {
 }
 
-function DisplayContent($idioma,$noticia)
+function DisplayContent($idioma,$colaboracion)
 {
 	global $NumporPags;
 	global $procesadores;
@@ -19,13 +19,32 @@ function DisplayContent($idioma,$noticia)
 ?>
 		<section id="content">
 	<div class="container">
-		<form id="borrarActual" action="<?php echo $procesadores[$identificadoresPrivados["DPrensa"]]?>" method="POST">
-						<input type="hidden" name="BORRAR" value="Titulo_Noticia=><?php echo $noticia["Titulo_Noticia"]?>"/>
+		<form id="borrarActual" action="<?php echo $procesadores[$identificadoresPrivados["DColaboraciones"]]?>" method="POST">
+		<?php
+			$campoClave = "";
+			switch ($_POST["TIPO"])
+			{
+				case "I":
+				$campoClave = "IDInstitucion";
+				echo "<input type='hidden' name='TIPO' value='I'/>";
+				break;
+				case "G":
+				$campoClave = "IDGrupo";
+				echo "<input type='hidden' name='TIPO' value='G'/>";
+				break;
+				case "E":
+				$campoClave = "IDEmpresa";
+				echo "<input type='hidden' name='TIPO' value='E'/>";
+				break;
+			}
+		?>
+						<input type="hidden" name="BORRAR" value="<?php echo $campoClave?>=><?php echo $colaboracion[$campoClave]?>"/>
 			</form>
 			<div class="row">
 				<div class="col-md-12">
-					<form role="form" action="<?php echo $procesadores[$identificadoresPrivados["MPrensa"]]?>" method="POST">
-					<input type="hidden" name="ClaveAnt" value="Titulo_Noticia=><?php echo $noticia["Titulo_Noticia"]?>" />
+					<form role="form" action="<?php echo $procesadores[$identificadoresPrivados["MColaboraciones"]]?>" method="POST">
+					<input type="hidden" name="TIPO" value="<?php echo $_POST["TIPO"]?>"/>
+					<input type="hidden" name="ClaveAnt" value="<?php echo $campoClave?>=><?php echo $colaboracion[$campoClave]?>" />
 					<?php
 					foreach($formularios[$identificadoresPrivados["MColaboraciones"].$_POST["TIPO"]] as $campos)
 					{
@@ -36,7 +55,7 @@ function DisplayContent($idioma,$noticia)
 								<div class="form-group">
 									<label class="control-label">'.$idioma[$campos[0]].'</label>
 									<textarea class="form-control" name="'.$campos[0].'" '.$campos[2].'">
-									'.$noticia[explode("-",$campos[0])[1]].'
+									'.$colaboracion[explode("-",$campos[0])[1]].'
 									</textarea>
 								</div>
 								';
@@ -45,7 +64,7 @@ function DisplayContent($idioma,$noticia)
 							echo '
 								<div class="form-group">
 									<label class="control-label">'.$idioma[$campos[0]].'</label>
-									<input  type="'.$campos[1].'" name="'.$campos[0].'" value="'.$noticia[explode("-",$campos[0])[1]].'" '.$campos[2].' >
+									<input  type="'.$campos[1].'" name="'.$campos[0].'" value="'.$colaboracion[explode("-",$campos[0])[1]].'" '.$campos[2].' >
 								</div>
 								';
 							break;
@@ -53,7 +72,7 @@ function DisplayContent($idioma,$noticia)
 							echo '
 								<div class="form-group">
 									<label class="control-label">'.$idioma[$campos[0]].'</label>
-									<input  type="'.$campos[1].'" class="form-control" value="'.$noticia[explode("-",$campos[0])[1]].'" name="'.$campos[0].'" '.$campos[2].' >
+									<input  type="'.$campos[1].'" class="form-control" value="'.$colaboracion[explode("-",$campos[0])[1]].'" name="'.$campos[0].'" '.$campos[2].' >
 								</div>
 								';
 							break;
@@ -77,28 +96,41 @@ function DisplayContent($idioma,$noticia)
 }
 
 }
-	$titulo = $_POST["MOD"];
-	$noticia = "";
+	$Mod = $_POST["MOD"];
+	$colaboracion = "";
 		//Consultamos datos
-		try
+try
+	{
+		switch ($_POST["TIPO"])
 		{
-			$consulta = $_TABLANOTICIAS->ListadoRegistros(" where Titulo_Noticia = '".$titulo."'");
-			
-			$noticia = $consulta->fetch_assoc();
+			case "I":
+			$consulta = $_TABLAINSTITUCIONES->ListadoRegistros(" where IDInstitucion = '".$Mod."'");
+			$colaboracion = $consulta->fetch_assoc();
+			break;
+			case "G":
+			$consulta = $_TABLAGRUPOS->ListadoRegistros(" where IDGrupo = '".$Mod."'");
+			$colaboracion = $consulta->fetch_assoc();
+			break;
+			case "E":
+			$consulta = $_TABLAEMPRESAS->ListadoRegistros(" where IDEmpresa = '".$Mod."'");
+			$colaboracion = $consulta->fetch_assoc();
+			break;
 		}
-		catch(Exception $e)
-		{
-			$errorRescrito = explode("=>",$e->getMessage());
-			$_SESSION['error'] = 'CON ERR NOTICIAS'."=>".$errorRescrito[1];
-		}
-
 		
+		
+	}
+	catch(Exception $e)
+	{
+		$errorRescrito = explode("=>",$e->getMessage());
+		$_SESSION['error'] = 'ID CONCRETO REPETIDO'."=>".$errorRescrito[1];
+		header("Location: ".$controladores[$identificadoresPrivados["Colaboraciones"]]);
+	}
 		
 //Inicializamos la vista Correspondiente
-$princ_view = new AltaPrensaPrivada();
+$princ_view = new ModColaboracionesPrivada();
 
 //Se procede a la creacion de la vista
 include_once$RutaRelativaControlador.'Comun/CabeceraPriv.php';
-$princ_view->DisplayContent($idioma,$noticia);
+$princ_view->DisplayContent($idioma,$colaboracion);
 include_once$RutaRelativaControlador.'Comun/Pie.php';
 ?>

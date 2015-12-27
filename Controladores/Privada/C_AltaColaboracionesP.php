@@ -31,7 +31,7 @@ $RutaRelativaControlador = getRuta();
 //Ruta Relativa del ArchivoComun
 include_once $RutaRelativaControlador.'Comun/ArchivoComun.php';
 
-$miPaginaPorDefecto = $PaginaError;
+$miPaginaPorDefecto = $controladores[$identificadoresPrivados["Colaboraciones"]];
 include_once$RutaRelativaControlador.'GESTAPP/controlPages.php';
 
 

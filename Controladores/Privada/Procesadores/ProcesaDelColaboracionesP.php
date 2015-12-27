@@ -36,13 +36,27 @@ $idioma = CargarIdioma2($RutaRelativaControlador);
 
 try
 	{
-		$consulta = $_TABLANOTICIAS->EliminarRegistro($_POST);
-		header("Location: ".$controladores[$identificadoresPrivados["Prensa"]]);
+		switch ($_POST["TIPO"])
+		{
+			case "I":
+			
+			$consulta = $_TABLAINSTITUCIONES->EliminarRegistro(array_slice($_POST, 1) );
+			break;
+			case "G":
+			$consulta = $_TABLAGRUPOS->EliminarRegistro(array_slice($_POST, 1) );
+			break;
+			case "E":
+			$consulta = $_TABLAEMPRESAS->EliminarRegistro(array_slice($_POST, 1) );
+			break;
+		}
+		
+		header("Location: ".$controladores[$identificadoresPrivados["Colaboraciones"]]);
 	}
 	catch(Exception $e)
 	{
 		$errorRescrito = explode("=>",$e->getMessage());
-		$_SESSION['error'] = 'CON ERR MIEMBROS'."=>".$errorRescrito[1];
-		header("Location: ".$controladores[$identificadoresPrivados["MPrensa"]]);
+		echo "1";
+		$_SESSION['error'] = 'ID CONCRETO REPETIDO'."=>".$errorRescrito[1];
+		header("Location: ".$controladores[$identificadoresPrivados["Colaboraciones"]]);
 	}
 ?>

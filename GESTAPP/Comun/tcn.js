@@ -79,6 +79,7 @@
 
     return esCampoValido($campo);
   }
+  
 
 
   /**
@@ -133,10 +134,12 @@
       }
 
       resultado[nombreCampo] = {};
-
+	
       for (valorEntrada in pruebas[nombreCampo]){
         resultadoEsperado = pruebas[nombreCampo][valorEntrada];
-        resultadoObtenido = introducirYComprobar($campo, valorEntrada);
+		
+			resultadoObtenido = introducirYComprobar($campo, valorEntrada);
+        
         resultadoCorrecto = resultadoEsperado === resultadoObtenido;
         resultado[nombreCampo][valorEntrada] = {
           esperado: resultadoEsperado,

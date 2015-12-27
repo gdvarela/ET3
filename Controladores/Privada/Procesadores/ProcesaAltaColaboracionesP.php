@@ -3,6 +3,8 @@
 //Variable que almacena el nombre de la carpeta Raiz del directorio
 $Raiz = explode('/',$_SERVER['PHP_SELF'])[count(explode('/',$_SERVER['PHP_SELF']))-5];
 
+session_start();
+
 //Devuelve la ruta relativa (en forma ../../) del fichero que realiza la llamada a la funcion con respecto
 // a la carpeta raiz que contiene la aplicacion web.
 function getRuta()
@@ -28,12 +30,37 @@ function getRuta()
 // ../../
 $RutaRelativaControlador = getRuta();
 
+
 //Ruta Relativa del ArchivoComun
 include_once $RutaRelativaControlador.'Comun/ArchivoComun.php';
 
 //Cargamos el idioma a utilizar en el controlador
 $idioma = CargarIdioma2($RutaRelativaControlador);
 
+try
+	{
+		switch ($_POST["TIPO"])
+		{
+			case "I":
+			TablaBD::ConsultaGenerica("Insert into ".$_TABLAPARTICIPANTES->nombreTabla." Values ('".$_POST['MP-IDParticipante']."', 'Institucion') ");
+			
+			break;
+			case "G":
+			TablaBD::ConsultaGenerica("Insert into ".$_TABLAPARTICIPANTES->nombreTabla." Values ('".$_POST['MP-IDParticipante']."', 'Grupo') ");
+			break;
+			case "E":
+			TablaBD::ConsultaGenerica("Insert into ".$_TABLAPARTICIPANTES->nombreTabla." Values ('".$_POST['MP-IDParticipante']."', 'Empresa') ");
+			break;
+		}
+		}
+	catch(Exception $e)
+	{
+		$errorRescrito = explode("=>",$e->getMessage());
+		echo "1";
+		$_SESSION['error'] = 'ID Part REP'."=>".$errorRescrito[1];
+		header("Location: ".$controladores[$identificadoresPrivados["Colaboraciones"]]);
+	}
+	
 try
 	{
 		switch ($_POST["TIPO"])
@@ -54,8 +81,9 @@ try
 	catch(Exception $e)
 	{
 		$errorRescrito = explode("=>",$e->getMessage());
-		$_SESSION['error'] = 'CON ERR MIEMBROS'."=>".$errorRescrito[1];
-		//header("Location: ".$controladores[$identificadoresPrivados["AColaboraciones"]]);
+		echo "1";
+		$_SESSION['error'] = 'ID CONCRETO REPETIDO'."=>".$errorRescrito[1];
+		header("Location: ".$controladores[$identificadoresPrivados["Colaboraciones"]]);
 	}
 	
 ?>

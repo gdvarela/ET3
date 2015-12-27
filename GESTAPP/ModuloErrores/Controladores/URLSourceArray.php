@@ -27,7 +27,7 @@ class URLSourceArray extends URLSource
 		$this->urls = $urlArray;
 	}
 	
-	function getNext()
+	function getNext() 
 	{
 			$url = $this->urls[$this->urlNumber];
 			$this->urlNumber++;
@@ -38,5 +38,6 @@ class URLSourceArray extends URLSource
 	{
 		return ($this->urlNumber>=count($this->urls) ? false : true);
 	}
+	
 }
 ?>

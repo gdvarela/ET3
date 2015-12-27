@@ -236,6 +236,15 @@ $_TABLAINSTITUCIONES = new TablaBD(
 array(0)
 );
 
+$_TABLAPARTICIPANTES = new TablaBD(
+"S_PARTICIPANTES",
+	array(
+	"IDParticipantes" => "",
+	"Tipo_Participante" => ""
+	),
+array(0)
+);
+
 //Este array contiene los campos que se mostran en lso distintos formularios de alta de la aplicacion.
 // cada elemento de formularios alta es un array con cada uno de los campos del formulario array([PROPIEDAD NAME, PROPEIDAD TYPE, OTROS PARAMETROS QUE SE INCRUSTARAN EN EL HTML])
 $formularios = array(
@@ -311,24 +320,21 @@ $formularios = array(
 		array( 'MP-IDEmpresa','text', ""),
 		array( 'MP-Web_Empresa','text', ""),
 		array( 'MP-Nombre_Empresa','text', ""),
-		array( 'MP-IDImagen_Empresa','text', ""),
-		array( 'MP-IDParticipante','text', "","sql:Select * from USUARIOS where Login IN (Select login from HACE_DE where ROL_nombre = '".$ROLMIEMBRO."')")
+		array( 'MP-IDImagen_Empresa','text', "")
 	),
 	$identificadoresPrivados['MColaboraciones']."G" => 
 	array(
 		array( 'MP-IDGrupo','text', ""),
 		array( 'MP-Web_Grupo','text', ""),
 		array( 'MP-IDImagen_Grupo','text', ""),
-		array( 'MP-Nombre_Grupo','text', ""),
-		array( 'MP-IDParticipante','text', "","sql:Select * from USUARIOS where Login IN (Select login from HACE_DE where ROL_nombre = '".$ROLMIEMBRO."')")
+		array( 'MP-Nombre_Grupo','text', "")
 	),
 	$identificadoresPrivados['MColaboraciones']."I" => 
 	array(
 		array( 'MP-IDInstitucion','text', ""),
 		array( 'MP-Web_Institucion','text', ""),
 		array( 'MP-IDImagen_Institucion','text', ""),
-		array( 'MP-Nombre_Institucion','text', ""),
-		array( 'MP-IDParticipante','text', "","sql:Select * from USUARIOS where Login IN (Select login from HACE_DE where ROL_nombre = '".$ROLMIEMBRO."')")
+		array( 'MP-Nombre_Institucion','text', "")
 	)
 );
 
