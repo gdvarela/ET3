@@ -118,7 +118,7 @@ function DisplayContent($idioma,$Emp,$Ins,$Grup)
 }
 
 }
-$e = array();
+	$e = array();
 	$in = array();
 	$g = array();
 	//Consultamos datos

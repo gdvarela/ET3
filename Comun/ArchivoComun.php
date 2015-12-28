@@ -141,7 +141,7 @@ $controladores = array(
 	$identificadoresPrivados['MMiembros'] => $RutaRelativaControlador.'Controladores/Privada/C_ModMiembrosP.php',
 	$identificadoresPrivados['MPrensa'] => $RutaRelativaControlador.'Controladores/Privada/C_ModPrensaP.php',
 	$identificadoresPrivados['MColaboraciones'] => $RutaRelativaControlador.'Controladores/Privada/C_ModColaboracionesP.php',
-	$identificadoresPrivados['MTransferencias'] => $RutaRelativaControlador.'Controladores/Privada/C_ModTranferenciasP.php'
+	$identificadoresPrivados['MTransferencias'] => $RutaRelativaControlador.'Controladores/Privada/C_ModTransferenciasP.php'
 	
 );
 
@@ -245,6 +245,36 @@ $_TABLAPARTICIPANTES = new TablaBD(
 array(0)
 );
 
+$_TABLAPATENTES = new TablaBD(
+"S_PATENTE",
+	array(
+	"Nombre_Patente" => "",
+	"IDPatente" => "",
+	"Fecha_Patente" => ""
+	),
+array(1)
+);
+$_TABLACONTRATOS = new TablaBD(
+"S_CONTRATO",
+	array(
+	"Nombre_Contrato" => "",
+	"IDContrato" => "",
+	"FechaIni_Contrato" => "",
+	"FechaFin_Contrato" => "",
+	"IDEmpresa" => ""
+	),
+array(1)
+);
+$_TABLAPROYECTOS = new TablaBD(
+"S_PROYECTO",
+	array(
+	"Nombre_Proyecto" => "",
+	"Descripcion_Proyecto" => "",
+	"IDProyecto" => ""
+	),
+array(2)
+);
+
 //Este array contiene los campos que se mostran en lso distintos formularios de alta de la aplicacion.
 // cada elemento de formularios alta es un array con cada uno de los campos del formulario array([PROPIEDAD NAME, PROPEIDAD TYPE, OTROS PARAMETROS QUE SE INCRUSTARAN EN EL HTML])
 $formularios = array(
@@ -335,7 +365,47 @@ $formularios = array(
 		array( 'MP-Web_Institucion','text', ""),
 		array( 'MP-IDImagen_Institucion','text', ""),
 		array( 'MP-Nombre_Institucion','text', "")
-	)
+	),
+	$identificadoresPrivados['ATransferencias']."PA" => 
+	array(
+		array( 'MP-Nombre_Patente','text', ""),
+		array( 'MP-IDPatente','text', ""),
+		array( 'MP-Fecha_Patente','date', "")
+	),
+	$identificadoresPrivados['ATransferencias']."PO" => 
+	array(
+		array( 'MP-Nombre_Proyecto','text', ""),
+		array( 'MP-Descripcion_Proyecto','textarea', ""),
+		array( 'MP-IDProyecto','text', "")
+	),
+	$identificadoresPrivados['ATransferencias']."CO" => 
+	array(
+		array( 'MP-Nombre_Contrato','text', ""),
+		array( 'MP-IDContrato','text', ""),
+		array( 'MP-FechaIni_Contrato','date', ""),
+		array( 'MP-FechaFin_Contrato','date', ""),
+		array( 'MP-IDEmpresa','select', "","sql:Select IDEmpresa from S_EMPRESAS")
+	),
+	$identificadoresPrivados['MTransferencias']."PA" => 
+	array(
+		array( 'MP-Nombre_Patente','text', ""),
+		array( 'MP-IDPatente','text', ""),
+		array( 'MP-Fecha_Patente','date', "")
+	),
+	$identificadoresPrivados['MTransferencias']."PO" => 
+	array(
+		array( 'MP-Nombre_Proyecto','text', ""),
+		array( 'MP-Descripcion_Proyecto','textarea', ""),
+		array( 'MP-IDProyecto','text', "")
+	),
+	$identificadoresPrivados['MTransferencias']."CO" => 
+	array(
+		array( 'MP-Nombre_Contrato','text', ""),
+		array( 'MP-IDContrato','text', ""),
+		array( 'MP-FechaIni_Contrato','date', ""),
+		array( 'MP-FechaFin_Contrato','date', ""),
+		array( 'MP-IDEmpresa','select', "","sql:Select 'IDEmpresa' from S_EMPRESAS")
+	),
 );
 
 

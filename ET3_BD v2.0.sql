@@ -265,7 +265,7 @@ INSERT INTO `PAGINAS` (`PAG_nombre`, `PAG_ubicacion`, `PAG_descripcion`) VALUES
 ('Alta Prensa Pixel', 'C_AltaPrensaP.php', 'Prensa Funcionalidad'),
 ('Mod Prensa Pixel', 'C_ModPrensaP.php', 'Prensa Funcionalidad'),
 ('Transferencias Pixel', 'C_TransferenciaP.php', 'Consultar Transferencias'),
-('Alta Transferencias Pixel', 'C_AltaTransferenciaP.php', 'Transferencias Funcionalidad'),
+('Alta Transferencias Pixel', 'C_AltaTransferenciasP.php', 'Transferencias Funcionalidad'),
 ('Mod Transferencias Pixel', 'C_ModTransferenciasP.php', 'Transferencias Funcionalidad'),
 ('Colaboraciones Pixel', 'C_ColaboracionesP.php', 'Consultar Colaboraciones'),
 ('Alta Colaboraciones Pixel', 'C_AltaColaboracionesP.php', 'Colaboraciones Funcionalidad'),
@@ -407,6 +407,11 @@ CREATE TABLE IF NOT EXISTS `S_CONTRATO` (
   `FechaFin_Contrato` date NOT NULL,
   `IDEmpresa` varchar(10) COLLATE latin1_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
+
+INSERT INTO `S_CONTRATO` (`Nombre_Contrato`, `IDContrato`, `FechaIni_Contrato`, `FechaFin_Contrato`, `IDEmpresa`) VALUES
+('Nombre 1', 'C1',"1992-1-19", "1992-1-20","3");
+INSERT INTO `S_CONTRATO` (`Nombre_Contrato`, `IDContrato`, `FechaIni_Contrato`, `FechaFin_Contrato`, `IDEmpresa`) VALUES
+('Nombre 2', 'C2',"1992-1-20", "1992-1-21","1");
 
 -- --------------------------------------------------------
 
@@ -579,6 +584,13 @@ CREATE TABLE IF NOT EXISTS `S_PATENTE` (
   `Fecha_Patente` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 
+INSERT INTO `S_PATENTE` (`Nombre_Patente`, `IDPatente`, `Fecha_Patente`) VALUES
+('Nombre 1', 'P1',"1992-1-19");
+INSERT INTO `S_PATENTE` (`Nombre_Patente`, `IDPatente`, `Fecha_Patente`) VALUES
+('Nombre 2', 'P2',"1992-1-19");
+INSERT INTO `S_PATENTE` (`Nombre_Patente`, `IDPatente`, `Fecha_Patente`) VALUES
+('Nombre 3', 'P3',"1992-1-19");
+
 -- --------------------------------------------------------
 
 --
@@ -591,6 +603,14 @@ CREATE TABLE IF NOT EXISTS `S_PROYECTO` (
   `Descripcion_Proyecto` text COLLATE latin1_spanish_ci NOT NULL,
   `IDProyecto` varchar(10) COLLATE latin1_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
+
+
+INSERT INTO `S_PROYECTO` (`Nombre_Proyecto`, `Descripcion_Proyecto`, `IDProyecto`) VALUES
+('Nombre 1', 'Proyecto para mejorar algo',"Po1");
+INSERT INTO `S_PROYECTO` (`Nombre_Proyecto`, `Descripcion_Proyecto`, `IDProyecto`) VALUES
+('Nombre 2', 'Proyecto para crear algo',"Po2");
+INSERT INTO `S_PROYECTO` (`Nombre_Proyecto`, `Descripcion_Proyecto`, `IDProyecto`) VALUES
+('Nombre 3', 'Proyecto para descubrir algo',"Po3");
 
 -- --------------------------------------------------------
 

@@ -122,7 +122,7 @@ try
 	catch(Exception $e)
 	{
 		$errorRescrito = explode("=>",$e->getMessage());
-		$_SESSION['error'] = 'ID CONCRETO REPETIDO'."=>".$errorRescrito[1];
+		$_SESSION['error'] = 'OBTENCION C'."=>".$errorRescrito[1];
 		header("Location: ".$controladores[$identificadoresPrivados["Colaboraciones"]]);
 	}
 		

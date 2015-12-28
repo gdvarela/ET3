@@ -350,6 +350,7 @@ PIXEL
 	 'MP-Web_Grupo'=>"Sito Web",
 	 'MP-IDImagen_Grupo'=>"Imagen Grupo",
 	 'MP-IDParticipante'=>"Identificador",
+	 'MP-IDParticipante'=>"Identificador",
 
 
 	 'MP-IDInstitucion'=>"Identificador",
@@ -367,7 +368,35 @@ PIXEL
 'Alta_GRUPO' => "Añadir Grupo",
 
 'ID Part REP' =>"El ID de participante ya existe",
-'ID CONCRETO REPETIDO' => "El ID de Empresa/Institucion o Grupo ya Existe",
+'ID CONCRETO REPETIDO C' => "El ID de Empresa/Institucion o Grupo ya Existe",
+'OBTENCION C' => 'Error Ocurrido en la base de datos obteniendo los datos',
+//Transferencias
+
+'MP-Nombre_Patente' => 'Nombre para la Patente',
+'MP-IDPatente'=> 'Identificador',
+'MP-Fecha_Patente' => 'Fecha de Creacion',
+'MP-Nombre_Proyecto'=> 'Nombre del Proyecto',
+'MP-Descripcion_Proyecto' => 'Decripcion del Proyecto',
+'MP-IDProyecto'=> 'Identificador',
+'MP-Nombre_Contrato'=> 'Nombre para el Contrato',
+'MP-IDContrato'=> 'Identificador',
+'MP-FechaIni_Contrato'=> 'Fecha de Inicio',
+'MP-FechaFin_Contrato'=> 'Fecha de Fin',
+'MP-IDEmpresa'=> 'Empresa Asociada',
+
+
+'Alta_PA' => "Nueva Patente",
+'Descripcion' => "Descripcion",
+'Alta_PO' => "Nuevo Proyecto",
+'Alta_CO' => "Nuevo Contrato", 
+"Patente" => "Patente",
+	"Proyecto" => "Proyecto",
+	"Contrato" => "Contrato",
+	"Inicio" => "Inicio",
+	"Fin" => "Fin",
+	"Duracion" => "Duracion",
+	'ID CONCRETO REPETIDO T' => "El ID de Proyecto/Patente o Contrato ya Existe",
+	'OBTENCION T' => 'Error Ocurrido en la base de datos obteniendo los datos',
 //Pagina HOME
 
 'Globex' => 'Globex',

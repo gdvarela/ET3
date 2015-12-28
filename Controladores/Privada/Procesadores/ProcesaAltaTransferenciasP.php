@@ -33,16 +33,29 @@ include_once $RutaRelativaControlador.'Comun/ArchivoComun.php';
 
 //Cargamos el idioma a utilizar en el controlador
 $idioma = CargarIdioma2($RutaRelativaControlador);
-
+session_start();
 try
 	{
-		$consulta = $_TABLAMIEMBRO->Update($_POST);
-		header("Location: ".$controladores[$identificadoresPrivados["Miembros"]]);
+		switch ($_POST["TIPO"])
+		{
+			case "PO":
+			$consulta = $_TABLAPROYECTOS->AlmacenarBD(array_slice($_POST, 1) );
+			break;
+			case "PA":
+			$consulta = $_TABLAPATENTES->AlmacenarBD(array_slice($_POST, 1) );
+			break;
+			case "CO":
+			$consulta = $_TABLACONTRATOS->AlmacenarBD(array_slice($_POST, 1) );
+			break;
+		}
+		
+		header("Location: ".$controladores[$identificadoresPrivados["Transferencias"]]);
 	}
 	catch(Exception $e)
 	{
 		$errorRescrito = explode("=>",$e->getMessage());
-		$_SESSION['error'] = 'CON ERR MIEMBROS'."=>".$errorRescrito[1];
-		header("Location: ".$controladores[$identificadoresPrivados["MMiembros"]]);
+		$_SESSION['error'] = 'ID CONCRETO REPETIDO T'."=>".$errorRescrito[1];
+		header("Location: ".$controladores[$identificadoresPrivados["Transferencias"]]);
 	}
+	
 ?>
