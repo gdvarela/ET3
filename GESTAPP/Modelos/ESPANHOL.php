@@ -292,6 +292,9 @@ PIXEL
 'PagNameAPP' => 'Alta Noticia',
 'PagNameMPP' => 'Modificar Noticia',
 'PagNameTP' => 'Transferencia',
+'PagNameDC' => 'Docencia',
+'PagNameADC' => 'Alta Docencia',
+'PagNameMDC' => 'Modificar Docencia',
 'PagNameATP' => 'Alta Transferencia',
 'PagNameMTP' => 'Modificar Transferencia',
 'PagNameCP' => 'Colaboraciones',
@@ -397,6 +400,15 @@ PIXEL
 	"Duracion" => "Duracion",
 	'ID CONCRETO REPETIDO T' => "El ID de Proyecto/Patente o Contrato ya Existe",
 	'OBTENCION T' => 'Error Ocurrido en la base de datos obteniendo los datos',
+	
+//Docencia
+
+'Alta_DC' => "Nueva Docencia",
+'MP-IDMateria' => 'Materia',
+'MP-Login' => 'Profesor',
+'MP-FechaIni_Materia' => 'Fecha Inicio',
+'MP-FechaFin_Materia' => 'Fecha Fin',
+
 //Pagina HOME
 
 'Globex' => 'Globex',

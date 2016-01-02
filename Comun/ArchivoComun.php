@@ -66,6 +66,9 @@ $identificadoresPrivados = array(
 'AColaboraciones'=> 'ACP',
 'MColaboraciones'=> 'MCP',
 'DColaboraciones'=> 'DCP',
+'Docencia'=> 'DC',
+'ADocencia'=> 'ADC',
+'MDocencia'=> 'MDC',
 'Administracion'=> 'G',
 'ERRORPERM' => 'ERRORPERM'
 );
@@ -88,6 +91,7 @@ $MenuPrincipalPrivados = array(
 'Prensa'=> $identificadoresPrivados['Prensa'],
 'Transferencias'=> $identificadoresPrivados['Transferencias'],
 'Colaboraciones'=> $identificadoresPrivados['Colaboraciones'],
+'Docencia'=> $identificadoresPrivados['Docencia'],
 'Administracion'=> $identificadoresPrivados['Administracion']
 );
 
@@ -99,6 +103,7 @@ $vistas = array(
 	$identificadores['Transferencias'] => $RutaRelativaControlador.'Vistas/Publicas/V_Transferencia.php',
 	$identificadores['Colaboraciones'] => $RutaRelativaControlador.'Vistas/Publicas/V_Colaboraciones.php',
 	$identificadores['Login'] => $RutaRelativaControlador.'Vistas/Publicas/V_Login.php',
+	$identificadoresPrivados['Docencia'] => $RutaRelativaControlador.'Vistas/Privadas/V_DocenciaP.php',
 	
 	$identificadoresPrivados['ERRORPERM'] => $RutaRelativaControlador.'Vistas/Privadas/V_ERRORP.php',
 	
@@ -114,7 +119,8 @@ $vistas = array(
 	$identificadoresPrivados['MTransferencias'] => $RutaRelativaControlador.'Vistas/Privadas/V_ModTransferenciasP.php',
 	$identificadoresPrivados['Colaboraciones'] => $RutaRelativaControlador.'Vistas/Privadas/V_ColaboracionesP.php',
 	$identificadoresPrivados['AColaboraciones'] => $RutaRelativaControlador.'Vistas/Privadas/V_AltaColaboracionesP.php',
-	$identificadoresPrivados['MColaboraciones'] => $RutaRelativaControlador.'Vistas/Privadas/V_ModColaboracionesP.php'
+	$identificadoresPrivados['MColaboraciones'] => $RutaRelativaControlador.'Vistas/Privadas/V_ModColaboracionesP.php',
+	$identificadoresPrivados['ADocencia'] => $RutaRelativaControlador.'Vistas/Privadas/V_AltaDocenciaP.php',
 );
   
 $controladores = array(
@@ -132,16 +138,20 @@ $controladores = array(
 	$identificadoresPrivados['Prensa'] => $RutaRelativaControlador.'Controladores/Privada/C_PrensaP.php',
 	$identificadoresPrivados['Transferencias'] => $RutaRelativaControlador.'Controladores/Privada/C_TransferenciaP.php',
 	$identificadoresPrivados['Colaboraciones'] => $RutaRelativaControlador.'Controladores/Privada/C_ColaboracionesP.php',
+	$identificadoresPrivados['Docencia'] => $RutaRelativaControlador.'Controladores/Privada/C_DocenciaP.php',
 	
 	$identificadoresPrivados['AMiembros'] => $RutaRelativaControlador.'Controladores/Privada/C_AltaMiembrosP.php',
 	$identificadoresPrivados['APrensa'] => $RutaRelativaControlador.'Controladores/Privada/C_AltaPrensaP.php',
 	$identificadoresPrivados['AColaboraciones'] => $RutaRelativaControlador.'Controladores/Privada/C_AltaColaboracionesP.php',
 	$identificadoresPrivados['ATransferencias'] => $RutaRelativaControlador.'Controladores/Privada/C_AltaTransferenciasP.php',
+	$identificadoresPrivados['ADocencia'] => $RutaRelativaControlador.'Controladores/Privada/C_AltaDocenciaP.php',
 	
 	$identificadoresPrivados['MMiembros'] => $RutaRelativaControlador.'Controladores/Privada/C_ModMiembrosP.php',
 	$identificadoresPrivados['MPrensa'] => $RutaRelativaControlador.'Controladores/Privada/C_ModPrensaP.php',
 	$identificadoresPrivados['MColaboraciones'] => $RutaRelativaControlador.'Controladores/Privada/C_ModColaboracionesP.php',
-	$identificadoresPrivados['MTransferencias'] => $RutaRelativaControlador.'Controladores/Privada/C_ModTransferenciasP.php'
+	$identificadoresPrivados['MTransferencias'] => $RutaRelativaControlador.'Controladores/Privada/C_ModTransferenciasP.php',
+	$identificadoresPrivados['MDocencia'] => $RutaRelativaControlador.'Controladores/Privada/C_ModDocenciaP.php'
+	
 	
 );
 
@@ -162,7 +172,9 @@ $procesadores = array(
 	
 	$identificadoresPrivados['ATransferencias'] => $RutaRelativaControlador.'Controladores/Privada/Procesadores/ProcesaAltaTransferenciasP.php',
 	$identificadoresPrivados['MTransferencias'] => $RutaRelativaControlador.'Controladores/Privada/Procesadores/ProcesaModTransferenciasP.php',
-	$identificadoresPrivados['DTransferencias'] => $RutaRelativaControlador.'Controladores/Privada/Procesadores/ProcesaDelTransferenciasP.php'
+	$identificadoresPrivados['DTransferencias'] => $RutaRelativaControlador.'Controladores/Privada/Procesadores/ProcesaDelTransferenciasP.php',
+	
+	$identificadoresPrivados['ADocencia'] => $RutaRelativaControlador.'Controladores/Privada/Procesadores/ProcesaAltaDocenciaP.php'
 );
 
 
@@ -271,6 +283,16 @@ $_TABLAPROYECTOS = new TablaBD(
 	"Nombre_Proyecto" => "",
 	"Descripcion_Proyecto" => "",
 	"IDProyecto" => ""
+	),
+array(2)
+);
+$_TABLADOCENCIA = new TablaBD(
+"S_USUARIO_MATERIA",
+	array(
+	"IDMatería" => "",
+	"Login" => "",
+	"FechaIni_Materia" => "",
+	"FechaFin_Materia" => "",
 	),
 array(2)
 );
@@ -406,6 +428,13 @@ $formularios = array(
 		array( 'MP-FechaFin_Contrato','date', ""),
 		array( 'MP-IDEmpresa','select', "","sql:Select 'IDEmpresa' from S_EMPRESAS")
 	),
+	$identificadoresPrivados['ADocencia'] => 
+	array(
+		array( 'MP-IDMateria','select', "", "sql:Select IDMateria from S_MATERIAS"),
+		array( 'MP-Login','select', "", "sql:Select Login from USUARIOS "),
+		array( 'MP-FechaIni_Materia','date', ""),
+		array( 'MP-FechaFin_Materia','date', "")
+		),
 );
 
 
