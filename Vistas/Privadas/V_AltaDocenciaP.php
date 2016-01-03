@@ -25,6 +25,19 @@ function DisplayContent($idioma)
 					<?php
 					foreach($formularios[$identificadoresPrivados["ADocencia"]] as $campos)
 					{
+						if (strpos(explode(":",$campos[2])[0],'js') !== false)
+						{
+							global $VALIDACIONFORMULARIO;
+							$VALIDACIONFORMULARIO =$VALIDACIONFORMULARIO. '
+							document.getElementById(\''.$campos[0].'\').addEventListener(\''.explode("|",explode(":",$campos[2])[1])[0].'\', function validar() {
+							  var todoCorrecto = true;
+							  todoCorrecto = '.explode("|",explode(":",$campos[2])[1])[1].';
+							  this.setCustomValidity(todoCorrecto ? \'\' : \''.explode("|",explode(":",$campos[2])[1])[2].'\');
+							});
+							';
+							
+							$campos[2] = str_replace ("js","",explode(":",$campos[2])[0]);
+						}
 						switch ($campos[1])
 						{
 							case 'textarea':
@@ -39,8 +52,30 @@ function DisplayContent($idioma)
 							case 'select':
 							echo '
 							<div class="form-group">
-								<label for="sel1">'.$idioma[$campos[0]].'</label>
-								  <select name="'.$campos[0].'" class="form-control" id="sel1">
+								<label for="'.$campos[0].'">'.$idioma[$campos[0]].'</label>
+								  <select name="'.$campos[0].'" id="'.$campos[0].'" class="form-control" '.$campos[2].'>
+								  ';
+								  switch (explode(":",$campos[3])[0])
+								  {
+									  case "sql":
+									  $opciones = TablaBD::ConsultaGenerica(explode(":",$campos[3])[1]);
+									  for ($i = 0 ; $i < $opciones->num_rows;$i = $i +1)
+									  {
+										  $dato = $opciones->fetch_assoc();
+										  echo '<option>'.$dato[array_keys($dato)[0]].'</option>';
+									  }
+									  break;
+								  }
+								echo '
+								  </select>
+							  </div>
+								';
+							break;
+							case 'select':
+							echo '
+							<div class="form-group">
+								<label for="'.$campos[0].'">'.$idioma[$campos[0]].'</label>
+								  <select name="'.$campos[0].'" id="'.$campos[0].'" class="form-control" '.$campos[2].'>
 								  ';
 								  switch (explode(":",$campos[3])[0])
 								  {

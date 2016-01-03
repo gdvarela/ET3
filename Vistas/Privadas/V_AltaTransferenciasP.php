@@ -46,7 +46,7 @@ function DisplayContent($idioma)
 							echo '
 								<div class="form-group">
 									<label class="control-label">'.$idioma[$campos[0]].'</label>
-									<textarea class="form-control" name="'.$campos[0].'" id="'.$campos[0].'" '.$campos[2].'">
+									<textarea class="form-control" name="'.$campos[0].'" id="'.$campos[0].'" '.$campos[2].'>
 									</textarea>
 								</div>
 								';
@@ -54,8 +54,8 @@ function DisplayContent($idioma)
 							case 'select':
 							echo '
 							<div class="form-group">
-								<label for="sel1">'.$idioma[$campos[0]].'</label>
-								  <select name="'.$campos[0].'" id="'.$campos[0].'" class="form-control" id="sel1">
+								<label for="'.$campos[0].'">'.$idioma[$campos[0]].'</label>
+								  <select name="'.$campos[0].'" id="'.$campos[0].'" class="form-control" '.$campos[2].'>
 								  ';
 								  switch (explode(":",$campos[3])[0])
 								  {

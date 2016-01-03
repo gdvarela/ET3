@@ -298,10 +298,10 @@ array(0,1)
 );
 
 //Patrones a usar en los formularios para la comprobacion de errores
-$PATRONPASS = ' "pattern={5-25}" '; //min 5 max 25
-$PATRONUSU = ' "pattern={4-25}" '; //min 4 max 25
-$PATRONTELF = ' "pattern=[0-9]{9} " min="600000000"'; //9 numeros
-$PATRONID=" pattern={3-10} ";
+$PATRONPASS = ' pattern="^[^\s]{5,25}" '; //min 5 max 25  cualquiercosa distinto de expacio en blanco
+$PATRONUSU = ' pattern="^[^\s].{4,24}" '; //min 5 max 25 se incluye ^[^\s] que significa que no empiece por espacio en blanco
+$PATRONTELF = ' pattern="[0-9]{9}" min="600000000" '; //9 numeros
+$PATRONID=' pattern="^[^\s].{3,9}" '; // 4-10 se incluye ^[^\s] que significa que no empiece por espacio en blanco
 $OBLIGATORIO=" required ";
 
 //Este array contiene los campos que se mostran en lso distintos formularios de alta de la aplicacion.
