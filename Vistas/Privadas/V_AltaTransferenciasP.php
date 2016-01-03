@@ -26,13 +26,27 @@ function DisplayContent($idioma)
 					<?php
 					foreach($formularios[$identificadoresPrivados["ATransferencias"].$_POST["TIPO"]] as $campos)
 					{
+						
+						if (strpos(explode(":",$campos[2])[0],'js') !== false)
+						{
+							global $VALIDACIONFORMULARIO;
+							$VALIDACIONFORMULARIO =$VALIDACIONFORMULARIO. '
+							document.getElementById(\''.$campos[0].'\').addEventListener(\''.explode("|",explode(":",$campos[2])[1])[0].'\', function validar() {
+							  var todoCorrecto = true;
+							  todoCorrecto = '.explode("|",explode(":",$campos[2])[1])[1].';
+							  this.setCustomValidity(todoCorrecto ? \'\' : \''.explode("|",explode(":",$campos[2])[1])[2].'\');
+							});
+							';
+							
+							$campos[2] = str_replace ("js","",explode(":",$campos[2])[0]);
+						}
 						switch ($campos[1])
 						{
 							case 'textarea':
 							echo '
 								<div class="form-group">
 									<label class="control-label">'.$idioma[$campos[0]].'</label>
-									<textarea class="form-control" name="'.$campos[0].'" '.$campos[2].'">
+									<textarea class="form-control" name="'.$campos[0].'" id="'.$campos[0].'" '.$campos[2].'">
 									</textarea>
 								</div>
 								';
@@ -41,7 +55,7 @@ function DisplayContent($idioma)
 							echo '
 							<div class="form-group">
 								<label for="sel1">'.$idioma[$campos[0]].'</label>
-								  <select name="'.$campos[0].'" class="form-control" id="sel1">
+								  <select name="'.$campos[0].'" id="'.$campos[0].'" class="form-control" id="sel1">
 								  ';
 								  switch (explode(":",$campos[3])[0])
 								  {
@@ -63,7 +77,7 @@ function DisplayContent($idioma)
 							echo '
 								<div class="form-group">
 									<label class="control-label">'.$idioma[$campos[0]].'</label>
-									<input  type="'.$campos[1].'" name="'.$campos[0].'" '.$campos[2].' >
+									<input  type="'.$campos[1].'" name="'.$campos[0].'" id="'.$campos[0].'" '.$campos[2].' >
 								</div>
 								';
 							break;
@@ -71,7 +85,7 @@ function DisplayContent($idioma)
 							echo '
 								<div class="form-group">
 									<label class="control-label">'.$idioma[$campos[0]].'</label>
-									<input  type="'.$campos[1].'" class="form-control" name="'.$campos[0].'" '.$campos[2].' >
+									<input  type="'.$campos[1].'" class="form-control" name="'.$campos[0].'" id="'.$campos[0].'" '.$campos[2].' >
 								</div>
 								';
 							break;

@@ -289,21 +289,36 @@ array(2)
 $_TABLADOCENCIA = new TablaBD(
 "S_USUARIO_MATERIA",
 	array(
-	"IDMatería" => "",
+	"IDMateria" => "",
 	"Login" => "",
 	"FechaIni_Materia" => "",
 	"FechaFin_Materia" => "",
 	),
-array(2)
+array(0,1)
 );
+
+//Patrones a usar en los formularios para la comprobacion de errores
+$PATRONPASS = ' "pattern={5-25}" '; //min 5 max 25
+$PATRONUSU = ' "pattern={4-25}" '; //min 4 max 25
+$PATRONTELF = ' "pattern=[0-9]{9} " min="600000000"'; //9 numeros
+$PATRONID=" pattern={3-10} ";
+$OBLIGATORIO=" required ";
 
 //Este array contiene los campos que se mostran en lso distintos formularios de alta de la aplicacion.
 // cada elemento de formularios alta es un array con cada uno de los campos del formulario array([PROPIEDAD NAME, PROPEIDAD TYPE, OTROS PARAMETROS QUE SE INCRUSTARAN EN EL HTML])
+// "NOMBRECAMPO", "TIPOCAMPO", "PATRONESDEVALIDACIONHTML5 [js:FUNCIONDEVALIDACION]", [OPCIONAL-SOLO-SELECT]"sql:RELLENARSELECT (SIFUERA NECESARIO SE AÑADIRÁ array:VALORESMOSTRAR pero en principio no es necesario)"
+//
+//"js: -> indicador de funcion personalizada. EN CASO DE EXISTIR ESTE INDICADOR, INCLUIR  LAS VALIDACIONES HTML5 ANTES DEL js"
+// c1|c2|c3
+// c1 -> evento que se mirara para la comprobacion 
+// c2 -> funcion establecera si esta correcto o no. Debe estar creada y añadida en el archivo "Pie.php"
+// c3 -> mensaje de error que se mostrara en caso de campo incorrecto
+
 $formularios = array(
 	$identificadoresPrivados['AMiembros'] => 
 	array(
-		array( 'MA-Login','text', ""),
-		array( 'MA-Pass','Pass', ""),
+		array( 'MA-Login','text', "$OBLIGATORIO $PATRONUSU"),
+		array( 'MA-Pass','Pass', "$OBLIGATORIO $PATRONPASS"),
 		array( 'MA-USU_nombre','text', ""),
 		array( 'MA-USU_apellido','text', ""),
 		array( 'MA-USU_email','email', ""),
@@ -311,133 +326,136 @@ $formularios = array(
 		array( 'MA-Web_Usuario','text', ""),
 		array( 'MA-Departamento_Usuario','text', ""),
 		array( 'MA-Descripcion_Usuario','textarea', ""),
-		array( 'MA-Telefono_Usuario','number', ""),
-		array( 'MA-Movil_Usuario','number', "")
+		array( 'MA-Telefono_Usuario','number', "$OBLIGATORIO $PATRONTELF"),
+		array( 'MA-Movil_Usuario','number', "$PATRONTELF")
 	),
 	$identificadoresPrivados['MMiembros'] => 
 	array(
-		array( 'MA-Login','text', ""),
-		array( 'MA-Pass','Pass', ""),
+		array( 'MA-Login','text', "$OBLIGATORIO $PATRONUSU"),
+		array( 'MA-Pass','Pass', "$OBLIGATORIO $PATRONPASS"),
 		array( 'MA-USU_nombre','text', ""),
 		array( 'MA-USU_apellido','text', ""),
 		array( 'MA-USU_email','email', ""),
 		array( 'MA-Web_Usuario','text', ""),
 		array( 'MA-Departamento_Usuario','text', ""),
 		array( 'MA-Descripcion_Usuario','textarea', ""),
-		array( 'MA-Telefono_Usuario','number', ""),
-		array( 'MA-Movil_Usuario','number', "")
+		array( 'MA-Telefono_Usuario','number', "$PATRONTELF"),
+		array( 'MA-Movil_Usuario','number', "$PATRONTELF")
 	),
 	$identificadoresPrivados['APrensa'] => 
 	array(
-		array( 'MP-Titulo_Noticia','text', ""),
-		array( 'MP-Fecha_Noticia','date', ""),
+		array( 'MP-Titulo_Noticia','text', "$OBLIGATORIO"),
+		array( 'MP-Fecha_Noticia','date', "$OBLIGATORIO"),
 		array( 'MP-Web_Noticia','text', ""),
-		array( 'MP-IDPDF_Noticia','text', ""),
-		array( 'MP-Publicador_Noticia','select', "","sql:Select * from USUARIOS where Login IN (Select login from HACE_DE where ROL_nombre = '".$ROLMIEMBRO."')")
+		array( 'MP-IDPDF_Noticia','text', "$PATRONID"),
+		array( 'MP-Publicador_Noticia','select', "$OBLIGATORIO","sql:Select * from USUARIOS where Login IN (Select login from HACE_DE where ROL_nombre = '".$ROLMIEMBRO."')")
 	),
 	$identificadoresPrivados['MPrensa'] => 
 	array(
-		array( 'MP-Titulo_Noticia','text', ""),
-		array( 'MP-Fecha_Noticia','date', ""),
+		array( 'MP-Titulo_Noticia','text', "$OBLIGATORIO"),
+		array( 'MP-Fecha_Noticia','date', "$OBLIGATORIO"),
 		array( 'MP-Web_Noticia','text', ""),
-		array( 'MP-IDPDF_Noticia','text', ""),
-		array( 'MP-Publicador_Noticia','select', "","sql:Select * from USUARIOS where Login IN (Select login from HACE_DE where ROL_nombre = '".$ROLMIEMBRO."')")
+		array( 'MP-IDPDF_Noticia','text', "$PATRONID"),
+		array( 'MP-Publicador_Noticia','select', "$OBLIGATORIO","sql:Select * from USUARIOS where Login IN (Select login from HACE_DE where ROL_nombre = '".$ROLMIEMBRO."')")
 	),
 	$identificadoresPrivados['AColaboraciones']."E" => 
 	array(
-		array( 'MP-IDEmpresa','text', ""),
+		array( 'MP-IDEmpresa','text', "$OBLIGATORIO $PATRONID"),
 		array( 'MP-Web_Empresa','text', ""),
-		array( 'MP-Nombre_Empresa','text', ""),
-		array( 'MP-IDImagen_Empresa','text', ""),
-		array( 'MP-IDParticipante','text', "","sql:Select * from USUARIOS where Login IN (Select login from HACE_DE where ROL_nombre = '".$ROLMIEMBRO."')")
+		array( 'MP-Nombre_Empresa','text', "$OBLIGATORIO"),
+		array( 'MP-IDImagen_Empresa','text', "$PATRONID"),
+		array( 'MP-IDParticipante','select', "$OBLIGATORIO","sql:Select * from USUARIOS where Login IN (Select login from HACE_DE where ROL_nombre = '".$ROLMIEMBRO."')")
 	),
 	$identificadoresPrivados['AColaboraciones']."G" => 
 	array(
-		array( 'MP-IDGrupo','text', ""),
+		array( 'MP-IDGrupo','text', "$OBLIGATORIO $PATRONID"),
 		array( 'MP-Web_Grupo','text', ""),
-		array( 'MP-IDImagen_Grupo','text', ""),
-		array( 'MP-Nombre_Grupo','text', ""),
-		array( 'MP-IDParticipante','text', "","sql:Select * from USUARIOS where Login IN (Select login from HACE_DE where ROL_nombre = '".$ROLMIEMBRO."')")
+		array( 'MP-IDImagen_Grupo','text', "$PATRONID"),
+		array( 'MP-Nombre_Grupo','text', "$OBLIGATORIO"),
+		array( 'MP-IDParticipante','select', "$OBLIGATORIO","sql:Select * from USUARIOS where Login IN (Select login from HACE_DE where ROL_nombre = '".$ROLMIEMBRO."')")
 	),
 	$identificadoresPrivados['AColaboraciones']."I" => 
 	array(
-		array( 'MP-IDInstitucion','text', ""),
+		array( 'MP-IDInstitucion','text', "$OBLIGATORIO $PATRONID"),
 		array( 'MP-Web_Institucion','text', ""),
-		array( 'MP-IDImagen_Institucion','text', ""),
-		array( 'MP-Nombre_Institucion','text', ""),
-		array( 'MP-IDParticipante','text', "","sql:Select * from USUARIOS where Login IN (Select login from HACE_DE where ROL_nombre = '".$ROLMIEMBRO."')")
+		array( 'MP-IDImagen_Institucion','text', "$PATRONID"),
+		array( 'MP-Nombre_Institucion','text', "$OBLIGATORIO"),
+		array( 'MP-IDParticipante','select', "$OBLIGATORIO","sql:Select * from USUARIOS where Login IN (Select login from HACE_DE where ROL_nombre = '".$ROLMIEMBRO."')")
 	),
 	$identificadoresPrivados['MColaboraciones']."E" => 
 	array(
-		array( 'MP-IDEmpresa','text', ""),
+		array( 'MP-IDEmpresa','text', "$OBLIGATORIO $PATRONID"),
 		array( 'MP-Web_Empresa','text', ""),
-		array( 'MP-Nombre_Empresa','text', ""),
-		array( 'MP-IDImagen_Empresa','text', "")
+		array( 'MP-Nombre_Empresa','text', "$OBLIGATORIO"),
+		array( 'MP-IDImagen_Empresa','text', "$PATRONID")
 	),
 	$identificadoresPrivados['MColaboraciones']."G" => 
 	array(
-		array( 'MP-IDGrupo','text', ""),
+		array( 'MP-IDGrupo','text', "$OBLIGATORIO $PATRONID"),
 		array( 'MP-Web_Grupo','text', ""),
-		array( 'MP-IDImagen_Grupo','text', ""),
-		array( 'MP-Nombre_Grupo','text', "")
+		array( 'MP-IDImagen_Grupo','text', "$PATRONID"),
+		array( 'MP-Nombre_Grupo','text', "$OBLIGATORIO")
 	),
 	$identificadoresPrivados['MColaboraciones']."I" => 
 	array(
-		array( 'MP-IDInstitucion','text', ""),
+		array( 'MP-IDInstitucion','text', "$OBLIGATORIO $PATRONID"),
 		array( 'MP-Web_Institucion','text', ""),
-		array( 'MP-IDImagen_Institucion','text', ""),
-		array( 'MP-Nombre_Institucion','text', "")
+		array( 'MP-IDImagen_Institucion','text', "$PATRONID"),
+		array( 'MP-Nombre_Institucion','text', "$OBLIGATORIO")
 	),
 	$identificadoresPrivados['ATransferencias']."PA" => 
 	array(
-		array( 'MP-Nombre_Patente','text', ""),
-		array( 'MP-IDPatente','text', ""),
+		array( 'MP-Nombre_Patente','text', "$OBLIGATORIO"),
+		array( 'MP-IDPatente','text', "$OBLIGATORIO $PATRONID"),
 		array( 'MP-Fecha_Patente','date', "")
 	),
 	$identificadoresPrivados['ATransferencias']."PO" => 
 	array(
-		array( 'MP-Nombre_Proyecto','text', ""),
+		array( 'MP-Nombre_Proyecto','text', "$OBLIGATORIO"),
 		array( 'MP-Descripcion_Proyecto','textarea', ""),
-		array( 'MP-IDProyecto','text', "")
+		array( 'MP-IDProyecto','text', "$OBLIGATORIO $PATRONID")
 	),
 	$identificadoresPrivados['ATransferencias']."CO" => 
 	array(
-		array( 'MP-Nombre_Contrato','text', ""),
-		array( 'MP-IDContrato','text', ""),
-		array( 'MP-FechaIni_Contrato','date', ""),
-		array( 'MP-FechaFin_Contrato','date', ""),
-		array( 'MP-IDEmpresa','select', "","sql:Select IDEmpresa from S_EMPRESAS")
+		array( 'MP-Nombre_Contrato','text', "$OBLIGATORIO"),
+		array( 'MP-IDContrato','text', "$OBLIGATORIO $PATRONID"),
+		array( 'MP-FechaIni_Contrato','date', "$OBLIGATORIO js:blur|MayorMenor('MP-FechaFin_Contrato','MP-FechaIni_Contrato')|Fecha Erronea, supera la de Fin"),
+		array( 'MP-FechaFin_Contrato','date', "$OBLIGATORIO js:blur|MayorMenor('MP-FechaFin_Contrato','MP-FechaIni_Contrato')|Fecha Erronea, inferior a la de Inicio"),
+		array( 'MP-IDEmpresa','select', "$OBLIGATORIO","sql:Select IDEmpresa from S_EMPRESAS")
 	),
 	$identificadoresPrivados['MTransferencias']."PA" => 
 	array(
-		array( 'MP-Nombre_Patente','text', ""),
-		array( 'MP-IDPatente','text', ""),
+		array( 'MP-Nombre_Patente','text', "$OBLIGATORIO"),
+		array( 'MP-IDPatente','text', "$OBLIGATORIO $PATRONID"),
 		array( 'MP-Fecha_Patente','date', "")
 	),
 	$identificadoresPrivados['MTransferencias']."PO" => 
 	array(
-		array( 'MP-Nombre_Proyecto','text', ""),
+		array( 'MP-Nombre_Proyecto','text', "$OBLIGATORIO"),
 		array( 'MP-Descripcion_Proyecto','textarea', ""),
-		array( 'MP-IDProyecto','text', "")
+		array( 'MP-IDProyecto','text', "$OBLIGATORIO $PATRONID")
 	),
 	$identificadoresPrivados['MTransferencias']."CO" => 
 	array(
-		array( 'MP-Nombre_Contrato','text', ""),
-		array( 'MP-IDContrato','text', ""),
-		array( 'MP-FechaIni_Contrato','date', ""),
-		array( 'MP-FechaFin_Contrato','date', ""),
-		array( 'MP-IDEmpresa','select', "","sql:Select 'IDEmpresa' from S_EMPRESAS")
+		array( 'MP-Nombre_Contrato','text', "$OBLIGATORIO"),
+		array( 'MP-IDContrato','text', "$OBLIGATORIO $PATRONID"),
+		array( 'MP-FechaIni_Contrato','date', "$OBLIGATORIO js:blur|MayorMenor('MP-FechaFin_Contrato','MP-FechaIni_Contrato')|Fecha Erronea, supera la de Fin"),
+		array( 'MP-FechaFin_Contrato','date', "$OBLIGATORIO js:blur|MayorMenor('MP-FechaFin_Contrato','MP-FechaIni_Contrato')|Fecha Erronea, inferior a la de Inicio"),
+		array( 'MP-IDEmpresa','select', "$OBLIGATORIO","sql:Select 'IDEmpresa' from S_EMPRESAS")
 	),
 	$identificadoresPrivados['ADocencia'] => 
 	array(
-		array( 'MP-IDMateria','select', "", "sql:Select IDMateria from S_MATERIAS"),
-		array( 'MP-Login','select', "", "sql:Select Login from USUARIOS "),
-		array( 'MP-FechaIni_Materia','date', ""),
-		array( 'MP-FechaFin_Materia','date', "")
+		array( 'MP-IDMateria','select', "$OBLIGATORIO", "sql:Select IDMateria from S_MATERIAS"),
+		array( 'MP-Login','select', "$OBLIGATORIO", "sql:Select Login from USUARIOS "),
+		array( 'MP-FechaIni_Materia','date', "$OBLIGATORIO js:blur|MayorMenor('MP-FechaFin_Materia','MP-FechaIni_Materia')|Fecha Erronea, supera la de Fin"),
+		array( 'MP-FechaFin_Materia','date', "$OBLIGATORIO js:blur|MayorMenor('MP-FechaFin_Materia','MP-FechaIni_Materia')|Fecha Erronea, inferior a la de Inicio")
 		),
 );
 
-
+// ESTA VARIABLE NO SE MODIFICA DIRECTAMENTE, ES VARIABLE GLOBAL Y NO SE DEBE MODIFICAR
+// LOS CONTROLADORES LA USARAN PARA ESTABLECER LA VALIDACION DEL FORMULARIO EN CASO DE FUNCIONES
+// PERSONALIZADAS.
+$VALIDACIONFORMULARIO = ""; 
 
 ?>
 

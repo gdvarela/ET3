@@ -64,6 +64,83 @@
 <script src="<?php echo $RutaRelativaControlador?>js/jquery.flexslider.js"></script>
 <script src="<?php echo $RutaRelativaControlador?>js/animate.js"></script>
 <script src="<?php echo $RutaRelativaControlador?>js/custom.js"></script>
+<script type="text/javascript">
+    ((function(exportar) {
+
+      //Herramientas 
+	  //En la pagina no hay nigun DNI pero no la borreis por si se añade algun campo de DNI
+      function esNif(dni) {
+        var numero, letr, letra, expresion_regular_dni = /^\d{8}[a-zA-Z]$/;
+
+        if (expresion_regular_dni.test(dni) == true) {
+          numero = dni.substr(0, dni.length - 1);
+          letr = dni.substr(dni.length - 1, 1);
+          numero = numero % 23;
+          letra = 'TRWAGMYFPDXBNJZSQVHLCKET';
+          letra = letra.substring(numero, numero + 1);
+          return letra === letr.toUpperCase();
+        } else {
+          return false;
+        }
+      }
+
+	   //En la pagina no hay nigun DNI pero no la borreis por si se añade algun campo de DNI
+      function MayorMenor(Me,Ma) {
+        var fecha = document.getElementById(Me).value; 
+		var fecha2  = document.getElementById(Ma).value;
+		var xMonth=fecha.substring(5, 7);  
+		var xDay=fecha.substring(8, 10);  
+		var xYear=fecha.substring(0,4);  
+		var yMonth=fecha2.substring(5, 7);  
+		var yDay=fecha2.substring(8, 10);  
+		var yYear=fecha2.substring(0,4);  
+		if (xYear> yYear)  
+		{  
+			return(true)  
+		}  
+		else  
+		{  
+		  if (xYear == yYear)  
+		  {   
+			if (xMonth> yMonth)  
+			{  
+				return(true)  
+			}  
+			else  
+			{   
+			  if (xMonth == yMonth)  
+			  {  
+				if (xDay> yDay)  
+				  return(true);  
+				else  
+				  return(false);  
+			  }  
+			  else  
+				return(false);  
+			}  
+		  }  
+		  else  
+			return(false);  
+		}  
+      }
+		
+      //Init
+      function documentoListo() {
+        <?php 
+		//ESTO HACE QUE EN LA FUNCION 'documentoListo()' SE AGREGEN LAS FUNCIONES
+		// QUE LA VISTA NECESITA PARA SER AUTOVALIDADA
+		// En caso de no haber ninguna pues quedara vacio.
+			echo $VALIDACIONFORMULARIO;
+			
+		// YA QUE ES UNA VARIABLE GLOBAL QUE SE USARA MAS VECES SE VACIA PARA NO INTERFERIR CON OTRAS VISTAS
+			$VALIDACIONFORMULARIO = "";
+		?>
+      }
+
+      //Le decimos al documento que cuando esté listo invoque nuestra función de inicio
+      document.addEventListener('DOMContentLoaded', documentoListo);
+    })(window));
+  </script>
 
 <!-- 
 	EN CASO DE ESTAR EN HOME SE AÑADE UNA LINEA MAS PARA AÑADIR

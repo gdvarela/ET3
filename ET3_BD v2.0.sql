@@ -210,13 +210,18 @@ INSERT INTO `IMPLEMENTADA_EN` (`FUN_nombre`, `PAG_nombre`) VALUES
 ('Administrar PIXEL', 'Colaboraciones Pixel'),
 ('Administrar PIXEL', 'Alta Colaboraciones Pixel'),
 ('Administrar PIXEL', 'Mod Colaboraciones Pixel'),
+('Administrar PIXEL', 'Docencia Pixel'),
+('Administrar PIXEL', 'Alta Docencia Pixel'),
+('Administrar PIXEL', 'Mod Docencia Pixel'),
 
 ('Usar PIXEL', 'Home Pixel'),
 ('Usar PIXEL', 'Miembros Pixel'),
 ('Usar PIXEL', 'Prensa Pixel'),
 ('Usar PIXEL', 'Transferencias Pixel'),
-('Usar PIXEL', 'Colaboraciones Pixel');
-
+('Usar PIXEL', 'Colaboraciones Pixel'),
+('Usar PIXEL', 'Docencia Pixel'),
+('Usar PIXEL', 'Alta Docencia Pixel'),
+('Usar PIXEL', 'Mod Docencia Pixel');
 
 -- --------------------------------------------------------
 
@@ -269,7 +274,10 @@ INSERT INTO `PAGINAS` (`PAG_nombre`, `PAG_ubicacion`, `PAG_descripcion`) VALUES
 ('Mod Transferencias Pixel', 'C_ModTransferenciasP.php', 'Transferencias Funcionalidad'),
 ('Colaboraciones Pixel', 'C_ColaboracionesP.php', 'Consultar Colaboraciones'),
 ('Alta Colaboraciones Pixel', 'C_AltaColaboracionesP.php', 'Colaboraciones Funcionalidad'),
-('Mod Colaboraciones Pixel', 'C_ModColaboracionesP.php', 'Colaboraciones Funcionalidad');
+('Mod Colaboraciones Pixel', 'C_ModColaboracionesP.php', 'Colaboraciones Funcionalidad'),
+('Docencia Pixel', 'C_DocenciaP.php', 'Consultar Docencia'),
+('Alta Docencia Pixel', 'C_AltaDocenciaP.php', 'Docencia Funcionalidad'),
+('Mod Docencia Pixel', 'C_ModDocenciaP.php', 'Docencia Funcionalidad');
 
 -- --------------------------------------------------------
 
