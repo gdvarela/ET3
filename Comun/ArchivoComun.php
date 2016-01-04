@@ -45,7 +45,6 @@ $identificadores = array(
 'Transferencias'=> 'T',
 'Colaboraciones'=> 'C',
 'Login' => 'L'
-
 );
 
 $identificadoresPrivados = array(
@@ -304,7 +303,7 @@ $PATRONTELF = ' pattern="[0-9]{9}" min="600000000" '; //9 numeros
 $PATRONID=' pattern="^[^\s].{3,9}" '; // 4-10 se incluye ^[^\s] que significa que no empiece por espacio en blanco
 $OBLIGATORIO=" required ";
 
-//Este array contiene los campos que se mostran en lso distintos formularios de alta de la aplicacion.
+//Este array contiene los campos que se mostran en lso distintos formularios de alta y demas de la aplicacion.
 // cada elemento de formularios alta es un array con cada uno de los campos del formulario array([PROPIEDAD NAME, PROPEIDAD TYPE, OTROS PARAMETROS QUE SE INCRUSTARAN EN EL HTML])
 // "NOMBRECAMPO", "TIPOCAMPO", "PATRONESDEVALIDACIONHTML5 [js:FUNCIONDEVALIDACION]", [OPCIONAL-SOLO-SELECT]"sql:RELLENARSELECT (SIFUERA NECESARIO SE AÑADIRÁ array:VALORESMOSTRAR pero en principio no es necesario)"
 //
