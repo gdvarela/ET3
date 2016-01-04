@@ -84,6 +84,7 @@
         }
       }
 
+	   //En la pagina no hay nigun DNI pero no la borreis por si se añade algun campo de DNI
       function MayorMenor(Me,Ma) {
         var fecha = document.getElementById(Me).value; 
 		var fecha2  = document.getElementById(Ma).value;
@@ -131,6 +132,8 @@
 		// En caso de no haber ninguna pues quedara vacio.
 			echo $VALIDACIONFORMULARIO;
 			
+		// YA QUE ES UNA VARIABLE GLOBAL QUE SE USARA MAS VECES SE VACIA PARA NO INTERFERIR CON OTRAS VISTAS
+			$VALIDACIONFORMULARIO = "";
 		?>
       }
 
