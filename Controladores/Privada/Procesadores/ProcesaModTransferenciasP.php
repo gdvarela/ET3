@@ -33,7 +33,7 @@ include_once $RutaRelativaControlador.'Comun/ArchivoComun.php';
 
 //Cargamos el idioma a utilizar en el controlador
 $idioma = CargarIdioma2($RutaRelativaControlador);
-session_start();
+
 try
 	{
 		switch ($_POST["TIPO"])
@@ -48,13 +48,17 @@ try
 			$consulta = $_TABLACONTRATOS->Update(array_slice($_POST, 1) );
 			break;
 		}
-		
+		if (!isset($_COOKIE["TEST"]))
 		header("Location: ".$controladores[$identificadoresPrivados["Transferencias"]]);
 	}
 	catch(Exception $e)
 	{
-		$errorRescrito = explode("=>",$e->getMessage());
-		$_SESSION['error'] = 'ID CONCRETO REPETIDO T'."=>".$errorRescrito[1];
-		header("Location: ".$controladores[$identificadoresPrivados["Transferencias"]]);
+		if (!isset($_COOKIE["TEST"]))
+		{
+			session_start();
+			$errorRescrito = explode("=>",$e->getMessage());
+			$_SESSION['error'] = 'ID CONCRETO REPETIDO T'."=>".$errorRescrito[1];
+			header("Location: ".$controladores[$identificadoresPrivados["Transferencias"]]);
+		}
 	}
 ?>

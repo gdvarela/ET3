@@ -3,6 +3,8 @@
 //Variable que almacena el nombre de la carpeta Raiz del directorio
 $Raiz = explode('/',$_SERVER['PHP_SELF'])[count(explode('/',$_SERVER['PHP_SELF']))-5];
 
+
+
 //Devuelve la ruta relativa (en forma ../../) del fichero que realiza la llamada a la funcion con respecto
 // a la carpeta raiz que contiene la aplicacion web.
 function getRuta()
@@ -28,6 +30,7 @@ function getRuta()
 // ../../
 $RutaRelativaControlador = getRuta();
 
+
 //Ruta Relativa del ArchivoComun
 include_once $RutaRelativaControlador.'Comun/ArchivoComun.php';
 
@@ -38,28 +41,29 @@ try
 	{
 		switch ($_POST["TIPO"])
 		{
-			case "I":
-			
-			$consulta = $_TABLAINSTITUCIONES->EliminarRegistro(array_slice($_POST, 1) );
+			case "L":
+			$consulta = $_TABLALIBROS->AlmacenarBD(array_slice($_POST, 1) );
 			break;
-			case "G":
-			$consulta = $_TABLAGRUPOS->EliminarRegistro(array_slice($_POST, 1) );
+			case "A":
+			$consulta = $_TABLAARTICULOS->AlmacenarBD(array_slice($_POST, 1) );
 			break;
-			case "E":
-			$consulta = $_TABLAEMPRESAS->EliminarRegistro(array_slice($_POST, 1) );
+			case "C":
+			$consulta = $_TABLACONFERENCIAS->AlmacenarBD(array_slice($_POST, 1) );
 			break;
 		}
 		if (!isset($_COOKIE["TEST"]))
-		header("Location: ".$controladores[$identificadoresPrivados["Colaboraciones"]]);
+		header("Location: ".$controladores[$identificadoresPrivados["Publicaciones"]]);
 	}
 	catch(Exception $e)
 	{
+		
 		if (!isset($_COOKIE["TEST"]))
 		{
-			$errorRescrito = explode("=>",$e->getMessage());
 			session_start();
-			$_SESSION['error'] = 'ID CONCRETO REPETIDO C'."=>".$errorRescrito[1];
-			header("Location: ".$controladores[$identificadoresPrivados["Colaboraciones"]]);
+			$errorRescrito = explode("=>",$e->getMessage());
+			$_SESSION['error'] = 'ID CONCRETO REPETIDO Pu'."=>".$errorRescrito[1];
+			header("Location: ".$controladores[$identificadoresPrivados["Publicaciones"]]);
 		}
 	}
+	
 ?>

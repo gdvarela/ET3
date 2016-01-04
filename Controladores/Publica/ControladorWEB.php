@@ -47,11 +47,7 @@ if (!isset($_GET['PagMenu']) || !in_array ( $_GET['PagMenu'] , $identificadores 
 else
 	$PagID =  $_GET['PagMenu'];
 
-//En este caso el controlador publico Elimina un posible sesion iniciada
-if ($PagID == "L")
-{
-	session_start();
-}
+
 
 //Se incluye la vista concreta que se desea mostrar, utilizando el array
 // el array vistas se encuentra en el archivo ArchivoComun.php
@@ -132,6 +128,10 @@ switch($PagID)
 	case $identificadores['Colaboraciones']:
 		$princ_view = new Colaboraciones();
 		$princ_view->DisplayContent($idioma,$e,$in,$g);
+	break;
+	case $identificadores['Publicaciones']:
+		$princ_view = new Publicaciones();
+		$princ_view->DisplayContent($idioma,$a,$b,$c);
 	break;
 	case $identificadores['Login']:
 		$princ_view = new Login();

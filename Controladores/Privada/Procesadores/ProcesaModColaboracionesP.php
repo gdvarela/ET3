@@ -36,6 +36,7 @@ $idioma = CargarIdioma2($RutaRelativaControlador);
 
 try
 	{
+		//En funcion del TIPO se generará una consulta distinta
 		switch ($_POST["TIPO"])
 		{
 			case "I":
@@ -49,12 +50,18 @@ try
 			break;
 		}
 		
-		header("Location: ".$controladores[$identificadoresPrivados["Colaboraciones"]]);
+		if (!isset($_COOKIE["TEST"]))
+			header("Location: ".$controladores[$identificadoresPrivados["Colaboraciones"]]);
 	}
 	catch(Exception $e)
 	{
-		$errorRescrito = explode("=>",$e->getMessage());
+		
+		if (!isset($_COOKIE["TEST"]))
+		{
+			session_start();
+			$errorRescrito = explode("=>",$e->getMessage());
 		$_SESSION['error'] = 'ID CONCRETO REPETIDO C'."=>".$errorRescrito[1];
-		header("Location: ".$controladores[$identificadoresPrivados["Colaboraciones"]]);
+			header("Location: ".$controladores[$identificadoresPrivados["Colaboraciones"]]);
+		}
 	}
 ?>

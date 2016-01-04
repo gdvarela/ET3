@@ -49,14 +49,17 @@ try
 			$consulta = $_TABLACONTRATOS->EliminarRegistro(array_slice($_POST, 1) );
 			break;
 		}
-		
+		if (!isset($_COOKIE["TEST"]))
 		header("Location: ".$controladores[$identificadoresPrivados["Transferencias"]]);
 	}
 	catch(Exception $e)
 	{
-		$errorRescrito = explode("=>",$e->getMessage());
-		echo "1";
-		$_SESSION['error'] = 'ID CONCRETO REPETIDO T'."=>".$errorRescrito[1];
-		header("Location: ".$controladores[$identificadoresPrivados["Transferencias"]]);
+		if (!isset($_COOKIE["TEST"]))
+		{
+			$errorRescrito = explode("=>",$e->getMessage());
+			session_start();
+			$_SESSION['error'] = 'ID CONCRETO REPETIDO T'."=>".$errorRescrito[1];
+			header("Location: ".$controladores[$identificadoresPrivados["Transferencias"]]);
+		}
 	}
 ?>

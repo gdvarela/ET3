@@ -37,12 +37,17 @@ $idioma = CargarIdioma2($RutaRelativaControlador);
 try
 	{
 		$consulta = $_TABLAMIEMBRO->EliminarRegistro($_POST);
+		if (!isset($_COOKIE["TEST"]))
 		header("Location: ".$controladores[$identificadoresPrivados["Miembros"]]);
 	}
 	catch(Exception $e)
 	{
-		$errorRescrito = explode("=>",$e->getMessage());
-		$_SESSION['error'] = 'CON ERR MIEMBROS'."=>".$errorRescrito[1];
-		header("Location: ".$controladores[$identificadoresPrivados["MMiembros"]]);
+		if (!isset($_COOKIE["TEST"]))
+		{
+			$errorRescrito = explode("=>",$e->getMessage());
+			session_start();
+			$_SESSION['error'] = 'CON ERR MIEMBROS'."=>".$errorRescrito[1];
+			header("Location: ".$controladores[$identificadoresPrivados["MMiembros"]]);
+		}
 	}
 ?>

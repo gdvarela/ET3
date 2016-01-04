@@ -3,7 +3,7 @@
 //Variable que almacena el nombre de la carpeta Raiz del directorio
 $Raiz = explode('/',$_SERVER['PHP_SELF'])[count(explode('/',$_SERVER['PHP_SELF']))-5];
 
-session_start();
+
 
 //Devuelve la ruta relativa (en forma ../../) del fichero que realiza la llamada a la funcion con respecto
 // a la carpeta raiz que contiene la aplicacion web.
@@ -55,10 +55,13 @@ try
 		}
 	catch(Exception $e)
 	{
+		if (!isset($_COOKIE["TEST"]))
+		{
+			session_start();
 		$errorRescrito = explode("=>",$e->getMessage());
-		echo "1";
 		$_SESSION['error'] = 'ID Part REP'."=>".$errorRescrito[1];
 		header("Location: ".$controladores[$identificadoresPrivados["Colaboraciones"]]);
+		}
 	}
 	
 try
@@ -75,14 +78,19 @@ try
 			$consulta = $_TABLAEMPRESAS->AlmacenarBD(array_slice($_POST, 1) );
 			break;
 		}
-		
+		if (!isset($_COOKIE["TEST"]))
 		header("Location: ".$controladores[$identificadoresPrivados["Colaboraciones"]]);
 	}
 	catch(Exception $e)
 	{
-		$errorRescrito = explode("=>",$e->getMessage());
+		
+		if (!isset($_COOKIE["TEST"]))
+		{
+			session_start();
+			$errorRescrito = explode("=>",$e->getMessage());
 		$_SESSION['error'] = 'ID CONCRETO REPETIDO C'."=>".$errorRescrito[1];
-		header("Location: ".$controladores[$identificadoresPrivados["Colaboraciones"]]);
+			header("Location: ".$controladores[$identificadoresPrivados["Colaboraciones"]]);
+		}
 	}
 	
 ?>

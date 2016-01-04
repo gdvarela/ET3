@@ -102,7 +102,8 @@ function Display($idioma)
 	<!-- A partir de aqui meteis vuestro codigo -->
 	<form method="POST" action="Example.php">
 	<!-- Valores de ejemplo ya añadidos -->
-		<input type="hidden" id="PaginasComprobar" name="PaginasComprobar" value="/PagPrueba.php@GET@;/PagPrueba.php@GET@V=1;/PagPrueba.php@GET@V=2;">
+		<input type="hidden" id="PaginasComprobar" name="PaginasComprobar" 
+			value="/Clases/Miembro.php@GET@;/Clases/TablaBD.php@GET@;/Clases/Prensa.php@GET@;/Controladores/Publica/ControladorWEB.php@GET@PagMenu=H;/Controladores/Privada/C_AltaTransferenciasP.php@POST@TIPO=PA;/Controladores/Privada/C_ModTransferenciasP.php@POST@TIPO=PA,MOD=1234;/Controladores/Privada/C_TransferenciaP.php@POST@;/Controladores/Privada/C_HomeP.php@POST@;/Controladores/Privada/C_AltaMiembrosP.php@POST@;/Controladores/Privada/C_MiembrosP.php@POST@;/Controladores/Privada/C_ModMiembrosP.php@POST@MOD=1234;/Controladores/Privada/C_PrensaP.php@POST@;/Controladores/Privada/C_AltaPrensaP.php@POST@;/Controladores/Privada/C_ModPrensaP.php@POST@MOD=1234;/Controladores/Privada/C_ColaboracionesP.php@POST@;/Controladores/Privada/C_AltaColaboracionesP.php@POST@TIPO=I;/Controladores/Privada/C_ModColaboracionesP.php@POST@TIPO=I,MOD=1234;">
 		<div id="div_cuerpo">
 		<div style="clear:both">
 <?php
@@ -208,9 +209,24 @@ function Display($idioma)
 					<td rowspan=10 valign=top>
 					<?php echo $idioma['ListaPaginasErrores'];?>
 					<ul id="listaDesordenada">
-							<li id="/PagPrueba.php@GET@"><span onclick="eliminar(this)">X</span> /PagPrueba.php GET </li>
-							<li id="/PagPrueba.php@GET@V=1"><span onclick="eliminar(this)">X</span> /PagPrueba.php GET  V=1</li>
-							<li id="/PagPrueba.php@GET@V=2"><span onclick="eliminar(this)">X</span> /PagPrueba.php GET  V=2</li>
+							<li id="/Clases/Miembro.php@GET@"><span onclick="eliminar(this)">X</span> /Clases/Miembro.php GET </li>
+							<li id="/Clases/TablaBD.php@GET@"><span onclick="eliminar(this)">X</span> /Clases/TablaBD.php GET </li>
+							<li id="/Clases/Prensa.php@GET@"><span onclick="eliminar(this)">X</span> /Clases/Prensa.php GET </li>
+							<li id="/Controladores/Publica/ControladorWEB.php@GET@PagMenu=H"><span onclick="eliminar(this)">X</span> /Controladores/Publica/ControladorWEB.php GET PagMenu=H</li>
+							<li id="/Controladores/Privada/C_AltaTransferenciasP.php@POST@TIPO=PA"><span onclick="eliminar(this)">X</span> /Controladores/Privada/C_AltaTransferenciasP.php POST TIPO=PA</li>
+							<li id="/Controladores/Privada/C_ModTransferenciasP.php@POST@TIPO=PA,MOD=1234"><span onclick="eliminar(this)">X</span> /Controladores/Privada/C_ModTransferenciasP.php POST TIPO=PA,MOD=1234</li>
+							<li id="/Controladores/Privada/C_TransferenciaP.php@POST@"><span onclick="eliminar(this)">X</span> /Controladores/Privada/C_TransferenciaP.php POST </li>
+							<li id="/Controladores/Privada/C_HomeP.php@POST@"><span onclick="eliminar(this)">X</span> /Controladores/Privada/C_HomeP.php POST </li>
+							<li id="/Controladores/Privada/C_AltaMiembrosP.php@POST@"><span onclick="eliminar(this)">X</span> /Controladores/Privada/C_AltaMiembrosP.php POST </li>
+							<li id="/Controladores/Privada/C_MiembrosP.php@POST@"><span onclick="eliminar(this)">X</span> /Controladores/Privada/C_MiembrosP.php POST </li>
+							<li id="/Controladores/Privada/C_ModMiembrosP.php@POST@MOD=1234"><span onclick="eliminar(this)">X</span> /Controladores/Privada/C_ModMiembrosP.php POST MOD=1234</li>
+							<li id="/Controladores/Privada/C_PrensaP.php@POST@"><span onclick="eliminar(this)">X</span> /Controladores/Privada/C_PrensaP.php POST </li>
+							<li id="/Controladores/Privada/C_AltaPrensaP.php@POST@"><span onclick="eliminar(this)">X</span> /Controladores/Privada/C_AltaPrensaP.php POST </li>
+							<li id="/Controladores/Privada/C_ModPrensaP.php@POST@MOD=1234"><span onclick="eliminar(this)">X</span> /Controladores/Privada/C_ModPrensaP.php POST MOD=1234</li>
+							<li id="/Controladores/Privada/C_ColaboracionesP.php@POST@"><span onclick="eliminar(this)">X</span> /Controladores/Privada/C_ColaboracionesP.php POST </li>
+							<li id="/Controladores/Privada/C_AltaColaboracionesP.php@POST@TIPO=I"><span onclick="eliminar(this)">X</span> /Controladores/Privada/C_AltaColaboracionesP.php POST TIPO=I</li>
+							<li id="/Controladores/Privada/C_ModColaboracionesP.php@POST@TIPO=I,MOD=1234"><span onclick="eliminar(this)">X</span> /Controladores/Privada/C_ModColaboracionesP.php POST TIPO=I,MOD=1234</li>
+							</ul>
 						</ul>
 					</td>
 				</tr> 

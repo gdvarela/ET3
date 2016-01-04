@@ -26,16 +26,22 @@ Class TablaBD
 	// El metodo recibe como parametro la clave primaria previa al update
 	public function Update($datos)
 	{
-		
 		$BD = new BaseDatosControl();
 		print_r($datos);
 		$sql = "UPDATE  ".$this->nombreTabla." SET ";
+		$sql2 = array();
 		$primero = true;
 		foreach ($datos as $k => $v)
 		{
 			if ($k == "ClaveAnt")
 				continue;
-			
+			$kf = explode("-",$k)[1];
+			if ($kf == "MC")
+			{
+				$sql2[] = "Insert into ".explode("@",explode("-",$k)[2])[0]." (".explode("@",explode("-",$k)[2])[1].",". array_keys ($this->arrayCampos)[$this->arrayClaves[0]].") values ('".
+				explode("-",$k)[3]."','".$datos["MP-".array_keys ($this->arrayCampos)[$this->arrayClaves[0]]]."');";
+				continue;
+			}
 			if ($primero)
 			{
 				$primero =false;
@@ -62,6 +68,11 @@ Class TablaBD
 		}
 		echo $sql;
 		$BD->OperacionGenericaBD($sql,'ACT ERR U');
+		for ($i = 0; $i < count($sql2);$i = $i+1)
+		{
+			$BD->OperacionGenericaBD($sql2[$i],"");
+			echo $sql2[$i];
+		}
 	}
 
 	
@@ -69,26 +80,37 @@ Class TablaBD
 	public function AlmacenarBD($datos)
 	{
 		$BD = new BaseDatosControl();
-	
+	print_r(array_keys($this->arrayCampos));
+	print_r($this->arrayClaves);
+	print_r($datos);
 		$sql = "Insert into ".$this->nombreTabla." ";
+		$sql2=array();
 		$primero = true;
 		foreach (array_keys($datos) as $k)
 		{
 			
-			$k = explode("-",$k)[1];
+			$kf = explode("-",$k)[1];
+			if ($kf == "MC")
+			{
+				$sql2[] = "Insert into ".explode("@",explode("-",$k)[2])[0]." (".explode("@",explode("-",$k)[2])[1].",". array_keys ($this->arrayCampos)[$this->arrayClaves[0]].") values ('".
+				explode("-",$k)[3]."','".$datos["MP-".array_keys ($this->arrayCampos)[$this->arrayClaves[0]]]."');";
+				continue;
+			}
 			if ($primero)
 			{
 				$primero =false;
-				$sql = $sql." (".$k;
+				$sql = $sql." (".$kf;
 				continue;
 			}
-			$sql = $sql. ",".$k;
+			$sql = $sql. ",".$kf;
 		}
 		$sql = $sql.") values";
 		
 		$primero = true;
-		foreach ($datos as $k => $v)
+		foreach ($datos as $kf => $v)
 		{
+			if (explode("-",$kf)[1] == "MC")
+			continue;
 			if ($primero)
 			{
 				$primero =false;
@@ -99,7 +121,13 @@ Class TablaBD
 		}
 		$sql =$sql. "')";
 		echo $sql;
+		
 		$BD->OperacionGenericaBD($sql,"");
+		for ($i = 0; $i < count($sql2);$i = $i+1)
+		{
+			$BD->OperacionGenericaBD($sql2[$i],"");
+			echo $sql2[$i];
+		}
 	}
 
 	public function EliminarRegistro($datos)

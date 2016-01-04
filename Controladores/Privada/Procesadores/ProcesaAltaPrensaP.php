@@ -37,13 +37,19 @@ $idioma = CargarIdioma2($RutaRelativaControlador);
 try
 	{
 		$consulta = $_TABLANOTICIAS->AlmacenarBD($_POST);
+		if (!isset($_COOKIE["TEST"]))
 		header("Location: ".$controladores[$identificadoresPrivados["Prensa"]]);
 	}
 	catch(Exception $e)
 	{
-		$errorRescrito = explode("=>",$e->getMessage());
+		
+		if (!isset($_COOKIE["TEST"]))
+		{
+			session_start();
+			$errorRescrito = explode("=>",$e->getMessage());
 		$_SESSION['error'] = 'CON ERR MIEMBROS'."=>".$errorRescrito[1];
-		header("Location: ".$controladores[$identificadoresPrivados["APrensa"]]);
+			header("Location: ".$controladores[$identificadoresPrivados["Colaboraciones"]]);
+		}
 	}
 	
 ?>

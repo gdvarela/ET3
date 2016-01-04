@@ -38,19 +38,19 @@ try
 	{
 		switch ($_POST["TIPO"])
 		{
-			case "I":
+			case "L":
 			
-			$consulta = $_TABLAINSTITUCIONES->EliminarRegistro(array_slice($_POST, 1) );
+			$consulta = $_TABLALIBROS->EliminarRegistro(array_slice($_POST, 1) );
 			break;
-			case "G":
-			$consulta = $_TABLAGRUPOS->EliminarRegistro(array_slice($_POST, 1) );
+			case "A":
+			$consulta = $_TABLAARTICULOS->EliminarRegistro(array_slice($_POST, 1) );
 			break;
-			case "E":
-			$consulta = $_TABLAEMPRESAS->EliminarRegistro(array_slice($_POST, 1) );
+			case "C":
+			$consulta = $_TABLACONFERENCIAS->EliminarRegistro(array_slice($_POST, 1) );
 			break;
 		}
 		if (!isset($_COOKIE["TEST"]))
-		header("Location: ".$controladores[$identificadoresPrivados["Colaboraciones"]]);
+		header("Location: ".$controladores[$identificadoresPrivados["Publicaciones"]]);
 	}
 	catch(Exception $e)
 	{
@@ -59,7 +59,7 @@ try
 			$errorRescrito = explode("=>",$e->getMessage());
 			session_start();
 			$_SESSION['error'] = 'ID CONCRETO REPETIDO C'."=>".$errorRescrito[1];
-			header("Location: ".$controladores[$identificadoresPrivados["Colaboraciones"]]);
+			header("Location: ".$controladores[$identificadoresPrivados["Publicaciones"]]);
 		}
 	}
 ?>

@@ -36,30 +36,37 @@ $idioma = CargarIdioma2($RutaRelativaControlador);
 
 try
 	{
+		//En funcion del TIPO se generará una consulta distinta
 		switch ($_POST["TIPO"])
 		{
-			case "I":
+			case "L":
+			TablaBD::ConsultaGenerica("Delete From S_USUARIO_LIBRO WHERE ".explode("=>",$_POST["ClaveAnt"])[0]."='".explode("=>",$_POST["ClaveAnt"])[1]."' ");
+			$consulta = $_TABLALIBROS->Update(array_slice($_POST, 1) );
+			break;
+			case "A":
+			TablaBD::ConsultaGenerica("Delete From S_USUARIO_ARTICULO WHERE ".explode("=>",$_POST["ClaveAnt"])[0]."='".explode("=>",$_POST["ClaveAnt"])[1]."' ");
+			$consulta = $_TABLAARTICULOS->Update(array_slice($_POST, 1) );
 			
-			$consulta = $_TABLAINSTITUCIONES->EliminarRegistro(array_slice($_POST, 1) );
 			break;
-			case "G":
-			$consulta = $_TABLAGRUPOS->EliminarRegistro(array_slice($_POST, 1) );
-			break;
-			case "E":
-			$consulta = $_TABLAEMPRESAS->EliminarRegistro(array_slice($_POST, 1) );
+			case "C":
+			TablaBD::ConsultaGenerica("Delete From S_USUARIO_CONFERENCIA WHERE ".explode("=>",$_POST["ClaveAnt"])[0]."='".explode("=>",$_POST["ClaveAnt"])[1]."' ");
+			$consulta = $_TABLACONFERENCIAS->Update(array_slice($_POST, 1) );
+			
 			break;
 		}
+		
 		if (!isset($_COOKIE["TEST"]))
-		header("Location: ".$controladores[$identificadoresPrivados["Colaboraciones"]]);
+			header("Location: ".$controladores[$identificadoresPrivados["Publicaciones"]]);
 	}
 	catch(Exception $e)
 	{
+		
 		if (!isset($_COOKIE["TEST"]))
 		{
-			$errorRescrito = explode("=>",$e->getMessage());
 			session_start();
-			$_SESSION['error'] = 'ID CONCRETO REPETIDO C'."=>".$errorRescrito[1];
-			header("Location: ".$controladores[$identificadoresPrivados["Colaboraciones"]]);
+			$errorRescrito = explode("=>",$e->getMessage());
+		$_SESSION['error'] = 'ID CONCRETO REPETIDO C'."=>".$errorRescrito[1];
+			header("Location: ".$controladores[$identificadoresPrivados["Publicaciones"]]);
 		}
 	}
 ?>

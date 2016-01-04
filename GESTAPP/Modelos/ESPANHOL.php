@@ -282,6 +282,7 @@ PIXEL
 'PagNameM' => 'Miembros',
 'PagNameP' => 'Prensa',
 'PagNameT' => 'Transferencia',
+'PagNamePu' => 'Publicaciones',
 'PagNameC' => 'Colaboraciones',
 'PagNameL' => 'Login',
 'PagNameHP' => 'Home',
@@ -291,6 +292,9 @@ PIXEL
 'PagNamePP' => 'Prensa',
 'PagNameAPP' => 'Alta Noticia',
 'PagNameMPP' => 'Modificar Noticia',
+'PagNamePuP' => 'Publicaciones',
+'PagNameAPuP' => 'Nueva Publicacion',
+'PagNameMPuP' => 'Modificar Publicacion',
 'PagNameTP' => 'Transferencia',
 'PagNameDC' => 'Docencia',
 'PagNameADC' => 'Alta Docencia',
@@ -310,8 +314,8 @@ PIXEL
 'Login' => 'Login',
 'LogOUT' => 'LogOUT',
 'Configuracion' => 'Configuracion',
-'Idioma' => 'Idioma',
 'Grupo' => 'Grupo',
+'Idioma' => 'Idioma',
 'Enlace' => 'Enlace',
 'CON ERR MIEMBROS' => 'Error en la obtencion de los miembros',
 'CON ERR NOTICIAS' => 'Error en la obtencion de las noticias',
@@ -401,6 +405,35 @@ PIXEL
 	'ID CONCRETO REPETIDO T' => "El ID de Proyecto/Patente o Contrato ya Existe",
 	'OBTENCION T' => 'Error Ocurrido en la base de datos obteniendo los datos',
 	
+	//Publicaciones
+
+'MP-Titulo_Libro' => 'Titulo del Libro',
+'MP-ISBN'=> 'ISBN',
+'MP-Fecha_Libro' => 'Fecha de Publicacion',
+'MP-Pais_Libro'=> 'Pais',
+'MP-ISSN_Revista' => 'ISSN Tevista',
+'MP-Nombre_Revista'=> 'Nombre de la Revista',
+'MP-Titulo_Articulo'=> 'Titulo del Articulo',
+'MP-Anotaciones_Articulo'=> 'Anotaciones',
+'MP-IDArticulo'=> 'Identificador del Articulo',
+'MP-Fecha_Articulo'=> 'Fecha del Articulo',
+'MP-Nombre_Conferencia'=> 'Nombre Conferencia',
+'MP-Charla_Conferencia'=> 'Charla Conferencia',
+'MP-Fecha_Conferencia'=> 'Fecha de la Conferencia',
+'MP-IDConferencia'=> 'Identificador Conferencia',
+'MP-MC-S_USUARIO_LIBRO@Login'=> 'Publicaciones Miembros',
+'MP-MC-S_USUARIO_ARTICULO@Login'=> 'Publicaciones Miembros',
+'MP-MC-S_USUARIO_CONFERENCIA@Login'=> 'Publicaciones Miembros',
+
+
+"Libro" => "Libro",
+	"Articulo" => "Articulo",
+	"Conferencia" => "Conferencia",
+
+'Alta_L' => "Nuevo Libro",
+'Alta_C' => "Nueva Conferencia",
+'Alta_A' => "Nuevo Articulo", 
+	'ID CONCRETO REPETIDO Pu' => "El ID de del Libro, Articulo o Conferencia ya Existe",
 //Docencia
 
 'Alta_DC' => "Nueva Docencia",

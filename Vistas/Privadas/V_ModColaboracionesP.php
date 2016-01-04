@@ -131,6 +131,8 @@ function DisplayContent($idioma,$colaboracion)
 }
 
 }
+
+
 	$Mod = $_POST["MOD"];
 	$colaboracion = "";
 		//Consultamos datos

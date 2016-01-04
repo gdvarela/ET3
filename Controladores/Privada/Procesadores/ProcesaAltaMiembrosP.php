@@ -38,12 +38,18 @@ try
 	{
 		$consulta = $_TABLAMIEMBRO->AlmacenarBD($_POST);
 		TablaBD::ConsultaGenerica("Insert into HACE_DE (Login,ROL_nombre) values ('" .$_POST["MA-Login"]."','". $ROLMIEMBRO."')");
+		if (!isset($_COOKIE["TEST"]))
 		header("Location: ".$controladores[$identificadoresPrivados["Miembros"]]);
 	}
 	catch(Exception $e)
 	{
-		$errorRescrito = explode("=>",$e->getMessage());
-		$_SESSION['error'] = 'CON ERR MIEMBROS'."=>".$errorRescrito[1];
-		header("Location: ".$controladores[$identificadoresPrivados["MMiembros"]]);
+		
+		if (!isset($_COOKIE["TEST"]))
+		{
+			session_start();
+			$errorRescrito = explode("=>",$e->getMessage());
+			$_SESSION['error'] = 'CON ERR MIEMBROS'."=>".$errorRescrito[1];
+			header("Location: ".$controladores[$identificadoresPrivados["Colaboraciones"]]);
+		}
 	}
 ?>

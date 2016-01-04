@@ -37,7 +37,6 @@ include_once $RutaRelativaControlador.'GESTAPP/controlPages.php';
 
 //Cargamos el idioma a utilizar en el controlador
 $idioma = CargarIdioma2($RutaRelativaControlador);
-
 //Variable que almacenara el identificador de la pagina actual, se establece su valor en el SWITCH
 $PagID = "HP";
 

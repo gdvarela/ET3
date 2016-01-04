@@ -44,6 +44,7 @@ $identificadores = array(
 'Prensa'=> 'P',
 'Transferencias'=> 'T',
 'Colaboraciones'=> 'C',
+'Publicaciones'=> 'Pu',
 'Login' => 'L'
 
 );
@@ -66,6 +67,10 @@ $identificadoresPrivados = array(
 'AColaboraciones'=> 'ACP',
 'MColaboraciones'=> 'MCP',
 'DColaboraciones'=> 'DCP',
+'Publicaciones'=> 'PuP',
+'APublicaciones'=> 'APuP',
+'MPublicaciones'=> 'MPuP',
+'DPublicaciones'=> 'DPuP',
 'Docencia'=> 'DC',
 'ADocencia'=> 'ADC',
 'MDocencia'=> 'MDC',
@@ -80,7 +85,8 @@ $MenuPrincipal = array(
 'Miembros' => $identificadores['Miembros'],
 'Prensa'=> $identificadores['Prensa'],
 'Transferencias'=> $identificadores['Transferencias'],
-'Colaboraciones'=> $identificadores['Colaboraciones']
+'Colaboraciones'=> $identificadores['Colaboraciones'],
+'Publicaciones'=> $identificadores['Publicaciones']
 );
 
 //Array que contiene los indentificadores de las paginas que se mostraran la barra del menu principal
@@ -92,6 +98,7 @@ $MenuPrincipalPrivados = array(
 'Transferencias'=> $identificadoresPrivados['Transferencias'],
 'Colaboraciones'=> $identificadoresPrivados['Colaboraciones'],
 'Docencia'=> $identificadoresPrivados['Docencia'],
+'Publicaciones'=> $identificadoresPrivados['Publicaciones'],
 'Administracion'=> $identificadoresPrivados['Administracion']
 );
 
@@ -102,6 +109,7 @@ $vistas = array(
 	$identificadores['Prensa'] => $RutaRelativaControlador.'Vistas/Publicas/V_Prensa.php',
 	$identificadores['Transferencias'] => $RutaRelativaControlador.'Vistas/Publicas/V_Transferencia.php',
 	$identificadores['Colaboraciones'] => $RutaRelativaControlador.'Vistas/Publicas/V_Colaboraciones.php',
+	$identificadores['Publicaciones'] => $RutaRelativaControlador.'Vistas/Publicas/V_Publicaciones.php',
 	$identificadores['Login'] => $RutaRelativaControlador.'Vistas/Publicas/V_Login.php',
 	$identificadoresPrivados['Docencia'] => $RutaRelativaControlador.'Vistas/Privadas/V_DocenciaP.php',
 	
@@ -120,6 +128,9 @@ $vistas = array(
 	$identificadoresPrivados['Colaboraciones'] => $RutaRelativaControlador.'Vistas/Privadas/V_ColaboracionesP.php',
 	$identificadoresPrivados['AColaboraciones'] => $RutaRelativaControlador.'Vistas/Privadas/V_AltaColaboracionesP.php',
 	$identificadoresPrivados['MColaboraciones'] => $RutaRelativaControlador.'Vistas/Privadas/V_ModColaboracionesP.php',
+	$identificadoresPrivados['Publicaciones'] => $RutaRelativaControlador.'Vistas/Privadas/V_PublicacionesP.php',
+	$identificadoresPrivados['APublicaciones'] => $RutaRelativaControlador.'Vistas/Privadas/V_AltaPublicacionesP.php',
+	$identificadoresPrivados['MPublicaciones'] => $RutaRelativaControlador.'Vistas/Privadas/V_ModPublicacionesP.php',
 	$identificadoresPrivados['ADocencia'] => $RutaRelativaControlador.'Vistas/Privadas/V_AltaDocenciaP.php',
 );
   
@@ -132,24 +143,28 @@ $controladores = array(
 	$identificadores['Prensa'] => $RutaRelativaControlador.'Controladores/Publica/ControladorWEB.php?PagMenu='.$identificadores['Prensa'],
 	$identificadores['Transferencias'] => $RutaRelativaControlador.'Controladores/Publica/ControladorWEB.php?PagMenu='.$identificadores['Transferencias'],
 	$identificadores['Colaboraciones'] => $RutaRelativaControlador.'Controladores/Publica/ControladorWEB.php?PagMenu='.$identificadores['Colaboraciones'],
+	$identificadores['Publicaciones'] => $RutaRelativaControlador.'Controladores/Publica/ControladorWEB.php?PagMenu='.$identificadores['Publicaciones'],
 	$identificadores['Login'] => $RutaRelativaControlador.'Controladores/Publica/ControladorWEB.php?PagMenu='.$identificadores['Login'],
 	$identificadoresPrivados['Home'] => $RutaRelativaControlador.'Controladores/Privada/C_HomeP.php',
 	$identificadoresPrivados['Miembros'] => $RutaRelativaControlador.'Controladores/Privada/C_MiembrosP.php',
 	$identificadoresPrivados['Prensa'] => $RutaRelativaControlador.'Controladores/Privada/C_PrensaP.php',
 	$identificadoresPrivados['Transferencias'] => $RutaRelativaControlador.'Controladores/Privada/C_TransferenciaP.php',
 	$identificadoresPrivados['Colaboraciones'] => $RutaRelativaControlador.'Controladores/Privada/C_ColaboracionesP.php',
+	$identificadoresPrivados['Publicaciones'] => $RutaRelativaControlador.'Controladores/Privada/C_PublicacionesP.php',
 	$identificadoresPrivados['Docencia'] => $RutaRelativaControlador.'Controladores/Privada/C_DocenciaP.php',
 	
 	$identificadoresPrivados['AMiembros'] => $RutaRelativaControlador.'Controladores/Privada/C_AltaMiembrosP.php',
 	$identificadoresPrivados['APrensa'] => $RutaRelativaControlador.'Controladores/Privada/C_AltaPrensaP.php',
 	$identificadoresPrivados['AColaboraciones'] => $RutaRelativaControlador.'Controladores/Privada/C_AltaColaboracionesP.php',
 	$identificadoresPrivados['ATransferencias'] => $RutaRelativaControlador.'Controladores/Privada/C_AltaTransferenciasP.php',
+	$identificadoresPrivados['APublicaciones'] => $RutaRelativaControlador.'Controladores/Privada/C_AltaPublicacionesP.php',
 	$identificadoresPrivados['ADocencia'] => $RutaRelativaControlador.'Controladores/Privada/C_AltaDocenciaP.php',
 	
 	$identificadoresPrivados['MMiembros'] => $RutaRelativaControlador.'Controladores/Privada/C_ModMiembrosP.php',
 	$identificadoresPrivados['MPrensa'] => $RutaRelativaControlador.'Controladores/Privada/C_ModPrensaP.php',
 	$identificadoresPrivados['MColaboraciones'] => $RutaRelativaControlador.'Controladores/Privada/C_ModColaboracionesP.php',
 	$identificadoresPrivados['MTransferencias'] => $RutaRelativaControlador.'Controladores/Privada/C_ModTransferenciasP.php',
+	$identificadoresPrivados['MPublicaciones'] => $RutaRelativaControlador.'Controladores/Privada/C_ModPublicacionesP.php',
 	$identificadoresPrivados['MDocencia'] => $RutaRelativaControlador.'Controladores/Privada/C_ModDocenciaP.php'
 	
 	
@@ -174,10 +189,14 @@ $procesadores = array(
 	$identificadoresPrivados['MTransferencias'] => $RutaRelativaControlador.'Controladores/Privada/Procesadores/ProcesaModTransferenciasP.php',
 	$identificadoresPrivados['DTransferencias'] => $RutaRelativaControlador.'Controladores/Privada/Procesadores/ProcesaDelTransferenciasP.php',
 	
+	$identificadoresPrivados['APublicaciones'] => $RutaRelativaControlador.'Controladores/Privada/Procesadores/ProcesaAltaPublicacionesP.php',
+	$identificadoresPrivados['MPublicaciones'] => $RutaRelativaControlador.'Controladores/Privada/Procesadores/ProcesaModPublicacionesP.php',
+	$identificadoresPrivados['DPublicaciones'] => $RutaRelativaControlador.'Controladores/Privada/Procesadores/ProcesaDelPublicacionesP.php',
+	
 	$identificadoresPrivados['ADocencia'] => $RutaRelativaControlador.'Controladores/Privada/Procesadores/ProcesaAltaDocenciaP.php'
 );
 
-
+//TODO METER IFS PARA HACER ESTAS COSAS SOLO CUANDO SEA NECESARIO
 //Variable que contiene la pagina o controlador que tomara el control en caso de error de permisos
 $PaginaError = $controladores[$identificadoresPrivados['ERRORPERM']];
 $imagenFondo = "";
@@ -286,13 +305,49 @@ $_TABLAPROYECTOS = new TablaBD(
 	),
 array(2)
 );
+
+$_TABLALIBROS = new TablaBD(
+"S_LIBROS",
+	array(
+	"Titulo_Libro" => "",
+	"ISBN" => "",
+	"Fecha_Libro" => "",
+	"Pais_Libro" => ""
+	),
+array(1)
+);
+
+$_TABLAARTICULOS = new TablaBD(
+"S_ARTICULO",
+	array(
+	"ISSN_Revista" => "",
+	"Nombre_Revista" => "",
+	"Titulo_Articulo" => "",
+	"Anotaciones_Articulo" => "",
+	"IDArticulo" => "",
+	"Fecha_Articulo" => ""
+	),
+array(4)
+);
+
+$_TABLACONFERENCIAS = new TablaBD(
+"S_CONFERENCIAS",
+	array(
+	"Nombre_Conferencia" => "",
+	"Charla_Conferencia" => "",
+	"Fecha_Conferencia" => "",
+	"IDConferencia" => ""
+	),
+array(3)
+);
+
 $_TABLADOCENCIA = new TablaBD(
 "S_USUARIO_MATERIA",
 	array(
 	"IDMateria" => "",
 	"Login" => "",
 	"FechaIni_Materia" => "",
-	"FechaFin_Materia" => "",
+	"FechaFin_Materia" => ""
 	),
 array(0,1)
 );
@@ -306,7 +361,7 @@ $OBLIGATORIO=" required ";
 
 //Este array contiene los campos que se mostran en lso distintos formularios de alta de la aplicacion.
 // cada elemento de formularios alta es un array con cada uno de los campos del formulario array([PROPIEDAD NAME, PROPEIDAD TYPE, OTROS PARAMETROS QUE SE INCRUSTARAN EN EL HTML])
-// "NOMBRECAMPO", "TIPOCAMPO", "PATRONESDEVALIDACIONHTML5 [js:FUNCIONDEVALIDACION]", [OPCIONAL-SOLO-SELECT]"sql:RELLENARSELECT (SIFUERA NECESARIO SE AÑADIRÁ array:VALORESMOSTRAR pero en principio no es necesario)"
+// "NOMBRECAMPO", "TIPOCAMPO", "PATRONESDEVALIDACIONHTML5 [js:FUNCIONDEVALIDACION]", [OPCIONAL (SELECT,MULTICHECK)]"sql:RELLENARSELECT |o| array:v1@v2@v3",[OPCIONAL (MULTICHECK)]"sql:SELECTCHEKSACTIVAR|o| array:v1@v2@v3"
 //
 //"js: -> indicador de funcion personalizada. EN CASO DE EXISTIR ESTE INDICADOR, INCLUIR  LAS VALIDACIONES HTML5 ANTES DEL js"
 // c1|c2|c3
@@ -443,13 +498,65 @@ $formularios = array(
 		array( 'MP-FechaFin_Contrato','date', "$OBLIGATORIO js:blur|MayorMenor('MP-FechaFin_Contrato','MP-FechaIni_Contrato')|Fecha Erronea, inferior a la de Inicio"),
 		array( 'MP-IDEmpresa','select', "$OBLIGATORIO","sql:Select 'IDEmpresa' from S_EMPRESAS")
 	),
+	$identificadoresPrivados['APublicaciones']."L" => 
+	array(
+		array( 'MP-Titulo_Libro','text', "$OBLIGATORIO"),
+		array( 'MP-ISBN','text', "$OBLIGATORIO"),
+		array( 'MP-Fecha_Libro','date', ""),
+		array( 'MP-Pais_Libro','text', ""),
+		array( 'MP-MC-S_USUARIO_LIBRO@Login','multiCheck', "","sql:Select Login from USUARIOS where Login IN (Select login from HACE_DE where ROL_nombre = '".$ROLMIEMBRO."')","")
+	),
+	$identificadoresPrivados['APublicaciones']."A" => 
+	array(
+		array( 'MP-ISSN_Revista','text', "$OBLIGATORIO"),
+		array( 'MP-Nombre_Revista','text', "$OBLIGATORIO"),
+		array( 'MP-Titulo_Articulo','text', "$OBLIGATORIO"),
+		array( 'MP-Anotaciones_Articulo','textarea', "$OBLIGATORIO"),
+		array( 'MP-IDArticulo','text', "$OBLIGATORIO"),
+		array( 'MP-Fecha_Articulo','date', "$OBLIGATORIO"),
+		array( 'MP-MC-S_USUARIO_ARTICULO@Login','multiCheck', "","sql:Select Login from USUARIOS where Login IN (Select login from HACE_DE where ROL_nombre = '".$ROLMIEMBRO."')","")
+	),
+	$identificadoresPrivados['APublicaciones']."C" => 
+	array(
+		array( 'MP-Nombre_Conferencia','text', "$OBLIGATORIO"),
+		array( 'MP-Charla_Conferencia','text', "$OBLIGATORIO"),
+		array( 'MP-Fecha_Conferencia','date', "$OBLIGATORIO"),
+		array( 'MP-IDConferencia','text', "$OBLIGATORIO"),
+		array( 'MP-MC-S_USUARIO_CONFERENCIA@Login','multiCheck', "","sql:Select Login from USUARIOS where Login IN (Select login from HACE_DE where ROL_nombre = '".$ROLMIEMBRO."')","")
+	),
+	$identificadoresPrivados['MPublicaciones']."L" => 
+	array(
+		array( 'MP-Titulo_Libro','text', "$OBLIGATORIO"),
+		array( 'MP-ISBN','text', "$OBLIGATORIO"),
+		array( 'MP-Fecha_Libro','date', ""),
+		array( 'MP-Pais_Libro','text', ""),
+		array( 'MP-MC-S_USUARIO_LIBRO@Login','multiCheck', "","sql:Select Login from USUARIOS where Login IN (Select login from HACE_DE where ROL_nombre = '".$ROLMIEMBRO."')","sql:Select distinct Login from S_USUARIO_LIBRO WHERE ISBN='%d'")
+	),
+	$identificadoresPrivados['MPublicaciones']."A" => 
+	array(
+		array( 'MP-ISSN_Revista','text', "$OBLIGATORIO"),
+		array( 'MP-Nombre_Revista','text', "$OBLIGATORIO"),
+		array( 'MP-Titulo_Articulo','text', "$OBLIGATORIO"),
+		array( 'MP-Anotaciones_Articulo','textarea', "$OBLIGATORIO"),
+		array( 'MP-IDArticulo','text', "$OBLIGATORIO"),
+		array( 'MP-Fecha_Articulo','date', "$OBLIGATORIO"),
+		array( 'MP-MC-S_USUARIO_ARTICULO@Login','multiCheck', "","sql:Select Login from USUARIOS where Login IN (Select login from HACE_DE where ROL_nombre = '".$ROLMIEMBRO."')","sql:Select distinct Login from S_USUARIO_ARTICULO WHERE IDArticulo='%d'")
+	),
+	$identificadoresPrivados['MPublicaciones']."C" => 
+	array(
+		array( 'MP-Nombre_Conferencia','text', "$OBLIGATORIO"),
+		array( 'MP-Charla_Conferencia','text', "$OBLIGATORIO"),
+		array( 'MP-Fecha_Conferencia','date', "$OBLIGATORIO"),
+		array( 'MP-IDConferencia','text', "$OBLIGATORIO"),
+		array( 'MP-MC-S_USUARIO_CONFERENCIA@Login','multiCheck', "","sql:Select Login from USUARIOS where Login IN (Select login from HACE_DE where ROL_nombre = '".$ROLMIEMBRO."')","sql:Select distinct Login from S_USUARIO_CONFERENCIA WHERE IDConferencia='%d'")
+	),
 	$identificadoresPrivados['ADocencia'] => 
 	array(
 		array( 'MP-IDMateria','select', "$OBLIGATORIO", "sql:Select IDMateria from S_MATERIAS"),
 		array( 'MP-Login','select', "$OBLIGATORIO", "sql:Select Login from USUARIOS "),
 		array( 'MP-FechaIni_Materia','date', "$OBLIGATORIO js:blur|MayorMenor('MP-FechaFin_Materia','MP-FechaIni_Materia')|Fecha Erronea, supera la de Fin"),
 		array( 'MP-FechaFin_Materia','date', "$OBLIGATORIO js:blur|MayorMenor('MP-FechaFin_Materia','MP-FechaIni_Materia')|Fecha Erronea, inferior a la de Inicio")
-		),
+		)
 );
 
 // ESTA VARIABLE NO SE MODIFICA DIRECTAMENTE, ES VARIABLE GLOBAL Y NO SE DEBE MODIFICAR

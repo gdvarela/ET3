@@ -213,6 +213,9 @@ INSERT INTO `IMPLEMENTADA_EN` (`FUN_nombre`, `PAG_nombre`) VALUES
 ('Administrar PIXEL', 'Docencia Pixel'),
 ('Administrar PIXEL', 'Alta Docencia Pixel'),
 ('Administrar PIXEL', 'Mod Docencia Pixel'),
+('Administrar PIXEL', 'Publicaciones Pixel'),
+('Administrar PIXEL', 'Alta Publicaciones Pixel'),
+('Administrar PIXEL', 'Mod Publicaciones Pixel'),
 
 ('Usar PIXEL', 'Home Pixel'),
 ('Usar PIXEL', 'Miembros Pixel'),
@@ -221,7 +224,10 @@ INSERT INTO `IMPLEMENTADA_EN` (`FUN_nombre`, `PAG_nombre`) VALUES
 ('Usar PIXEL', 'Colaboraciones Pixel'),
 ('Usar PIXEL', 'Docencia Pixel'),
 ('Usar PIXEL', 'Alta Docencia Pixel'),
-('Usar PIXEL', 'Mod Docencia Pixel');
+('Usar PIXEL', 'Mod Docencia Pixel'),
+('Usar PIXEL', 'Publicaciones Pixel'),
+('Usar PIXEL', 'Alta Publicaciones Pixel'),
+('Usar PIXEL', 'Mod Publicaciones Pixel');
 
 -- --------------------------------------------------------
 
@@ -277,7 +283,10 @@ INSERT INTO `PAGINAS` (`PAG_nombre`, `PAG_ubicacion`, `PAG_descripcion`) VALUES
 ('Mod Colaboraciones Pixel', 'C_ModColaboracionesP.php', 'Colaboraciones Funcionalidad'),
 ('Docencia Pixel', 'C_DocenciaP.php', 'Consultar Docencia'),
 ('Alta Docencia Pixel', 'C_AltaDocenciaP.php', 'Docencia Funcionalidad'),
-('Mod Docencia Pixel', 'C_ModDocenciaP.php', 'Docencia Funcionalidad');
+('Mod Docencia Pixel', 'C_ModDocenciaP.php', 'Docencia Funcionalidad'),
+('Publicaciones Pixel', 'C_PublicacionesP.php', 'Consultar Publicaciones'),
+('Alta Publicaciones Pixel', 'C_AltaPublicacionesP.php', 'Publicaciones Funcionalidad'),
+('Mod Publicaciones Pixel', 'C_ModPublicacionesP.php', 'Publicaciones Funcionalidad');
 
 -- --------------------------------------------------------
 
@@ -331,6 +340,20 @@ INSERT INTO `ROLES` (`ROL_nombre`, `ROL_descripcion`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `S_LIBROS`
+--
+
+DROP TABLE IF EXISTS `S_LIBROS`;
+CREATE TABLE IF NOT EXISTS `S_LIBROS` (
+  `Titulo_Libro` varchar(20) COLLATE latin1_spanish_ci NOT NULL,
+  `ISBN` varchar(20) COLLATE latin1_spanish_ci NOT NULL,
+  `Fecha_Libro` date NOT NULL,
+  `Pais_Libro` varchar(10) COLLATE latin1_spanish_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `S_ARTICULO`
 --
 
@@ -345,7 +368,32 @@ CREATE TABLE IF NOT EXISTS `S_ARTICULO` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 
 -- --------------------------------------------------------
+--
+-- Estructura de tabla para la tabla `S_CONFERENCIAS`
+--
 
+DROP TABLE IF EXISTS `S_CONFERENCIAS`;
+CREATE TABLE IF NOT EXISTS `S_CONFERENCIAS` (
+  `Nombre_Conferencia` varchar(50) COLLATE latin1_spanish_ci NOT NULL,
+  `Charla_Conferencia` varchar(50) COLLATE latin1_spanish_ci NOT NULL,
+  `Fecha_Conferencia` date NOT NULL,
+  `IDConferencia` varchar(10) COLLATE latin1_spanish_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `S_CONFERENCIAS_ORG`
+--
+
+DROP TABLE IF EXISTS `S_CONFERENCIAS_ORG`;
+CREATE TABLE IF NOT EXISTS `S_CONFERENCIAS_ORG` (
+  `Titulo_Conferencia_Org` varchar(50) COLLATE latin1_spanish_ci NOT NULL,
+  `IDConferencia_Org` varchar(10) COLLATE latin1_spanish_ci NOT NULL,
+  `Fecha_Conferencia_Org` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
+
+-- --------------------------------------------------------
 --
 -- Estructura de tabla para la tabla `S_ASIGNADO`
 --
@@ -376,32 +424,7 @@ CREATE TABLE IF NOT EXISTS `S_AYUDANTES` (
 
 -- --------------------------------------------------------
 
---
--- Estructura de tabla para la tabla `S_CONFERENCIAS`
---
 
-DROP TABLE IF EXISTS `S_CONFERENCIAS`;
-CREATE TABLE IF NOT EXISTS `S_CONFERENCIAS` (
-  `Nombre_Conferencia` varchar(50) COLLATE latin1_spanish_ci NOT NULL,
-  `Charla_Conferencia` varchar(50) COLLATE latin1_spanish_ci NOT NULL,
-  `Fecha_Conferencia` date NOT NULL,
-  `IDConferencia` varchar(10) COLLATE latin1_spanish_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `S_CONFERENCIAS_ORG`
---
-
-DROP TABLE IF EXISTS `S_CONFERENCIAS_ORG`;
-CREATE TABLE IF NOT EXISTS `S_CONFERENCIAS_ORG` (
-  `Titulo_Conferencia_Org` varchar(50) COLLATE latin1_spanish_ci NOT NULL,
-  `IDConferencia_Org` varchar(10) COLLATE latin1_spanish_ci NOT NULL,
-  `Fecha_Conferencia_Org` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
-
--- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `S_CONTRATO`
@@ -489,19 +512,7 @@ INSERT INTO `S_INSTITUCIONES` (`IDInstitucion`, `Web_Institucion`, `IDImagen_Ins
 
 -- --------------------------------------------------------
 
---
--- Estructura de tabla para la tabla `S_LIBROS`
---
 
-DROP TABLE IF EXISTS `S_LIBROS`;
-CREATE TABLE IF NOT EXISTS `S_LIBROS` (
-  `Titulo_Libro` varchar(20) COLLATE latin1_spanish_ci NOT NULL,
-  `ISBN` varchar(20) COLLATE latin1_spanish_ci NOT NULL,
-  `Fecha_Libro` date NOT NULL,
-  `Pais_Libro` varchar(10) COLLATE latin1_spanish_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
-
--- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `S_MATERIAS`
