@@ -7,7 +7,7 @@ function __construct()
 {
 }
 
-function DisplayContent($idioma,$colaboracion)
+function DisplayContent($idioma,$MOD)
 {
 	global $NumporPags;
 	global $procesadores;
@@ -38,80 +38,18 @@ function DisplayContent($idioma,$colaboracion)
 				break;
 			}
 		?>
-						<input type="hidden" name="BORRAR" value="<?php echo $campoClave?>=><?php echo $colaboracion[$campoClave]?>"/>
+						<input type="hidden" name="BORRAR" value="<?php echo $campoClave?>=><?php echo $MOD[$campoClave]?>"/>
 			</form>
 			<div class="row">
 				<div class="col-md-12">
 					<form role="form" action="<?php echo $procesadores[$identificadoresPrivados["MColaboraciones"]]?>" method="POST">
 					<input type="hidden" name="TIPO" value="<?php echo $_POST["TIPO"]?>"/>
-					<input type="hidden" name="ClaveAnt" value="<?php echo $campoClave?>=><?php echo $colaboracion[$campoClave]?>" />
+					<input type="hidden" name="ClaveAnt" value="<?php echo $campoClave?>=><?php echo $MOD[$campoClave]?>" />
 					<?php
 					foreach($formularios[$identificadoresPrivados["MColaboraciones"].$_POST["TIPO"]] as $campos)
 					{
-						if (strpos(explode(":",$campos[2])[0],'js') !== false)
-						{
-							global $VALIDACIONFORMULARIO;
-							$VALIDACIONFORMULARIO =$VALIDACIONFORMULARIO. '
-							document.getElementById(\''.$campos[0].'\').addEventListener(\''.explode("|",explode(":",$campos[2])[1])[0].'\', function validar() {
-							  var todoCorrecto = true;
-							  todoCorrecto = '.explode("|",explode(":",$campos[2])[1])[1].';
-							  this.setCustomValidity(todoCorrecto ? \'\' : \''.explode("|",explode(":",$campos[2])[1])[2].'\');
-							});
-							';
-							
-							$campos[2] = str_replace ("js","",explode(":",$campos[2])[0]);
-						}
-						switch ($campos[1])
-						{
-							case 'textarea':
-							echo '
-								<div class="form-group">
-									<label class="control-label">'.$idioma[$campos[0]].'</label>
-									<textarea class="form-control" name="'.$campos[0].'" '.$campos[2].'">
-									'.$colaboracion[explode("-",$campos[0])[1]].'
-									</textarea>
-								</div>
-								';
-							break;
-							case 'select':
-							echo '
-							<div class="form-group">
-								<label for="'.$campos[0].'">'.$idioma[$campos[0]].'</label>
-								  <select name="'.$campos[0].'" id="'.$campos[0].'" class="form-control" '.$campos[2].'>
-								  ';
-								  switch (explode(":",$campos[3])[0])
-								  {
-									  case "sql":
-									  $opciones = TablaBD::ConsultaGenerica(explode(":",$campos[3])[1]);
-									  for ($i = 0 ; $i < $opciones->num_rows;$i = $i +1)
-									  {
-										  $dato = $opciones->fetch_assoc();
-										  echo '<option>'.$dato[array_keys($dato)[0]].'</option>';
-									  }
-									  break;
-								  }
-								echo '
-								  </select>
-							  </div>
-								';
-							break;
-							case 'number':
-							echo '
-								<div class="form-group">
-									<label class="control-label">'.$idioma[$campos[0]].'</label>
-									<input  type="'.$campos[1].'" name="'.$campos[0].'" value="'.$colaboracion[explode("-",$campos[0])[1]].'" '.$campos[2].' >
-								</div>
-								';
-							break;
-							default:
-							echo '
-								<div class="form-group">
-									<label class="control-label">'.$idioma[$campos[0]].'</label>
-									<input  type="'.$campos[1].'" class="form-control" value="'.$colaboracion[explode("-",$campos[0])[1]].'" name="'.$campos[0].'" '.$campos[2].' >
-								</div>
-								';
-							break;
-						}
+						global $generadorMod;
+						include $generadorMod;
 						
 					}
 					?>
@@ -134,7 +72,7 @@ function DisplayContent($idioma,$colaboracion)
 
 
 	$Mod = $_POST["MOD"];
-	$colaboracion = "";
+	$MOD = "";
 		//Consultamos datos
 try
 	{
@@ -142,15 +80,15 @@ try
 		{
 			case "I":
 			$consulta = $_TABLAINSTITUCIONES->ListadoRegistros(" where IDInstitucion = '".$Mod."'");
-			$colaboracion = $consulta->fetch_assoc();
+			$MOD = $consulta->fetch_assoc();
 			break;
 			case "G":
 			$consulta = $_TABLAGRUPOS->ListadoRegistros(" where IDGrupo = '".$Mod."'");
-			$colaboracion = $consulta->fetch_assoc();
+			$MOD = $consulta->fetch_assoc();
 			break;
 			case "E":
 			$consulta = $_TABLAEMPRESAS->ListadoRegistros(" where IDEmpresa = '".$Mod."'");
-			$colaboracion = $consulta->fetch_assoc();
+			$MOD = $consulta->fetch_assoc();
 			break;
 		}
 		
@@ -168,6 +106,6 @@ $princ_view = new ModColaboracionesPrivada();
 
 //Se procede a la creacion de la vista
 include_once$RutaRelativaControlador.'Comun/CabeceraPriv.php';
-$princ_view->DisplayContent($idioma,$colaboracion);
+$princ_view->DisplayContent($idioma,$MOD);
 include_once$RutaRelativaControlador.'Comun/Pie.php';
 ?>

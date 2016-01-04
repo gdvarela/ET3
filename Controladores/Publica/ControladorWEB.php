@@ -123,15 +123,11 @@ switch($PagID)
 	break;
 	case $identificadores['Transferencias']:
 		$princ_view = new Transferencia();
-		$princ_view->DisplayContent($idioma);
+		$princ_view->DisplayContent($idioma,$a,$b,$c);
 	break;
 	case $identificadores['Colaboraciones']:
 		$princ_view = new Colaboraciones();
 		$princ_view->DisplayContent($idioma,$e,$in,$g);
-	break;
-	case $identificadores['Publicaciones']:
-		$princ_view = new Publicaciones();
-		$princ_view->DisplayContent($idioma,$a,$b,$c);
 	break;
 	case $identificadores['Login']:
 		$princ_view = new Login();

@@ -44,7 +44,6 @@ $identificadores = array(
 'Prensa'=> 'P',
 'Transferencias'=> 'T',
 'Colaboraciones'=> 'C',
-'Publicaciones'=> 'Pu',
 'Login' => 'L'
 
 );
@@ -74,6 +73,10 @@ $identificadoresPrivados = array(
 'Docencia'=> 'DC',
 'ADocencia'=> 'ADC',
 'MDocencia'=> 'MDC',
+'Actividades'=> 'AP',
+'AActividades'=> 'AAP',
+'MActividades'=> 'MAP',
+'DActividades'=> 'DAP',
 'Administracion'=> 'G',
 'ERRORPERM' => 'ERRORPERM'
 );
@@ -85,8 +88,7 @@ $MenuPrincipal = array(
 'Miembros' => $identificadores['Miembros'],
 'Prensa'=> $identificadores['Prensa'],
 'Transferencias'=> $identificadores['Transferencias'],
-'Colaboraciones'=> $identificadores['Colaboraciones'],
-'Publicaciones'=> $identificadores['Publicaciones']
+'Colaboraciones'=> $identificadores['Colaboraciones']
 );
 
 //Array que contiene los indentificadores de las paginas que se mostraran la barra del menu principal
@@ -99,9 +101,11 @@ $MenuPrincipalPrivados = array(
 'Colaboraciones'=> $identificadoresPrivados['Colaboraciones'],
 'Docencia'=> $identificadoresPrivados['Docencia'],
 'Publicaciones'=> $identificadoresPrivados['Publicaciones'],
+'Actividades'=> $identificadoresPrivados['Actividades'],
 'Administracion'=> $identificadoresPrivados['Administracion']
 );
-
+$generador = $RutaRelativaControlador.'Comun/GeneradorAlta.php';
+$generadorMod = $RutaRelativaControlador.'Comun/GeneradorMod.php';
 //Rutas de las Distintas Vistas del sistema
 $vistas = array(
 	$identificadores['Home'] => $RutaRelativaControlador.'Vistas/Publicas/V_Home.php',
@@ -109,10 +113,8 @@ $vistas = array(
 	$identificadores['Prensa'] => $RutaRelativaControlador.'Vistas/Publicas/V_Prensa.php',
 	$identificadores['Transferencias'] => $RutaRelativaControlador.'Vistas/Publicas/V_Transferencia.php',
 	$identificadores['Colaboraciones'] => $RutaRelativaControlador.'Vistas/Publicas/V_Colaboraciones.php',
-	$identificadores['Publicaciones'] => $RutaRelativaControlador.'Vistas/Publicas/V_Publicaciones.php',
 	$identificadores['Login'] => $RutaRelativaControlador.'Vistas/Publicas/V_Login.php',
-	$identificadoresPrivados['Docencia'] => $RutaRelativaControlador.'Vistas/Privadas/V_DocenciaP.php',
-	
+		
 	$identificadoresPrivados['ERRORPERM'] => $RutaRelativaControlador.'Vistas/Privadas/V_ERRORP.php',
 	
 	$identificadoresPrivados['Home'] => $RutaRelativaControlador.'Vistas/Privadas/V_HomeP.php',
@@ -131,7 +133,11 @@ $vistas = array(
 	$identificadoresPrivados['Publicaciones'] => $RutaRelativaControlador.'Vistas/Privadas/V_PublicacionesP.php',
 	$identificadoresPrivados['APublicaciones'] => $RutaRelativaControlador.'Vistas/Privadas/V_AltaPublicacionesP.php',
 	$identificadoresPrivados['MPublicaciones'] => $RutaRelativaControlador.'Vistas/Privadas/V_ModPublicacionesP.php',
+	$identificadoresPrivados['Docencia'] => $RutaRelativaControlador.'Vistas/Privadas/V_DocenciaP.php',
 	$identificadoresPrivados['ADocencia'] => $RutaRelativaControlador.'Vistas/Privadas/V_AltaDocenciaP.php',
+	$identificadoresPrivados['Actividades'] => $RutaRelativaControlador.'Vistas/Privadas/V_ActividadesP.php',
+	$identificadoresPrivados['AActividades'] => $RutaRelativaControlador.'Vistas/Privadas/V_AltaActividadesP.php',
+	$identificadoresPrivados['MActividades'] => $RutaRelativaControlador.'Vistas/Privadas/V_ModActividadesP.php',
 );
   
 $controladores = array(
@@ -143,7 +149,6 @@ $controladores = array(
 	$identificadores['Prensa'] => $RutaRelativaControlador.'Controladores/Publica/ControladorWEB.php?PagMenu='.$identificadores['Prensa'],
 	$identificadores['Transferencias'] => $RutaRelativaControlador.'Controladores/Publica/ControladorWEB.php?PagMenu='.$identificadores['Transferencias'],
 	$identificadores['Colaboraciones'] => $RutaRelativaControlador.'Controladores/Publica/ControladorWEB.php?PagMenu='.$identificadores['Colaboraciones'],
-	$identificadores['Publicaciones'] => $RutaRelativaControlador.'Controladores/Publica/ControladorWEB.php?PagMenu='.$identificadores['Publicaciones'],
 	$identificadores['Login'] => $RutaRelativaControlador.'Controladores/Publica/ControladorWEB.php?PagMenu='.$identificadores['Login'],
 	$identificadoresPrivados['Home'] => $RutaRelativaControlador.'Controladores/Privada/C_HomeP.php',
 	$identificadoresPrivados['Miembros'] => $RutaRelativaControlador.'Controladores/Privada/C_MiembrosP.php',
@@ -152,6 +157,7 @@ $controladores = array(
 	$identificadoresPrivados['Colaboraciones'] => $RutaRelativaControlador.'Controladores/Privada/C_ColaboracionesP.php',
 	$identificadoresPrivados['Publicaciones'] => $RutaRelativaControlador.'Controladores/Privada/C_PublicacionesP.php',
 	$identificadoresPrivados['Docencia'] => $RutaRelativaControlador.'Controladores/Privada/C_DocenciaP.php',
+	$identificadoresPrivados['Actividades'] => $RutaRelativaControlador.'Controladores/Privada/C_ActividadesP.php',
 	
 	$identificadoresPrivados['AMiembros'] => $RutaRelativaControlador.'Controladores/Privada/C_AltaMiembrosP.php',
 	$identificadoresPrivados['APrensa'] => $RutaRelativaControlador.'Controladores/Privada/C_AltaPrensaP.php',
@@ -159,13 +165,15 @@ $controladores = array(
 	$identificadoresPrivados['ATransferencias'] => $RutaRelativaControlador.'Controladores/Privada/C_AltaTransferenciasP.php',
 	$identificadoresPrivados['APublicaciones'] => $RutaRelativaControlador.'Controladores/Privada/C_AltaPublicacionesP.php',
 	$identificadoresPrivados['ADocencia'] => $RutaRelativaControlador.'Controladores/Privada/C_AltaDocenciaP.php',
+	$identificadoresPrivados['AActividades'] => $RutaRelativaControlador.'Controladores/Privada/C_AltaActividadesP.php',
 	
 	$identificadoresPrivados['MMiembros'] => $RutaRelativaControlador.'Controladores/Privada/C_ModMiembrosP.php',
 	$identificadoresPrivados['MPrensa'] => $RutaRelativaControlador.'Controladores/Privada/C_ModPrensaP.php',
 	$identificadoresPrivados['MColaboraciones'] => $RutaRelativaControlador.'Controladores/Privada/C_ModColaboracionesP.php',
 	$identificadoresPrivados['MTransferencias'] => $RutaRelativaControlador.'Controladores/Privada/C_ModTransferenciasP.php',
 	$identificadoresPrivados['MPublicaciones'] => $RutaRelativaControlador.'Controladores/Privada/C_ModPublicacionesP.php',
-	$identificadoresPrivados['MDocencia'] => $RutaRelativaControlador.'Controladores/Privada/C_ModDocenciaP.php'
+	$identificadoresPrivados['MDocencia'] => $RutaRelativaControlador.'Controladores/Privada/C_ModDocenciaP.php',
+	$identificadoresPrivados['MActividades'] => $RutaRelativaControlador.'Controladores/Privada/C_ModActividadesP.php'
 	
 	
 );
@@ -193,7 +201,11 @@ $procesadores = array(
 	$identificadoresPrivados['MPublicaciones'] => $RutaRelativaControlador.'Controladores/Privada/Procesadores/ProcesaModPublicacionesP.php',
 	$identificadoresPrivados['DPublicaciones'] => $RutaRelativaControlador.'Controladores/Privada/Procesadores/ProcesaDelPublicacionesP.php',
 	
-	$identificadoresPrivados['ADocencia'] => $RutaRelativaControlador.'Controladores/Privada/Procesadores/ProcesaAltaDocenciaP.php'
+	$identificadoresPrivados['ADocencia'] => $RutaRelativaControlador.'Controladores/Privada/Procesadores/ProcesaAltaDocenciaP.php',
+	
+	$identificadoresPrivados['AActividades'] => $RutaRelativaControlador.'Controladores/Privada/Procesadores/ProcesaAltaActividadesP.php',
+	$identificadoresPrivados['MActividades'] => $RutaRelativaControlador.'Controladores/Privada/Procesadores/ProcesaModActividadesP.php',
+	$identificadoresPrivados['DActividades'] => $RutaRelativaControlador.'Controladores/Privada/Procesadores/ProcesaDelActividadesP.php'
 );
 
 //TODO METER IFS PARA HACER ESTAS COSAS SOLO CUANDO SEA NECESARIO
@@ -352,6 +364,40 @@ $_TABLADOCENCIA = new TablaBD(
 array(0,1)
 );
 
+$_TABLACONFERENCIASORG = new TablaBD(
+"S_CONFERENCIAS_ORG",
+	array(
+	"Titulo_Conferencia_Org" => "",
+	"IDConferencia_Org" => "",
+	"Fecha_Conferencia_Org" => ""
+	),
+array(1)
+);
+
+$_TABLAREVISTAS = new TablaBD(
+"S_REVISTAS",
+	array(
+	"Titulo_Revista" => "",
+	"ISSNOnline_Revista" => "",
+	"ISSN_Revista" => "",
+	"Fecha_Revista" => "",
+	"IDRevista" => ""
+	),
+array(4)
+);
+
+$_TABLATABLONEDITORIAL = new TablaBD(
+"S_TABLONEDITORIAL",
+	array(
+	"Titulo_Tablon" => "",
+	"ISSNOnline_Tablon" => "",
+	"ISSN_Tablon" => "",
+	"Fecha_Tablon" => "",
+	"IDRevista" => ""
+	),
+array(4)
+);
+
 //Patrones a usar en los formularios para la comprobacion de errores
 $PATRONPASS = ' pattern="^[^\s]{5,25}" '; //min 5 max 25  cualquiercosa distinto de expacio en blanco
 $PATRONUSU = ' pattern="^[^\s].{4,24}" '; //min 5 max 25 se incluye ^[^\s] que significa que no empiece por espacio en blanco
@@ -369,6 +415,8 @@ $OBLIGATORIO=" required ";
 // c2 -> funcion establecera si esta correcto o no. Debe estar creada y añadida en el archivo "Pie.php"
 // c3 -> mensaje de error que se mostrara en caso de campo incorrecto
 
+//El nombre del campo multicheck es concreto debe ser MP-MP-[TablaDondeVanLosDatos]@[CampoDeLosDatos]
+// cuando se procese un Alta de unu formuulario donde se ponga un Multichek de esos, todos los valores chekeados se insertaran e la tabla [TablaDondeVanLosDatos]
 $formularios = array(
 	$identificadoresPrivados['AMiembros'] => 
 	array(
@@ -468,7 +516,8 @@ $formularios = array(
 	array(
 		array( 'MP-Nombre_Proyecto','text', "$OBLIGATORIO"),
 		array( 'MP-Descripcion_Proyecto','textarea', ""),
-		array( 'MP-IDProyecto','text', "$OBLIGATORIO $PATRONID")
+		array( 'MP-IDProyecto','text', "$OBLIGATORIO $PATRONID"),
+		array( 'MP-MC-S_ASIGNADO@IDParticipante','multiCheck', "","sql:Select IDParticipantes from S_PARTICIPANTES","")
 	),
 	$identificadoresPrivados['ATransferencias']."CO" => 
 	array(
@@ -488,7 +537,8 @@ $formularios = array(
 	array(
 		array( 'MP-Nombre_Proyecto','text', "$OBLIGATORIO"),
 		array( 'MP-Descripcion_Proyecto','textarea', ""),
-		array( 'MP-IDProyecto','text', "$OBLIGATORIO $PATRONID")
+		array( 'MP-IDProyecto','text', "$OBLIGATORIO $PATRONID"),
+		array( 'MP-MC-S_ASIGNADO@IDParticipante','multiCheck', "","sql:Select IDParticipantes from S_PARTICIPANTES","sql:Select IDParticipante from S_ASIGNADO WHERE IDProyecto='%d'")
 	),
 	$identificadoresPrivados['MTransferencias']."CO" => 
 	array(
@@ -556,7 +606,51 @@ $formularios = array(
 		array( 'MP-Login','select', "$OBLIGATORIO", "sql:Select Login from USUARIOS "),
 		array( 'MP-FechaIni_Materia','date', "$OBLIGATORIO js:blur|MayorMenor('MP-FechaFin_Materia','MP-FechaIni_Materia')|Fecha Erronea, supera la de Fin"),
 		array( 'MP-FechaFin_Materia','date', "$OBLIGATORIO js:blur|MayorMenor('MP-FechaFin_Materia','MP-FechaIni_Materia')|Fecha Erronea, inferior a la de Inicio")
-		)
+		),
+	$identificadoresPrivados['AActividades']."ED" => 
+	array(
+		array( 'MP-Titulo_Tablon','text', "$OBLIGATORIO"),
+		array( 'MP-ISSNOnline_Tablon','text', "$OBLIGATORIO"),
+		array( 'MP-ISSN_Tablon','text', "$OBLIGATORIO"),
+		array( 'MP-Fecha_Tablon','date', "$OBLIGATORIO"),
+		array( 'MP-IDTablon','text', "$OBLIGATORIO")
+	),
+	$identificadoresPrivados['AActividades']."RE" => 
+	array(
+		array( 'MP-Titulo_Revista','text', "$OBLIGATORIO"),
+		array( 'MP-ISSNOnline_Revista','text', "$OBLIGATORIO"),
+		array( 'MP-ISSN_Revista','text', "$OBLIGATORIO"),
+		array( 'MP-Fecha_Revista','date', "$OBLIGATORIO"),
+		array( 'MP-IDRevista','text', "$OBLIGATORIO")
+	),
+	$identificadoresPrivados['AActividades']."CON" => 
+	array(
+		array( 'MP-Titulo_Conferencia_Org','text', "$OBLIGATORIO"),
+		array( 'MP-IDConferencia_Org','text', "$OBLIGATORIO"),
+		array( 'MP-Fecha_Conferencia_Org','date', "")
+	),
+	$identificadoresPrivados['MActividades']."ED" => 
+	array(
+		array( 'MP-Titulo_Tablon','text', "$OBLIGATORIO"),
+		array( 'MP-ISSNOnline_Tablon','text', "$OBLIGATORIO"),
+		array( 'MP-ISSN_Tablon','text', "$OBLIGATORIO"),
+		array( 'MP-Fecha_Tablon','date', "$OBLIGATORIO"),
+		array( 'MP-IDTablon','text', "$OBLIGATORIO")
+	),
+	$identificadoresPrivados['MActividades']."RE" => 
+	array(
+		array( 'MP-Titulo_Revista','text', "$OBLIGATORIO"),
+		array( 'MP-ISSNOnline_Revista','text', "$OBLIGATORIO"),
+		array( 'MP-ISSN_Revista','text', "$OBLIGATORIO"),
+		array( 'MP-Fecha_Revista','date', "$OBLIGATORIO"),
+		array( 'MP-IDRevista','text', "$OBLIGATORIO")
+	),
+	$identificadoresPrivados['MActividades']."CON" => 
+	array(
+		array( 'MP-Titulo_Conferencia_Org','text', "$OBLIGATORIO"),
+		array( 'MP-IDConferencia_Org','text', "$OBLIGATORIO"),
+		array( 'MP-Fecha_Conferencia_Org','date', "")
+	)
 );
 
 // ESTA VARIABLE NO SE MODIFICA DIRECTAMENTE, ES VARIABLE GLOBAL Y NO SE DEBE MODIFICAR

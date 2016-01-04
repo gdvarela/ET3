@@ -29,6 +29,7 @@ Class TablaBD
 		$BD = new BaseDatosControl();
 		print_r($datos);
 		$sql = "UPDATE  ".$this->nombreTabla." SET ";
+		$SQLBORRADO = "";
 		$sql2 = array();
 		$primero = true;
 		foreach ($datos as $k => $v)
@@ -38,6 +39,10 @@ Class TablaBD
 			$kf = explode("-",$k)[1];
 			if ($kf == "MC")
 			{
+				if ($SQLBORRADO == "")
+				{
+					$SQLBORRADO = "Delete From ".explode("@",explode("-",$k)[2])[0] ." WHERE ".explode("=>",$datos["ClaveAnt"])[0]."='".explode("=>",$datos["ClaveAnt"])[1]."' ";
+				}
 				$sql2[] = "Insert into ".explode("@",explode("-",$k)[2])[0]." (".explode("@",explode("-",$k)[2])[1].",". array_keys ($this->arrayCampos)[$this->arrayClaves[0]].") values ('".
 				explode("-",$k)[3]."','".$datos["MP-".array_keys ($this->arrayCampos)[$this->arrayClaves[0]]]."');";
 				continue;
@@ -67,7 +72,9 @@ Class TablaBD
 			$sql = $sql. " AND  ".explode("=>",$v)[0]." =  '".explode("=>",$v)[1]."'";
 		}
 		echo $sql;
+		echo $SQLBORRADO;
 		$BD->OperacionGenericaBD($sql,'ACT ERR U');
+		$BD->OperacionGenericaBD($SQLBORRADO,'ACT ERR U');
 		for ($i = 0; $i < count($sql2);$i = $i+1)
 		{
 			$BD->OperacionGenericaBD($sql2[$i],"");

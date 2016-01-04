@@ -1,6 +1,6 @@
 <?php
 
-Class ModPublicacionesPrivada
+Class ModActividadesPrivada
 {
 
 function __construct()
@@ -19,22 +19,22 @@ function DisplayContent($idioma,$MOD)
 ?>
 		<section id="content">
 	<div class="container">
-		<form id="borrarActual" action="<?php echo $procesadores[$identificadoresPrivados["DPublicaciones"]]?>" method="POST">
+		<form id="borrarActual" action="<?php echo $procesadores[$identificadoresPrivados["DActividades"]]?>" method="POST">
 		<?php
 			$campoClave = "";
 			switch ($_POST["TIPO"])
 			{
-				case "L":
-				$campoClave = "ISBN";
-				echo "<input type='hidden' name='TIPO' value='L'/>";
+				case "ED":
+				$campoClave = "IDTablon";
+				echo "<input type='hidden' name='TIPO' value='ED'/>";
 				break;
-				case "A":
-				$campoClave = "IDArticulo";
-				echo "<input type='hidden' name='TIPO' value='A'/>";
+				case "RE":
+				$campoClave = "IDRevista";
+				echo "<input type='hidden' name='TIPO' value='RE'/>";
 				break;
-				case "C":
-				$campoClave = "IDConferencia";
-				echo "<input type='hidden' name='TIPO' value='C'/>";
+				case "CON":
+				$campoClave = "IDConferencia_Org";
+				echo "<input type='hidden' name='TIPO' value='CON'/>";
 				break;
 			}
 		?>
@@ -42,11 +42,11 @@ function DisplayContent($idioma,$MOD)
 			</form>
 			<div class="row">
 				<div class="col-md-12">
-					<form role="form" action="<?php echo $procesadores[$identificadoresPrivados["MPublicaciones"]]?>" method="POST">
+					<form role="form" action="<?php echo $procesadores[$identificadoresPrivados["MActividades"]]?>" method="POST">
 					<input type="hidden" name="TIPO" value="<?php echo $_POST["TIPO"]?>"/>
 					<input type="hidden" name="ClaveAnt" value="<?php echo $campoClave?>=><?php echo $MOD[$campoClave]?>" />
 					<?php
-					foreach($formularios[$identificadoresPrivados["MPublicaciones"].$_POST["TIPO"]] as $campos)
+					foreach($formularios[$identificadoresPrivados["MActividades"].$_POST["TIPO"]] as $campos)
 					{
 						global $generadorMod;
 						include $generadorMod;
@@ -72,23 +72,23 @@ function DisplayContent($idioma,$MOD)
 
 
 	$Mod = $_POST["MOD"];
-	$MOD = "";
+	$publicacion = "";
 		//Consultamos datos
 try
 	{
 		switch ($_POST["TIPO"])
 		{
-			case "L":
-			$consulta = $_TABLALIBROS->ListadoRegistros(" where ISBN = '".$Mod."'");
-			$MOD = $consulta->fetch_assoc();
+			case "ED":
+			$consulta = $_TABLATABLONEDITORIAL->ListadoRegistros(" where IDTablon = '".$Mod."'");
+			$publicacion = $consulta->fetch_assoc();
 			break;
-			case "A":
-			$consulta = $_TABLAARTICULOS->ListadoRegistros(" where IDArticulo = '".$Mod."'");
-			$MOD = $consulta->fetch_assoc();
+			case "RE":
+			$consulta = $_TABLAREVISTAS->ListadoRegistros(" where IDRevista = '".$Mod."'");
+			$publicacion = $consulta->fetch_assoc();
 			break;
-			case "C":
-			$consulta = $_TABLACONFERENCIAS->ListadoRegistros(" where IDConferencia = '".$Mod."'");
-			$MOD = $consulta->fetch_assoc();
+			case "CON":
+			$consulta = $_TABLACONFERENCIASORG->ListadoRegistros(" where IDConferencia_Org = '".$Mod."'");
+			$publicacion = $consulta->fetch_assoc();
 			break;
 		}
 		
@@ -102,10 +102,10 @@ try
 	}
 		
 //Inicializamos la vista Correspondiente
-$princ_view = new ModPublicacionesPrivada();
+$princ_view = new ModActividadesPrivada();
 
 //Se procede a la creacion de la vista
 include_once$RutaRelativaControlador.'Comun/CabeceraPriv.php';
-$princ_view->DisplayContent($idioma,$MOD);
+$princ_view->DisplayContent($idioma,$publicacion);
 include_once$RutaRelativaControlador.'Comun/Pie.php';
 ?>

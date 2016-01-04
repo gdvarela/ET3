@@ -1,30 +1,35 @@
-<?php 
-Class Transferencia
+<?php
+
+Class Actividades
 {
 
 function __construct()
 {
 }
 
-function DisplayContent($idioma,$Pa,$Po,$Co)
+function DisplayContent($idioma,$ED,$RE,$Conf)
 {
 	global $RutaRelativaControlador;
 	//Aqui va el cuerpo principal de la pagina
 ?>
 	<section id="content">
-	<div class="container">	 
-		
-	  <div class="row">
+		<div class="container content">		
+        <div class="row">
             <div class="col-md-4">
               <div class="panel panel-primary">
                 <div class="panel-heading">
-                  <h3 class="panel-title"><?php echo $idioma["Patente"]."s"?></h3>
+                  <h3 class="panel-title"><?php echo $idioma["Editorial"]."s"?></h3>
                 </div>
 				<ul class="list-group">
 				<?php
-					foreach($Pa as $e)
+					foreach($ED as $e)
 					{
-						echo '<li class="list-group-item"><i>'.$e["Nombre_Patente"].'</i><br>-<b> '.$idioma["Fecha"].':</b> '.$e["Fecha_Patente"].'
+						echo '<li class="list-group-item">
+						<blockquote>
+							<p>
+									'.$e["Titulo_Tablon"].'
+							</p> <small> '.$e["ISSN_Tablon"].', <cite>'.$e["Fecha_Tablon"].'</cite></small>
+						</blockquote>
 						</li>';
 					}
 				?>
@@ -35,13 +40,18 @@ function DisplayContent($idioma,$Pa,$Po,$Co)
 			<div class="col-md-4">
               <div class="panel panel-primary">
                 <div class="panel-heading">
-                  <h3 class="panel-title"><?php echo $idioma["Proyecto"]."s"?></h3>
+                  <h3 class="panel-title"><?php echo $idioma["Revista"]."s"?></h3>
                 </div>
 				<ul class="list-group">
 					<?php
-					foreach($Po as $e)
+					foreach($RE as $e)
 					{
-						echo '<li class="list-group-item"><i>'.$e["Nombre_Proyecto"].'</i><br>-<b>'.$idioma["Descripcion"].':</b> '.$e["Descripcion_Proyecto"].'
+						echo '<li class="list-group-item">
+						<blockquote>
+							<p>
+									'.$e["Titulo_Revista"].'
+							</p> <small> '.$e["ISSN_Revista"].', <cite>'.$e["Fecha_Revista"].'</cite></small>
+						</blockquote>
 						</li>';
 					}
 				?>
@@ -51,22 +61,21 @@ function DisplayContent($idioma,$Pa,$Po,$Co)
 			<div class="col-md-4">
               <div class="panel panel-primary">
                 <div class="panel-heading">
-                  <h3 class="panel-title"><?php echo $idioma["Contrato"]."s"?></h3>
+                  <h3 class="panel-title"><?php echo $idioma["ConferenciaG"]?></h3>
                 </div>
 				<ul class="list-group">
 					<?php
-					foreach($Co as $e)
+					foreach($Conf as $e)
 					{
-						echo '<li class="list-group-item"><i>'.$e["Nombre_Contrato"].'</i><br>-<b>ID '.$idioma["Empresa"].':</b> '.$e["IDEmpresa"].'<br>-<b>'.$idioma["Duracion"].':</b> '.$e["FechaIni_Contrato"].' || '.$e["FechaFin_Contrato"].'
-					</li>';
+						echo '<li class="list-group-item">'.$e["Titulo_Conferencia_Org"].'<br>-'.$e["Fecha_Conferencia_Org"].'</li>';
 					}
 				?>
 				  </ul>
               </div>
             </div>
           </div>
-	</div>
-	</section>
+    </div>
+    </section>
 	<?php
 
 }
@@ -78,19 +87,19 @@ function DisplayContent($idioma,$Pa,$Po,$Co)
 	//Consultamos datos
 	try
 	{
-		$consulta = $_TABLAPATENTES->ListadoRegistros("");
+		$consulta = $_TABLALIBROS->ListadoRegistros("");
 		//Con los datos los cargamos en el array
 		for ($i = 0; $i < $consulta->num_rows ;$i++)
 		{
 			$a[] = $consulta->fetch_assoc();
 		}
-		$consulta = $_TABLAPROYECTOS->ListadoRegistros("");
+		$consulta = $_TABLAARTICULOS->ListadoRegistros("");
 		//Con los datos los cargamos en el array
 		for ($i = 0; $i < $consulta->num_rows ;$i++)
 		{
 			$b[] = $consulta->fetch_assoc();
 		}
-		$consulta = $_TABLACONTRATOS->ListadoRegistros("");
+		$consulta = $_TABLACONFERENCIAS->ListadoRegistros("");
 		//Con los datos los cargamos en el array
 		for ($i = 0; $i < $consulta->num_rows ;$i++)
 		{
@@ -102,4 +111,7 @@ function DisplayContent($idioma,$Pa,$Po,$Co)
 		$errorRescrito = explode("=>",$e->getMessage());
 		$_SESSION['error'] = 'CON ERR MIEMBROS'."=>".$errorRescrito[1];
 	}
+
+
+
 ?>

@@ -1,6 +1,6 @@
 <?php
 
-Class AltaColaboracionesPrivada
+Class AltaActividadesPrivada
 {
 
 function __construct()
@@ -21,10 +21,10 @@ function DisplayContent($idioma)
 		<div class="container">
 					  <div class="row">
 				<div class="col-md-12">
-					<form role="form" action="<?php echo $procesadores[$identificadoresPrivados["AColaboraciones"]]?>" method="POST">
+					<form role="form" action="<?php echo $procesadores[$identificadoresPrivados["AActividades"]]?>" method="POST">
 					<input type="hidden" name="TIPO" value="<?php echo $_POST["TIPO"]?>"/>
 					<?php
-					foreach($formularios[$identificadoresPrivados["AColaboraciones"].$_POST["TIPO"]] as $campos)
+					foreach($formularios[$identificadoresPrivados["AActividades"].$_POST["TIPO"]] as $campos)
 					{
 						global $generador;
 						include $generador;
@@ -46,7 +46,7 @@ function DisplayContent($idioma)
 }
 	
 //Inicializamos la vista Correspondiente
-$princ_view = new AltaColaboracionesPrivada();
+$princ_view = new AltaActividadesPrivada();
 
 //Se procede a la creacion de la vista
 include_once$RutaRelativaControlador.'Comun/CabeceraPriv.php';

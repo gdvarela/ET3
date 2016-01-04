@@ -216,6 +216,9 @@ INSERT INTO `IMPLEMENTADA_EN` (`FUN_nombre`, `PAG_nombre`) VALUES
 ('Administrar PIXEL', 'Publicaciones Pixel'),
 ('Administrar PIXEL', 'Alta Publicaciones Pixel'),
 ('Administrar PIXEL', 'Mod Publicaciones Pixel'),
+('Administrar PIXEL', 'Actividades Pixel'),
+('Administrar PIXEL', 'Alta Actividades Pixel'),
+('Administrar PIXEL', 'Mod Actividades Pixel'),
 
 ('Usar PIXEL', 'Home Pixel'),
 ('Usar PIXEL', 'Miembros Pixel'),
@@ -227,7 +230,10 @@ INSERT INTO `IMPLEMENTADA_EN` (`FUN_nombre`, `PAG_nombre`) VALUES
 ('Usar PIXEL', 'Mod Docencia Pixel'),
 ('Usar PIXEL', 'Publicaciones Pixel'),
 ('Usar PIXEL', 'Alta Publicaciones Pixel'),
-('Usar PIXEL', 'Mod Publicaciones Pixel');
+('Usar PIXEL', 'Mod Publicaciones Pixel'),
+('Usar PIXEL', 'Actividades Pixel'),
+('Usar PIXEL', 'Alta Actividades Pixel'),
+('Usar PIXEL', 'Mod Actividades Pixel');
 
 -- --------------------------------------------------------
 
@@ -286,7 +292,10 @@ INSERT INTO `PAGINAS` (`PAG_nombre`, `PAG_ubicacion`, `PAG_descripcion`) VALUES
 ('Mod Docencia Pixel', 'C_ModDocenciaP.php', 'Docencia Funcionalidad'),
 ('Publicaciones Pixel', 'C_PublicacionesP.php', 'Consultar Publicaciones'),
 ('Alta Publicaciones Pixel', 'C_AltaPublicacionesP.php', 'Publicaciones Funcionalidad'),
-('Mod Publicaciones Pixel', 'C_ModPublicacionesP.php', 'Publicaciones Funcionalidad');
+('Mod Publicaciones Pixel', 'C_ModPublicacionesP.php', 'Publicaciones Funcionalidad'),
+('Actividades Pixel', 'C_ActividadesP.php', 'Consultar Actividades'),
+('Alta Actividades Pixel', 'C_AltaActividadesP.php', 'Actividades Funcionalidad'),
+('Mod Actividades Pixel', 'C_ModActividadesP.php', 'Actividades Funcionalidad');
 
 -- --------------------------------------------------------
 
@@ -382,18 +391,7 @@ CREATE TABLE IF NOT EXISTS `S_CONFERENCIAS` (
 
 -- --------------------------------------------------------
 
---
--- Estructura de tabla para la tabla `S_CONFERENCIAS_ORG`
---
 
-DROP TABLE IF EXISTS `S_CONFERENCIAS_ORG`;
-CREATE TABLE IF NOT EXISTS `S_CONFERENCIAS_ORG` (
-  `Titulo_Conferencia_Org` varchar(50) COLLATE latin1_spanish_ci NOT NULL,
-  `IDConferencia_Org` varchar(10) COLLATE latin1_spanish_ci NOT NULL,
-  `Fecha_Conferencia_Org` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
-
--- --------------------------------------------------------
 --
 -- Estructura de tabla para la tabla `S_ASIGNADO`
 --
@@ -630,6 +628,19 @@ INSERT INTO `S_PROYECTO` (`Nombre_Proyecto`, `Descripcion_Proyecto`, `IDProyecto
 ('Nombre 2', 'Proyecto para crear algo',"Po2");
 INSERT INTO `S_PROYECTO` (`Nombre_Proyecto`, `Descripcion_Proyecto`, `IDProyecto`) VALUES
 ('Nombre 3', 'Proyecto para descubrir algo',"Po3");
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `S_CONFERENCIAS_ORG`
+--
+
+DROP TABLE IF EXISTS `S_CONFERENCIAS_ORG`;
+CREATE TABLE IF NOT EXISTS `S_CONFERENCIAS_ORG` (
+  `Titulo_Conferencia_Org` varchar(50) COLLATE latin1_spanish_ci NOT NULL,
+  `IDConferencia_Org` varchar(10) COLLATE latin1_spanish_ci NOT NULL,
+  `Fecha_Conferencia_Org` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 
 -- --------------------------------------------------------
 

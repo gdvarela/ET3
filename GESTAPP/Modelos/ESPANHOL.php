@@ -304,6 +304,9 @@ PIXEL
 'PagNameCP' => 'Colaboraciones',
 'PagNameACP' => 'Alta Colaboraciones',
 'PagNameMCP' => 'Modificar Colaboraciones',
+'PagNameAP' => 'Actividades',
+'PagNameAAP' => 'Alta Actividades',
+'PagNameMAP' => 'Modificar Actividades',
 'PagNameG' => 'GESTAPP',
 'PagNameERRORPERM' => '¡Lo Sentimos!',
 
@@ -390,7 +393,7 @@ PIXEL
 'MP-FechaIni_Contrato'=> 'Fecha de Inicio',
 'MP-FechaFin_Contrato'=> 'Fecha de Fin',
 'MP-IDEmpresa'=> 'Empresa Asociada',
-
+'MP-MC-S_ASIGNADO@IDParticipante' => 'Participantes en el Proyecto',
 
 'Alta_PA' => "Nueva Patente",
 'Descripcion' => "Descripcion",
@@ -421,9 +424,9 @@ PIXEL
 'MP-Charla_Conferencia'=> 'Charla Conferencia',
 'MP-Fecha_Conferencia'=> 'Fecha de la Conferencia',
 'MP-IDConferencia'=> 'Identificador Conferencia',
-'MP-MC-S_USUARIO_LIBRO@Login'=> 'Publicaciones Miembros',
-'MP-MC-S_USUARIO_ARTICULO@Login'=> 'Publicaciones Miembros',
-'MP-MC-S_USUARIO_CONFERENCIA@Login'=> 'Publicaciones Miembros',
+'MP-MC-S_USUARIO_LIBRO@Login'=> 'Miembros que lo Publican',
+'MP-MC-S_USUARIO_ARTICULO@Login'=> 'Miembros Creadores o Mencionados',
+'MP-MC-S_USUARIO_CONFERENCIA@Login'=> 'Miembros que participan',
 
 
 "Libro" => "Libro",
@@ -441,7 +444,30 @@ PIXEL
 'MP-Login' => 'Profesor',
 'MP-FechaIni_Materia' => 'Fecha Inicio',
 'MP-FechaFin_Materia' => 'Fecha Fin',
+//Actividades
 
+'MP-Titulo_Conferencia_Org' => 'Titulo de la Conferencia',
+'MP-IDConferencia_Org'=> 'Identificador',
+'MP-Fecha_Conferencia_Org' => 'Fecha de la Conferencia',
+'MP-Titulo_Revista'=> 'Titulo de la Revista',
+'MP-ISSNOnline_Revista' => 'ISSN Online Revista ',
+'MP-Fecha_Revista'=> 'Fecha de la Revista',
+'MP-IDRevista'=> 'Identificador',
+'MP-Titulo_Tablon'=> 'Titulo del Tablon',
+'MP-ISSNOnline_Tablon'=> 'ISSN Online Tablon',
+'MP-ISSN_Tablon'=> 'ISSN Tablon',
+'MP-Fecha_Tablon'=> 'Fecha Tablon',
+'MP-IDTablon'=> 'Identificador del Tablon',
+
+
+"Editorial" => "Editorial",
+	"Revista" => "Revista",
+	"ConferenciaG" => "Conferencia de Grupo",
+
+'Alta_ED' => "Nueva Editorial",
+'Alta_RE' => "Nueva Revista",
+'Alta_CON' => "Nueva Conferencia", 
+	'ID CONCRETO REPETIDO A' => "El ID de de la Editorial, Revista o Conferencia ya Existe",
 //Pagina HOME
 
 'Globex' => 'Globex',

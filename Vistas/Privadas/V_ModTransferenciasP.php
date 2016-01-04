@@ -7,7 +7,7 @@ function __construct()
 {
 }
 
-function DisplayContent($idioma,$Transferencia)
+function DisplayContent($idioma,$MOD)
 {
 	global $NumporPags;
 	global $procesadores;
@@ -38,80 +38,18 @@ function DisplayContent($idioma,$Transferencia)
 				break;
 			}
 		?>
-						<input type="hidden" name="BORRAR" value="<?php echo $campoClave?>=><?php echo $Transferencia[$campoClave]?>"/>
+						<input type="hidden" name="BORRAR" value="<?php echo $campoClave?>=><?php echo $MOD[$campoClave]?>"/>
 			</form>
 			<div class="row">
 				<div class="col-md-12">
 					<form role="form" action="<?php echo $procesadores[$identificadoresPrivados["MTransferencias"]]?>" method="POST">
 					<input type="hidden" name="TIPO" value="<?php echo $_POST["TIPO"]?>"/>
-					<input type="hidden" name="ClaveAnt" value="<?php echo $campoClave?>=><?php echo $Transferencia[$campoClave]?>" />
+					<input type="hidden" name="ClaveAnt" value="<?php echo $campoClave?>=><?php echo $MOD[$campoClave]?>" />
 					<?php
 					foreach($formularios[$identificadoresPrivados["MTransferencias"].$_POST["TIPO"]] as $campos)
 					{
-						if (strpos(explode(":",$campos[2])[0],'js') !== false)
-						{
-							global $VALIDACIONFORMULARIO;
-							$VALIDACIONFORMULARIO =$VALIDACIONFORMULARIO. '
-							document.getElementById(\''.$campos[0].'\').addEventListener(\''.explode("|",explode(":",$campos[2])[1])[0].'\', function validar() {
-							  var todoCorrecto = true;
-							  todoCorrecto = '.explode("|",explode(":",$campos[2])[1])[1].';
-							  this.setCustomValidity(todoCorrecto ? \'\' : \''.explode("|",explode(":",$campos[2])[1])[2].'\');
-							});
-							';
-							
-							$campos[2] = str_replace ("js","",explode(":",$campos[2])[0]);
-						}
-						switch ($campos[1])
-						{
-							case 'textarea':
-							echo '
-								<div class="form-group">
-									<label class="control-label">'.$idioma[$campos[0]].'</label>
-									<textarea class="form-control" name="'.$campos[0].'" '.$campos[2].'">
-									'.$Transferencia[explode("-",$campos[0])[1]].'
-									</textarea>
-								</div>
-								';
-							break;
-							case 'select':
-							echo '
-							<div class="form-group">
-								<label for="'.$campos[0].'">'.$idioma[$campos[0]].'</label>
-								  <select name="'.$campos[0].'" id="'.$campos[0].'" class="form-control" '.$campos[2].'>
-								  ';
-								  switch (explode(":",$campos[3])[0])
-								  {
-									  case "sql":
-									  $opciones = TablaBD::ConsultaGenerica(explode(":",$campos[3])[1]);
-									  for ($i = 0 ; $i < $opciones->num_rows;$i = $i +1)
-									  {
-										  $dato = $opciones->fetch_assoc();
-										  echo '<option>'.$dato[array_keys($dato)[0]].'</option>';
-									  }
-									  break;
-								  }
-								echo '
-								  </select>
-							  </div>
-								';
-							break;
-							case 'number':
-							echo '
-								<div class="form-group">
-									<label class="control-label">'.$idioma[$campos[0]].'</label>
-									<input  type="'.$campos[1].'" name="'.$campos[0].'" value="'.$Transferencia[explode("-",$campos[0])[1]].'" '.$campos[2].' >
-								</div>
-								';
-							break;
-							default:
-							echo '
-								<div class="form-group">
-									<label class="control-label">'.$idioma[$campos[0]].'</label>
-									<input  type="'.$campos[1].'" class="form-control" value="'.$Transferencia[explode("-",$campos[0])[1]].'" name="'.$campos[0].'" '.$campos[2].' >
-								</div>
-								';
-							break;
-						}
+						global $generadorMod;
+						include $generadorMod;
 						
 					}
 					?>
