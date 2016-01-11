@@ -135,6 +135,7 @@ $vistas = array(
 	$identificadoresPrivados['MPublicaciones'] => $RutaRelativaControlador.'Vistas/Privadas/V_ModPublicacionesP.php',
 	$identificadoresPrivados['Docencia'] => $RutaRelativaControlador.'Vistas/Privadas/V_DocenciaP.php',
 	$identificadoresPrivados['ADocencia'] => $RutaRelativaControlador.'Vistas/Privadas/V_AltaDocenciaP.php',
+	$identificadoresPrivados['MDocencia'] => $RutaRelativaControlador.'Vistas/Privadas/V_ModDocenciaP.php',
 	$identificadoresPrivados['Actividades'] => $RutaRelativaControlador.'Vistas/Privadas/V_ActividadesP.php',
 	$identificadoresPrivados['AActividades'] => $RutaRelativaControlador.'Vistas/Privadas/V_AltaActividadesP.php',
 	$identificadoresPrivados['MActividades'] => $RutaRelativaControlador.'Vistas/Privadas/V_ModActividadesP.php',
@@ -202,6 +203,7 @@ $procesadores = array(
 	$identificadoresPrivados['DPublicaciones'] => $RutaRelativaControlador.'Controladores/Privada/Procesadores/ProcesaDelPublicacionesP.php',
 	
 	$identificadoresPrivados['ADocencia'] => $RutaRelativaControlador.'Controladores/Privada/Procesadores/ProcesaAltaDocenciaP.php',
+	$identificadoresPrivados['MDocencia'] => $RutaRelativaControlador.'Controladores/Privada/Procesadores/ProcesaModDocenciaP.php',
 	
 	$identificadoresPrivados['AActividades'] => $RutaRelativaControlador.'Controladores/Privada/Procesadores/ProcesaAltaActividadesP.php',
 	$identificadoresPrivados['MActividades'] => $RutaRelativaControlador.'Controladores/Privada/Procesadores/ProcesaModActividadesP.php',
@@ -601,6 +603,13 @@ $formularios = array(
 		array( 'MP-MC-S_USUARIO_CONFERENCIA@Login','multiCheck', "","sql:Select Login from USUARIOS where Login IN (Select login from HACE_DE where ROL_nombre = '".$ROLMIEMBRO."')","sql:Select distinct Login from S_USUARIO_CONFERENCIA WHERE IDConferencia='%d'")
 	),
 	$identificadoresPrivados['ADocencia'] => 
+	array(
+		array( 'MP-IDMateria','select', "$OBLIGATORIO", "sql:Select IDMateria from S_MATERIAS"),
+		array( 'MP-Login','select', "$OBLIGATORIO", "sql:Select Login from USUARIOS "),
+		array( 'MP-FechaIni_Materia','date', "$OBLIGATORIO js:blur|MayorMenor('MP-FechaFin_Materia','MP-FechaIni_Materia')|Fecha Erronea, supera la de Fin"),
+		array( 'MP-FechaFin_Materia','date', "$OBLIGATORIO js:blur|MayorMenor('MP-FechaFin_Materia','MP-FechaIni_Materia')|Fecha Erronea, inferior a la de Inicio")
+		),
+	$identificadoresPrivados['MDocencia'] => 
 	array(
 		array( 'MP-IDMateria','select', "$OBLIGATORIO", "sql:Select IDMateria from S_MATERIAS"),
 		array( 'MP-Login','select', "$OBLIGATORIO", "sql:Select Login from USUARIOS "),
