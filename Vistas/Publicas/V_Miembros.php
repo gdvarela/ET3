@@ -1,5 +1,12 @@
 <?php
 
+//=====================================================================================================================
+// Fichero :V_Miembros.php
+// Creado por : Francisco Rojas Rodriguez
+// Fecha : 18/12/2015
+// Clase que contiene una de las vistas del sistema
+//=====================================================================================================================
+
 Class Miembros
 {
 
@@ -57,6 +64,9 @@ function DisplayContent($idioma,$arrayObjetos)
 								</div>
 								<br>'
 							<?php 
+							//Se recorren los datos recibidos para incluirlos en el HTML
+							// En este caso se llama a una funcion de escritura para adaptar el numero de usuarios en cada momento de la BD para mostrarlos de forma comoda
+							// no sera la misma vista con 2 miembros que con 20
 								$this->mostrarMiembro($arrayObjetos);
 							?>
 							
@@ -69,11 +79,9 @@ function DisplayContent($idioma,$arrayObjetos)
 
 }
 
-
+	//Funcion que se centra en dibujar el cuadrado del usuario
 	private function CuadroUsuario($tam,$miembro)
 	{
-		global $controladores;
-		global $identificadoresPrivados;
 		global $RutaRelativaControlador;
 		echo '
 		
@@ -90,35 +98,44 @@ function DisplayContent($idioma,$arrayObjetos)
 		';
 	}
 
+	//Funcion recursiva que muestra los Miembros en distintas filas
 	private function mostrarMiembro($miembros)
 	{
 		global $RutaRelativaControlador;
 		
-		$espacioMiembro = 3;
-		$miembrosPorFIla = 12/$espacioMiembro;
+		$espacioMiembro = 3; // Se establece cuanto desea que ocupe cada mienbro
+		$miembrosPorFIla = 12/$espacioMiembro; // con la division de 12 (Necesario para BOOTSTRAP) sabemos cuanto ocupa cada miembro
 		$total = count($miembros);
+		
+		// Si el numero de miembros es superior a la fila se procede a la division de miembros para mostrarlos en 2 sub-pasos
 		
 		if ($total > $miembrosPorFIla )
 		{
 			$mSub = array();
+			//Se recorre el array de miembros y se muestra la primera fila
 			for ($i = 0; $i < $miembrosPorFIla;$i = $i+1)
 			{
 				$mSub[] = $miembros[$i];
 			}
+			//llamada recursiva con los miembros justos para la fila
 			$this->mostrarMiembro($mSub);
 			$mSub2 = array();
+			//El resto de miembros se meten en otro array
 			for ($i = $miembrosPorFIla; $i < $total;$i = $i+1)
 			{
 				$mSub2[] = $miembros[$i];
 			}
+			//Llamada recursiva con X mienbros, pueden ser mas que la fila o menos
+			// la sub llamada se encargara de mostrarlos correctamente
 			$this->mostrarMiembro($mSub2);
 			
 			return;
 		}
 	
-		
+		//Como el numero de mienbros es menor o igual a los que se puede mostrar
 		$Comienzo = ($miembrosPorFIla - $total)/2 ;
 		
+		//Se hace una diferencia de si es numero par de miembros o impar para simpre se vean centrados
 		if ($total % 2 != 0)
 		{
 			echo '<div class="team-six">';
@@ -128,6 +145,9 @@ function DisplayContent($idioma,$arrayObjetos)
 						<div class="col-md-'.($espacioMiembro/2).'"></div>
 						';
 			$i = 1;
+			
+			//PROCESO DE AÑADIR LOS DATOS DE MIEMBROS AL HTML CON LA CONFIGURACION BOOTSTRAP
+			
 			for (;$i < $Comienzo;$i = $i+1)
 			{
 				echo '
@@ -149,7 +169,7 @@ function DisplayContent($idioma,$arrayObjetos)
 						<div class="col-md-'.($espacioMiembro).'"></div>
 						';
 			}
-			
+			 ///////////////////////////////////////////////////////////////////////////////////
 			echo '</div>';
 			echo '</div>';
 		}
@@ -158,6 +178,7 @@ function DisplayContent($idioma,$arrayObjetos)
 			echo '<div class="team-six">';
 			echo '<div class="row ">';
 			$i = 0;
+			//PROCESO DE AÑADIR LOS DATOS DE MIEMBROS AL HTML CON LA CONFIGURACION BOOTSTRAP
 			for (;$i < $Comienzo;$i = $i+1)
 			{
 				echo '
@@ -174,7 +195,7 @@ function DisplayContent($idioma,$arrayObjetos)
 						<div class="col-md-'.$espacioMiembro.'"></div>
 						';
 			}
-			
+			///////////////////////////////////////////////////////////////////////////////////
 			echo '</div>';
 			echo '</div>';
 		}

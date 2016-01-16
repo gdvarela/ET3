@@ -1,4 +1,12 @@
 <?php 
+
+//=====================================================================================================================
+// Fichero :V_Transferencia.php
+// Creado por : Francisco Rojas Rodriguez
+// Fecha : 18/12/2015
+// Clase que contiene una de las vistas del sistema
+//=====================================================================================================================
+
 Class Transferencia
 {
 
@@ -22,6 +30,7 @@ function DisplayContent($idioma,$Pa,$Po,$Co)
                 </div>
 				<ul class="list-group">
 				<?php
+				//Se recorren los datos recibidos para incluirlos en el HTML
 					foreach($Pa as $e)
 					{
 						echo '<li class="list-group-item"><i>'.$e["Nombre_Patente"].'</i><br>-<b> '.$idioma["Fecha"].':</b> '.$e["Fecha_Patente"].'
@@ -39,6 +48,7 @@ function DisplayContent($idioma,$Pa,$Po,$Co)
                 </div>
 				<ul class="list-group">
 					<?php
+					//Se recorren los datos recibidos para incluirlos en el HTML
 					foreach($Po as $e)
 					{
 						echo '<li class="list-group-item"><i>'.$e["Nombre_Proyecto"].'</i><br>-<b>'.$idioma["Descripcion"].':</b> '.$e["Descripcion_Proyecto"].'
@@ -55,6 +65,7 @@ function DisplayContent($idioma,$Pa,$Po,$Co)
                 </div>
 				<ul class="list-group">
 					<?php
+					//Se recorren los datos recibidos para incluirlos en el HTML
 					foreach($Co as $e)
 					{
 						echo '<li class="list-group-item"><i>'.$e["Nombre_Contrato"].'</i><br>-<b>ID '.$idioma["Empresa"].':</b> '.$e["IDEmpresa"].'<br>-<b>'.$idioma["Duracion"].':</b> '.$e["FechaIni_Contrato"].' || '.$e["FechaFin_Contrato"].'
@@ -72,6 +83,9 @@ function DisplayContent($idioma,$Pa,$Po,$Co)
 }
 
 }
+
+	// CARGA DE DATOS (DESPUES SE USARA EN ControladorWEB.php)
+	
 	$a = array();
 	$b = array();
 	$c = array();

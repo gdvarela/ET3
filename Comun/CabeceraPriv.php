@@ -1,3 +1,12 @@
+<?php
+//=====================================================================================================================
+// Fichero :CabeceraPriv.php
+// Creado por : Francisco Rojas Rodriguez
+// Fecha : 18/12/2015
+// Cabecera que conforma las paginas privadas
+//=====================================================================================================================
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -60,8 +69,10 @@
 						A la vez almacenamos en $IndexIdiomaPageName la pagina donde nos encontramos
 					-->
 					<?php 
+						// Se recorre el array del menu principal para generar los enlaces publicos
 						foreach ($MenuPrincipalPrivados as $k => $v)
 						{
+							// Si nos encontramos en el enlace correspondiente se marca como activo
 							if ($PagID == $v)
 							{
 								/*echo '<li class="active">
@@ -96,8 +107,21 @@
 							<li role="presentation" class="dropdown-header"><?php echo $idioma['Intranet'] ?></li>
 						  <li><a href="<?php echo $controladores[$identificadores['Login']] ?>"><?php echo $idioma['LogOUT'] ?></a></li>
 						  <li role="presentation" class="divider"></li>
-						  <li role="presentation" class="dropdown-header"><?php echo $idioma['Configuracion'] ?></li>
-						  <li><a href="#"><?php echo $idioma['Idioma'] ?></a></li>
+						<li role="presentation" class="dropdown-header"><?php echo $idioma['Idioma'] ?></li>
+							<li>
+								<a href="<?php echo $RutaRelativaControlador?>GESTAPP/Principal/Controladores/CambioModelo.php?tipoCambio=ENGLISH&pagOrigen=<?php echo $_SERVER['SCRIPT_NAME']?>">
+									<img id="icoIdioma"  src="<?php echo $RutaRelativaControlador?>GESTAPP/Imagenes/en.png" /> English
+								</a></li>
+							<li valign=center>
+								<a href="<?php echo $RutaRelativaControlador?>GESTAPP/Principal/Controladores/CambioModelo.php?tipoCambio=GALEGO&pagOrigen=<?php echo $_SERVER['SCRIPT_NAME']?>">
+									<img id="icoIdioma"  src="<?php echo $RutaRelativaControlador?>GESTAPP/Imagenes/ga.png" /> Galego
+								</a>
+							</li>
+							<li valign=center>
+								<a href="<?php echo $RutaRelativaControlador?>GESTAPP/Principal/Controladores/CambioModelo.php?tipoCambio=ESPANHOL&pagOrigen=<?php echo $_SERVER['SCRIPT_NAME']?>">
+									<img id="icoIdioma"  src="<?php echo $RutaRelativaControlador?>GESTAPP/Imagenes/es.png" /> Español
+								</a>
+							</li >
 						</ul>
 					</li>         
                     </ul>
@@ -126,8 +150,12 @@
 	}
 	
 	
+	//Esto es para mirar si hay un error de algun tipo y mostrarlo correspondientemente
 	if ( isset($_SESSION['error']))
 	{
+			//ESTO ES DE GESTAPP 
+			// Se trata de hacer la diferenciacion en los tipos de errores (detallados o no)
+			// y mostrar uno u otro
 			if (strpos($_SESSION['error'],'=>'))
 			{
 				if (isset($_SESSION['ErrDet']))
@@ -155,13 +183,13 @@
 		
 		unset($_SESSION['error']);
 		unset($_SESSION['ok']);
-		echo'<p style="margin:0 0 0 0;background-color:#F5D487;padding-left:30px;"><font color=red>  &nbsp;&nbsp;&nbsp;&nbsp;    '. $error. '</font></p>';
+		echo'<p style="margin:0 0 0 0;background-color:#F5D487;padding-left:30px;"><font color=red>  &nbsp;&nbsp;&nbsp;&nbsp;    '. $error. '</font></p>'; // recuadro de error con el mensaje
 		
 	}
 	else if (isset($_SESSION['ok']))
 	{
 		$bien = $idioma[$_SESSION['ok']];
-		echo'<p style="margin:0 0 0 0;background-color:#8CFF96;padding-left:30px;"><font color=green>  &nbsp;&nbsp;&nbsp;&nbsp;    '. $bien. '</font></p>';
+		echo'<p style="margin:0 0 0 0;background-color:#8CFF96;padding-left:30px;"><font color=green>  &nbsp;&nbsp;&nbsp;&nbsp;    '. $bien. '</font></p>'; // recuadro de ok con el mensaje
 		unset($_SESSION['error']);
 		unset($_SESSION['ok']);
 	}

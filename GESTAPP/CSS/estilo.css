@@ -167,7 +167,12 @@ left:0;
 	margin-right:-200px;
 	width:160;
 }
-
+#filtro2 {
+	margin:0px;
+	float:right;
+	margin-right:-280px;
+	width:250;
+}
 #tablaladofiltro{
 	float:right;
 }

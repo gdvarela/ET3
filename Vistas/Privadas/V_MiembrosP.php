@@ -74,7 +74,7 @@ function DisplayContent($idioma,$arrayObjetos)
 	</section>
 <?php
 	
-
+	
 }
 
 	private function CuadroUsuario($tam,$miembro)
@@ -83,21 +83,36 @@ function DisplayContent($idioma,$arrayObjetos)
 		global $identificadoresPrivados;
 		global $RutaRelativaControlador;
 		echo '
-		
 		<div class="col-md-'.$tam.'">
-			<!-- Team Member -->
+			<!-- Team Member -->';
+		if ($_SESSION['login'] == $miembro["Login"] ||  $_SESSION['login'] == 'adpix') //Si el usuario coincide con el usuario en sesion se permite modificar, o tambien si es el administrador
+		{
+			echo '
 			<form id="'.$miembro["Login"].'" action="'.$controladores[$identificadoresPrivados["MMiembros"]].'" method="POST">
-			<input type="hidden" name="MOD" value="'.$miembro["Login"].'" />
-		</form>
+				<input type="hidden" name="MOD" value="'.$miembro["Login"].'" />
+			</form>
 			<div class="team-member">
 				<!-- Image -->
 				<img class="img-responsive center-block" onClick="document.getElementById(\''.$miembro["Login"].'\').submit();"  src="'.$RutaRelativaControlador.'img/user.png" alt="">
 				<!-- Name -->
-				<h4>'.$miembro["USU_apellido"].', '.$miembro["USU_nombre"].'</h4>
+				<h4>* '.$miembro["USU_apellido"].', '.$miembro["USU_nombre"].'</h4>
 				<span class="deg">'.$miembro["USU_email"].'</span> 
 			</div>
-		</div>
-		';
+		</div>';
+		}
+		else // Si no NO se permite
+		{
+			echo '
+				<div class="team-member">
+					<!-- Image -->
+					<img class="img-responsive center-block" onClick="document.getElementById(\''.$miembro["Login"].'\').submit();"  src="'.$RutaRelativaControlador.'img/user.png" alt="">
+					<!-- Name -->
+					<h4>'.$miembro["USU_apellido"].', '.$miembro["USU_nombre"].'</h4>
+					<span class="deg">'.$miembro["USU_email"].'</span> 
+				</div>
+			</div>
+			';
+		}
 	}
 
 	private function mostrarMiembro($miembros)
@@ -218,6 +233,12 @@ function DisplayContent($idioma,$arrayObjetos)
 	//Inicializamos la vista Correspondiente
 	$princ_view = new MiembrosPrivada();
 
+	if (isset($_COOKIE["TEST"]))
+	{
+		$_SESSION["login"] = "TEST"; // Es necesario para mostrar la vista que este instanciada esta variable
+		//En los test no se hace session_start() asique esta variable no estara instanciada. PAra esta vista se hace en este punto.
+	}
+	
 	//Se procede a la creacion de la vista
 	include_once$RutaRelativaControlador.'Comun/CabeceraPriv.php';
 	$princ_view->DisplayContent($idioma,$miembrosWEB);

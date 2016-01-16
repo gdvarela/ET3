@@ -1,5 +1,12 @@
 <?php
 
+//=====================================================================================================================
+// Fichero :V_Colaboraciones.php
+// Creado por : Francisco Rojas Rodriguez
+// Fecha : 18/12/2015
+// Clase que contiene una de las vistas del sistema
+//=====================================================================================================================
+
 Class Colaboraciones
 {
 
@@ -22,6 +29,7 @@ function DisplayContent($idioma,$Emp,$Ins,$Grup)
                 </div>
 				<ul class="list-group">
 				<?php
+				//Se recorren los datos recibidos para incluirlos en el HTML
 					foreach($Emp as $e)
 					{
 						echo '<li class="list-group-item">'.$e["Nombre_Empresa"].'<br>-<a href="'.$e["Web_Empresa"].'" target="_blank">WEB</a></li>';
@@ -38,6 +46,7 @@ function DisplayContent($idioma,$Emp,$Ins,$Grup)
                 </div>
 				<ul class="list-group">
 					<?php
+					//Se recorren los datos recibidos para incluirlos en el HTML
 					foreach($Ins as $e)
 					{
 						echo '<li class="list-group-item">'.$e["Nombre_Institucion"].'<br>-<a href="'.$e["Web_Institucion"].'" target="_blank">WEB</a></li>';
@@ -53,6 +62,7 @@ function DisplayContent($idioma,$Emp,$Ins,$Grup)
                 </div>
 				<ul class="list-group">
 					<?php
+					//Se recorren los datos recibidos para incluirlos en el HTML
 					foreach($Grup as $e)
 					{
 						echo '<li class="list-group-item">'.$e["Nombre_Grupo"].'<br>-<a href="'.$e["Web_Grupo"].'" target="_blank">WEB</a></li>';
@@ -69,6 +79,9 @@ function DisplayContent($idioma,$Emp,$Ins,$Grup)
 }
 
 }
+
+	// CARGA DE DATOS (DESPUES SE USARA EN ControladorWEB.php)
+	
 	$e = array();
 	$in = array();
 	$g = array();

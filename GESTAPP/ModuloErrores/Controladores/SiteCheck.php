@@ -68,12 +68,29 @@ class SiteCheck
 			$arrayPropiedades = array();
 			foreach($propiedades as $prop)
 			{
+				if (strpos($prop,'=>') !==FALSE )
+				{
+					$prop = str_replace('=>','*',$prop); //Como se va a hacer explode por '=' el simbolo '=>' crearia problemas entonces se cambia por '*', despues se vuelve a cambiar.
+				}
 				$p = explode("=",$prop);
 				if (!empty($p[0]))
-					$arrayPropiedades[$p[0]] = $p[1];
+					$arrayPropiedades[$p[0]] = str_replace('*','=>',$p[1]);
 			}
+			print_r($arrayPropiedades);
+			
+			$RUTARELATIVA = "/";
+			$rutaEsteFichero = explode("/",$_SERVER['SCRIPT_NAME']);
+			for($i = 0; $i < count($rutaEsteFichero);$i = $i + 1)
+			{
+				if ($i > 3)
+					$RUTARELATIVA ="/".$rutaEsteFichero[count($rutaEsteFichero)-$i-1].$RUTARELATIVA;
+			}
+			
+			$RUTARELATIVA = str_replace(' ','%20',$RUTARELATIVA);
+			
+			echo $RUTARELATIVA;
 			//Con todos los parametros de la pagina establecidos se crea.
-			$this->Paginas[] = new Page($elementos[0],$elementos[1],$arrayPropiedades,$port, $host);
+			$this->Paginas[] = new Page($RUTARELATIVA .$elementos[0],$elementos[1],$arrayPropiedades,$port, $host);
 		}
 		
 		$this->reportWriter = $reportWriter;

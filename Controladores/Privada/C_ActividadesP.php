@@ -22,7 +22,7 @@ function getRuta()
 }
 
 //Esta variable contiene la ruta relativa para llegar
-// desde la ubicacion del controlador general a la raiz (SitioWEB) de la carpeta
+// desde la ubicacion del controlador general a la raiz de la carpeta
 // de la aplicacion
 // Ej: /SitioWEB/carpeta2/carpeta3/controlador.php la ruta relativa correspondiente será
 // ../../

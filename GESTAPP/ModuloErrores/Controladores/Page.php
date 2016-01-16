@@ -10,11 +10,12 @@ class Page
 	var $cookies = "";
 	function Page($namea,$method,$values,$port,$host)
 	{
+		
 		$this->method = strtoupper($method); 
 		$this->port = $port;
 		$this->host = $host;
 		
-		$this->name = $namea;
+		$this->name = ereg_replace('[[:space:]]+','',$namea);
 		
 		if ( $this->method == "GET" ) {
 			

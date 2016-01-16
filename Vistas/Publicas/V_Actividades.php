@@ -1,5 +1,12 @@
 <?php
 
+//=====================================================================================================================
+// Fichero :V_Actividades.php
+// Creado por : Francisco Rojas Rodriguez
+// Fecha : 18/12/2015
+// Clase que contiene una de las vistas del sistema
+//=====================================================================================================================
+
 Class Actividades
 {
 
@@ -22,6 +29,7 @@ function DisplayContent($idioma,$ED,$RE,$Conf)
                 </div>
 				<ul class="list-group">
 				<?php
+					//Se recorren los datos recibidos para incluirlos en el HTML
 					foreach($ED as $e)
 					{
 						echo '<li class="list-group-item">
@@ -44,6 +52,7 @@ function DisplayContent($idioma,$ED,$RE,$Conf)
                 </div>
 				<ul class="list-group">
 					<?php
+					//Se recorren los datos recibidos para incluirlos en el HTML
 					foreach($RE as $e)
 					{
 						echo '<li class="list-group-item">
@@ -65,6 +74,7 @@ function DisplayContent($idioma,$ED,$RE,$Conf)
                 </div>
 				<ul class="list-group">
 					<?php
+					//Se recorren los datos recibidos para incluirlos en el HTML
 					foreach($Conf as $e)
 					{
 						echo '<li class="list-group-item">'.$e["Titulo_Conferencia_Org"].'<br>-'.$e["Fecha_Conferencia_Org"].'</li>';

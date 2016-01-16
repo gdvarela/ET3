@@ -192,7 +192,7 @@ $Idioma = array(
 'TIT TEST' => 'Configuración de pruebas',
 'PropiedadesPeticion' => 'Valores de POST/GET',
 'ListaPaginasErrores' => 'Paginas a Testear',
-
+'PAG_DIR' => 'Paginas Directorio WEB',
 
 
 //-------------------------------------------------------------------------Terminologia
@@ -264,8 +264,11 @@ PIXEL
 
 
 
-
-
+'EjecutarPruebas' => 'Pruebas Preconfiguradas',
+'Personalizada' => 'Pruebas Personalizadas',
+'PC-pagename' => 'Click en el menu lateral para añadir directamente',
+'PC-pageprop' => 'Clave1=Valor1,Clave2=Valor2.....',
+'EXP' => 'Para testear vistas, Seleccionar el controlador relacionado. El codigo de las vistas por si solas esta incompleto y dará error.',
 
 
 

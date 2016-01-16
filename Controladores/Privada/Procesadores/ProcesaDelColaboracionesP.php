@@ -39,7 +39,6 @@ try
 		switch ($_POST["TIPO"])
 		{
 			case "I":
-			
 			$consulta = $_TABLAINSTITUCIONES->EliminarRegistro(array_slice($_POST, 1) );
 			break;
 			case "G":
@@ -49,6 +48,8 @@ try
 			$consulta = $_TABLAEMPRESAS->EliminarRegistro(array_slice($_POST, 1) );
 			break;
 		}
+		$val = explode("=>",$_POST["OTRO"]);
+		TablaBD::ConsultaGenerica("DELETE FROM ".$_TABLAPARTICIPANTES->nombreTabla." WHERE ". $val[0]."='". $val[1]."'");
 		if (!isset($_COOKIE["TEST"]))
 		header("Location: ".$controladores[$identificadoresPrivados["Colaboraciones"]]);
 	}

@@ -1,5 +1,12 @@
 <?php
 
+//=====================================================================================================================
+// Fichero :ProcesaV_Login.php
+// Creado por : Francisco Rojas Rodriguez
+// Fecha : 18/12/2015
+// Pagina destinada al control del login (Consulta en BD)
+//=====================================================================================================================
+
 //Variable que almacena el nombre de la carpeta Raiz del directorio
 $Raiz = explode('/',$_SERVER['PHP_SELF'])[count(explode('/',$_SERVER['PHP_SELF']))-5];
 
@@ -66,6 +73,7 @@ los ficheros de conexion de la shell.
 	
 	try
 	{
+		//Se mira si existe el usuario
 		$consultaDeAcceso = $conexionBD->OperacionGenericaBD("Select * from USUARIOS where `Login`=\"" . $Login . "\"" );
 		$num = $consultaDeAcceso->num_rows;
 	
@@ -100,6 +108,7 @@ los ficheros de conexion de la shell.
 	}
 	catch(Exception $e)
 	{
+		
 		$_SESSION['error'] = 'CON ERR U';
 		header("Location: ".$controladores[$identificadores['Login']]);
 		exit;

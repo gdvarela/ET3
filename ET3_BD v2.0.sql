@@ -222,6 +222,7 @@ INSERT INTO `IMPLEMENTADA_EN` (`FUN_nombre`, `PAG_nombre`) VALUES
 
 ('Usar PIXEL', 'Home Pixel'),
 ('Usar PIXEL', 'Miembros Pixel'),
+('Usar PIXEL', 'Mod Miembros Pixel'),
 ('Usar PIXEL', 'Prensa Pixel'),
 ('Usar PIXEL', 'Transferencias Pixel'),
 ('Usar PIXEL', 'Colaboraciones Pixel'),
@@ -458,11 +459,11 @@ CREATE TABLE IF NOT EXISTS `S_EMPRESAS` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 
 INSERT INTO `S_EMPRESAS` (`IDEmpresa`, `Web_Empresa`, `Nombre_Empresa`, `IDImagen_Empresa`, `IDParticipante`) VALUES
-('1', 'http://www.marca.com/',"INSA S. L.", "imagen2.jpg","1E");
+('Empresa1', 'http://www.marca.com/',"INSA S. L.", "imagen2.jpg","1E");
 INSERT INTO `S_EMPRESAS` (`IDEmpresa`, `Web_Empresa`, `Nombre_Empresa`, `IDImagen_Empresa`, `IDParticipante`) VALUES
-('2', 'http://www.marca.com/',"INSA S. L. 2", "imagen2.jpg","2E");
+('Empresa2', 'http://www.marca.com/',"INSA S. L. 2", "imagen2.jpg","2E");
 INSERT INTO `S_EMPRESAS` (`IDEmpresa`, `Web_Empresa`, `Nombre_Empresa`, `IDImagen_Empresa`, `IDParticipante`) VALUES
-('3', 'http://www.marca.com/',"INSA S. L. 3", "imagen2.jpg","3E");
+('Empresa3', 'http://www.marca.com/',"INSA S. L. 3", "imagen2.jpg","3E");
 -- --------------------------------------------------------
 
 --
@@ -479,11 +480,11 @@ CREATE TABLE IF NOT EXISTS `S_GRUPOS` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 
 INSERT INTO `S_GRUPOS` (`IDGrupo`, `Web_Grupo`, `IDImagen_Grupo`, `Nombre_Grupo`, `IDParticipante`) VALUES
-('1', 'http://sing.ei.uvigo.es', "imagen3.jpg","SING","1G");
+('Grupo1', 'http://sing.ei.uvigo.es', "imagen3.jpg","SING","1G");
 INSERT INTO `S_GRUPOS` (`IDGrupo`, `Web_Grupo`, `IDImagen_Grupo`, `Nombre_Grupo`, `IDParticipante`) VALUES
-('2', 'http://sing.ei.uvigo.es', "imagen3.jpg","SING2","2G");
+('Grupo2', 'http://sing.ei.uvigo.es', "imagen3.jpg","SING2","2G");
 INSERT INTO `S_GRUPOS` (`IDGrupo`, `Web_Grupo`, `IDImagen_Grupo`, `Nombre_Grupo`, `IDParticipante`) VALUES
-('3', 'http://sing.ei.uvigo.es', "imagen3.jpg","SING3","3G");
+('Grupo3', 'http://sing.ei.uvigo.es', "imagen3.jpg","SING3","3G");
 -- --------------------------------------------------------
 
 --
@@ -501,11 +502,11 @@ CREATE TABLE IF NOT EXISTS `S_INSTITUCIONES` (
 
 
 INSERT INTO `S_INSTITUCIONES` (`IDInstitucion`, `Web_Institucion`, `IDImagen_Institucion`, `Nombre_Institucion`, `IDParticipante`) VALUES
-('1', 'http://www.marca.com/', "imagen.jpg","CNI","1");
+('Institucion1', 'http://www.marca.com/', "imagen.jpg","CNI","1");
 INSERT INTO `S_INSTITUCIONES` (`IDInstitucion`, `Web_Institucion`, `IDImagen_Institucion`, `Nombre_Institucion`, `IDParticipante`) VALUES
-('2', 'http://www.marca.com/', "imagen.jpg","CNI2","2I");
+('Institucion2', 'http://www.marca.com/', "imagen.jpg","CNI2","2I");
 INSERT INTO `S_INSTITUCIONES` (`IDInstitucion`, `Web_Institucion`, `IDImagen_Institucion`, `Nombre_Institucion`, `IDParticipante`) VALUES
-('3', 'http://www.marca.com/', "imagen.jpg","CNI3","3I");
+('Institucion3', 'http://www.marca.com/', "imagen.jpg","CNI3","3I");
 
 
 -- --------------------------------------------------------
@@ -577,15 +578,15 @@ CREATE TABLE IF NOT EXISTS `S_PARTICIPANTES` (
 --
 
 INSERT INTO `S_PARTICIPANTES` (`IDParticipantes`, `Tipo_Participante`) VALUES
-('1E', 'Empresa'),
-('2E', 'Empresa'),
-('3E', 'Empresa'),
-('1G', 'Grupo'),
-('2G', 'Grupo'),
-('3G', 'Grupo'),
-('1I', 'Institucion'),
-('2I', 'Institucion'),
-('3I', 'Institucion');
+('Empresa1', 'Empresa'),
+('Empresa2', 'Empresa'),
+('Empresa3', 'Empresa'),
+('Grupo1', 'Grupo'),
+('Grupo2', 'Grupo'),
+('Grupo3', 'Grupo'),
+('Institucion1', 'Institucion'),
+('Institucion2', 'Institucion'),
+('Institucion3', 'Institucion');
 
 
 -- --------------------------------------------------------

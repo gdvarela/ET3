@@ -1,18 +1,24 @@
 <?php
+
+//=====================================================================================================================
+// Fichero :ArchivoComun.php
+// Creado por : Francisco Rojas Rodriguez
+// Fecha : 18/12/2015
+// En este fichero se centralizan todas las configuraciones que maneja PIXEL, de esta forma todos podremos de forma rapida
+// modificar cualquier cosa si rapidamente sin tener que buscar donde se cambia o como funciona el codigo que lo implementa
+//=====================================================================================================================
+
 //Establece el valor de mostrar errores del servido php
 // Cambiar a 1 para la fase de pruebas o debug
 ini_set('display_errors', '1');
 
 
-
-//Variable que contiene el nombre de la sesion que se usara en la aplicacion
-$sessionName = "PIXEL";
-
-
-
 //Numero de elementos por pagina en caso de paginacion
 $NumporPags = 10;
 
+//FUNCION DE CARGA DE IDIOMA, 
+//$Ruta almacena la ruta del controlador que llama la funcion para siempre asegurarse de que accede al fichero
+// correctamente independientemente de donde se mueva o copie el controlador.
 function CargarIdioma2($Ruta)
 {
 	//asignamos idioma español como defecto
@@ -23,12 +29,15 @@ function CargarIdioma2($Ruta)
 	{
 	case 'ESPANHOL':
 		include_once $Ruta.'GESTAPP/Modelos/ESPANHOL.php';
+		
 		break;
 	case 'GALEGO':
 		include_once $Ruta.'GESTAPP/Modelos/GALEGO.php';
+		
 		break;
 	case 'ENGLISH':
 		include_once $Ruta.'GESTAPP/Modelos/ENGLISH.php';
+		
 		break;
 	DEFAULT:
 		break;
@@ -36,16 +45,19 @@ function CargarIdioma2($Ruta)
 	return $Idioma;
 }
 
+//------------------------ CONFIGURACION DE LA PAGINA
+
 //Array que contiene los indentificadores de las paginas de la aplicación
 // Asegurarse que los identificadores e identificadoresPrivados no se repitan.
+// Estos identificadores sirven a modo de diferenciación de las paginas
 $identificadores = array(
 'Home' => 'H',
 'Miembros' => 'M',
 'Prensa'=> 'P',
 'Transferencias'=> 'T',
 'Colaboraciones'=> 'C',
-'Login' => 'L'
-
+'Login' => 'L',
+'Publicaciones' => 'Pu'
 );
 
 $identificadoresPrivados = array(
@@ -81,6 +93,8 @@ $identificadoresPrivados = array(
 'ERRORPERM' => 'ERRORPERM'
 );
 
+//<<<<<<<<<< AQUI SE MODIFICAN LAS BARRAS DE NAVEGACION A MOSTRAR >>>>>>>>>>>>>>>>
+
 //Array que contiene los indentificadores de las paginas que se mostraran la barra del menu principal
 // de la parte publica
 $MenuPrincipal = array(
@@ -89,6 +103,7 @@ $MenuPrincipal = array(
 'Prensa'=> $identificadores['Prensa'],
 'Transferencias'=> $identificadores['Transferencias'],
 'Colaboraciones'=> $identificadores['Colaboraciones']
+/*'Publicaciones'=> $identificadores['Publicaciones']*/
 );
 
 //Array que contiene los indentificadores de las paginas que se mostraran la barra del menu principal
@@ -104,9 +119,15 @@ $MenuPrincipalPrivados = array(
 'Actividades'=> $identificadoresPrivados['Actividades'],
 'Administracion'=> $identificadoresPrivados['Administracion']
 );
+
+//Estas dos variables almacenan el nombre de los ficheros encargados de la generacion de las vistas de formulario
+// tanto las de alta como las de modificacion
 $generador = $RutaRelativaControlador.'Comun/GeneradorAlta.php';
 $generadorMod = $RutaRelativaControlador.'Comun/GeneradorMod.php';
+
+
 //Rutas de las Distintas Vistas del sistema
+// Para añadir una nueva pagina a la aplicacion simplemente añadirlo aqui
 $vistas = array(
 	$identificadores['Home'] => $RutaRelativaControlador.'Vistas/Publicas/V_Home.php',
 	$identificadores['Miembros'] => $RutaRelativaControlador.'Vistas/Publicas/V_Miembros.php',
@@ -141,6 +162,8 @@ $vistas = array(
 	$identificadoresPrivados['MActividades'] => $RutaRelativaControlador.'Vistas/Privadas/V_ModActividadesP.php',
 );
   
+  
+  //Igual que el anterior pero con todos los controladores que maneja la pagina WEB
 $controladores = array(
 	$identificadoresPrivados['Administracion'] => $RutaRelativaControlador.'GESTAPP/Principal/Controladores/Principal.php',
 	$identificadoresPrivados['ERRORPERM'] => $RutaRelativaControlador.'Controladores/Privada/C_ERRORP.php',
@@ -179,6 +202,7 @@ $controladores = array(
 	
 );
 
+//Igual que los anteriores pero aqui se incluyen todos los procesadores (Alta, Mod, Del)
 $procesadores = array(
 	$identificadores['Login'] => $RutaRelativaControlador.'Controladores/Publica/Procesadores/ProcesaV_Login.php',
 	
@@ -210,12 +234,23 @@ $procesadores = array(
 	$identificadoresPrivados['DActividades'] => $RutaRelativaControlador.'Controladores/Privada/Procesadores/ProcesaDelActividadesP.php'
 );
 
-//TODO METER IFS PARA HACER ESTAS COSAS SOLO CUANDO SEA NECESARIO
-//Variable que contiene la pagina o controlador que tomara el control en caso de error de permisos
+// Esta variable globlal contiene la pagina que se quiere que se muestre cuando no haya sesion iniciada
+// (No se usara en todas las paginas pero queda a modo de respaldo)
 $PaginaError = $controladores[$identificadoresPrivados['ERRORPERM']];
-$imagenFondo = "";
+
+//Se incluye la clase generica de la base de datos
 include_once $RutaRelativaControlador."Clases/TablaBD.php";
+
+//Esta variables es de configuracion, si se modifica recordar cambiar tambien el SQL de la BD
+// Almacena el nombre que se le da al ROL de PIXEL en GESTAPP
 $ROLMIEMBRO = "Miembro PIXEL";
+
+//Lista de todas las tablas
+// IR AÑADIENDO LAS TABLAS CON LOS DATOS SEGUN SE VAYAN AÑADIENDO LOS DISTINTOS MODULOS
+// EN CADA ITERACION
+
+//new TablaBD(NOMBRETABLA,LISTA DE CAMPOS,ARRAY INDICANDO CUAL ES LA CLAVE PRIMARIA)
+
 $_TABLAMIEMBRO = new TablaBD(
 "USUARIOS",
 	array(
@@ -419,15 +454,18 @@ $OBLIGATORIO=" required ";
 
 //El nombre del campo multicheck es concreto debe ser MP-MP-[TablaDondeVanLosDatos]@[CampoDeLosDatos]
 // cuando se procese un Alta de unu formuulario donde se ponga un Multichek de esos, todos los valores chekeados se insertaran e la tabla [TablaDondeVanLosDatos]
+
+
+//Aqui se almacenan los formularios (con los campos y funciones) que se deseean para las vistas
 $formularios = array(
 	$identificadoresPrivados['AMiembros'] => 
 	array(
 		array( 'MA-Login','text', "$OBLIGATORIO $PATRONUSU"),
 		array( 'MA-Pass','Pass', "$OBLIGATORIO $PATRONPASS"),
-		array( 'MA-USU_nombre','text', ""),
-		array( 'MA-USU_apellido','text', ""),
-		array( 'MA-USU_email','email', ""),
-		array( 'MA-USU_fecha_alta','date', ""),
+		array( 'MA-USU_nombre','text', "$OBLIGATORIO"),
+		array( 'MA-USU_apellido','text', "$OBLIGATORIO"),
+		array( 'MA-USU_email','email', "$OBLIGATORIO"),
+		array( 'MA-USU_fecha_alta','date', "$OBLIGATORIO"),
 		array( 'MA-Web_Usuario','text', ""),
 		array( 'MA-Departamento_Usuario','text', ""),
 		array( 'MA-Descripcion_Usuario','textarea', ""),
@@ -468,44 +506,38 @@ $formularios = array(
 		array( 'MP-IDEmpresa','text', "$OBLIGATORIO $PATRONID"),
 		array( 'MP-Web_Empresa','text', ""),
 		array( 'MP-Nombre_Empresa','text', "$OBLIGATORIO"),
-		array( 'MP-IDImagen_Empresa','text', "$PATRONID"),
-		array( 'MP-IDParticipante','select', "$OBLIGATORIO","sql:Select * from USUARIOS where Login IN (Select login from HACE_DE where ROL_nombre = '".$ROLMIEMBRO."')")
+		array( 'MP-IDParticipante','text', "$OBLIGATORIO","")
 	),
 	$identificadoresPrivados['AColaboraciones']."G" => 
 	array(
 		array( 'MP-IDGrupo','text', "$OBLIGATORIO $PATRONID"),
 		array( 'MP-Web_Grupo','text', ""),
-		array( 'MP-IDImagen_Grupo','text', "$PATRONID"),
 		array( 'MP-Nombre_Grupo','text', "$OBLIGATORIO"),
-		array( 'MP-IDParticipante','select', "$OBLIGATORIO","sql:Select * from USUARIOS where Login IN (Select login from HACE_DE where ROL_nombre = '".$ROLMIEMBRO."')")
+		array( 'MP-IDParticipante','text', "$OBLIGATORIO","")
 	),
 	$identificadoresPrivados['AColaboraciones']."I" => 
 	array(
 		array( 'MP-IDInstitucion','text', "$OBLIGATORIO $PATRONID"),
 		array( 'MP-Web_Institucion','text', ""),
-		array( 'MP-IDImagen_Institucion','text', "$PATRONID"),
 		array( 'MP-Nombre_Institucion','text', "$OBLIGATORIO"),
-		array( 'MP-IDParticipante','select', "$OBLIGATORIO","sql:Select * from USUARIOS where Login IN (Select login from HACE_DE where ROL_nombre = '".$ROLMIEMBRO."')")
+		array( 'MP-IDParticipante','text', "$OBLIGATORIO","")
 	),
 	$identificadoresPrivados['MColaboraciones']."E" => 
 	array(
 		array( 'MP-IDEmpresa','text', "$OBLIGATORIO $PATRONID"),
 		array( 'MP-Web_Empresa','text', ""),
-		array( 'MP-Nombre_Empresa','text', "$OBLIGATORIO"),
-		array( 'MP-IDImagen_Empresa','text', "$PATRONID")
+		array( 'MP-Nombre_Empresa','text', "$OBLIGATORIO")
 	),
 	$identificadoresPrivados['MColaboraciones']."G" => 
 	array(
 		array( 'MP-IDGrupo','text', "$OBLIGATORIO $PATRONID"),
 		array( 'MP-Web_Grupo','text', ""),
-		array( 'MP-IDImagen_Grupo','text', "$PATRONID"),
 		array( 'MP-Nombre_Grupo','text', "$OBLIGATORIO")
 	),
 	$identificadoresPrivados['MColaboraciones']."I" => 
 	array(
 		array( 'MP-IDInstitucion','text', "$OBLIGATORIO $PATRONID"),
 		array( 'MP-Web_Institucion','text', ""),
-		array( 'MP-IDImagen_Institucion','text', "$PATRONID"),
 		array( 'MP-Nombre_Institucion','text', "$OBLIGATORIO")
 	),
 	$identificadoresPrivados['ATransferencias']."PA" => 

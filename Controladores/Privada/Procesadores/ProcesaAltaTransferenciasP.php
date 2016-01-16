@@ -33,7 +33,6 @@ include_once $RutaRelativaControlador.'Comun/ArchivoComun.php';
 
 //Cargamos el idioma a utilizar en el controlador
 $idioma = CargarIdioma2($RutaRelativaControlador);
-session_start();
 try
 	{
 		switch ($_POST["TIPO"])

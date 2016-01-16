@@ -1,6 +1,7 @@
 <?php
 include_once '../../Comun/FuncionesComunes.php';
-include_once '../../Comun/codigoSeguridad.php';
+session_start();
+//include_once '../../Comun/codigoSeguridad.php';
 
 //Se almacena en la variable el cambio a realizar. idioma o css
 $tipoCambio = recoge('tipoCambio');
@@ -37,7 +38,6 @@ switch ($tipoCambio)
 		if ($tipoCambio != $_SESSION['idioma'])
 		{
 			$_SESSION['idioma']=$tipoCambio;
-			$idioma = CargarIdioma();
 			$_SESSION['ok']='OK LENG';
 		}
 		header ('Location: '. $redirige);

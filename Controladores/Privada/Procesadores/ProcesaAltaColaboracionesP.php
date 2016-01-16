@@ -43,7 +43,6 @@ try
 		{
 			case "I":
 			TablaBD::ConsultaGenerica("Insert into ".$_TABLAPARTICIPANTES->nombreTabla." Values ('".$_POST['MP-IDParticipante']."', 'Institucion') ");
-			
 			break;
 			case "G":
 			TablaBD::ConsultaGenerica("Insert into ".$_TABLAPARTICIPANTES->nombreTabla." Values ('".$_POST['MP-IDParticipante']."', 'Grupo') ");

@@ -1,5 +1,12 @@
 <?php
 
+//=====================================================================================================================
+// Fichero :ControladorWEB.php
+// Creado por : Francisco Rojas Rodriguez
+// Fecha : 18/12/2015
+// Script generico que controla la carga de paginas en una sesion publica (Usuario no logueado)
+//=====================================================================================================================
+
 //Variable que almacena el nombre de la carpeta Raiz del directorio
 $Raiz = explode('/',$_SERVER['PHP_SELF']);
 $Raiz = $Raiz[count($Raiz)-4];
@@ -20,6 +27,15 @@ function getRuta()
 			$toret = $toret."../";
 	}
 	return $toret;
+}
+
+if (!isset($_COOKIE["TEST"]))
+{
+	//SESSION START NO FUNCIONA CORRECTAMENTE CUANDO SE TRATA DE AUTOMATIZAR LLAMADAS SEGUIDAS DE POST PARA LA COMPROBACION DE ERRORES AUTOMATICA
+	// Con cada llamada post del modulo errores se envia una cookie TEST para indicar que se esta cargando la pagina para comprobacion de errores y que
+	// no realize un session start
+	session_start();
+	
 }
 
 //Esta variable contiene la ruta relativa para llegar
@@ -53,21 +69,22 @@ else
 // el array vistas se encuentra en el archivo ArchivoComun.php
 include_once $vistas[$PagID];
 
-//Se procede a la creacion de la vista
-include_once$RutaRelativaControlador.'Comun/Cabecera.php';
+//Se procede a la creacion de la vista en funcion del PagID recibido por GET
+include_once$RutaRelativaControlador.'Comun/Cabecera.php'; //Se incluye la cabecera publica de las vistas
 switch($PagID)
 {
+	//Se cargara y mostrar la pagina correspondiente en cada caso
 	case $identificadores['Home']:
 		$princ_view = new Home();
 		$princ_view->DisplayContent($idioma);
 	break;
 	
 	case $identificadores['Miembros']:
-	
 		$miembros = array();
 		//Consultamos datos
 		try
 		{
+			//Se buscan los mienbros en la base de datos
 			$consulta = $_TABLAMIEMBRO->ListadoRegistros(" where Login IN (Select login from HACE_DE where ROL_nombre = '".$ROLMIEMBRO."')");
 			//Con los datos los cargamos en el array
 			for ($i = 0; $i < $consulta->num_rows ;$i++)
@@ -87,8 +104,9 @@ switch($PagID)
 		//Se procede a la creacion de la vista
 		$princ_view->DisplayContent($idioma,$miembros);
 	break;
+	
+	
 	case $identificadores['Prensa']:
-		
 		$noticias = array ();
 		//Consultamos datos
 		try
@@ -105,9 +123,9 @@ switch($PagID)
 			$errorRescrito = explode("=>",$e->getMessage());
 			$_SESSION['error'] = 'CON ERR NOTICIAS'."=>".$errorRescrito[1];
 		}
-
 		
-		
+		//Para la vista de noticias la llamada GET incluye el numero de Pagina que se quiere mostrar
+		// ()Las noticias se muestran paginadas)
 		$pagCargar = 1;
 		if (isset($_GET['NumPag']))
 		{
@@ -118,22 +136,41 @@ switch($PagID)
 			if($pagCargar > ceil(count($noticias)/$NumporPags))
 				$pagCargar = ceil(count($noticias)/$NumporPags);
 		}
+		//Inicializamos la vista Correspondiente
 		$princ_view = new Prensa();
+		//Se procede a la creacion de la vista
 		$princ_view->DisplayContent($idioma,$noticias,$pagCargar,ceil(count($noticias)/$NumporPags));
 	break;
+	
 	case $identificadores['Transferencias']:
+		//Inicializamos la vista Correspondiente
 		$princ_view = new Transferencia();
-		$princ_view->DisplayContent($idioma,$a,$b,$c);
+		//Se procede a la creacion de la vista
+		$princ_view->DisplayContent($idioma,$a,$b,$c); //a b c vienen rellnados cuando se incluye la vista correspondiente
 	break;
+	
 	case $identificadores['Colaboraciones']:
+		//Inicializamos la vista Correspondiente
 		$princ_view = new Colaboraciones();
-		$princ_view->DisplayContent($idioma,$e,$in,$g);
+		//Se procede a la creacion de la vista
+		$princ_view->DisplayContent($idioma,$e,$in,$g); //e in g vienen rellnados cuando se incluye la vista correspondiente
 	break;
+	
+	case $identificadores['Publicaciones']:
+		//Inicializamos la vista Correspondiente
+		$princ_view = new Publicaciones();
+		//Se procede a la creacion de la vista
+		$princ_view->DisplayContent($idioma,$a,$b,$c); //e in g vienen rellnados cuando se incluye la vista correspondiente
+	break;
+	
 	case $identificadores['Login']:
+	//Inicializamos la vista Correspondiente
 		$princ_view = new Login();
+		//Se procede a la creacion de la vista
 		$princ_view->DisplayContent($idioma);
 	break;
 }
 
+//Se incluye el pie publico
 include_once$RutaRelativaControlador.'Comun/Pie.php';
 ?>

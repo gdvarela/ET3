@@ -1,4 +1,17 @@
 <?php 
+
+//=====================================================================================================================
+// Fichero :GeneradorMod.php
+// Creado por : Francisco Rojas Rodriguez
+// Fecha : 18/12/2015
+// Este fichero se debera incluir en aquellas vistas que queramos disponer del un formulario de modificacion que se
+// cargara automáticamente con los datos recibidos que se deseen mostrar
+//=====================================================================================================================
+
+// PARA NO COMENTAR 2 VECES LO MISMO MIRAR EL ARCHIVO GENERADORALTA que es igual
+// La diferencia es que en este se cargan los Textbox, pass .... en funcion de los datos recibidos en la variable
+// ---> $MOD
+
 if (strpos(explode(":",$campos[2])[0],'js') !== false)
 {
 	global $VALIDACIONFORMULARIO;

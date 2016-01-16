@@ -38,6 +38,7 @@ function DisplayContent($idioma,$MOD)
 				break;
 			}
 		?>
+						<input type="hidden" name="OTRO" value="IDParticipantes=><?php echo $MOD["IDParticipante"]?>"/>
 						<input type="hidden" name="BORRAR" value="<?php echo $campoClave?>=><?php echo $MOD[$campoClave]?>"/>
 			</form>
 			<div class="row">
