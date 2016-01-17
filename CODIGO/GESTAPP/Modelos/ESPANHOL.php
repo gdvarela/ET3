@@ -261,7 +261,7 @@ PIXEL
 'Errores:' => 'Errores:',
 'Tests' => 'Tests',
 'Resultados' => "Resultados",
-
+'ESCRITURA' => "Debe tener permisos de escritura en el directorio",
 
 
 'EjecutarPruebas' => 'Pruebas Preconfiguradas',

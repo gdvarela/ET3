@@ -13,7 +13,17 @@ function Display($idioma)
 {
 	
 	
-	//$data_url = http_build_query ("TIPO=I");
+	
+	
+	$pruebaPermisos = fopen(dirname($_SERVER["SCRIPT_FILENAME"])."/PaginasDinamicas/Permisos.html", "w");
+      if ( !$pruebaPermisos ) {
+       $_SESSION['error']='ESCRITURA';
+      }  
+	  else
+	  {
+		  
+	  
+	
 	$data_url = "";
 	$data_len = strlen ($data_url);
 	$contenido = file_get_contents ("http://".$_SERVER['SERVER_NAME']."".RutaSinDir(dirname($_SERVER["PHP_SELF"]),3)."/Controladores/Privada/C_AltaMiembrosP.php", false, stream_context_create (
@@ -277,7 +287,7 @@ function Display($idioma)
 	$nuevoarchivo = fopen(dirname($_SERVER["SCRIPT_FILENAME"])."/PaginasDinamicas/TestearC_AltaDocencia2.html", "w"); 
 	fwrite($nuevoarchivo,$contenido); 
 	fclose($nuevoarchivo);
-	
+	  }
 	include '../../Comun/V_Cabecera.php';
 	include '../../Comun/V_MenuLateral.php';
 	
@@ -289,8 +299,8 @@ function Display($idioma)
 				<div id="histAct">> <?php echo $idioma['TestErrores']?></div>
 				<img onClick="window.history.back()" id="historialAtras" src="../../Imagenes/historyBack.png" />
 			</div>
-			<h3>Para la realizacion de estas pruebas de testeo se necesita que el directorio tenga permisos de escritura, ya que como las paginas son dinamicas
-				Se crean dinamicamente para la realizacion de los test ya que no hay un usuario que entre en ellas a mano.
+			<h3>Para la realizacion de estas pruebas de testeo se necesita que el directorio tenga permisos de escritura, las paginas son dinamicas.
+				Se crean dinamicamente para la realizacion de los test puesto que no hay un usuario que entre en ellas a mano.
 				Se almacenan en el directorio PaginasDinamicas y una vez se han creado dinamicamente se realiza el test automático.
 			</h3>
 	<!-- A partir de aqui meteis vuestro codigo -->
