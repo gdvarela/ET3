@@ -1,6 +1,6 @@
 {
 	
-  "./PaginasDinamicas/TestearC_AltaMiembros.html": {
+  "./PaginasDinamicas/TestearC_Miembros.html": {
     "FORM": {
       "MA-Login": {
         "" : false,
@@ -46,7 +46,7 @@
       }
     }
   },
-  "./PaginasDinamicas/TestearC_AltaPrensa.html": {
+  "./PaginasDinamicas/TestearC_Prensa.html": {
     "FORM": {
       "MP-Titulo_Noticia": {
         "" : false,
@@ -69,7 +69,7 @@
       }
     }
   },
-  "./PaginasDinamicas/TestearC_AltaColaboraciones1.html": {
+  "./PaginasDinamicas/TestearC_Colaboraciones1.html": {
     "FORM": {
       "MP-IDEmpresa": {
         "" : false,
@@ -87,7 +87,7 @@
       }
     }
   },
-  "./PaginasDinamicas/TestearC_AltaColaboraciones2.html": {
+  "./PaginasDinamicas/TestearC_Colaboraciones2.html": {
     "FORM": {
       "MP-IDGrupo": {
         "" : false,
@@ -105,7 +105,7 @@
       }
     }
   },
-  "./PaginasDinamicas/TestearC_AltaColaboraciones3.html": {
+  "./PaginasDinamicas/TestearC_Colaboraciones3.html": {
     "FORM": {
       "MP-IDInstitucion": {
         "" : false,
@@ -123,7 +123,7 @@
       }
     }
   },
-  "./PaginasDinamicas/TestearC_AltaDocencia1.html": {
+  "./PaginasDinamicas/TestearC_Docencia1.html": {
     "FORM": {
 	   "MP-FechaFin_Materia": {
 		   "0000/00/00": false,
@@ -140,7 +140,7 @@
       }
     }
   },
-  "./PaginasDinamicas/TestearC_AltaDocencia2.html": {
+  "./PaginasDinamicas/TestearC_Docencia2.html": {
     "FORM": {
       "MP-IDMateria": {
         "" : false,
@@ -154,7 +154,7 @@
       }
     }
   },
-  "./PaginasDinamicas/TestearC_AltaPublicaciones1.html": {
+  "./PaginasDinamicas/TestearC_Publicaciones1.html": {
     "FORM": {
 	  "MP-Titulo_Libro": {
         "" : false,
@@ -174,7 +174,7 @@
       }
     }
   },
-  "./PaginasDinamicas/TestearC_AltaPublicaciones2.html": {
+  "./PaginasDinamicas/TestearC_Publicaciones2.html": {
     "FORM": {
       "MP-IDArticulo": {
         "" : false,
@@ -202,7 +202,7 @@
       }
     }
   },
-  "./PaginasDinamicas/TestearC_AltaPublicaciones3.html": {
+  "./PaginasDinamicas/TestearC_Publicaciones3.html": {
     "FORM": {
       "MP-IDConferencia": {
         "" : false,
@@ -226,7 +226,7 @@
       }
     }
   },
-  "./PaginasDinamicas/TestearC_AltaTransferencias1.html": {
+  "./PaginasDinamicas/TestearC_Transferencias1.html": {
     "FORM": {
       "MP-IDPatente": {
         "" : false,
@@ -245,7 +245,7 @@
       }
     }
   },
-  "./PaginasDinamicas/TestearC_AltaTransferencias2.html": {
+  "./PaginasDinamicas/TestearC_Transferencias2.html": {
     "FORM": {
       "MP-IDProyecto": {
         "" : false,
@@ -259,7 +259,7 @@
       }
     }
   },
-  "./PaginasDinamicas/TestearC_AltaTransferencias3.html": {
+  "./PaginasDinamicas/TestearC_Transferencias3.html": {
     "FORM": {
       "MP-IDContrato": {
         "" : false,
@@ -286,7 +286,7 @@
       }
     }
   },
-  "./PaginasDinamicas/TestearC_AltaActividades1.html": {
+  "./PaginasDinamicas/TestearC_Actividades1.html": {
     "FORM": {
 	  "MP-Titulo_Tablon": {
         "" : false,
@@ -312,7 +312,7 @@
       }
     }
   },
-  "./PaginasDinamicas/TestearC_AltaActividades2.html": {
+  "./PaginasDinamicas/TestearC_Actividades2.html": {
     "FORM": {
 	  "MP-Titulo_Revista": {
         "" : false,
@@ -338,7 +338,7 @@
       }
     }
   },
-  "./PaginasDinamicas/TestearC_AltaActividades3.html": {
+  "./PaginasDinamicas/TestearC_Actividades3.html": {
     "FORM": {
 	  "MP-Titulo_Conferencia_Org": {
         "" : false,

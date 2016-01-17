@@ -11,10 +11,6 @@ function __construct()
 
 function Display($idioma)
 {
-	
-	
-	
-	
 	$pruebaPermisos = fopen(dirname($_SERVER["SCRIPT_FILENAME"])."/PaginasDinamicas/Permisos.html", "w");
       if ( !$pruebaPermisos ) {
        $_SESSION['error']='ESCRITURA';
@@ -37,7 +33,7 @@ function Display($idioma)
 																)
 															)
 												);
-	$nuevoarchivo = fopen(dirname($_SERVER["SCRIPT_FILENAME"])."/PaginasDinamicas/TestearC_AltaMiembros.html", "w"); 
+	$nuevoarchivo = fopen(dirname($_SERVER["SCRIPT_FILENAME"])."/PaginasDinamicas/TestearC_Miembros.html", "w"); 
 	fwrite($nuevoarchivo,$contenido); 
 	fclose($nuevoarchivo);
 
@@ -55,7 +51,7 @@ function Display($idioma)
 																)
 															)
 												);
-	$nuevoarchivo = fopen(dirname($_SERVER["SCRIPT_FILENAME"])."/PaginasDinamicas/TestearC_AltaPrensa.html", "w"); 
+	$nuevoarchivo = fopen(dirname($_SERVER["SCRIPT_FILENAME"])."/PaginasDinamicas/TestearC_Prensa.html", "w"); 
 	fwrite($nuevoarchivo,$contenido); 
 	fclose($nuevoarchivo);	
 	
@@ -72,7 +68,7 @@ function Display($idioma)
 																)
 															)
 												);
-	$nuevoarchivo = fopen(dirname($_SERVER["SCRIPT_FILENAME"])."/PaginasDinamicas/TestearC_AltaColaboraciones1.html", "w"); 
+	$nuevoarchivo = fopen(dirname($_SERVER["SCRIPT_FILENAME"])."/PaginasDinamicas/TestearC_Colaboraciones1.html", "w"); 
 	fwrite($nuevoarchivo,$contenido); 
 	fclose($nuevoarchivo);	
 	$data_url = http_build_query (array("TIPO" => "G"));
@@ -88,7 +84,7 @@ function Display($idioma)
 																)
 															)
 												);
-	$nuevoarchivo = fopen(dirname($_SERVER["SCRIPT_FILENAME"])."/PaginasDinamicas/TestearC_AltaColaboraciones2.html", "w"); 
+	$nuevoarchivo = fopen(dirname($_SERVER["SCRIPT_FILENAME"])."/PaginasDinamicas/TestearC_Colaboraciones2.html", "w"); 
 	fwrite($nuevoarchivo,$contenido); 
 	fclose($nuevoarchivo);	
 	$data_url = http_build_query (array("TIPO" => "I"));
@@ -104,7 +100,7 @@ function Display($idioma)
 																)
 															)
 												);
-	$nuevoarchivo = fopen(dirname($_SERVER["SCRIPT_FILENAME"])."/PaginasDinamicas/TestearC_AltaColaboraciones3.html", "w"); 
+	$nuevoarchivo = fopen(dirname($_SERVER["SCRIPT_FILENAME"])."/PaginasDinamicas/TestearC_Colaboraciones3.html", "w"); 
 	fwrite($nuevoarchivo,$contenido); 
 	fclose($nuevoarchivo);	
 	
@@ -121,7 +117,7 @@ function Display($idioma)
 																)
 															)
 												);
-	$nuevoarchivo = fopen(dirname($_SERVER["SCRIPT_FILENAME"])."/PaginasDinamicas/TestearC_AltaTransferencias1.html", "w"); 
+	$nuevoarchivo = fopen(dirname($_SERVER["SCRIPT_FILENAME"])."/PaginasDinamicas/TestearC_Transferencias1.html", "w"); 
 	fwrite($nuevoarchivo,$contenido); 
 	fclose($nuevoarchivo);	
 	$data_url = http_build_query (array("TIPO" => "PO"));
@@ -137,7 +133,7 @@ function Display($idioma)
 																)
 															)
 												);
-	$nuevoarchivo = fopen(dirname($_SERVER["SCRIPT_FILENAME"])."/PaginasDinamicas/TestearC_AltaTransferencias2.html", "w"); 
+	$nuevoarchivo = fopen(dirname($_SERVER["SCRIPT_FILENAME"])."/PaginasDinamicas/TestearC_Transferencias2.html", "w"); 
 	fwrite($nuevoarchivo,$contenido); 
 	fclose($nuevoarchivo);	
 	$data_url = http_build_query (array("TIPO" => "CO"));
@@ -153,7 +149,7 @@ function Display($idioma)
 																)
 															)
 												);
-	$nuevoarchivo = fopen(dirname($_SERVER["SCRIPT_FILENAME"])."/PaginasDinamicas/TestearC_AltaTransferencias3.html", "w"); 
+	$nuevoarchivo = fopen(dirname($_SERVER["SCRIPT_FILENAME"])."/PaginasDinamicas/TestearC_Transferencias3.html", "w"); 
 	fwrite($nuevoarchivo,$contenido); 
 	fclose($nuevoarchivo);
 	
@@ -170,7 +166,7 @@ function Display($idioma)
 																)
 															)
 												);
-	$nuevoarchivo = fopen(dirname($_SERVER["SCRIPT_FILENAME"])."/PaginasDinamicas/TestearC_AltaPublicaciones1.html", "w"); 
+	$nuevoarchivo = fopen(dirname($_SERVER["SCRIPT_FILENAME"])."/PaginasDinamicas/TestearC_Publicaciones1.html", "w"); 
 	fwrite($nuevoarchivo,$contenido); 
 	fclose($nuevoarchivo);	
 	$data_url = http_build_query (array("TIPO" => "A"));
@@ -186,7 +182,7 @@ function Display($idioma)
 																)
 															)
 												);
-	$nuevoarchivo = fopen(dirname($_SERVER["SCRIPT_FILENAME"])."/PaginasDinamicas/TestearC_AltaPublicaciones2.html", "w"); 
+	$nuevoarchivo = fopen(dirname($_SERVER["SCRIPT_FILENAME"])."/PaginasDinamicas/TestearC_Publicaciones2.html", "w"); 
 	fwrite($nuevoarchivo,$contenido); 
 	fclose($nuevoarchivo);	
 	$data_url = http_build_query (array("TIPO" => "C"));
@@ -202,7 +198,7 @@ function Display($idioma)
 																)
 															)
 												);
-	$nuevoarchivo = fopen(dirname($_SERVER["SCRIPT_FILENAME"])."/PaginasDinamicas/TestearC_AltaPublicaciones3.html", "w"); 
+	$nuevoarchivo = fopen(dirname($_SERVER["SCRIPT_FILENAME"])."/PaginasDinamicas/TestearC_Publicaciones3.html", "w"); 
 	fwrite($nuevoarchivo,$contenido); 
 	fclose($nuevoarchivo);
 	
@@ -219,7 +215,7 @@ function Display($idioma)
 																)
 															)
 												);
-	$nuevoarchivo = fopen(dirname($_SERVER["SCRIPT_FILENAME"])."/PaginasDinamicas/TestearC_AltaActividades1.html", "w"); 
+	$nuevoarchivo = fopen(dirname($_SERVER["SCRIPT_FILENAME"])."/PaginasDinamicas/TestearC_Actividades1.html", "w"); 
 	fwrite($nuevoarchivo,$contenido); 
 	fclose($nuevoarchivo);	
 	$data_url = http_build_query (array("TIPO" => "RE"));
@@ -235,7 +231,7 @@ function Display($idioma)
 																)
 															)
 												);
-	$nuevoarchivo = fopen(dirname($_SERVER["SCRIPT_FILENAME"])."/PaginasDinamicas/TestearC_AltaActividades2.html", "w"); 
+	$nuevoarchivo = fopen(dirname($_SERVER["SCRIPT_FILENAME"])."/PaginasDinamicas/TestearC_Actividades2.html", "w"); 
 	fwrite($nuevoarchivo,$contenido); 
 	fclose($nuevoarchivo);	
 	$data_url = http_build_query (array("TIPO" => "CON"));
@@ -251,7 +247,7 @@ function Display($idioma)
 																)
 															)
 												);
-	$nuevoarchivo = fopen(dirname($_SERVER["SCRIPT_FILENAME"])."/PaginasDinamicas/TestearC_AltaActividades3.html", "w"); 
+	$nuevoarchivo = fopen(dirname($_SERVER["SCRIPT_FILENAME"])."/PaginasDinamicas/TestearC_Actividades3.html", "w"); 
 	fwrite($nuevoarchivo,$contenido); 
 	fclose($nuevoarchivo);
 	
@@ -268,7 +264,7 @@ function Display($idioma)
 																)
 															)
 												);
-	$nuevoarchivo = fopen(dirname($_SERVER["SCRIPT_FILENAME"])."/PaginasDinamicas/TestearC_AltaDocencia1.html", "w"); 
+	$nuevoarchivo = fopen(dirname($_SERVER["SCRIPT_FILENAME"])."/PaginasDinamicas/TestearC_Docencia1.html", "w"); 
 	fwrite($nuevoarchivo,$contenido); 
 	fclose($nuevoarchivo);	
 	$data_url = http_build_query (array("TIPO" => "M"));
@@ -284,7 +280,7 @@ function Display($idioma)
 																)
 															)
 												);
-	$nuevoarchivo = fopen(dirname($_SERVER["SCRIPT_FILENAME"])."/PaginasDinamicas/TestearC_AltaDocencia2.html", "w"); 
+	$nuevoarchivo = fopen(dirname($_SERVER["SCRIPT_FILENAME"])."/PaginasDinamicas/TestearC_Docencia2.html", "w"); 
 	fwrite($nuevoarchivo,$contenido); 
 	fclose($nuevoarchivo);
 	  }
