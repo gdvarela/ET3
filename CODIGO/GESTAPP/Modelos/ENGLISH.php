@@ -62,6 +62,7 @@ $Idioma = array(
 'ERR UBI' => 'YOu must insert a valid path or valid filetype (php, html).',
 'FILE' => 'Select a File:',
 'ERR UPLOAD' => 'Error in File Upload',
+
 'MSG FIL' => 'Show only',
 'MSG FIL BUT' => 'Filter',
 
@@ -105,9 +106,6 @@ $Idioma = array(
 
 //-------------------------------------------------------------------------Funcionalidades
 'ERR CLAVE F' => 'Operation name already exists.',
-//'El campo Login no puede contener espacios' => 'El campo <i> Login </i> no puede contener espacios.',
-//'El campo Pass esta vacio' => 'El campo <i> Pass </i> esta vacio.',
-//'El campo Login esta vacio' => 'El campo <i> Login </i> esta vacio.',
 
 'ALT F OK' => 'Operation Inserted Correctly',
 'ALT ERR F' => 'Error in Operation Insert',
@@ -126,7 +124,6 @@ $Idioma = array(
 'CON ERR R-F' => 'Error Consulting Relation Roles and Operation.', 
 'CON ERR P-F' => 'Error Consulting Relation Pages and Operation.', 
 
-
 'Funcionalidades' => 'Operations',
 'Nueva Funcionalidad' => 'New Operation',
 'Editar Funcionalidad' => 'Operation Editing',
@@ -144,9 +141,6 @@ $Idioma = array(
 
 //-------------------------------------------------------------------------Roles
 'ERR CLAVE R' => 'Rol name already exists.',
-//'El campo Login no puede contener espacios' => 'El campo <i> Login </i> no puede contener espacios.',
-//'El campo Pass esta vacio' => 'El campo <i> Pass </i> esta vacio.',
-//'El campo Login esta vacio' => 'El campo <i> Login </i> esta vacio.',
 
 'ALT R OK' => 'Rol Inserted Correctly',
 'ALT ERR R' => 'Error in Rol Insert',
@@ -198,6 +192,7 @@ $Idioma = array(
 'TIT TEST' => 'Test configuration',
 'PropiedadesPeticion' => 'POST/GET Values',
 'ListaPaginasErrores' => 'Pages to Test',
+'PAG_DIR' => 'Web Pages',
 //-------------------------------------------------------------------------Terminologia
 'Aplicacion GESTAPP' => 'GESTAPP',
 'LOGIN' => 'Log in',
@@ -234,7 +229,6 @@ $Idioma = array(
 'ERR PER D' =>'Error con los permisos del directorio de subida.',
 'EXPLICACION' => 'To use a Page with GESTAPP, you must add theese lines to your page on top code:<br><br>-"$miPaginaPorDefecto" -> Users without permission will be redirect to this page.<br>In this example, te redirect page is a your own WebSite Login, but you can especify a standar error page, etc...<br><br>-"GESTAPP/controlPages.php" -> RELATIVE path to integrate file GESTAPP.<br><br>In this example "MyUploadPage.php" will be upload to root apache directory, GESTAPP Application is located in a GESTAPP directory y root apache directory too. The "include" path is relative how you can see.',
 
-
 /*
 
 ////////////////////////////////////
@@ -266,13 +260,12 @@ PIXEL
 'Tests' => 'Tests',
 'Resultados' => "Results",
 'ESCRITURA' => "Write permissions on the directory are needed",
+
 'EjecutarPruebas' => 'Preconfigured tests',
 'Personalizada' => 'Custom tests',
 'PC-pagename' => 'Click on the lateral menu to add directly',
 'PC-pageprop' => 'Key1=Valueor1,Key2=Value2.....',
 'EXP' => 'To test views, Select the related controller. The code of the views itself is incomplete and it will fail.',
-
-
 
 'Barra_Titulo' => 'Pixel',
 
@@ -309,7 +302,6 @@ PIXEL
 'PagNameAAP' => 'New activities',
 'PagNameMAP' => 'Edit activities',
 'PagNameG' => 'GESTAPP',
-'PagNameERRORPERM' => 'Error',
 
 //Resto de terminología
 'Otros' => 'Others',
@@ -327,7 +319,6 @@ PIXEL
 'Alta_Prensa' => 'New press',
 'Elim_Sel' => 'Remove selected',
 
-
 //Alta Miembro- Mod Miembro
 'MA-Login' => 'Login',
 'MA-Pass' => 'Password',
@@ -340,24 +331,31 @@ PIXEL
 'MA-Descripcion_Usuario' => 'Description or Biography',
 'MA-Telefono_Usuario' => 'Phone number',
 'MA-Movil_Usuario' => 'Mobile phone number',
+
 //Alta Prensa- Mod Prensa
 'MP-Titulo_Noticia' => 'Report title',
 'MP-Fecha_Noticia' => 'Report date',
 'MP-Web_Noticia' => 'Source WEB',
 'MP-IDPDF_Noticia' => ' ID PDF',
 'MP-Publicador_Noticia' => 'Publisher member',
+
+'ID CONCRETO REPETIDO P' => "Error during Insert",
+'OBTENCION P' => 'Error in database obtaining data',
+'ERROR CON P' => 'Error in Data listing',
+'ERROR BORRADO P' => 'Error Deleting Data',
+'ERROR MOD P' => 'Error Updating Data',
+
 //COLABORACIONES
+
 'MP-IDEmpresa'=>"ID",
 	 'MP-Web_Empresa'=>"Website",
 	 'MP-Nombre_Empresa'=>"Company name",
 	 'MP-IDImagen_Empresa'=>"Image",
 	 'MP-IDParticipante'=>"ID",
-	 'MP-IDGrupo'=>"Group name",
-	 
+	 'MP-IDGrupo'=>"Group name",	 
 	 'MP-Nombre_Grupo'=>"Group name",
 	 'MP-Web_Grupo'=>"Website",
 	 'MP-IDImagen_Grupo'=>"Group image",
-	 'MP-IDParticipante'=>"ID",
 	 'MP-IDParticipante'=>"ID",
 	 'MP-IDInstitucion'=>"ID",
 	 'MP-Web_Institucion'=>"Website",
@@ -372,10 +370,16 @@ PIXEL
 'Alta_INST' => "Add institution",
 'Alta_EMPRE' => "Add company",
 'Alta_GRUPO' => "Add group",
+
 'ID Part REP' =>"The competitor ID aready exists",
-'ID CONCRETO REPETIDO C' => "The Company/Institution ID or Group already exists",
+'ID CONCRETO REPETIDO C' => "Error during Insert",
 'OBTENCION C' => 'Error in database obtaining data',
+'ERROR CON C' => 'Error in Data listing',
+'ERROR BORRADO C' => 'Error Deleting Data',
+'ERROR MOD C' => 'Error Updating Data',
+
 //Transferencias
+
 'MP-Nombre_Patente' => 'Patent name',
 'MP-IDPatente'=> 'ID',
 'MP-Fecha_Patente' => 'Creation date',
@@ -388,6 +392,7 @@ PIXEL
 'MP-FechaFin_Contrato'=> 'Ending date',
 'MP-IDEmpresa'=> 'Associated Company',
 'MP-MC-S_ASIGNADO@IDParticipante' => 'Project competitors',
+
 'Alta_PA' => "New patent",
 'Descripcion' => "Description",
 'Alta_PO' => "New project",
@@ -398,10 +403,15 @@ PIXEL
 	"Inicio" => "Start",
 	"Fin" => "End",
 	"Duracion" => "Duration",
-	'ID CONCRETO REPETIDO T' => "The Project/Patent ID or Contract already exists",
-	'OBTENCION T' => 'Error in database obtaining data',
 	
+	'ID CONCRETO REPETIDO T' => "Error during Insert",
+'OBTENCION T' => 'Error in database obtaining data',
+'ERROR CON T' => 'Error in Data listing',
+'ERROR BORRADO T' => 'Error Deleting Data',
+'ERROR MOD T' => 'Error Updating Data',
+
 	//Publicaciones
+	
 'MP-Titulo_Libro' => 'Book title',
 'MP-ISBN'=> 'ISBN',
 'MP-Fecha_Libro' => 'Publication date',
@@ -416,73 +426,105 @@ PIXEL
 'MP-Charla_Conferencia'=> 'Conference speech',
 'MP-Fecha_Conferencia'=> 'Conference date',
 'MP-IDConferencia'=> 'Conference ID',
-'MP-MC-S_USUARIO_LIBRO@Login'=> 'Publisher members',
-'MP-MC-S_USUARIO_ARTICULO@Login'=> 'Creator or said members',
-'MP-MC-S_USUARIO_CONFERENCIA@Login'=> 'Participating member',
+'MP-MC-S_USUARIO_LIBRO@Login'=> 'Miembros que lo Publican',
+'MP-MC-S_USUARIO_ARTICULO@Login'=> 'Miembros Creadores o Mencionados',
+'MP-MC-S_USUARIO_CONFERENCIA@Login'=> 'Miembros que participan',
+
 "Libro" => "Book",
 	"Articulo" => "Article",
 	"Conferencia" => "Conference",
-'Alta_L' => "New book",
-'Alta_C' => "New conference",
-'Alta_A' => "New article", 
-	'ID CONCRETO REPETIDO Pu' => "The ID of the Book, Article or Conference already exists",
+	
+'Alta_L' => "New Book",
+'Alta_C' => "Nueva Conference",
+'Alta_A' => "Nuevo Article", 
+
+	'ID CONCRETO REPETIDO Pu' => "Error during Insert",
+'OBTENCION Pu' => 'Error in database obtaining data',
+'ERROR CON Pu' => 'Error in Data listing',
+'ERROR BORRADO Pu' => 'Error Deleting Data',
+'ERROR MOD Pu' => 'Error Updating Data',
+
 //Docencia
-'Alta_DC' => "New teaching",
-'Alta_DCM' => "New subject",
-'MP-IDMateria' => 'Subject ID',
-'MP-Nombre_Materia' => 'Subject name',
-'MP-Login' => 'Teacher',
-'MP-FechaIni_Materia' => 'Start date',
-'MP-FechaFin_Materia' => 'Ending date',
+
+'Alta_DC' => "New Teaching",
+'Alta_DCM' => "New Subject",
+'MP-IDMateria' => 'Subject Identifier',
+'MP-Nombre_Materia' => 'Name',
+'MP-Login' => 'Professor',
+'MP-FechaIni_Materia' => 'Start Date',
+'MP-FechaFin_Materia' => 'End Date',
 'MatImpr' => 'Subjects',
-'ID CONCRETO REPETIDO Pu' => "The ID of Teaching or New subject already exists",
+
+'ID CONCRETO REPETIDO D' => "Error during Insert",
+'OBTENCION D' => 'Error in database obtaining data',
+'ERROR CON D' => 'Error in Data listing',
+'ERROR BORRADO D' => 'Error Deleting Data',
+'ERROR MOD D' => 'Error Updating Data',
+
 //Actividades
-'MP-Titulo_Conferencia_Org' => 'Titulo de la Conferencia',
-'MP-IDConferencia_Org'=> 'Identificador',
-'MP-Fecha_Conferencia_Org' => 'Fecha de la Conferencia',
-'MP-Titulo_Revista'=> 'Titulo de la Revista',
-'MP-ISSNOnline_Revista' => 'ISSN Online Revista ',
-'MP-Fecha_Revista'=> 'Fecha de la Revista',
-'MP-IDRevista'=> 'Identificador',
-'MP-Titulo_Tablon'=> 'Titulo del Tablon',
-'MP-ISSNOnline_Tablon'=> 'ISSN Online Tablon',
-'MP-ISSN_Tablon'=> 'ISSN Tablon',
-'MP-Fecha_Tablon'=> 'Fecha Tablon',
-'MP-IDTablon'=> 'Identificador del Tablon',
-"Editorial" => "Editorial",
-	"Revista" => "Revista",
-	"ConferenciaG" => "Conferencia de Grupo",
-'Alta_ED' => "Nueva Editorial",
-'Alta_RE' => "Nueva Revista",
-'Alta_CON' => "Nueva Conferencia", 
-	'ID CONCRETO REPETIDO A' => "El ID de de la Editorial, Revista o Conferencia ya Existe",
+
+'MP-Titulo_Conferencia_Org' => 'Conference Title',
+'MP-IDConferencia_Org'=> 'Identifier',
+'MP-Fecha_Conferencia_Org' => 'Conference Date',
+'MP-Titulo_Revista'=> 'Journal Title',
+'MP-ISSNOnline_Revista' => 'ISSN Online Journal ',
+'MP-Fecha_Revista'=> 'Journal Date',
+'MP-IDRevista'=> 'Identifier',
+'MP-Titulo_Tablon'=> 'Edit Title',
+'MP-ISSNOnline_Tablon'=> 'ISSN Online Edit',
+'MP-ISSN_Tablon'=> 'ISSN Edit',
+'MP-Fecha_Tablon'=> 'Edit Title',
+'MP-IDTablon'=> 'Edit Identifier',
+
+"Editorial" => "Edits",
+	"Revista" => "Journals",
+	"ConferenciaG" => "Group Conference",
+	
+'Alta_ED' => "New Edit",
+'Alta_RE' => "New Journal",
+'Alta_CON' => "New Conference",
+ 
+'ID CONCRETO REPETIDO A' => "Error during Insert",
+'OBTENCION A' => 'Error in database obtaining data',
+'ERROR CON A' => 'Error in Data listing',
+'ERROR BORRADO A' => 'Error Deleting Data',
+'ERROR MOD A' => 'Error Updating Data',
+	
 //Pagina HOME
+
 'Globex' => 'Globex',
-'Generación Lógica Opeativa para Bases de Empresas X' => 'Generación Lógica Opeativa para Bases de Empresas X',
+'Generación Lógica Opeativa para Bases de Empresas X' => 'Operative Logical GEneracion of Enterprises',
 'Ourense' =>'Ourense',
-'Somos' => 'Somos',
-'Ubicados en' => 'Ubicados en',
+'Somos' => 'We are',
+'Ubicados en' => 'Located in',
 'Escuela Superior de Ingienería Informática' => 'Escuela Superior de Ingienería Informática',
-'Nuestro equipo' => 'Nuestro equipo',
-'Alumnos' => 'Alumnos',
+'Nuestro equipo' => 'Our Team',
+'Alumnos' => 'Studenst',
 'UVIGO' => 'Universidad de Vigo',
-'Diez años desarrollando sistemas informáticos' => 'Diez años desarrollando sistemas informáticos',
-'Desarrolo Web' => 'Desarrolo Web',
-'Diseño de interface' => 'Diseño de interface',
-'Interacción' => 'Interacción',
-'Experiencia de usuario' => 'Experiencia de usuario',
+'Diez años desarrollando sistemas informáticos' => '10 Years of Developing',
+
+'Desarrolo Web' => 'Web Develop',
+'Diseño de interface' => 'Interface Desing',
+'Interacción' => 'Interaction',
+'Experiencia de usuario' => 'User Experience',
+
 'Texto 1' => 'Desarrollo web es un término amplio que define la creación de sitios web para Internet o una intranet.',
 'Texto 2' => 'Diseño de computadoras, aplicaciones, máquinas, dispositivos de comunicación móvil, aplicaciones de software, y sitios web enfocado en la experiencia de usuario y la interacción.',
 'Texto 3' =>  'La interacción es una acción recíproca entre dos o más objetos, sustancias, personas o agentes.',
 'Texto 4' => 'Conjunto de factores y elementos relativos a la interacción del usuario, con un entorno o dispositivo concretos, cuyo resultado es la generación de una percepción positiva o negativa de dicho servicio, producto o dispositivo.',
-'Trabajos recientes' => 'Trabajos recientes',
-'Trabajo 1' => 'Diseño de aplicaciones móviles',
-'Trabajo 2' => 'Diseño hardware especializado',
-'Trabajo 3' => 'Desarrolo de software para transporte',
-'Trabajo 4' => 'Diseño de PowerPoints de gatitos',
+
+'Trabajos recientes' => 'Recent Works',
+'Trabajo 1' => 'APPS Desings',
+'Trabajo 2' => 'Dedicated Hardware Desing',
+'Trabajo 3' => 'Vehicles Software Developement',
+'Trabajo 4' => 'Gatitos Powerpoint Diseñation',
+
 //Textos Home
-'Texto Principal' => 'La informática es una ciencia que estudia métodos, técnicas, procesos, con el fin de almacenar, procesar y transmitir información y datos en formato digital. Se define como la rama de la tecnología que estudia el tratamiento automático de la información.',
+
+'Texto Principal' => 'Informatic is too hard.',
+
 //Citas HOME
+
 'Homer Simpson' => 'Homer Simpson',
 'Cita 1' => 'Tendrá todo el dinero del mundo, pero hay algo que nunca podrá comprar... un dinosaurio',
 'Stave Ballmer' => 'Stave Ballmer',
@@ -491,17 +533,17 @@ PIXEL
 'Cita 3' => 'Es el vecino el que elige el alcalde y es el alcalde el que quiere que sean los vecinos el alcalde',
 'C-3PO' => 'C-3PO',
 'Cita 4' => 'El amo Luke estará bien... Para tratarse de un ser humano, es bastante ingenioso.',
+
 //Pie Pagina
-'Nuestras Oficinas' => 'Nuestras Oficinas',
-'Enlaces de interes' => 'Enlaces de interes',
-'Contactanos' => 'Contactanos',
-'Noticias Recientes' => 'Noticias Recientes',
-'Ultimas publicaciones' => ' Ultimas publicaciones',
-'Carrera' => 'Carrera',
-'Politica de privacidad' => 'Politica de privacidad',
-'Terminos y Condiciones' => 'Terminos y Condiciones',
-'Ultimos eventos' => 'Ultimos eventos'
 
-
+'Nuestras Oficinas' => 'Our Rooms',
+'Enlaces de interes' => 'Intersing Links',
+'Contactanos' => 'Contact',
+'Noticias Recientes' => 'Recent News',
+'Ultimas publicaciones' => 'Latest Publications',
+'Carrera' => 'Master',
+'Politica de privacidad' => 'Privacity Policy',
+'Terminos y Condiciones' => 'Terms and Conditions',
+'Ultimos eventos' => 'Latests Events'
 )
 ?>

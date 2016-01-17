@@ -107,7 +107,6 @@ $Idioma = array(
 //-------------------------------------------------------------------------Funcionalidades
 'ERR CLAVE F' => 'Xa existe unha Funcionalidade con ese mesmo nome.',
 
-
 'ALT F OK' => 'Funcionalidade engadida correctamente.',
 'ALT ERR F' => 'Erro engadindo a Funcionalidade.',
 
@@ -193,6 +192,7 @@ $Idioma = array(
 'TIT TEST' => 'Configuración das probas',
 'PropiedadesPeticion' => 'Valores de POST/GET',
 'ListaPaginasErrores' => 'Paxinas a Comprobar',
+'PAG_DIR' => 'Paxinas Directorio WEB',
 //-------------------------------------------------------------------------Terminologia
 'Aplicacion GESTAPP' => 'Aplicacion GESTAPP',
 'LOGIN' => 'Logeate',
@@ -239,38 +239,311 @@ PIXEL
 
 */
 
+'TestErrores' => 'Errores PHP',
+'TestErrores2' => 'Errores Formulario',
+'Aclaracion' => 'Url do JSON dos datos das Probas',
+'Enviar' => 'Enviar',
+'Resultados parciales:' => 'Resultados parciales:',
+'Resultados totales:' => 'Resultados totales:',
+'Resultados totales:' => 'Resultados totales:',
+'Estadísticas:' => 'Estadísticas:',
+'Total tests incorrectos:' => 'Total tests incorrectos:',
+'Total tests:' => 'Total tests:',
+'Total campos erróneos:' => 'Total campos erróneos:',
+'Total campos:' => 'Total campos:',
+'Total formularios erróneos:' => 'Total formularios erróneos:',
+'Total formularios:' => 'Total formularios:',
+'Total páginas erróneas:' => 'Total páginas erróneas:',
+'Total páginas:' => 'Total páginas:',
+'Tabla resultados:' => 'Tabla resultados:',
+'Errores:' => 'Errores:',
+'Tests' => 'Tests',
+'Resultados' => "Resultados",
+'ESCRITURA' => "Debe dispor de permisos de escritura no directorio WEB",
+
+'EjecutarPruebas' => 'Probas Preconfiguradas',
+'Personalizada' => 'Personalizacion de PRobas',
+'PC-pagename' => 'Click no menu do lado pa engadir directamente',
+'PC-pageprop' => 'Clave1=Valor1,Clave2=Valor2.....',
+'EXP' => 'Para a execucion das vistas, executar as probas sobre o controlador asociado, xa que as vistas por si mismas estan incompletas e daran error.',
 
 'Barra_Titulo' => 'Pixel',
 
 //Nombres de Pagina PagName[ID]
 'PagNameH' => 'Home',
-'PagNameM' => 'Miembros',
+'PagNameM' => 'Membros',
 'PagNameP' => 'Prensa',
 'PagNameT' => 'Transferencia',
-'PagNameC' => 'Colaboraciones',
+'PagNameA' => 'Actividades',
+'PagNameD' => 'Docencia',
+'PagNamePu' => 'Publicacions',
+'PagNameC' => 'Colaboracions',
 'PagNameL' => 'Login',
 'PagNameHP' => 'Home',
-'PagNameMP' => 'Miembros',
-'PagNameAMP' => 'Alta Miembros',
-'PagNameMMP' => 'Modificar Miembro',
+'PagNameMP' => 'Membros',
+'PagNameAMP' => 'Alta Membros',
+'PagNameMMP' => 'Modificar Membro',
 'PagNamePP' => 'Prensa',
 'PagNameAPP' => 'Alta Noticia',
 'PagNameMPP' => 'Modificar Noticia',
+'PagNamePuP' => 'Publicacions',
+'PagNameAPuP' => 'Nueva Publicacion',
+'PagNameMPuP' => 'Modificar Publicacion',
 'PagNameTP' => 'Transferencia',
+'PagNameDP' => 'Docencia',
+'PagNameADP' => 'Alta Docencia',
+'PagNameMDP' => 'Modificar Docencia',
 'PagNameATP' => 'Alta Transferencia',
 'PagNameMTP' => 'Modificar Transferencia',
-'PagNameCP' => 'Colaboraciones',
-'PagNameACP' => 'Alta Colaboraciones',
-'PagNameMCP' => 'Modificar Colaboraciones',
+'PagNameCP' => 'Colaboracions',
+'PagNameACP' => 'Alta Colaboracions',
+'PagNameMCP' => 'Modificar Colaboracions',
+'PagNameAP' => 'Actividades',
+'PagNameAAP' => 'Alta Actividades',
+'PagNameMAP' => 'Modificar Actividades',
 'PagNameG' => 'GESTAPP',
-'PagNameERRORPERM' => 'Error',
 
 //Resto de terminología
-'Otros' => 'Otros',
+'Otros' => 'Outros',
+'Cancelar'=>'Cancelar',
 'Intranet' => 'Intranet',
 'Login' => 'Login',
 'LogOUT' => 'LogOUT',
 'Configuracion' => 'Configuracion',
-'Idioma' => 'Idioma'
+'Grupo' => 'Grupo',
+'Idioma' => 'Idioma',
+'Enlace' => 'Enlace',
+'CON ERR MIEMBROS' => 'Error na obtencion dos membros',
+'CON ERR NOTICIAS' => 'Error na obtencion das noticias',
+'Alta_Miembro' => 'Alta Membro',
+'Alta_Prensa' => 'Alta Noticia',
+'Elim_Sel' => 'Eliminar Seleccionados',
+
+//Alta Miembro- Mod Miembro
+'MA-Login' => 'Login',
+'MA-Pass' => 'Contrasinal',
+'MA-USU_nombre' => 'Nome de Usuario',
+'MA-USU_apellido' => ' Apelido',
+'MA-USU_email' => 'Correo Electronico',
+'MA-USU_fecha_alta' => 'Data de Alta',
+'MA-Web_Usuario' => 'Web Personal',
+'MA-Departamento_Usuario' => 'Departamento',
+'MA-Descripcion_Usuario' => 'Descripcion ou Biografía',
+'MA-Telefono_Usuario' => 'Telefono',
+'MA-Movil_Usuario' => 'Trebello Movil',
+
+//Alta Prensa- Mod Prensa
+'MP-Titulo_Noticia' => 'Titulo Noticia',
+'MP-Fecha_Noticia' => 'Data da Noticia',
+'MP-Web_Noticia' => 'WEB de orixe ou Fonte',
+'MP-IDPDF_Noticia' => ' ID PDF',
+'MP-Publicador_Noticia' => 'Membro Publicador',
+
+'ID CONCRETO REPETIDO P' => "Error producido na Alta",
+'OBTENCION P' => 'Error Ocurrido coa base de datos acadando os datos',
+'ERROR CON P' => 'Error no listado dos datos',
+'ERROR BORRADO P' => 'Error mentras se eliminaba o rexistro',
+'ERROR MOD P' => 'Error mentras se modificaba o rexistro',
+
+//COLABORACIONES
+
+'MP-IDEmpresa'=>"Identificador",
+	 'MP-Web_Empresa'=>"Sito Web",
+	 'MP-Nombre_Empresa'=>"Nome Corporativo",
+	 'MP-IDImagen_Empresa'=>"Imaxe",
+	 'MP-IDParticipante'=>"Identificador",
+	 'MP-IDGrupo'=>"Nome Grupo",	 
+	 'MP-Nombre_Grupo'=>"Nome Grupo",
+	 'MP-Web_Grupo'=>"Sito Web",
+	 'MP-IDImagen_Grupo'=>"Imaxe Grupo",
+	 'MP-IDParticipante'=>"Identificador",
+	 'MP-IDInstitucion'=>"Identificador",
+	 'MP-Web_Institucion'=>"Sito Web",
+	 'MP-IDImagen_Institucion'=>"Imaxe Institucion",
+	 'MP-Nombre_Institucion'=>"Nome Institucion",
+	 'MP-IDParticipante'=>"Identificador",
+	
+	"Empresa" => "Empresa",
+	"Institucion" => "Institucion",
+	"Grupo" => "Grupo",
+	
+'Alta_INST' => "Engadir Institucion",
+'Alta_EMPRE' => "Engadir Empresa",
+'Alta_GRUPO' => "Engadir Grupo",
+
+'ID Part REP' =>"El ID de participante ya existe",
+'ID CONCRETO REPETIDO C' => "Error producido na Alta",
+'OBTENCION C' => 'Error Ocurrido coa base de datos acadando os datos',
+'ERROR CON C' => 'Error no listado dos datos',
+'ERROR BORRADO C' => 'Error mentras se eliminaba o rexistro',
+'ERROR MOD C' => 'Error mentras se modificaba o rexistro',
+
+//Transferencias
+
+'MP-Nombre_Patente' => 'Nome para la Patente',
+'MP-IDPatente'=> 'Identificador',
+'MP-Fecha_Patente' => 'Data de Creacion',
+'MP-Nombre_Proyecto'=> 'Nome del Proxecto',
+'MP-Descripcion_Proyecto' => 'Decripcion do Proxecto',
+'MP-IDProyecto'=> 'Identificador',
+'MP-Nombre_Contrato'=> 'Nome para o Contrato',
+'MP-IDContrato'=> 'Identificador',
+'MP-FechaIni_Contrato'=> 'Data de Inicio',
+'MP-FechaFin_Contrato'=> 'Data de Fin',
+'MP-IDEmpresa'=> 'Empresa Asociada',
+'MP-MC-S_ASIGNADO@IDParticipante' => 'Participantes do Proxecto',
+
+'Alta_PA' => "Nova Patente",
+'Descripcion' => "Descripcion",
+'Alta_PO' => "Novo Proyecto",
+'Alta_CO' => "Novo Contrato", 
+"Patente" => "Patente",
+	"Proyecto" => "Proxecto",
+	"Contrato" => "Contrato",
+	"Inicio" => "Inicio",
+	"Fin" => "Fin",
+	"Duracion" => "Duracion",
+	
+'ID CONCRETO REPETIDO T' => "Error producido na Alta",
+'OBTENCION T' => 'Error Ocurrido coa base de datos acadando os datos',
+'ERROR CON T' => 'Error no listado dos datos',
+'ERROR BORRADO T' => 'Error mentras se eliminaba o rexistro',
+'ERROR MOD T' => 'Error mentras se modificaba o rexistro',
+
+	//Publicaciones
+
+'MP-Titulo_Libro' => 'Titulo do Libro',
+'MP-ISBN'=> 'ISBN',
+'MP-Fecha_Libro' => 'Data de Publicacion',
+'MP-Pais_Libro'=> 'Pais',
+'MP-ISSN_Revista' => 'ISSN Revista',
+'MP-Nombre_Revista'=> 'Nome da Revista',
+'MP-Titulo_Articulo'=> 'Titulo do Artigo',
+'MP-Anotaciones_Articulo'=> 'Anotacions',
+'MP-IDArticulo'=> 'Identificador do Artigo',
+'MP-Fecha_Articulo'=> 'Data do Artigo',
+'MP-Nombre_Conferencia'=> 'Nome Conferencia',
+'MP-Charla_Conferencia'=> 'Charla Conferencia',
+'MP-Fecha_Conferencia'=> 'Data da Conferencia',
+'MP-IDConferencia'=> 'Identificador Conferencia',
+'MP-MC-S_USUARIO_LIBRO@Login'=> 'Membros que o Publican',
+'MP-MC-S_USUARIO_ARTICULO@Login'=> 'Membros Creadores ou Mencionados',
+'MP-MC-S_USUARIO_CONFERENCIA@Login'=> 'Membros que participan',
+
+"Libro" => "Libro",
+	"Articulo" => "Artigo",
+	"Conferencia" => "Conferencia",
+
+'Alta_L' => "Novo Libro",
+'Alta_C' => "Nova Conferencia",
+'Alta_A' => "Novo Artigo", 
+
+	'ID CONCRETO REPETIDO Pu' => "Error producido na Alta",
+'OBTENCION Pu' => 'Error Ocurrido coa base de datos acadando os datos',
+'ERROR CON Pu' => 'Error no listado dos datos',
+'ERROR BORRADO Pu' => 'Error mentras se eliminaba o rexistro',
+'ERROR MOD Pu' => 'Error mentras se modificaba o rexistro',
+
+//Docencia
+
+'Alta_DC' => "Nova Docencia",
+'Alta_DCM' => "Engadir Materia",
+'MP-IDMateria' => 'Identificador Materia',
+'MP-Nombre_Materia' => 'Nome',
+'MP-Login' => 'Profesor',
+'MP-FechaIni_Materia' => 'Data Inicio',
+'MP-FechaFin_Materia' => 'Data Fin',
+'MatImpr' => 'Materias Impartidas',
+
+'ID CONCRETO REPETIDO D' => "Error producido na Alta",
+'OBTENCION D' => 'Error Ocurrido coa base de datos acadando os datos',
+'ERROR CON D' => 'Error no listado dos datos',
+'ERROR BORRADO D' => 'Error mentras se eliminaba o rexistro',
+'ERROR MOD D' => 'Error mentras se modificaba o rexistro',
+
+//Actividades
+
+'MP-Titulo_Conferencia_Org' => 'Titulo da Conferencia',
+'MP-IDConferencia_Org'=> 'Identificador',
+'MP-Fecha_Conferencia_Org' => 'Data da Conferencia',
+'MP-Titulo_Revista'=> 'Titulo da Revista',
+'MP-ISSNOnline_Revista' => 'ISSN Online Revista ',
+'MP-Fecha_Revista'=> 'Data da Revista',
+'MP-IDRevista'=> 'Identificador',
+'MP-Titulo_Tablon'=> 'Titulo do Tablon',
+'MP-ISSNOnline_Tablon'=> 'ISSN Online Tablon',
+'MP-ISSN_Tablon'=> 'ISSN Tablon',
+'MP-Fecha_Tablon'=> 'Data Tablon',
+'MP-IDTablon'=> 'Identificador do Tablon',
+
+"Editorial" => "Editorial",
+	"Revista" => "Revista",
+	"ConferenciaG" => "Conferencia de Grupo",
+
+'Alta_ED' => "Nova Editorial",
+'Alta_RE' => "Nova Revista",
+'Alta_CON' => "Nova Conferencia",
+ 
+'ID CONCRETO REPETIDO A' => "Error producido na Alta",
+'OBTENCION A' => 'Error Ocurrido coa base de datos acadando os datos',
+'ERROR CON A' => 'Error no listado dos datos',
+'ERROR BORRADO A' => 'Error mentras se eliminaba o rexistro',
+'ERROR MOD A' => 'Error mentras se modificaba o rexistro',
+
+//Pagina HOME
+
+'Globex' => 'Globex',
+'Generación Lógica Opeativa para Bases de Empresas X' => 'Generación Loxica Opeativa para Bases de Empresas X',
+'Ourense' =>'Ourense',
+'Somos' => 'Somos',
+'Ubicados en' => 'Ubicados en',
+'Escuela Superior de Ingienería Informática' => 'Escola Superior de Inxenieria Informática',
+'Nuestro equipo' => 'O Noso equipo',
+'Alumnos' => 'Alumnos',
+'UVIGO' => 'Universidade de Vigo',
+'Diez años desarrollando sistemas informáticos' => 'Dez anos desevolvendo sistemas informáticos',
+
+'Desarrolo Web' => 'Diseño Web',
+'Diseño de interface' => 'Diseño de interfaces',
+'Interacción' => 'Interacción',
+'Experiencia de usuario' => 'Experiencia de usuario',
+
+'Texto 1' => 'Desarrollo web es un término amplio que define la creación de sitios web para Internet o una intranet.',
+'Texto 2' => 'Diseño de computadoras, aplicaciones, máquinas, dispositivos de comunicación móvil, aplicaciones de software, y sitios web enfocado en la experiencia de usuario y la interacción.',
+'Texto 3' =>  'La interacción es una acción recíproca entre dos o más objetos, sustancias, personas o agentes.',
+'Texto 4' => 'Conjunto de factores y elementos relativos a la interacción del usuario, con un entorno o dispositivo concretos, cuyo resultado es la generación de una percepción positiva o negativa de dicho servicio, producto o dispositivo.',
+
+'Trabajos recientes' => 'Traballos recientes',
+'Trabajo 1' => 'Diseño de aplicacions móviles',
+'Trabajo 2' => 'Diseño hardware especializado',
+'Trabajo 3' => 'Diseño de software para transporte',
+'Trabajo 4' => 'Diseño de PowerPoints de gatetes',
+
+//Textos Home
+
+'Texto Principal' => 'La informática es una ciencia que estudia métodos, técnicas, procesos, con el fin de almacenar, procesar y transmitir información y datos en formato digital. Se define como la rama de la tecnología que estudia el tratamiento automático de la información.',
+
+//Citas HOME
+
+'Homer Simpson' => 'Homer Simpson',
+'Cita 1' => 'Tendrá todo el dinero del mundo, pero hay algo que nunca podrá comprar... un dinosaurio',
+'Stave Ballmer' => 'Stave Ballmer',
+'Cita 2' =>'Developers, developers, developers, developers, developers, developers, developers, developers, developers, developers, developers, developers, developers, developers,...!!!!!!!',
+'Mariano Rajoy' => 'Mariano Rajoy',
+'Cita 3' => 'Es el vecino el que elige el alcalde y es el alcalde el que quiere que sean los vecinos el alcalde',
+'C-3PO' => 'C-3PO',
+'Cita 4' => 'El amo Luke estará bien... Para tratarse de un ser humano, es bastante ingenioso.',
+
+//Pie Pagina
+
+'Nuestras Oficinas' => 'Nuestras Oficinas',
+'Enlaces de interes' => 'Enlaces de interes',
+'Contactanos' => 'Contactanos',
+'Noticias Recientes' => 'Noticias Recientes',
+'Ultimas publicaciones' => ' Ultimas publicaciones',
+'Carrera' => 'Carrera',
+'Politica de privacidad' => 'Politica de privacidad',
+'Terminos y Condiciones' => 'Terminos y Condiciones',
+'Ultimos eventos' => 'Ultimos eventos'
 )
 ?>
