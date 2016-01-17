@@ -1,6 +1,6 @@
 <?php
 
-Class PublicacionesPrivada
+Class ActividadesPrivada
 {
 
 function __construct()
@@ -165,7 +165,7 @@ function DisplayContent($idioma,$Ed,$Re,$Co)
 	}
 
 //Inicializamos la vista Correspondiente
-$princ_view = new PublicacionesPrivada();
+$princ_view = new ActividadesPrivada();
 
 //Se procede a la creacion de la vista
 include_once$RutaRelativaControlador.'Comun/CabeceraPriv.php';

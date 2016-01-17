@@ -354,11 +354,17 @@ INSERT INTO `ROLES` (`ROL_nombre`, `ROL_descripcion`) VALUES
 
 DROP TABLE IF EXISTS `S_LIBROS`;
 CREATE TABLE IF NOT EXISTS `S_LIBROS` (
-  `Titulo_Libro` varchar(20) COLLATE latin1_spanish_ci NOT NULL,
+  `Titulo_Libro` varchar(200) COLLATE latin1_spanish_ci NOT NULL,
   `ISBN` varchar(20) COLLATE latin1_spanish_ci NOT NULL,
   `Fecha_Libro` date NOT NULL,
-  `Pais_Libro` varchar(10) COLLATE latin1_spanish_ci NOT NULL
+  `Pais_Libro` varchar(100) COLLATE latin1_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
+
+INSERT INTO `S_LIBROS` (`Titulo_Libro`, `ISBN`, `Fecha_Libro`, `Pais_Libro`) VALUES
+('Como Programar', '0 93028 923 4',"1992-1-19","España"),
+('Como Programar 2', '0 93028 933 4',"1992-1-19","España"),
+('Como Programar 3', '0 93028 943 4',"1992-1-19","España"),
+('Como Programar 4', '0 93028 953 4',"1992-1-19","España");
 
 -- --------------------------------------------------------
 
@@ -368,13 +374,19 @@ CREATE TABLE IF NOT EXISTS `S_LIBROS` (
 
 DROP TABLE IF EXISTS `S_ARTICULO`;
 CREATE TABLE IF NOT EXISTS `S_ARTICULO` (
-  `ISSN_Revista` char(9) COLLATE latin1_spanish_ci NOT NULL,
-  `Nombre_Revista` varchar(20) COLLATE latin1_spanish_ci NOT NULL,
-  `Titulo_Articulo` varchar(50) COLLATE latin1_spanish_ci NOT NULL,
+  `ISSN_Revista` char(20) COLLATE latin1_spanish_ci NOT NULL,
+  `Nombre_Revista` varchar(200) COLLATE latin1_spanish_ci NOT NULL,
+  `Titulo_Articulo` varchar(500) COLLATE latin1_spanish_ci NOT NULL,
   `Anotaciones_Articulo` text COLLATE latin1_spanish_ci,
   `IDArticulo` varchar(10) COLLATE latin1_spanish_ci NOT NULL,
   `Fecha_Articulo` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
+
+INSERT INTO `S_ARTICULO` (`ISSN_Revista`, `Nombre_Revista`, `Titulo_Articulo`, `Anotaciones_Articulo`, `IDArticulo`, `Fecha_Articulo`) VALUES
+('0 93028 923 4',"Computer Hoy","Saca el maximo partido a tu PC","","1","1992-1-19"),
+('0 93028 923 4',"Science","Futuro de los dispositivos moviles","","2","1992-1-19"),
+('0 93028 923 4',"Science","Funciona Bien tu PC?","","3","1992-1-19"),
+('0 93028 923 4',"Computer Hoy","Saca el maximo partido a tu PC 2","","4","1992-1-19");
 
 -- --------------------------------------------------------
 --
@@ -522,6 +534,16 @@ CREATE TABLE IF NOT EXISTS `S_MATERIAS` (
   `IDMateria` varchar(10) COLLATE latin1_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 
+
+INSERT INTO `S_MATERIAS` (`Nombre_Materia`, `IDMateria`) VALUES
+('Matematicas', '1');
+INSERT INTO `S_MATERIAS` (`Nombre_Materia`, `IDMateria`) VALUES
+('Algebra', '2');
+INSERT INTO `S_MATERIAS` (`Nombre_Materia`, `IDMateria`) VALUES
+('Otra', '3');
+
+
+
 -- --------------------------------------------------------
 
 --
@@ -642,6 +664,9 @@ CREATE TABLE IF NOT EXISTS `S_CONFERENCIAS_ORG` (
   `Fecha_Conferencia_Org` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 
+INSERT INTO `S_CONFERENCIAS_ORG` (`Titulo_Conferencia_Org`, `IDConferencia_Org`, `Fecha_Conferencia_Org`) VALUES
+('Nuestro Objetivos', '1',"1992-1-19"),
+('Quienes Somos', '2',"1992-1-29");
 -- --------------------------------------------------------
 
 --
@@ -656,6 +681,11 @@ CREATE TABLE IF NOT EXISTS `S_REVISTAS` (
   `Fecha_Revista` date NOT NULL,
   `IDRevista` varchar(10) COLLATE latin1_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
+
+
+INSERT INTO `S_REVISTAS` (`ISSN_Revista`, `Titulo_Revista`, `ISSNOnline_Revista`, `IDRevista`, `Fecha_Revista`) VALUES
+('0 93028 923 4',"Computer Hoy","0 93028 923 4","1","1992-1-19"),
+('0 93028 933 4',"Science","0 93028 933 4","2","1992-1-19");
 
 -- --------------------------------------------------------
 
@@ -672,6 +702,10 @@ CREATE TABLE IF NOT EXISTS `S_TABLONEDITORIAL` (
   `IDTablon` varchar(10) COLLATE latin1_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 
+INSERT INTO `S_TABLONEDITORIAL` (`ISSN_Tablon`, `Titulo_Tablon`, `ISSNOnline_Tablon`, `IDTablon`, `Fecha_Tablon`) VALUES
+('0 78898 923 4',"Editorial 1","0 93028 923 4","1","1992-1-19"),
+('0 95748 933 4',"Editorial 2","0 93028 933 4","2","1992-1-19");
+
 -- --------------------------------------------------------
 
 --
@@ -683,7 +717,14 @@ CREATE TABLE IF NOT EXISTS `S_USUARIO_ARTICULO` (
   `IDArticulo` varchar(10) COLLATE latin1_spanish_ci NOT NULL,
   `Login` varchar(25) COLLATE latin1_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
-
+INSERT INTO `S_USUARIO_ARTICULO` (`IDArticulo`, `Login`) VALUES
+('1', 'samu');
+INSERT INTO `S_USUARIO_ARTICULO` (`IDArticulo`, `Login`) VALUES
+('1', 'guille');
+INSERT INTO `S_USUARIO_ARTICULO` (`IDArticulo`, `Login`) VALUES
+('2', 'fran');
+INSERT INTO `S_USUARIO_ARTICULO` (`IDArticulo`, `Login`) VALUES
+('2', 'luis');
 -- --------------------------------------------------------
 
 --
@@ -708,6 +749,18 @@ CREATE TABLE IF NOT EXISTS `S_USUARIO_LIBRO` (
   `Login` varchar(25) COLLATE latin1_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 
+INSERT INTO `S_USUARIO_LIBRO` (`ISBN`, `Login`) VALUES
+('0 93028 923 4', 'yvan');
+INSERT INTO `S_USUARIO_LIBRO` (`ISBN`, `Login`) VALUES
+('0 93028 923 4', 'pabloh');
+INSERT INTO `S_USUARIO_LIBRO` (`ISBN`, `Login`) VALUES
+('0 93028 923 4', 'pablog');
+INSERT INTO `S_USUARIO_LIBRO` (`ISBN`, `Login`) VALUES
+('0 93028 933 4', 'fran');
+INSERT INTO `S_USUARIO_LIBRO` (`ISBN`, `Login`) VALUES
+('0 93028 943 4', 'fran');
+INSERT INTO `S_USUARIO_LIBRO` (`ISBN`, `Login`) VALUES
+('0 93028 953 4', 'fran');
 -- --------------------------------------------------------
 
 --
@@ -721,6 +774,17 @@ CREATE TABLE IF NOT EXISTS `S_USUARIO_MATERIA` (
   `FechaIni_Materia` date NOT NULL,
   `FechaFin_Materia` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
+
+INSERT INTO `S_USUARIO_MATERIA` (`IDMateria`, `Login`, `FechaIni_Materia`, `FechaFin_Materia`) VALUES
+('1', 'fran',"1992-1-20","1992-1-21");
+INSERT INTO `S_USUARIO_MATERIA` (`IDMateria`, `Login`, `FechaIni_Materia`, `FechaFin_Materia`) VALUES
+('2', 'fran',"1992-1-20","1992-1-21");
+INSERT INTO `S_USUARIO_MATERIA` (`IDMateria`, `Login`, `FechaIni_Materia`, `FechaFin_Materia`) VALUES
+('3', 'fran',"1992-1-20","1992-1-21");
+INSERT INTO `S_USUARIO_MATERIA` (`IDMateria`, `Login`, `FechaIni_Materia`, `FechaFin_Materia`) VALUES
+('3', 'guille',"1992-1-20","1992-1-21");
+INSERT INTO `S_USUARIO_MATERIA` (`IDMateria`, `Login`, `FechaIni_Materia`, `FechaFin_Materia`) VALUES
+('2', 'luis',"1992-1-20","1992-1-21");
 
 -- --------------------------------------------------------
 

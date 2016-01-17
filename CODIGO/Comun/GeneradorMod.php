@@ -15,13 +15,21 @@
 if (strpos(explode(":",$campos[2])[0],'js') !== false)
 {
 	global $VALIDACIONFORMULARIO;
-	$VALIDACIONFORMULARIO =$VALIDACIONFORMULARIO. '
-	document.getElementById(\''.$campos[0].'\').addEventListener(\''.explode("|",explode(":",$campos[2])[1])[0].'\', function validar() {
-	  var todoCorrecto = true;
-	  todoCorrecto = '.explode("|",explode(":",$campos[2])[1])[1].';
-	  this.setCustomValidity(todoCorrecto ? \'\' : \''.explode("|",explode(":",$campos[2])[1])[2].'\');
-	});
-	';
+	//Se miran para que eventos se desea aplicar la formular de validacion
+	$eventosSoportar = explode(",",explode("|",explode(":",$campos[2])[1])[0]);
+	
+	//Y añadimos a lo que ya haya de validaciones js del formulario la nueva funcion necesaria para el campo rellenando 
+	// los datos de ésta con lo que se especifique (Consultar ArchivoComun, formato de funciones personalizadas en formularios)
+	for ($i = 0; $i< count($eventosSoportar);$i = $i+1)
+	{
+		$VALIDACIONFORMULARIO =$VALIDACIONFORMULARIO. '
+		document.getElementById(\''.$campos[0].'\').addEventListener(\''.$eventosSoportar[$i].'\', function validar() {
+		  var todoCorrecto = true;
+		  todoCorrecto = '.explode("|",explode(":",$campos[2])[1])[1].';
+		  this.setCustomValidity(todoCorrecto ? \'\' : \''.explode("|",explode(":",$campos[2])[1])[2].'\');
+		});
+		';
+	}
 	
 	$campos[2] = str_replace ("js","",explode(":",$campos[2])[0]);
 }
@@ -50,7 +58,11 @@ switch ($campos[1])
 			  for ($i = 0 ; $i < $opciones->num_rows;$i = $i +1)
 			  {
 				  $dato = $opciones->fetch_assoc();
-				  echo '<option>'.$dato[array_keys($dato)[0]].'</option>';
+				  echo $dato[array_keys($dato)[0]] ."=".$MOD[explode("-",$campos[0])[1]];
+				  if ($dato[array_keys($dato)[0]] == $MOD[explode("-",$campos[0])[1]])
+					echo '<option selected>'.$dato[array_keys($dato)[0]].'</option>';
+				else
+					echo '<option>'.$dato[array_keys($dato)[0]].'</option>';
 			  }
 			  break;
 			  case "array":
@@ -58,7 +70,10 @@ switch ($campos[1])
 			  for ($i = 0 ; $i < count($opciones);$i = $i +1)
 			  {
 				  $dato = $opciones[i];
-				  echo '<option>'.$dato.'</option>';
+				  if ($dato == $MOD[explode("-",$campos[0])[1]])
+					echo '<option selected>'.$dato.'</option>';
+				else
+					echo '<option>'.$dato.'</option>';
 			  }
 			  break;
 		  }
@@ -140,7 +155,7 @@ switch ($campos[1])
 	echo '
 		<div class="form-group">
 			<label class="control-label">'.$idioma[$campos[0]].'</label>
-			<input  type="'.$campos[1].'" name="'.$campos[0].'" value="'.$MOD[explode("-",$campos[0])[1]].'" '.$campos[2].' >
+			<input  type="'.$campos[1].'" name="'.$campos[0].'" id="'.$campos[0].'" value="'.$MOD[explode("-",$campos[0])[1]].'" '.$campos[2].' >
 		</div>
 		';
 	break;
@@ -148,7 +163,7 @@ switch ($campos[1])
 	echo '
 		<div class="form-group">
 			<label class="control-label">'.$idioma[$campos[0]].'</label>
-			<input  type="'.$campos[1].'" class="form-control" value="'.$MOD[explode("-",$campos[0])[1]].'" name="'.$campos[0].'" '.$campos[2].' >
+			<input  type="'.$campos[1].'" class="form-control" id="'.$campos[0].'" value="'.$MOD[explode("-",$campos[0])[1]].'" name="'.$campos[0].'" '.$campos[2].' >
 		</div>
 		';
 	break;

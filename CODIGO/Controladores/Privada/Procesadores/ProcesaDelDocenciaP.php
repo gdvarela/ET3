@@ -33,18 +33,18 @@ include_once $RutaRelativaControlador.'Comun/ArchivoComun.php';
 
 //Cargamos el idioma a utilizar en el controlador
 $idioma = CargarIdioma2($RutaRelativaControlador);
+
 try
 	{
 		switch ($_POST["TIPO"])
 		{
 			case "D":
-			$consulta = $_TABLADOCENCIA->Update(array_slice($_POST, 1) );
+			$consulta = $_TABLADOCENCIA->EliminarRegistro(array_slice($_POST, 1) );
 			break;
 			case "M":
-			$consulta = $_TABLAMATERIAS->Update(array_slice($_POST, 1) );
+			$consulta = $_TABLAMATERIAS->EliminarRegistro(array_slice($_POST, 1) );
 			break;
 		}
-	
 		if (!isset($_COOKIE["TEST"]))
 		header("Location: ".$controladores[$identificadoresPrivados["Docencia"]]);
 	}
@@ -52,9 +52,10 @@ try
 	{
 		if (!isset($_COOKIE["TEST"]))
 		{
-		$errorRescrito = explode("=>",$e->getMessage());
-		$_SESSION['error'] = 'ID CONCRETO REPETIDO D'."=>".$errorRescrito[1];
-		header("Location: ".$controladores[$identificadoresPrivados["Docencia"]]);
+			$errorRescrito = explode("=>",$e->getMessage());
+			session_start();
+			$_SESSION['error'] = 'CON ERR MIEMBROS'."=>".$errorRescrito[1];
+			header("Location: ".$controladores[$identificadoresPrivados["Docencia"]]);
 		}
 	}
 ?>

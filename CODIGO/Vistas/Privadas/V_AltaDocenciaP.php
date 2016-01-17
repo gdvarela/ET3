@@ -22,8 +22,9 @@ function DisplayContent($idioma)
 					  <div class="row">
 				<div class="col-md-12">
 					<form role="form" name="FORM" action="<?php echo $procesadores[$identificadoresPrivados["ADocencia"]]?>" method="POST">
+					<input type="hidden" name="TIPO" value="<?php echo $_POST["TIPO"]?>"/>
 					<?php
-					foreach($formularios[$identificadoresPrivados["ADocencia"]] as $campos)
+					foreach($formularios[$identificadoresPrivados["ADocencia"].$_POST["TIPO"]] as $campos)
 					{
 						global $generador;
 						include $generador;
@@ -42,35 +43,7 @@ function DisplayContent($idioma)
 }
 
 }
-	$noticias = array ();
-		//Consultamos datos
-		try
-		{
-			$consulta = $_TABLANOTICIAS->ListadoRegistros("");
-			//Con los datos los cargamos en el array
-			for ($i = 0; $i < $consulta->num_rows ;$i++)
-			{
-				$noticias[] = $consulta->fetch_assoc();
-			}
-		}
-		catch(Exception $e)
-		{
-			$errorRescrito = explode("=>",$e->getMessage());
-			$_SESSION['error'] = 'CON ERR NOTICIAS'."=>".$errorRescrito[1];
-		}
 
-		
-		
-		$pagCargar = 1;
-		if (isset($_POST['NumPag']))
-		{
-			$pagCargar =$_POST['NumPag'];
-			if ($pagCargar < 1)
-				$pagCargar = 1;
-			
-			if($pagCargar > ceil(count($noticias)/$NumporPags))
-				$pagCargar = ceil(count($noticias)/$NumporPags);
-		}
 //Inicializamos la vista Correspondiente
 $princ_view = new AltaDocenciaPrivada();
 

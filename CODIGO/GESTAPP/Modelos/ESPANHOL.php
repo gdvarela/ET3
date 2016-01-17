@@ -285,6 +285,8 @@ PIXEL
 'PagNameM' => 'Miembros',
 'PagNameP' => 'Prensa',
 'PagNameT' => 'Transferencia',
+'PagNameA' => 'Actividades',
+'PagNameD' => 'Docencia',
 'PagNamePu' => 'Publicaciones',
 'PagNameC' => 'Colaboraciones',
 'PagNameL' => 'Login',
@@ -299,9 +301,9 @@ PIXEL
 'PagNameAPuP' => 'Nueva Publicacion',
 'PagNameMPuP' => 'Modificar Publicacion',
 'PagNameTP' => 'Transferencia',
-'PagNameDC' => 'Docencia',
-'PagNameADC' => 'Alta Docencia',
-'PagNameMDC' => 'Modificar Docencia',
+'PagNameDP' => 'Docencia',
+'PagNameADP' => 'Alta Docencia',
+'PagNameMDP' => 'Modificar Docencia',
 'PagNameATP' => 'Alta Transferencia',
 'PagNameMTP' => 'Modificar Transferencia',
 'PagNameCP' => 'Colaboraciones',
@@ -443,10 +445,16 @@ PIXEL
 //Docencia
 
 'Alta_DC' => "Nueva Docencia",
-'MP-IDMateria' => 'Materia',
+'Alta_DCM' => "Añadir Materia",
+'MP-IDMateria' => 'Identificador Materia',
+'MP-Nombre_Materia' => 'Nombre',
 'MP-Login' => 'Profesor',
 'MP-FechaIni_Materia' => 'Fecha Inicio',
 'MP-FechaFin_Materia' => 'Fecha Fin',
+
+'MatImpr' => 'Materias Impartidas',
+
+'ID CONCRETO REPETIDO Pu' => "El ID de de Docencia o Nueva Materia ya Existe",
 //Actividades
 
 'MP-Titulo_Conferencia_Org' => 'Titulo de la Conferencia',

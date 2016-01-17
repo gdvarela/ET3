@@ -1,6 +1,6 @@
 <?php
 
-Class DocenciaPrivada
+Class Docencia
 {
 
 function __construct()
@@ -16,27 +16,7 @@ function DisplayContent($idioma,$Dc,$materias)
 ?>
 	<section id="content">
 	<div class="container">	 
-		<div class="row"> <!--style="background-color:#434F6A;"--> 
-						<div class="col-md-3" >
-						
-						  <form id="1" action="<?php echo $controladores[$identificadoresPrivados["ADocencia"]]?>" method = "POST">
-						  <input type ="hidden" name="TIPO" value="D" />
-						  <img style="display:inline" src="<?php echo $RutaRelativaControlador?>img/engranaje2.svg.png"
-						  class="img-responsive">
-						  <a style="display:inline" class="btn btn-warning" onClick="document.getElementById('1').submit();"><?php echo $idioma['Alta_DC']; ?></a>
-						  </form>
-						</div>
-						<div class="col-md-3" >
-						
-						  <form id="2" action="<?php echo $controladores[$identificadoresPrivados["ADocencia"]]?>" method = "POST">
-						  <input type ="hidden" name="TIPO" value="M" />
-						  <img style="display:inline" src="<?php echo $RutaRelativaControlador?>img/engranaje2.svg.png"
-						  class="img-responsive">
-						  <a style="display:inline" class="btn btn-warning" onClick="document.getElementById('2').submit();"><?php echo $idioma['Alta_DCM']; ?></a>
-						  </form>
-						</div>
-						<div class="col-md-6"></div>
-	  </div>
+		
 			<div class="row"> <!--style="background-color:#434F6A;"--> 
 			<div class="col-md-3" >
 			</div>
@@ -52,12 +32,9 @@ function DisplayContent($idioma,$Dc,$materias)
 						{
 							echo '
 							
-								<form id="'.$e2["IDMateria"].'Dc" action="'.$controladores[$identificadoresPrivados["MDocencia"]].'" method="POST">
-										<input type="hidden" name="MOD" value="'.$e2["IDMateria"].'" />
-										<input type="hidden" name="TIPO" value="M" />
-										</form>
+								
 								<li class="list-group-item"><i>'.$e2["Nombre_Materia"].'</i>
-									<img style="display:inline" onClick="document.getElementById(\''.$e2["IDMateria"].'Dc\').submit();" src="'.$RutaRelativaControlador.'img/editar.png" class="img-responsive pull-right"></img>
+									
 								</li>
 								
 							  ';
@@ -90,12 +67,9 @@ function DisplayContent($idioma,$Dc,$materias)
 									{
 										if($e["Login"]==$e2["Login"]){
 										echo '
-											<form id="'.$e2["IDMateria"].$e2["Login"].'Dc" action="'.$controladores[$identificadoresPrivados["MDocencia"]].'" method="POST">
-													<input type="hidden" name="MOD" value="'.$e2["IDMateria"].'|'.$e2["Login"].'" />
-													<input type="hidden" name="TIPO" value="D" />
-													</form>
+											
 											<li class="list-group-item"><i>'.$e2["Nombre_Materia"].'</i><br>-<b> '.$idioma["Fecha"].':</b> '.$e2["FechaIni_Materia"].'
-												<img style="display:inline" onClick="document.getElementById(\''.$e2["IDMateria"].$e2["Login"].'Dc\').submit();" src="'.$RutaRelativaControlador.'img/editar.png" class="img-responsive pull-right"></img>
+												
 											</li>
 											
 										  ';
@@ -143,11 +117,5 @@ function DisplayContent($idioma,$Dc,$materias)
 		$_SESSION['error'] = 'CON ERR MIEMBROS'."=>".$errorRescrito[1];
 	}
 
-//Inicializamos la vista Correspondiente
-$princ_view = new DocenciaPrivada();
 
-//Se procede a la creacion de la vista
-include_once$RutaRelativaControlador.'Comun/CabeceraPriv.php';
-$princ_view->DisplayContent($idioma,$Dc,$materias);
-include_once$RutaRelativaControlador.'Comun/Pie.php';
 ?>

@@ -164,6 +164,19 @@ switch($PagID)
 		//Se procede a la creacion de la vista
 		$princ_view->DisplayContent($idioma,$a,$b,$c); //e in g vienen rellnados cuando se incluye la vista correspondiente
 	break;
+	case $identificadores['Actividades']:
+		//Inicializamos la vista Correspondiente
+		$princ_view = new Actividades();
+		//Se procede a la creacion de la vista
+		$princ_view->DisplayContent($idioma,$a,$b,$c); //e in g vienen rellnados cuando se incluye la vista correspondiente
+	break;
+	
+	case $identificadores['Docencia']:
+		//Inicializamos la vista Correspondiente
+		$princ_view = new Docencia();
+		//Se procede a la creacion de la vista
+		$princ_view->DisplayContent($idioma,$Dc,$materias);
+	break;
 	
 	case $identificadores['Login']:
 	//Inicializamos la vista Correspondiente

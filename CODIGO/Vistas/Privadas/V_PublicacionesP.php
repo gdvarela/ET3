@@ -42,7 +42,7 @@ function DisplayContent($idioma,$Lib,$Art,$Conf)
 						  <a style="display:inline" class="btn btn-warning" onClick="document.getElementById('3').submit();"><?php echo $idioma['Alta_C']; ?></a>
 						  </form>
 						</div>
-						<div class="col-md-9"></div>
+						<div class="col-md-3"></div>
 					  </div>
 					  <div class="row">
             <div class="col-md-4">

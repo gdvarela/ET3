@@ -1,12 +1,5 @@
 <?php
 
-//=====================================================================================================================
-// Fichero :V_Publicaciones.php
-// Creado por : Francisco Rojas Rodriguez
-// Fecha : 18/12/2015
-// Clase que contiene una de las vistas del sistema
-//=====================================================================================================================
-
 Class Publicaciones
 {
 
@@ -16,12 +9,15 @@ function __construct()
 
 function DisplayContent($idioma,$Lib,$Art,$Conf)
 {
+	global $controladores;
+	global $identificadoresPrivados;
 	global $RutaRelativaControlador;
 	//Aqui va el cuerpo principal de la pagina
 ?>
 	<section id="content">
-		<div class="container content">		
-        <div class="row">
+	<div class="container">	 
+		
+		<div class="row">
             <div class="col-md-4">
               <div class="panel panel-primary">
                 <div class="panel-heading">
@@ -29,16 +25,18 @@ function DisplayContent($idioma,$Lib,$Art,$Conf)
                 </div>
 				<ul class="list-group">
 				<?php
-				//Se recorren los datos recibidos para incluirlos en el HTML
 					foreach($Lib as $e)
 					{
+						
 						echo '<li class="list-group-item">
 						<blockquote>
 							<p>
 									'.$e["Titulo_Libro"].'
 							</p> <small> '.$e["ISBN"].', <cite>'.$e["Fecha_Libro"].'</cite></small>
+							
 						</blockquote>
-						</li>';
+						</li>
+						';
 					}
 				?>
 					
@@ -52,16 +50,18 @@ function DisplayContent($idioma,$Lib,$Art,$Conf)
                 </div>
 				<ul class="list-group">
 					<?php
-					//Se recorren los datos recibidos para incluirlos en el HTML
 					foreach($Art as $e)
 					{
+						
 						echo '<li class="list-group-item">
 						<blockquote>
 							<p>
 									'.$e["Titulo_Articulo"].'
 							</p> <small> '.$e["Nombre_Revista"].', <cite>'.$e["Fecha_Articulo"].'</cite></small>
+							
 						</blockquote>
-						</li>';
+						</li>
+						';
 					}
 				?>
 				  </ul>
@@ -74,26 +74,26 @@ function DisplayContent($idioma,$Lib,$Art,$Conf)
                 </div>
 				<ul class="list-group">
 					<?php
-					//Se recorren los datos recibidos para incluirlos en el HTML
 					foreach($Conf as $e)
 					{
-						echo '<li class="list-group-item">'.$e["Nombre_Conferencia"].'<br>-'.$e["Charla_Conferencia"].'<br>-'.$e["Fecha_Conferencia"].'</li>';
+						
+						echo '<li class="list-group-item">'.$e["Nombre_Conferencia"].'<br>-'.$e["Charla_Conferencia"].'<br>-'.$e["Fecha_Conferencia"].'
+						
+						</li>';
 					}
 				?>
 				  </ul>
               </div>
             </div>
           </div>
-    </div>
-    </section>
-	<?php
-
-}
-
-}
-
-	// CARGA DE DATOS (DESPUES SE USARA EN ControladorWEB.php)
+	</div>
+	</section>
+<?php
 	
+
+}
+
+}
 	$a = array();
 	$b = array();
 	$c = array();
@@ -124,7 +124,5 @@ function DisplayContent($idioma,$Lib,$Art,$Conf)
 		$errorRescrito = explode("=>",$e->getMessage());
 		$_SESSION['error'] = 'CON ERR MIEMBROS'."=>".$errorRescrito[1];
 	}
-
-
 
 ?>

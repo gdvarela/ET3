@@ -13,15 +13,21 @@ if (strpos(explode(":",$campos[2])[0],'js') !== false)
 	//En caso afirmativo se accede a la variable global de ArchivoComun
 	global $VALIDACIONFORMULARIO;
 	
+	//Se miran para que eventos se desea aplicar la formular de validacion
+	$eventosSoportar = explode(",",explode("|",explode(":",$campos[2])[1])[0]);
+	
 	//Y añadimos a lo que ya haya de validaciones js del formulario la nueva funcion necesaria para el campo rellenando 
 	// los datos de ésta con lo que se especifique (Consultar ArchivoComun, formato de funciones personalizadas en formularios)
-	$VALIDACIONFORMULARIO =$VALIDACIONFORMULARIO. '
-	document.getElementById(\''.$campos[0].'\').addEventListener(\''.explode("|",explode(":",$campos[2])[1])[0].'\', function validar() {
-	  var todoCorrecto = true;
-	  todoCorrecto = '.explode("|",explode(":",$campos[2])[1])[1].';
-	  this.setCustomValidity(todoCorrecto ? \'\' : \''.explode("|",explode(":",$campos[2])[1])[2].'\');
-	});
-	';
+	for ($i = 0; $i< count($eventosSoportar);$i = $i+1)
+	{
+		$VALIDACIONFORMULARIO =$VALIDACIONFORMULARIO. '
+		document.getElementById(\''.$campos[0].'\').addEventListener(\''.$eventosSoportar[$i].'\', function validar() {
+		  var todoCorrecto = true;
+		  todoCorrecto = '.explode("|",explode(":",$campos[2])[1])[1].';
+		  this.setCustomValidity(todoCorrecto ? \'\' : \''.explode("|",explode(":",$campos[2])[1])[2].'\');
+		});
+		';
+	}
 	
 	$campos[2] = str_replace ("js","",explode(":",$campos[2])[0]);
 }

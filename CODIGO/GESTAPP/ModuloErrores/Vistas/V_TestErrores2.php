@@ -245,6 +245,39 @@ function Display($idioma)
 	fwrite($nuevoarchivo,$contenido); 
 	fclose($nuevoarchivo);
 	
+	$data_url = http_build_query (array("TIPO" => "D"));
+	$data_len = strlen ($data_url);
+	$contenido = file_get_contents ("http://".$_SERVER['SERVER_NAME']."".RutaSinDir(dirname($_SERVER["PHP_SELF"]),3)."/Controladores/Privada/C_AltaDocenciaP.php", false, stream_context_create (
+																array (
+																	'http'=>array (
+																		'method'=>"POST", 
+																		'timeout' => 10,
+																		'header'=>"Content-Type: application/x-www-form-urlencoded\r\nConnection: close\r\nContent-Length: $data_len\r\nCookie:TEST=1",
+																		'content'=>$data_url
+																	)
+																)
+															)
+												);
+	$nuevoarchivo = fopen(dirname($_SERVER["SCRIPT_FILENAME"])."/PaginasDinamicas/TestearC_AltaDocencia1.html", "w"); 
+	fwrite($nuevoarchivo,$contenido); 
+	fclose($nuevoarchivo);	
+	$data_url = http_build_query (array("TIPO" => "M"));
+	$data_len = strlen ($data_url);
+	$contenido = file_get_contents ("http://".$_SERVER['SERVER_NAME']."".RutaSinDir(dirname($_SERVER["PHP_SELF"]),3)."/Controladores/Privada/C_AltaDocenciaP.php", false, stream_context_create (
+																array (
+																	'http'=>array (
+																		'method'=>"POST", 
+																		'timeout' => 10,
+																		'header'=>"Content-Type: application/x-www-form-urlencoded\r\nConnection: close\r\nContent-Length: $data_len\r\nCookie:TEST=1",
+																		'content'=>$data_url
+																	)
+																)
+															)
+												);
+	$nuevoarchivo = fopen(dirname($_SERVER["SCRIPT_FILENAME"])."/PaginasDinamicas/TestearC_AltaDocencia2.html", "w"); 
+	fwrite($nuevoarchivo,$contenido); 
+	fclose($nuevoarchivo);
+	
 	include '../../Comun/V_Cabecera.php';
 	include '../../Comun/V_MenuLateral.php';
 	
@@ -264,7 +297,7 @@ function Display($idioma)
 	<form  action="testErrores2.php" method="get">
 	<strong>Url JSON:</strong>
 	<br>
-      <input id="dataUrl" value="../pruebas.json" required placeholder="<?php echo $idioma['Aclaracion']?>" type="text" name="dataUrl" value="">
+      <input id="dataUrl" value="pruebas.json" required placeholder="<?php echo $idioma['Aclaracion']?>" type="text" name="dataUrl" value="">
       <br>
       <button type="submit"><?php echo $idioma['Enviar']?></button>
 	</form>

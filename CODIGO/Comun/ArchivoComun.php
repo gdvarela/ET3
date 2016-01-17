@@ -56,8 +56,11 @@ $identificadores = array(
 'Prensa'=> 'P',
 'Transferencias'=> 'T',
 'Colaboraciones'=> 'C',
-'Login' => 'L',
-'Publicaciones' => 'Pu'
+'Docencia'=> 'D',
+'Publicaciones' => 'Pu',
+'Actividades' => 'A',
+'Login' => 'L'
+
 );
 
 $identificadoresPrivados = array(
@@ -82,9 +85,10 @@ $identificadoresPrivados = array(
 'APublicaciones'=> 'APuP',
 'MPublicaciones'=> 'MPuP',
 'DPublicaciones'=> 'DPuP',
-'Docencia'=> 'DC',
-'ADocencia'=> 'ADC',
-'MDocencia'=> 'MDC',
+'Docencia'=> 'DP',
+'ADocencia'=> 'ADP',
+'MDocencia'=> 'MDP',
+'DDocencia'=> 'DDP',
 'Actividades'=> 'AP',
 'AActividades'=> 'AAP',
 'MActividades'=> 'MAP',
@@ -102,8 +106,10 @@ $MenuPrincipal = array(
 'Miembros' => $identificadores['Miembros'],
 'Prensa'=> $identificadores['Prensa'],
 'Transferencias'=> $identificadores['Transferencias'],
-'Colaboraciones'=> $identificadores['Colaboraciones']
-/*'Publicaciones'=> $identificadores['Publicaciones']*/
+'Colaboraciones'=> $identificadores['Colaboraciones'],
+'Docencia'=> $identificadores['Docencia'],
+'Publicaciones'=> $identificadores['Publicaciones'],
+'Actividades'=> $identificadores['Actividades']
 );
 
 //Array que contiene los indentificadores de las paginas que se mostraran la barra del menu principal
@@ -134,6 +140,9 @@ $vistas = array(
 	$identificadores['Prensa'] => $RutaRelativaControlador.'Vistas/Publicas/V_Prensa.php',
 	$identificadores['Transferencias'] => $RutaRelativaControlador.'Vistas/Publicas/V_Transferencia.php',
 	$identificadores['Colaboraciones'] => $RutaRelativaControlador.'Vistas/Publicas/V_Colaboraciones.php',
+	$identificadores['Docencia'] => $RutaRelativaControlador.'Vistas/Publicas/V_Docencia.php',
+	$identificadores['Publicaciones'] => $RutaRelativaControlador.'Vistas/Publicas/V_Publicaciones.php',
+	$identificadores['Actividades'] => $RutaRelativaControlador.'Vistas/Publicas/V_Actividades.php',
 	$identificadores['Login'] => $RutaRelativaControlador.'Vistas/Publicas/V_Login.php',
 		
 	$identificadoresPrivados['ERRORPERM'] => $RutaRelativaControlador.'Vistas/Privadas/V_ERRORP.php',
@@ -173,6 +182,9 @@ $controladores = array(
 	$identificadores['Prensa'] => $RutaRelativaControlador.'Controladores/Publica/ControladorWEB.php?PagMenu='.$identificadores['Prensa'],
 	$identificadores['Transferencias'] => $RutaRelativaControlador.'Controladores/Publica/ControladorWEB.php?PagMenu='.$identificadores['Transferencias'],
 	$identificadores['Colaboraciones'] => $RutaRelativaControlador.'Controladores/Publica/ControladorWEB.php?PagMenu='.$identificadores['Colaboraciones'],
+	$identificadores['Docencia'] => $RutaRelativaControlador.'Controladores/Publica/ControladorWEB.php?PagMenu='.$identificadores['Docencia'],
+	$identificadores['Publicaciones'] => $RutaRelativaControlador.'Controladores/Publica/ControladorWEB.php?PagMenu='.$identificadores['Publicaciones'],
+	$identificadores['Actividades'] => $RutaRelativaControlador.'Controladores/Publica/ControladorWEB.php?PagMenu='.$identificadores['Actividades'],
 	$identificadores['Login'] => $RutaRelativaControlador.'Controladores/Publica/ControladorWEB.php?PagMenu='.$identificadores['Login'],
 	$identificadoresPrivados['Home'] => $RutaRelativaControlador.'Controladores/Privada/C_HomeP.php',
 	$identificadoresPrivados['Miembros'] => $RutaRelativaControlador.'Controladores/Privada/C_MiembrosP.php',
@@ -228,6 +240,7 @@ $procesadores = array(
 	
 	$identificadoresPrivados['ADocencia'] => $RutaRelativaControlador.'Controladores/Privada/Procesadores/ProcesaAltaDocenciaP.php',
 	$identificadoresPrivados['MDocencia'] => $RutaRelativaControlador.'Controladores/Privada/Procesadores/ProcesaModDocenciaP.php',
+	$identificadoresPrivados['DDocencia'] => $RutaRelativaControlador.'Controladores/Privada/Procesadores/ProcesaDelDocenciaP.php',
 	
 	$identificadoresPrivados['AActividades'] => $RutaRelativaControlador.'Controladores/Privada/Procesadores/ProcesaAltaActividadesP.php',
 	$identificadoresPrivados['MActividades'] => $RutaRelativaControlador.'Controladores/Privada/Procesadores/ProcesaModActividadesP.php',
@@ -401,6 +414,15 @@ $_TABLADOCENCIA = new TablaBD(
 array(0,1)
 );
 
+$_TABLAMATERIAS = new TablaBD(
+"S_MATERIAS",
+	array(
+	"IDMateria" => "",
+	"Nombre_Materia" => ""
+	),
+array(0)
+);
+
 $_TABLACONFERENCIASORG = new TablaBD(
 "S_CONFERENCIAS_ORG",
 	array(
@@ -557,8 +579,8 @@ $formularios = array(
 	array(
 		array( 'MP-Nombre_Contrato','text', "$OBLIGATORIO"),
 		array( 'MP-IDContrato','text', "$OBLIGATORIO $PATRONID"),
-		array( 'MP-FechaIni_Contrato','date', "$OBLIGATORIO js:input|MayorMenor('MP-FechaFin_Contrato','MP-FechaIni_Contrato')|Fecha Erronea, supera la de Fin"),
-		array( 'MP-FechaFin_Contrato','date', "$OBLIGATORIO js:input|MayorMenor('MP-FechaFin_Contrato','MP-FechaIni_Contrato')|Fecha Erronea, inferior a la de Inicio"),
+		array( 'MP-FechaIni_Contrato','date', "$OBLIGATORIO js:input,blur|MayorMenor('MP-FechaFin_Contrato','MP-FechaIni_Contrato')|Fecha Erronea, supera la de Fin"),
+		array( 'MP-FechaFin_Contrato','date', "$OBLIGATORIO js:input,blur|MayorMenor('MP-FechaFin_Contrato','MP-FechaIni_Contrato')|Fecha Erronea, inferior a la de Inicio"),
 		array( 'MP-IDEmpresa','select', "$OBLIGATORIO","sql:Select IDEmpresa from S_EMPRESAS")
 	),
 	$identificadoresPrivados['MTransferencias']."PA" => 
@@ -578,8 +600,8 @@ $formularios = array(
 	array(
 		array( 'MP-Nombre_Contrato','text', "$OBLIGATORIO"),
 		array( 'MP-IDContrato','text', "$OBLIGATORIO $PATRONID"),
-		array( 'MP-FechaIni_Contrato','date', "$OBLIGATORIO js:blur|MayorMenor('MP-FechaFin_Contrato','MP-FechaIni_Contrato')|Fecha Erronea, supera la de Fin"),
-		array( 'MP-FechaFin_Contrato','date', "$OBLIGATORIO js:blur|MayorMenor('MP-FechaFin_Contrato','MP-FechaIni_Contrato')|Fecha Erronea, inferior a la de Inicio"),
+		array( 'MP-FechaIni_Contrato','date', "$OBLIGATORIO js:input,blur|MayorMenor('MP-FechaFin_Contrato','MP-FechaIni_Contrato')|Fecha Erronea, supera la de Fin"),
+		array( 'MP-FechaFin_Contrato','date', "$OBLIGATORIO js:input,blur|MayorMenor('MP-FechaFin_Contrato','MP-FechaIni_Contrato')|Fecha Erronea, inferior a la de Inicio"),
 		array( 'MP-IDEmpresa','select', "$OBLIGATORIO","sql:Select 'IDEmpresa' from S_EMPRESAS")
 	),
 	$identificadoresPrivados['APublicaciones']."L" => 
@@ -634,19 +656,29 @@ $formularios = array(
 		array( 'MP-IDConferencia','text', "$OBLIGATORIO"),
 		array( 'MP-MC-S_USUARIO_CONFERENCIA@Login','multiCheck', "","sql:Select Login from USUARIOS where Login IN (Select login from HACE_DE where ROL_nombre = '".$ROLMIEMBRO."')","sql:Select distinct Login from S_USUARIO_CONFERENCIA WHERE IDConferencia='%d'")
 	),
-	$identificadoresPrivados['ADocencia'] => 
+	$identificadoresPrivados['ADocencia']."D" => 
 	array(
 		array( 'MP-IDMateria','select', "$OBLIGATORIO", "sql:Select IDMateria from S_MATERIAS"),
-		array( 'MP-Login','select', "$OBLIGATORIO", "sql:Select Login from USUARIOS "),
-		array( 'MP-FechaIni_Materia','date', "$OBLIGATORIO js:blur|MayorMenor('MP-FechaFin_Materia','MP-FechaIni_Materia')|Fecha Erronea, supera la de Fin"),
-		array( 'MP-FechaFin_Materia','date', "$OBLIGATORIO js:blur|MayorMenor('MP-FechaFin_Materia','MP-FechaIni_Materia')|Fecha Erronea, inferior a la de Inicio")
+		array( 'MP-Login','select', "$OBLIGATORIO", "sql:Select Login from USUARIOS where Login IN (Select login from HACE_DE where ROL_nombre = '".$ROLMIEMBRO."')"),
+		array( 'MP-FechaIni_Materia','date', "$OBLIGATORIO js:input,blur|MayorMenor('MP-FechaFin_Materia','MP-FechaIni_Materia')|Fecha Erronea, supera la de Fin"),
+		array( 'MP-FechaFin_Materia','date', "$OBLIGATORIO js:input,blur|MayorMenor('MP-FechaFin_Materia','MP-FechaIni_Materia')|Fecha Erronea, inferior a la de Inicio")
 		),
-	$identificadoresPrivados['MDocencia'] => 
+	$identificadoresPrivados['ADocencia']."M" => 
+	array(
+		array( 'MP-IDMateria','text', "$OBLIGATORIO $PATRONID", ""),
+		array( 'MP-Nombre_Materia','text', "$OBLIGATORIO", "")
+		),
+	$identificadoresPrivados['MDocencia']."D" => 
 	array(
 		array( 'MP-IDMateria','select', "$OBLIGATORIO", "sql:Select IDMateria from S_MATERIAS"),
-		array( 'MP-Login','select', "$OBLIGATORIO", "sql:Select Login from USUARIOS "),
-		array( 'MP-FechaIni_Materia','date', "$OBLIGATORIO js:blur|MayorMenor('MP-FechaFin_Materia','MP-FechaIni_Materia')|Fecha Erronea, supera la de Fin"),
-		array( 'MP-FechaFin_Materia','date', "$OBLIGATORIO js:blur|MayorMenor('MP-FechaFin_Materia','MP-FechaIni_Materia')|Fecha Erronea, inferior a la de Inicio")
+		array( 'MP-Login','select', "$OBLIGATORIO", "sql:Select Login from USUARIOS where Login IN (Select login from HACE_DE where ROL_nombre = '".$ROLMIEMBRO."')"),
+		array( 'MP-FechaIni_Materia','date', "$OBLIGATORIO js:input,blur|MayorMenor('MP-FechaFin_Materia','MP-FechaIni_Materia')|Fecha Erronea, supera la de Fin"),
+		array( 'MP-FechaFin_Materia','date', "$OBLIGATORIO js:input,blur|MayorMenor('MP-FechaFin_Materia','MP-FechaIni_Materia')|Fecha Erronea, inferior a la de Inicio")
+		),
+	$identificadoresPrivados['MDocencia']."M" => 
+	array(
+		array( 'MP-IDMateria','text', "$OBLIGATORIO", ""),
+		array( 'MP-Nombre_Materia','text', "$OBLIGATORIO", "")
 		),
 	$identificadoresPrivados['AActividades']."ED" => 
 	array(

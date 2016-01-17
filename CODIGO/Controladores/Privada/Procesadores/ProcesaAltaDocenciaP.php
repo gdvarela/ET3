@@ -36,7 +36,15 @@ $idioma = CargarIdioma2($RutaRelativaControlador);
 
 try
 	{
-		$consulta = $_TABLADOCENCIA->AlmacenarBD($_POST);
+		switch ($_POST["TIPO"])
+		{
+			case "D":
+			$consulta = $_TABLADOCENCIA->AlmacenarBD(array_slice($_POST, 1) );
+			break;
+			case "M":
+			$consulta = $_TABLAMATERIAS->AlmacenarBD(array_slice($_POST, 1) );
+			break;
+		}
 		if (!isset($_COOKIE["TEST"]))
 		header("Location: ".$controladores[$identificadoresPrivados["Docencia"]]);
 	}
@@ -47,8 +55,8 @@ try
 		{
 			session_start();
 			$errorRescrito = explode("=>",$e->getMessage());
-		$_SESSION['error'] = 'CON ERR MIEMBROS'."=>".$errorRescrito[1];
-			header("Location: ".$controladores[$identificadoresPrivados["Colaboraciones"]]);
+			$_SESSION['error'] = 'ID CONCRETO REPETIDO D'."=>".$errorRescrito[1];
+			header("Location: ".$controladores[$identificadoresPrivados["Docencia"]]);
 		}
 	}
 	

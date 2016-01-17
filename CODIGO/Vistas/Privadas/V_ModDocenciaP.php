@@ -21,20 +21,41 @@ function DisplayContent($idioma,$MOD)
 	<div class="container">
 		<form id="borrarActual" action="<?php echo $procesadores[$identificadoresPrivados["DDocencia"]]?>" method="POST">
 		<?php
-			$campoClave = "IDMateria";
-			echo "<input type='hidden' name='' value=''/>";
-			
+			$campoClave = "";
+			$campoClave2 = "";
+			switch ($_POST["TIPO"])
+			{
+				case "D":
+				$campoClave = "IDMateria@Login";
+				echo "<input type='hidden' name='TIPO' value='D'/>";
+				break;
+				case "M":
+				$campoClave = "IDMateria";
+				echo "<input type='hidden' name='TIPO' value='M'/>";
+				break;
+			}
+			if (strpos($campoClave,"@") !== FALSE)
+			{
+				echo '<input type="hidden" name="BORRAR" value="'.explode("@",$campoClave)[0].'=>'.$MOD[explode("@",$campoClave)[0]].';'.explode("@",$campoClave)[1].'=>'.$MOD[explode("@",$campoClave)[1]].'" />';
+			}
+			else
+				echo '<input type="hidden" name="BORRAR" value="'.$campoClave.'=>'.$MOD[$campoClave].'" />';
 		?>
 
-						<input type="hidden" name="BORRAR" value="<?php echo $campoClave?>=><?php echo $MOD[$campoClave]?>"/>
+						
 			</form>
 			<div class="row">
 				<div class="col-md-12">
-					<form role="form" action="<?php echo $procesadores[$identificadoresPrivados["MTransferencias"]]?>" method="POST">
+					<form role="form" action="<?php echo $procesadores[$identificadoresPrivados["MDocencia"]]?>" method="POST">
 					<input type="hidden" name="TIPO" value="<?php echo $_POST["TIPO"]?>"/>
-					<input type="hidden" name="ClaveAnt" value="<?php echo $campoClave?>=><?php echo $MOD[$campoClave]?>" />
+					<?php 
+						if (strpos($campoClave,"@") !== FALSE)
+							echo '<input type="hidden" name="ClaveAnt" value="'.explode("@",$campoClave)[0].'=>'.$MOD[explode("@",$campoClave)[0]].';'.explode("@",$campoClave)[1].'=>'.$MOD[explode("@",$campoClave)[1]].'" />';
+						else
+							echo '<input type="hidden" name="ClaveAnt" value="'.$campoClave.'=>'.$MOD[$campoClave].'" />';
+					?>
 					<?php
-					foreach($formularios[$identificadoresPrivados["MDocencia"]] as $campos)
+					foreach($formularios[$identificadoresPrivados["MDocencia"].$_POST["TIPO"]] as $campos)
 					{
 						global $generadorMod;
 						include $generadorMod;
@@ -62,8 +83,17 @@ function DisplayContent($idioma,$MOD)
 		//Consultamos datos
 		try
 	{
-		$consulta = $_TABLADOCENCIA->ListadoRegistros(" where IDMateria = '".$Mod."'");
-		$doc = $consulta->fetch_assoc();
+		switch ($_POST["TIPO"])
+		{
+			case "D":
+			$consulta = $_TABLADOCENCIA->ListadoRegistros(" where IDMateria = '".explode("|",$Mod)[0]."' and Login = '".explode("|",$Mod)[1]."'");
+			$doc = $consulta->fetch_assoc();
+			break;
+			case "M":
+			$consulta = $_TABLAMATERIAS->ListadoRegistros(" where IDMateria = '".$Mod."'");
+			$doc = $consulta->fetch_assoc();
+			break;
+		}
 		
 	}
 	catch(Exception $e)

@@ -239,6 +239,12 @@ function Display($idioma)
 						/Controladores/Privada/C_ModActividadesP.php@POST@TIPO=ED,MOD=1234;
 						/Controladores/Privada/C_ModActividadesP.php@POST@TIPO=CON,MOD=1234;
 						
+						/Controladores/Privada/C_DocenciaP.php@POST@;
+						/Controladores/Privada/C_AltaDocenciaP.php@POST@TIPO=D;
+						/Controladores/Privada/C_AltaDocenciaP.php@POST@TIPO=M;
+						/Controladores/Privada/C_ModDocenciaP.php@POST@TIPO=D,MOD=A|B;
+						/Controladores/Privada/C_ModDocenciaP.php@POST@TIPO=M,MOD=1234;
+						
 						/Controladores/Privada/Procesadores/ProcesaAltaMiembrosP.php@POST@MA-Login=TEST,MA-PASS=TEST,MA-USU_nombre=TEST,MA-USU_apellido=TEST,MA-USU_fecha_alta=0000-00-00,MA-USU_email=TEST;
 						/Controladores/Privada/Procesadores/ProcesaModMiembrosP.php@POST@ClaveAnt=Login=>TEST,MA-Login=TEST2,MA-USU_nombre=TEST2;
 						/Controladores/Privada/Procesadores/ProcesaDelMiembrosP.php@POST@BORRAR=Login=>TEST2;
@@ -262,6 +268,10 @@ function Display($idioma)
 						/Controladores/Privada/Procesadores/ProcesaAltaActividadesP.php@POST@TIPO=RE,MP-IDRevista=TEST,MP-Titulo_Revista=TEST;
 						/Controladores/Privada/Procesadores/ProcesaModActividadesP.php@POST@TIPO=RE,ClaveAnt=IDRevista=>TEST,MP-IDRevista=TEST2,MP-Titulo_Revista=TEST2;
 						/Controladores/Privada/Procesadores/ProcesaDelActividadesP.php@POST@TIPO=RE,BORRAR=IDRevista=>TEST2;
+						
+						/Controladores/Privada/Procesadores/ProcesaAltaDocenciaP.php@POST@TIPO=M,MP-IDMateria=TEST,MP-Nombre_Materia=TEST;
+						/Controladores/Privada/Procesadores/ProcesaModDocenciaP.php@POST@TIPO=M,ClaveAnt=IDMateria=>TEST,MP-IDMateria=TEST2,MP-Nombre_Materia=TEST2;
+						/Controladores/Privada/Procesadores/ProcesaDelDocenciaP.php@POST@TIPO=M,BORRAR=IDMateria=>TEST2;
 						
 						">
 						<input type="submit" value="<?php echo $idioma['EjecutarPruebas'];?>">
