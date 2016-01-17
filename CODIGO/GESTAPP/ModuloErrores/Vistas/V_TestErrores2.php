@@ -17,9 +17,7 @@ function Display($idioma)
       }  
 	  else
 	  {
-		  
-	  
-	
+		 //FORMULARIOS DE ALTA
 	$data_url = "";
 	$data_len = strlen ($data_url);
 	$contenido = file_get_contents ("http://".$_SERVER['SERVER_NAME']."".RutaSinDir(dirname($_SERVER["PHP_SELF"]),3)."/Controladores/Privada/C_AltaMiembrosP.php", false, stream_context_create (
@@ -283,6 +281,271 @@ function Display($idioma)
 	$nuevoarchivo = fopen(dirname($_SERVER["SCRIPT_FILENAME"])."/PaginasDinamicas/TestearC_Docencia2.html", "w"); 
 	fwrite($nuevoarchivo,$contenido); 
 	fclose($nuevoarchivo);
+	
+	//FORMULARIOS DE MOD
+	$data_url = "";
+	$data_len = strlen ($data_url);
+	$contenido = file_get_contents ("http://".$_SERVER['SERVER_NAME']."".RutaSinDir(dirname($_SERVER["PHP_SELF"]),3)."/Controladores/Privada/C_ModMiembrosP.php", false, stream_context_create (
+																array (
+																	'http'=>array (
+																		'method'=>"POST", 
+																		'timeout' => 10,
+																		'header'=>"Content-Type: application/x-www-form-urlencoded\r\nConnection: close\r\nContent-Length: $data_len\r\nCookie:TEST=1",
+																		'content'=>$data_url
+																	)
+																)
+															)
+												);
+	$nuevoarchivo = fopen(dirname($_SERVER["SCRIPT_FILENAME"])."/PaginasDinamicas/TestearC_ModMiembros.html", "w"); 
+	fwrite($nuevoarchivo,$contenido); 
+	fclose($nuevoarchivo);
+
+	
+	$data_url = "";
+	$data_len = strlen ($data_url);
+	$contenido = file_get_contents ("http://".$_SERVER['SERVER_NAME']."".RutaSinDir(dirname($_SERVER["PHP_SELF"]),3)."/Controladores/Privada/C_ModPrensaP.php", false, stream_context_create (
+																array (
+																	'http'=>array (
+																		'method'=>"POST", 
+																		'timeout' => 10,
+																		'header'=>"Content-Type: application/x-www-form-urlencoded\r\nConnection: close\r\nContent-Length: $data_len\r\nCookie:TEST=1",
+																		'content'=>$data_url
+																	)
+																)
+															)
+												);
+	$nuevoarchivo = fopen(dirname($_SERVER["SCRIPT_FILENAME"])."/PaginasDinamicas/TestearC_ModPrensa.html", "w"); 
+	fwrite($nuevoarchivo,$contenido); 
+	fclose($nuevoarchivo);	
+	
+	$data_url = http_build_query (array("TIPO" => "E"));
+	$data_len = strlen ($data_url);
+	$contenido = file_get_contents ("http://".$_SERVER['SERVER_NAME']."".RutaSinDir(dirname($_SERVER["PHP_SELF"]),3)."/Controladores/Privada/C_ModColaboracionesP.php", false, stream_context_create (
+																array (
+																	'http'=>array (
+																		'method'=>"POST", 
+																		'timeout' => 10,
+																		'header'=>"Content-Type: application/x-www-form-urlencoded\r\nConnection: close\r\nContent-Length: $data_len\r\nCookie:TEST=1",
+																		'content'=>$data_url
+																	)
+																)
+															)
+												);
+	$nuevoarchivo = fopen(dirname($_SERVER["SCRIPT_FILENAME"])."/PaginasDinamicas/TestearC_ModColaboraciones1.html", "w"); 
+	fwrite($nuevoarchivo,$contenido); 
+	fclose($nuevoarchivo);	
+	$data_url = http_build_query (array("TIPO" => "G"));
+	$data_len = strlen ($data_url);
+	$contenido = file_get_contents ("http://".$_SERVER['SERVER_NAME']."".RutaSinDir(dirname($_SERVER["PHP_SELF"]),3)."/Controladores/Privada/C_ModColaboracionesP.php", false, stream_context_create (
+																array (
+																	'http'=>array (
+																		'method'=>"POST", 
+																		'timeout' => 10,
+																		'header'=>"Content-Type: application/x-www-form-urlencoded\r\nConnection: close\r\nContent-Length: $data_len\r\nCookie:TEST=1",
+																		'content'=>$data_url
+																	)
+																)
+															)
+												);
+	$nuevoarchivo = fopen(dirname($_SERVER["SCRIPT_FILENAME"])."/PaginasDinamicas/TestearC_ModColaboraciones2.html", "w"); 
+	fwrite($nuevoarchivo,$contenido); 
+	fclose($nuevoarchivo);	
+	$data_url = http_build_query (array("TIPO" => "I"));
+	$data_len = strlen ($data_url);
+	$contenido = file_get_contents ("http://".$_SERVER['SERVER_NAME']."".RutaSinDir(dirname($_SERVER["PHP_SELF"]),3)."/Controladores/Privada/C_ModColaboracionesP.php", false, stream_context_create (
+																array (
+																	'http'=>array (
+																		'method'=>"POST", 
+																		'timeout' => 10,
+																		'header'=>"Content-Type: application/x-www-form-urlencoded\r\nConnection: close\r\nContent-Length: $data_len\r\nCookie:TEST=1",
+																		'content'=>$data_url
+																	)
+																)
+															)
+												);
+	$nuevoarchivo = fopen(dirname($_SERVER["SCRIPT_FILENAME"])."/PaginasDinamicas/TestearC_ModColaboraciones3.html", "w"); 
+	fwrite($nuevoarchivo,$contenido); 
+	fclose($nuevoarchivo);	
+	
+	$data_url = http_build_query (array("TIPO" => "PA"));
+	$data_len = strlen ($data_url);
+	$contenido = file_get_contents ("http://".$_SERVER['SERVER_NAME']."".RutaSinDir(dirname($_SERVER["PHP_SELF"]),3)."/Controladores/Privada/C_ModTransferenciasP.php", false, stream_context_create (
+																array (
+																	'http'=>array (
+																		'method'=>"POST", 
+																		'timeout' => 10,
+																		'header'=>"Content-Type: application/x-www-form-urlencoded\r\nConnection: close\r\nContent-Length: $data_len\r\nCookie:TEST=1",
+																		'content'=>$data_url
+																	)
+																)
+															)
+												);
+	$nuevoarchivo = fopen(dirname($_SERVER["SCRIPT_FILENAME"])."/PaginasDinamicas/TestearC_ModTransferencias1.html", "w"); 
+	fwrite($nuevoarchivo,$contenido); 
+	fclose($nuevoarchivo);	
+	$data_url = http_build_query (array("TIPO" => "PO"));
+	$data_len = strlen ($data_url);
+	$contenido = file_get_contents ("http://".$_SERVER['SERVER_NAME']."".RutaSinDir(dirname($_SERVER["PHP_SELF"]),3)."/Controladores/Privada/C_ModTransferenciasP.php", false, stream_context_create (
+																array (
+																	'http'=>array (
+																		'method'=>"POST", 
+																		'timeout' => 10,
+																		'header'=>"Content-Type: application/x-www-form-urlencoded\r\nConnection: close\r\nContent-Length: $data_len\r\nCookie:TEST=1",
+																		'content'=>$data_url
+																	)
+																)
+															)
+												);
+	$nuevoarchivo = fopen(dirname($_SERVER["SCRIPT_FILENAME"])."/PaginasDinamicas/TestearC_ModTransferencias2.html", "w"); 
+	fwrite($nuevoarchivo,$contenido); 
+	fclose($nuevoarchivo);	
+	$data_url = http_build_query (array("TIPO" => "CO"));
+	$data_len = strlen ($data_url);
+	$contenido = file_get_contents ("http://".$_SERVER['SERVER_NAME']."".RutaSinDir(dirname($_SERVER["PHP_SELF"]),3)."/Controladores/Privada/C_ModTransferenciasP.php", false, stream_context_create (
+																array (
+																	'http'=>array (
+																		'method'=>"POST", 
+																		'timeout' => 10,
+																		'header'=>"Content-Type: application/x-www-form-urlencoded\r\nConnection: close\r\nContent-Length: $data_len\r\nCookie:TEST=1",
+																		'content'=>$data_url
+																	)
+																)
+															)
+												);
+	$nuevoarchivo = fopen(dirname($_SERVER["SCRIPT_FILENAME"])."/PaginasDinamicas/TestearC_ModTransferencias3.html", "w"); 
+	fwrite($nuevoarchivo,$contenido); 
+	fclose($nuevoarchivo);
+	
+	$data_url = http_build_query (array("TIPO" => "L"));
+	$data_len = strlen ($data_url);
+	$contenido = file_get_contents ("http://".$_SERVER['SERVER_NAME']."".RutaSinDir(dirname($_SERVER["PHP_SELF"]),3)."/Controladores/Privada/C_ModPublicacionesP.php", false, stream_context_create (
+																array (
+																	'http'=>array (
+																		'method'=>"POST", 
+																		'timeout' => 10,
+																		'header'=>"Content-Type: application/x-www-form-urlencoded\r\nConnection: close\r\nContent-Length: $data_len\r\nCookie:TEST=1",
+																		'content'=>$data_url
+																	)
+																)
+															)
+												);
+	$nuevoarchivo = fopen(dirname($_SERVER["SCRIPT_FILENAME"])."/PaginasDinamicas/TestearC_ModPublicaciones1.html", "w"); 
+	fwrite($nuevoarchivo,$contenido); 
+	fclose($nuevoarchivo);	
+	$data_url = http_build_query (array("TIPO" => "A"));
+	$data_len = strlen ($data_url);
+	$contenido = file_get_contents ("http://".$_SERVER['SERVER_NAME']."".RutaSinDir(dirname($_SERVER["PHP_SELF"]),3)."/Controladores/Privada/C_ModPublicacionesP.php", false, stream_context_create (
+																array (
+																	'http'=>array (
+																		'method'=>"POST", 
+																		'timeout' => 10,
+																		'header'=>"Content-Type: application/x-www-form-urlencoded\r\nConnection: close\r\nContent-Length: $data_len\r\nCookie:TEST=1",
+																		'content'=>$data_url
+																	)
+																)
+															)
+												);
+	$nuevoarchivo = fopen(dirname($_SERVER["SCRIPT_FILENAME"])."/PaginasDinamicas/TestearC_ModPublicaciones2.html", "w"); 
+	fwrite($nuevoarchivo,$contenido); 
+	fclose($nuevoarchivo);	
+	$data_url = http_build_query (array("TIPO" => "C"));
+	$data_len = strlen ($data_url);
+	$contenido = file_get_contents ("http://".$_SERVER['SERVER_NAME']."".RutaSinDir(dirname($_SERVER["PHP_SELF"]),3)."/Controladores/Privada/C_ModPublicacionesP.php", false, stream_context_create (
+																array (
+																	'http'=>array (
+																		'method'=>"POST", 
+																		'timeout' => 10,
+																		'header'=>"Content-Type: application/x-www-form-urlencoded\r\nConnection: close\r\nContent-Length: $data_len\r\nCookie:TEST=1",
+																		'content'=>$data_url
+																	)
+																)
+															)
+												);
+	$nuevoarchivo = fopen(dirname($_SERVER["SCRIPT_FILENAME"])."/PaginasDinamicas/TestearC_ModPublicaciones3.html", "w"); 
+	fwrite($nuevoarchivo,$contenido); 
+	fclose($nuevoarchivo);
+	
+	$data_url = http_build_query (array("TIPO" => "ED"));
+	$data_len = strlen ($data_url);
+	$contenido = file_get_contents ("http://".$_SERVER['SERVER_NAME']."".RutaSinDir(dirname($_SERVER["PHP_SELF"]),3)."/Controladores/Privada/C_ModActividadesP.php", false, stream_context_create (
+																array (
+																	'http'=>array (
+																		'method'=>"POST", 
+																		'timeout' => 10,
+																		'header'=>"Content-Type: application/x-www-form-urlencoded\r\nConnection: close\r\nContent-Length: $data_len\r\nCookie:TEST=1",
+																		'content'=>$data_url
+																	)
+																)
+															)
+												);
+	$nuevoarchivo = fopen(dirname($_SERVER["SCRIPT_FILENAME"])."/PaginasDinamicas/TestearC_ModActividades1.html", "w"); 
+	fwrite($nuevoarchivo,$contenido); 
+	fclose($nuevoarchivo);	
+	$data_url = http_build_query (array("TIPO" => "RE"));
+	$data_len = strlen ($data_url);
+	$contenido = file_get_contents ("http://".$_SERVER['SERVER_NAME']."".RutaSinDir(dirname($_SERVER["PHP_SELF"]),3)."/Controladores/Privada/C_ModActividadesP.php", false, stream_context_create (
+																array (
+																	'http'=>array (
+																		'method'=>"POST", 
+																		'timeout' => 10,
+																		'header'=>"Content-Type: application/x-www-form-urlencoded\r\nConnection: close\r\nContent-Length: $data_len\r\nCookie:TEST=1",
+																		'content'=>$data_url
+																	)
+																)
+															)
+												);
+	$nuevoarchivo = fopen(dirname($_SERVER["SCRIPT_FILENAME"])."/PaginasDinamicas/TestearC_ModActividades2.html", "w"); 
+	fwrite($nuevoarchivo,$contenido); 
+	fclose($nuevoarchivo);	
+	$data_url = http_build_query (array("TIPO" => "CON"));
+	$data_len = strlen ($data_url);
+	$contenido = file_get_contents ("http://".$_SERVER['SERVER_NAME']."".RutaSinDir(dirname($_SERVER["PHP_SELF"]),3)."/Controladores/Privada/C_ModActividadesP.php", false, stream_context_create (
+																array (
+																	'http'=>array (
+																		'method'=>"POST", 
+																		'timeout' => 10,
+																		'header'=>"Content-Type: application/x-www-form-urlencoded\r\nConnection: close\r\nContent-Length: $data_len\r\nCookie:TEST=1",
+																		'content'=>$data_url
+																	)
+																)
+															)
+												);
+	$nuevoarchivo = fopen(dirname($_SERVER["SCRIPT_FILENAME"])."/PaginasDinamicas/TestearC_ModActividades3.html", "w"); 
+	fwrite($nuevoarchivo,$contenido); 
+	fclose($nuevoarchivo);
+	
+	$data_url = http_build_query (array("TIPO" => "D"));
+	$data_len = strlen ($data_url);
+	$contenido = file_get_contents ("http://".$_SERVER['SERVER_NAME']."".RutaSinDir(dirname($_SERVER["PHP_SELF"]),3)."/Controladores/Privada/C_ModDocenciaP.php", false, stream_context_create (
+																array (
+																	'http'=>array (
+																		'method'=>"POST", 
+																		'timeout' => 10,
+																		'header'=>"Content-Type: application/x-www-form-urlencoded\r\nConnection: close\r\nContent-Length: $data_len\r\nCookie:TEST=1",
+																		'content'=>$data_url
+																	)
+																)
+															)
+												);
+	$nuevoarchivo = fopen(dirname($_SERVER["SCRIPT_FILENAME"])."/PaginasDinamicas/TestearC_ModDocencia1.html", "w"); 
+	fwrite($nuevoarchivo,$contenido); 
+	fclose($nuevoarchivo);	
+	$data_url = http_build_query (array("TIPO" => "M"));
+	$data_len = strlen ($data_url);
+	$contenido = file_get_contents ("http://".$_SERVER['SERVER_NAME']."".RutaSinDir(dirname($_SERVER["PHP_SELF"]),3)."/Controladores/Privada/C_ModDocenciaP.php", false, stream_context_create (
+																array (
+																	'http'=>array (
+																		'method'=>"POST", 
+																		'timeout' => 10,
+																		'header'=>"Content-Type: application/x-www-form-urlencoded\r\nConnection: close\r\nContent-Length: $data_len\r\nCookie:TEST=1",
+																		'content'=>$data_url
+																	)
+																)
+															)
+												);
+	$nuevoarchivo = fopen(dirname($_SERVER["SCRIPT_FILENAME"])."/PaginasDinamicas/TestearC_ModDocencia2.html", "w"); 
+	fwrite($nuevoarchivo,$contenido); 
+	fclose($nuevoarchivo);
 	  }
 	include '../../Comun/V_Cabecera.php';
 	include '../../Comun/V_MenuLateral.php';
@@ -303,7 +566,7 @@ function Display($idioma)
 	<form  action="testErrores2.php" method="get">
 	<strong>Url JSON:</strong>
 	<br>
-      <input id="dataUrl" value="pruebas.json" required placeholder="<?php echo $idioma['Aclaracion']?>" type="text" name="dataUrl" value="">
+      <input id="dataUrl" value="PruebasTodo.json" required placeholder="<?php echo $idioma['Aclaracion']?>" type="text" name="dataUrl" value="">
       <br>
       <button type="submit"><?php echo $idioma['Enviar']?></button>
 	</form>

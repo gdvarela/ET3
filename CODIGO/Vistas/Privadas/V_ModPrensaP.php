@@ -32,7 +32,7 @@ function DisplayContent($idioma,$MOD)
 			</form>
 			<div class="row">
 				<div class="col-md-12">
-					<form role="form" action="<?php echo $procesadores[$identificadoresPrivados["MPrensa"]]?>" method="POST">
+					<form role="form" name="FORM" action="<?php echo $procesadores[$identificadoresPrivados["MPrensa"]]?>" method="POST">
 					<input type="hidden" name="ClaveAnt" value="Titulo_Noticia=><?php echo $MOD["Titulo_Noticia"]?>" />
 					<?php
 					$NombreFormulario = $identificadoresPrivados["MPrensa"];

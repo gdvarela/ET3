@@ -51,7 +51,7 @@ function DisplayContent($idioma,$MOD)
 			</form>
 			<div class="row">
 				<div class="col-md-12">
-					<form role="form" action="<?php echo $procesadores[$identificadoresPrivados["MPublicaciones"]]?>" method="POST">
+					<form role="form" name="FORM" action="<?php echo $procesadores[$identificadoresPrivados["MPublicaciones"]]?>" method="POST">
 					<input type="hidden" name="TIPO" value="<?php echo $_POST["TIPO"]?>"/>
 					<input type="hidden" name="ClaveAnt" value="<?php echo $campoClave?>=><?php echo $MOD[$campoClave]?>" />
 					<?php

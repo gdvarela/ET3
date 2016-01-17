@@ -1,0 +1,64 @@
+{
+  "./PaginasDinamicas/TestearC_AltaDocencia1.html": {
+    "FORM": {
+	   "MP-FechaFin_Materia": {
+		   "0000/00/00": false,
+		  "00-00-0000": false,
+        "" : false,
+        "2000-01-02": true
+      },
+	  "MP-FechaIni_Materia": {
+        "0000/00/00": false,
+		  "00-00-0000": false,
+        "" : false,
+		"2000-03-03": false,
+        "2000-01-01": true
+      }
+    }
+  },
+  "./PaginasDinamicas/TestearC_AltaDocencia2.html": {
+    "FORM": {
+      "MP-IDMateria": {
+        "" : false,
+        "123" : false,
+        " 123": false,
+        "1234": true
+      },
+	  "MP-Nombre_Materia": {
+        "" : false,
+        "aaaaa": true
+      }
+    }
+  },
+  "./PaginasDinamicas/TestearC_ModDocencia1.html": {
+    "FORM": {
+	   "MP-FechaFin_Materia": {
+		   "0000/00/00": false,
+		  "00-00-0000": false,
+        "" : false,
+        "2000-01-02": true
+      },
+	  "MP-FechaIni_Materia": {
+        "0000/00/00": false,
+		  "00-00-0000": false,
+        "" : false,
+		"2000-03-03": false,
+        "2000-01-01": true
+      }
+    }
+  },
+  "./PaginasDinamicas/TestearC_ModDocencia2.html": {
+    "FORM": {
+      "MP-IDMateria": {
+        "" : false,
+        "123" : false,
+        " 123": false,
+        "1234": true
+      },
+	  "MP-Nombre_Materia": {
+        "" : false,
+        "aaaaa": true
+      }
+    }
+  }
+}

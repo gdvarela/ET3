@@ -1,0 +1,146 @@
+{
+  "./PaginasDinamicas/TestearC_AltaPublicaciones1.html": {
+    "FORM": {
+	  "MP-Titulo_Libro": {
+        "" : false,
+        "aaaaa": true
+      },
+	  "MP-ISBN": {
+        "" : false,
+		"123 456-789X": false,
+		"1-56389-668-0": true,
+		"0 93028 923 4": true
+      },
+	  "MP-Fecha_Libro": {
+        "" : false,
+		"0000/00/00": false,
+		  "00-00-0000": false,
+        "2000-01-01": true
+      }
+    }
+  },
+  "./PaginasDinamicas/TestearC_AltaPublicaciones2.html": {
+    "FORM": {
+      "MP-IDArticulo": {
+        "" : false,
+        "123" : false,
+        " 123": false,
+        "1234": true
+      },
+	  "MP-Nombre_Revista": {
+        "" : false,
+        "aaaaa": true
+      },
+	  "MP-Titulo_Articulo": {
+        "" : false,
+        "aaaaa": true
+      },
+	  "MP-ISSN_Revista": {
+        "" : false,
+        "aaaaa": true
+      },
+	  "MP-Fecha_Articulo": {
+        "" : false,
+		"0000/00/00": false,
+		  "00-00-0000": false,
+        "2000-01-01": true
+      }
+    }
+  },
+  "./PaginasDinamicas/TestearC_AltaPublicaciones3.html": {
+    "FORM": {
+      "MP-IDConferencia": {
+        "" : false,
+        "123" : false,
+        " 123": false,
+        "1234": true
+      },
+	  "MP-Nombre_Conferencia": {
+        "" : false,
+        "aaaaa": true
+      },
+	  "MP-Charla_Conferencia": {
+        "" : false,
+        "aaaaa": true
+      },
+	  "MP-Fecha_Conferencia": {
+        "" : false,
+		"0000/00/00": false,
+		  "00-00-0000": false,
+        "2000-01-01": true
+      }
+    }
+  },
+  "./PaginasDinamicas/TestearC_ModPublicaciones1.html": {
+    "FORM": {
+	  "MP-Titulo_Libro": {
+        "" : false,
+        "aaaaa": true
+      },
+	  "MP-ISBN": {
+        "" : false,
+		"123 456-789X": false,
+		"1-56389-668-0": true,
+		"0 93028 923 4": true
+      },
+	  "MP-Fecha_Libro": {
+        "" : false,
+		"0000/00/00": false,
+		  "00-00-0000": false,
+        "2000-01-01": true
+      }
+    }
+  },
+  "./PaginasDinamicas/TestearC_ModPublicaciones2.html": {
+    "FORM": {
+      "MP-IDArticulo": {
+        "" : false,
+        "123" : false,
+        " 123": false,
+        "1234": true
+      },
+	  "MP-Nombre_Revista": {
+        "" : false,
+        "aaaaa": true
+      },
+	  "MP-Titulo_Articulo": {
+        "" : false,
+        "aaaaa": true
+      },
+	  "MP-ISSN_Revista": {
+        "" : false,
+        "aaaaa": true
+      },
+	  "MP-Fecha_Articulo": {
+        "" : false,
+		"0000/00/00": false,
+		  "00-00-0000": false,
+        "2000-01-01": true
+      }
+    }
+  },
+  "./PaginasDinamicas/TestearC_ModPublicaciones3.html": {
+    "FORM": {
+      "MP-IDConferencia": {
+        "" : false,
+        "123" : false,
+        " 123": false,
+        "1234": true
+      },
+	  "MP-Nombre_Conferencia": {
+        "" : false,
+        "aaaaa": true
+      },
+	  "MP-Charla_Conferencia": {
+        "" : false,
+        "aaaaa": true
+      },
+	  "MP-Fecha_Conferencia": {
+        "" : false,
+		"0000/00/00": false,
+		  "00-00-0000": false,
+        "2000-01-01": true
+      }
+    }
+  }
+}

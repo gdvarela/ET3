@@ -498,13 +498,13 @@ $formularios = array(
 	array(
 		array( 'MA-Login','text', "$OBLIGATORIO $PATRONUSU"),
 		array( 'MA-Pass','Pass', "$OBLIGATORIO $PATRONPASS"),
-		array( 'MA-USU_nombre','text', ""),
-		array( 'MA-USU_apellido','text', ""),
-		array( 'MA-USU_email','email', ""),
+		array( 'MA-USU_nombre','text', "$OBLIGATORIO"),
+		array( 'MA-USU_apellido','text', "$OBLIGATORIO"),
+		array( 'MA-USU_email','email', "$OBLIGATORIO"),
 		array( 'MA-Web_Usuario','text', ""),
 		array( 'MA-Departamento_Usuario','text', ""),
 		array( 'MA-Descripcion_Usuario','textarea', ""),
-		array( 'MA-Telefono_Usuario','number', "$PATRONTELF"),
+		array( 'MA-Telefono_Usuario','number', "$OBLIGATORIO $PATRONTELF"),
 		array( 'MA-Movil_Usuario','number', "$PATRONTELF")
 	),
 	$identificadoresPrivados['APrensa'] => 
@@ -519,7 +519,7 @@ $formularios = array(
 	array(
 		array( 'MP-Titulo_Noticia','text', "$OBLIGATORIO"),
 		array( 'MP-Fecha_Noticia','date', "$OBLIGATORIO"),
-		array( 'MP-Web_Noticia','text', ""),
+		array( 'MP-Web_Noticia','text', "$OBLIGATORIO"),
 		array( 'MP-IDPDF_Noticia','text', "$PATRONID"),
 		array( 'MP-Publicador_Noticia','select', "$OBLIGATORIO","sql:Select * from USUARIOS where Login IN (Select login from HACE_DE where ROL_nombre = '".$ROLMIEMBRO."')")
 	),
@@ -633,8 +633,8 @@ $formularios = array(
 	$identificadoresPrivados['MPublicaciones']."L" => 
 	array(
 		array( 'MP-Titulo_Libro','text', "$OBLIGATORIO"),
-		array( 'MP-ISBN','text', "$OBLIGATORIO"),
-		array( 'MP-Fecha_Libro','date', ""),
+		array( 'MP-ISBN','text', "$OBLIGATORIO $ISBN10"),
+		array( 'MP-Fecha_Libro','date', "$OBLIGATORIO"),
 		array( 'MP-Pais_Libro','text', ""),
 		array( 'MP-MC-S_USUARIO_LIBRO@Login','multiCheck', "","sql:Select Login from USUARIOS where Login IN (Select login from HACE_DE where ROL_nombre = '".$ROLMIEMBRO."')","sql:Select distinct Login from S_USUARIO_LIBRO WHERE ISBN='%d'")
 	),
@@ -643,8 +643,8 @@ $formularios = array(
 		array( 'MP-ISSN_Revista','text', "$OBLIGATORIO"),
 		array( 'MP-Nombre_Revista','text', "$OBLIGATORIO"),
 		array( 'MP-Titulo_Articulo','text', "$OBLIGATORIO"),
-		array( 'MP-Anotaciones_Articulo','textarea', "$OBLIGATORIO"),
-		array( 'MP-IDArticulo','text', "$OBLIGATORIO"),
+		array( 'MP-Anotaciones_Articulo','textarea', ""),
+		array( 'MP-IDArticulo','text', "$OBLIGATORIO $PATRONID"),
 		array( 'MP-Fecha_Articulo','date', "$OBLIGATORIO"),
 		array( 'MP-MC-S_USUARIO_ARTICULO@Login','multiCheck', "","sql:Select Login from USUARIOS where Login IN (Select login from HACE_DE where ROL_nombre = '".$ROLMIEMBRO."')","sql:Select distinct Login from S_USUARIO_ARTICULO WHERE IDArticulo='%d'")
 	),
@@ -653,7 +653,7 @@ $formularios = array(
 		array( 'MP-Nombre_Conferencia','text', "$OBLIGATORIO"),
 		array( 'MP-Charla_Conferencia','text', "$OBLIGATORIO"),
 		array( 'MP-Fecha_Conferencia','date', "$OBLIGATORIO"),
-		array( 'MP-IDConferencia','text', "$OBLIGATORIO"),
+		array( 'MP-IDConferencia','text', "$OBLIGATORIO $PATRONID"),
 		array( 'MP-MC-S_USUARIO_CONFERENCIA@Login','multiCheck', "","sql:Select Login from USUARIOS where Login IN (Select login from HACE_DE where ROL_nombre = '".$ROLMIEMBRO."')","sql:Select distinct Login from S_USUARIO_CONFERENCIA WHERE IDConferencia='%d'")
 	),
 	$identificadoresPrivados['ADocencia']."D" => 
@@ -677,7 +677,7 @@ $formularios = array(
 		),
 	$identificadoresPrivados['MDocencia']."M" => 
 	array(
-		array( 'MP-IDMateria','text', "$OBLIGATORIO", ""),
+		array( 'MP-IDMateria','text', "$OBLIGATORIO $PATRONID", ""),
 		array( 'MP-Nombre_Materia','text', "$OBLIGATORIO", "")
 		),
 	$identificadoresPrivados['AActividades']."ED" => 
@@ -706,23 +706,23 @@ $formularios = array(
 	array(
 		array( 'MP-Titulo_Tablon','text', "$OBLIGATORIO"),
 		array( 'MP-ISSNOnline_Tablon','text', "$OBLIGATORIO"),
-		array( 'MP-ISSN_Tablon','text', "$OBLIGATORIO"),
+		array( 'MP-ISSN_Tablon','text', "$OBLIGATORIO $ISBN10"),
 		array( 'MP-Fecha_Tablon','date', "$OBLIGATORIO"),
-		array( 'MP-IDTablon','text', "$OBLIGATORIO")
+		array( 'MP-IDTablon','text', "$OBLIGATORIO $PATRONID")
 	),
 	$identificadoresPrivados['MActividades']."RE" => 
 	array(
 		array( 'MP-Titulo_Revista','text', "$OBLIGATORIO"),
 		array( 'MP-ISSNOnline_Revista','text', "$OBLIGATORIO"),
-		array( 'MP-ISSN_Revista','text', "$OBLIGATORIO"),
+		array( 'MP-ISSN_Revista','text', "$OBLIGATORIO $ISBN10"),
 		array( 'MP-Fecha_Revista','date', "$OBLIGATORIO"),
-		array( 'MP-IDRevista','text', "$OBLIGATORIO")
+		array( 'MP-IDRevista','text', "$OBLIGATORIO $PATRONID")
 	),
 	$identificadoresPrivados['MActividades']."CON" => 
 	array(
 		array( 'MP-Titulo_Conferencia_Org','text', "$OBLIGATORIO"),
-		array( 'MP-IDConferencia_Org','text', "$OBLIGATORIO"),
-		array( 'MP-Fecha_Conferencia_Org','date', "")
+		array( 'MP-IDConferencia_Org','text', "$OBLIGATORIO $PATRONID"),
+		array( 'MP-Fecha_Conferencia_Org','date', "$OBLIGATORIO")
 	)
 );
 

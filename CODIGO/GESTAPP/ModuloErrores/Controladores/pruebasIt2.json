@@ -1,0 +1,265 @@
+{
+  
+  "./PaginasDinamicas/TestearC_AltaPrensa.html": {
+    "FORM": {
+      "MP-Titulo_Noticia": {
+        "" : false,
+        "aaaaa": true
+      },
+	  "MP-IDPDF_Noticia": {
+        "123" : false,
+        " 123": false,
+        "1234": true
+      },
+	  "MP-Web_Noticia": {
+        "" : false,
+        "aaaaa": true
+      },
+	  "MP-Fecha_Noticia": {
+        "" : false,
+		"0000/00/00": false,
+		  "00-00-0000": false,
+        "2000-01-01": true
+      }
+    }
+  },
+  "./PaginasDinamicas/TestearC_AltaColaboraciones1.html": {
+    "FORM": {
+      "MP-IDEmpresa": {
+        "" : false,
+        "123" : false,
+        " 123": false,
+        "1234": true
+      },
+	  "MP-Nombre_Empresa": {
+        "" : false,
+        "aaaaa": true
+      },
+	  "MP-IDParticipante": {
+        "" : false,
+        "aaaaa": true
+      }
+    }
+  },
+  "./PaginasDinamicas/TestearC_AltaColaboraciones2.html": {
+    "FORM": {
+      "MP-IDGrupo": {
+        "" : false,
+        "123" : false,
+        " 123": false,
+        "1234": true
+      },
+	  "MP-Nombre_Grupo": {
+        "" : false,
+        "aaaaa": true
+      },
+	  "MP-IDParticipante": {
+        "" : false,
+        "aaaaa": true
+      }
+    }
+  },
+  "./PaginasDinamicas/TestearC_AltaColaboraciones3.html": {
+    "FORM": {
+      "MP-IDInstitucion": {
+        "" : false,
+        "123" : false,
+        " 123": false,
+        "1234": true
+      },
+	  "MP-Nombre_Institucion": {
+        "" : false,
+        "aaaaa": true
+      },
+	  "MP-IDParticipante": {
+         "" : false,
+        "aaaaa": true
+      }
+    }
+  },
+  "./PaginasDinamicas/TestearC_AltaTransferencias1.html": {
+    "FORM": {
+      "MP-IDPatente": {
+        "" : false,
+        "123" : false,
+        " 123": false,
+        "1234": true
+      },
+	  "MP-Nombre_Patente": {
+        "" : false,
+        "aaaaa": true
+      },
+	  "MP-Fecha_Patente": {
+		"0000/00/00": false,
+		"00-00-0000": false,
+        "2000-01-01": true
+      }
+    }
+  },
+  "./PaginasDinamicas/TestearC_AltaTransferencias2.html": {
+    "FORM": {
+      "MP-IDProyecto": {
+        "" : false,
+        "123" : false,
+        " 123": false,
+        "1234": true
+      },
+	  "MP-Nombre_Proyecto": {
+        "" : false,
+        "aaaaa": true
+      }
+    }
+  },
+  "./PaginasDinamicas/TestearC_AltaTransferencias3.html": {
+    "FORM": {
+      "MP-IDContrato": {
+        "" : false,
+        "123" : false,
+        " 123": false,
+        "1234": true
+      },
+	  "MP-Nombre_Contrato": {
+        "" : false,
+        "aaaaa": true
+      },
+	  "MP-FechaFin_Contrato": {
+		   "0000/00/00": false,
+		  "00-00-0000": false,
+        "" : false,
+        "2000-01-02": true
+      },
+	  "MP-FechaIni_Contrato": {
+        "0000/00/00": false,
+		  "00-00-0000": false,
+        "" : false,
+		"2000-03-03": false,
+        "2000-01-01": true
+      }
+    }
+  },
+  "./PaginasDinamicas/TestearC_ModPrensa.html": {
+    "FORM": {
+      "MP-Titulo_Noticia": {
+        "" : false,
+        "aaaaa": true
+      },
+	  "MP-IDPDF_Noticia": {
+        "123" : false,
+        " 123": false,
+        "1234": true
+      },
+	  "MP-Web_Noticia": {
+        "" : false,
+        "aaaaa": true
+      },
+	  "MP-Fecha_Noticia": {
+        "" : false,
+		"0000/00/00": false,
+		  "00-00-0000": false,
+        "2000-01-01": true
+      }
+    }
+  },
+  "./PaginasDinamicas/TestearC_ModColaboraciones1.html": {
+    "FORM": {
+      "MP-IDEmpresa": {
+        "" : false,
+        "123" : false,
+        " 123": false,
+        "1234": true
+      },
+	  "MP-Nombre_Empresa": {
+        "" : false,
+        "aaaaa": true
+      }
+    }
+  },
+  "./PaginasDinamicas/TestearC_ModColaboraciones2.html": {
+    "FORM": {
+      "MP-IDGrupo": {
+        "" : false,
+        "123" : false,
+        " 123": false,
+        "1234": true
+      },
+	  "MP-Nombre_Grupo": {
+        "" : false,
+        "aaaaa": true
+      }
+    }
+  },
+  "./PaginasDinamicas/TestearC_ModColaboraciones3.html": {
+    "FORM": {
+      "MP-IDInstitucion": {
+        "" : false,
+        "123" : false,
+        " 123": false,
+        "1234": true
+      },
+	  "MP-Nombre_Institucion": {
+        "" : false,
+        "aaaaa": true
+      }
+    }
+  },
+  "./PaginasDinamicas/TestearC_ModTransferencias1.html": {
+    "FORM": {
+      "MP-IDPatente": {
+        "" : false,
+        "123" : false,
+        " 123": false,
+        "1234": true
+      },
+	  "MP-Nombre_Patente": {
+        "" : false,
+        "aaaaa": true
+      },
+	  "MP-Fecha_Patente": {
+		"0000/00/00": false,
+		"00-00-0000": false,
+        "2000-01-01": true
+      }
+    }
+  },
+  "./PaginasDinamicas/TestearC_ModTransferencias2.html": {
+    "FORM": {
+      "MP-IDProyecto": {
+        "" : false,
+        "123" : false,
+        " 123": false,
+        "1234": true
+      },
+	  "MP-Nombre_Proyecto": {
+        "" : false,
+        "aaaaa": true
+      }
+    }
+  },
+  "./PaginasDinamicas/TestearC_ModTransferencias3.html": {
+    "FORM": {
+      "MP-IDContrato": {
+        "" : false,
+        "123" : false,
+        " 123": false,
+        "1234": true
+      },
+	  "MP-Nombre_Contrato": {
+        "" : false,
+        "aaaaa": true
+      },
+	  "MP-FechaFin_Contrato": {
+		   "0000/00/00": false,
+		  "00-00-0000": false,
+        "" : false,
+        "2000-01-02": true
+      },
+	  "MP-FechaIni_Contrato": {
+        "0000/00/00": false,
+		  "00-00-0000": false,
+        "" : false,
+		"2000-03-03": false,
+        "2000-01-01": true
+      }
+    }
+  }
+}

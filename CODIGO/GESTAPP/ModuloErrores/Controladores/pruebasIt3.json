@@ -1,0 +1,88 @@
+{
+  "./PaginasDinamicas/TestearC_AltaMiembros.html": {
+    "FORM": {
+      "MA-Login": {
+        "" : false,
+        "aaa": false,
+		" aaa": false,
+        "aaaaa": true
+      },
+	  "MA-Pass": {
+        "" : false,
+        "aaaa": false,
+        "aaaaa": true
+      },
+	  "MA-USU_nombre": {
+        "" : false,
+        "aaaaa": true
+      },
+	  "MA-USU_apellido": {
+        "" : false,
+        "aaaaa": true
+      },
+	  "MA-USU_email": {
+        "" : false,
+		"asdfasdf" : false,
+		"asdfasdf.com" : false,
+        "aaaaa@hotmail.com": true
+      },
+	  "MA-USU_fecha_alta": {
+        "" : false,
+		"0000/00/00": false,
+		  "00-00-0000": false,
+        "2000-01-01": true
+      },
+	  "MA-Telefono_Usuario": {
+        "" : false,
+		"99" : false,
+		"111111119" : false,
+        "678320584": true
+      },
+	   "MA-Movil_Usuario": {
+		"99" : false,
+		"111111119" : false,
+        "678320584": true
+      }
+    }
+  },
+  "./PaginasDinamicas/TestearC_ModMiembros.html": {
+    "FORM": {
+      "MA-Login": {
+        "" : false,
+        "aaa": false,
+		" aaa": false,
+        "aaaaa": true
+      },
+	  "MA-Pass": {
+        "" : false,
+        "aaaa": false,
+        "aaaaa": true
+      },
+	  "MA-USU_nombre": {
+        "" : false,
+        "aaaaa": true
+      },
+	  "MA-USU_apellido": {
+        "" : false,
+        "aaaaa": true
+      },
+	  "MA-USU_email": {
+        "" : false,
+		"asdfasdf" : false,
+		"asdfasdf.com" : false,
+        "aaaaa@hotmail.com": true
+      },
+	  "MA-Telefono_Usuario": {
+        "" : false,
+		"99" : false,
+		"111111119" : false,
+        "678320584": true
+      },
+	   "MA-Movil_Usuario": {
+		"99" : false,
+		"111111119" : false,
+        "678320584": true
+      }
+    }
+  }
+}

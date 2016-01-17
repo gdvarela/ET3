@@ -55,7 +55,7 @@ function DisplayContent($idioma,$MOD)
 			</form>
 			<div class="row">
 				<div class="col-md-12">
-					<form role="form" action="<?php echo $procesadores[$identificadoresPrivados["MDocencia"]]?>" method="POST">
+					<form role="form" name="FORM" action="<?php echo $procesadores[$identificadoresPrivados["MDocencia"]]?>" method="POST">
 					<input type="hidden" name="TIPO" value="<?php echo $_POST["TIPO"]?>"/>
 					<?php 
 					//En funcion del tipo de campo que recibe por post se le "dice" al formulario el tipo de objeto que esta tratando (Mismo proceso que antes pero para el formulario de modificacion)

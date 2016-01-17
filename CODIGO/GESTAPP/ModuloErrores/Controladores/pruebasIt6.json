@@ -1,0 +1,146 @@
+{
+  "./PaginasDinamicas/TestearC_AltaActividades1.html": {
+    "FORM": {
+	  "MP-Titulo_Tablon": {
+        "" : false,
+        "aaaaa": true
+      },
+	  "MP-IDTablon": {
+         "" : false,
+        "123" : false,
+        " 123": false,
+        "1234": true
+      },
+	  "MP-ISSN_Tablon": {
+        "" : false,
+		"123456789X": false,
+		"1-56389-668-0": true,
+		"0 93028 923 4": true
+      },
+	  "MP-Fecha_Tablon": {
+        "" : false,
+		"0000/00/00": false,
+		  "00-00-0000": false,
+        "2000-01-01": true
+      }
+    }
+  },
+  "./PaginasDinamicas/TestearC_AltaActividades2.html": {
+    "FORM": {
+	  "MP-Titulo_Revista": {
+        "" : false,
+        "aaaaa": true
+      },
+	  "MP-IDRevista": {
+         "" : false,
+        "123" : false,
+        " 123": false,
+        "1234": true
+      },
+	  "MP-ISSN_Revista": {
+        "" : false,
+		"123456789X": false,
+		"1-56389-668-0": true,
+		"0 93028 923 4": true
+      },
+	  "MP-Fecha_Revista": {
+        "" : false,
+		"0000/00/00": false,
+		  "00-00-0000": false,
+        "2000-01-01": true
+      }
+    }
+  },
+  "./PaginasDinamicas/TestearC_AltaActividades3.html": {
+    "FORM": {
+	  "MP-Titulo_Conferencia_Org": {
+        "" : false,
+        "aaaaa": true
+      },
+	  "MP-IDConferencia_Org": {
+         "" : false,
+        " 123": false,
+        "123" : false,
+        "1234": true
+      },
+	  "MP-Fecha_Conferencia_Org": {
+        "" : false,
+		"0000/00/00": false,
+		  "00-00-0000": false,
+        "2000-01-01": true
+      }
+    }
+  },
+  "./PaginasDinamicas/TestearC_ModActividades1.html": {
+    "FORM": {
+	  "MP-Titulo_Tablon": {
+        "" : false,
+        "aaaaa": true
+      },
+	  "MP-IDTablon": {
+         "" : false,
+        "123" : false,
+        " 123": false,
+        "1234": true
+      },
+	  "MP-ISSN_Tablon": {
+        "" : false,
+		"123456789X": false,
+		"1-56389-668-0": true,
+		"0 93028 923 4": true
+      },
+	  "MP-Fecha_Tablon": {
+        "" : false,
+		"0000/00/00": false,
+		  "00-00-0000": false,
+        "2000-01-01": true
+      }
+    }
+  },
+  "./PaginasDinamicas/TestearC_ModActividades2.html": {
+    "FORM": {
+	  "MP-Titulo_Revista": {
+        "" : false,
+        "aaaaa": true
+      },
+	  "MP-IDRevista": {
+         "" : false,
+        "123" : false,
+        " 123": false,
+        "1234": true
+      },
+	  "MP-ISSN_Revista": {
+        "" : false,
+		"123456789X": false,
+		"1-56389-668-0": true,
+		"0 93028 923 4": true
+      },
+	  "MP-Fecha_Revista": {
+        "" : false,
+		"0000/00/00": false,
+		  "00-00-0000": false,
+        "2000-01-01": true
+      }
+    }
+  },
+  "./PaginasDinamicas/TestearC_ModActividades3.html": {
+    "FORM": {
+	  "MP-Titulo_Conferencia_Org": {
+        "" : false,
+        "aaaaa": true
+      },
+	  "MP-IDConferencia_Org": {
+         "" : false,
+        " 123": false,
+        "123" : false,
+        "1234": true
+      },
+	  "MP-Fecha_Conferencia_Org": {
+        "" : false,
+		"0000/00/00": false,
+		  "00-00-0000": false,
+        "2000-01-01": true
+      }
+    }
+  }
+}
