@@ -22,6 +22,8 @@ function DisplayContent($idioma,$noticias,$pagAct,$ultimaPagina)
 	<input type="hidden" name="NumPag" value="<?php echo ($pagAct+1 <= $ultimaPagina)?$pagAct+1:$ultimaPagina;?>" />
 	</form>
 	<?php
+	//Se construye el apartado de paginacion con las 10 paginas cercanas a la actual
+	// en esta parte se crean los formularios que haran las peticiones POST correspondientes a cada pagina solicitada
 	for ($i = $pagAct-5; $i < $pagAct+5;$i = $i+1 )
 	{
 		if ($i > 0 && $i <= ceil(count($noticias)/$NumporPags))
@@ -51,6 +53,7 @@ function DisplayContent($idioma,$noticias,$pagAct,$ultimaPagina)
 						<a onclick="document.getElementById('ant').submit();">Prev</a>
 					</li>
 					<?php
+					//Se construye el apartado de paginacion con las 10 paginas cercanas a la actual
 					for ($i = $pagAct-5; $i < $pagAct+5;$i = $i+1 )
 					{
 						if ($i > 0 && $i <= ceil(count($noticias)/$NumporPags))
@@ -76,12 +79,13 @@ function DisplayContent($idioma,$noticias,$pagAct,$ultimaPagina)
 		<div class="row">
 			<div class="col-lg-12">
 				<?php 
-					$cont = 0;			
+					$cont = 0;	
+					//Se recorren los datos recibidos para incluirlos en el HTML					
 					foreach($noticias as $noticia)
 					{
 						$cont = $cont+1;
 						if (!($cont > $NumporPags*($pagAct-1) &&  $cont <= ($NumporPags*($pagAct))))
-							continue;
+							continue;//Se muestran solo las correspondientes a la pagina en la que estamos
 						echo '
 						<div class="row">
 						<div class="col-md-1">
@@ -115,6 +119,7 @@ function DisplayContent($idioma,$noticias,$pagAct,$ultimaPagina)
 						<a onclick="document.getElementById('ant').submit();">Prev</a>
 					</li>
 					<?php
+					//Se construye el apartado de paginacion con las 10 paginas cercanas a la actual
 					for ($i = $pagAct-5; $i < $pagAct+5;$i = $i+1 )
 					{
 						if ($i > 0 && $i <= ceil(count($noticias)/$NumporPags))
@@ -158,8 +163,16 @@ function DisplayContent($idioma,$noticias,$pagAct,$ultimaPagina)
 		}
 		catch(Exception $e)
 		{
-			$errorRescrito = explode("=>",$e->getMessage());
-			$_SESSION['error'] = 'CON ERR NOTICIAS'."=>".$errorRescrito[1];
+			//En caso de test no se muestra un mensaje al usuario, sino que se deja salir la excepcion para que la detecte el testeo de errores
+			if (!isset($_COOKIE["TEST"]))
+			{
+				$errorRescrito = explode("=>",$e->getMessage());
+				$_SESSION['error'] = 'ERROR CON P'."=>".$errorRescrito[1];
+			}
+			else
+			{
+				throw new Exception($e->getMessage());
+			}
 		}
 
 		

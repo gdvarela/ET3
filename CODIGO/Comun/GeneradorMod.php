@@ -12,6 +12,9 @@
 // La diferencia es que en este se cargan los Textbox, pass .... en funcion de los datos recibidos en la variable
 // ---> $MOD
 
+foreach($formularios[$NombreFormulario] as $campos)
+{
+
 if (strpos(explode(":",$campos[2])[0],'js') !== false)
 {
 	global $VALIDACIONFORMULARIO;
@@ -58,7 +61,7 @@ switch ($campos[1])
 			  for ($i = 0 ; $i < $opciones->num_rows;$i = $i +1)
 			  {
 				  $dato = $opciones->fetch_assoc();
-				  echo $dato[array_keys($dato)[0]] ."=".$MOD[explode("-",$campos[0])[1]];
+				  //Se mira si el dato del select coincide con lo que se recibe como variable para asi dejarlo seleccionado
 				  if ($dato[array_keys($dato)[0]] == $MOD[explode("-",$campos[0])[1]])
 					echo '<option selected>'.$dato[array_keys($dato)[0]].'</option>';
 				else
@@ -70,6 +73,7 @@ switch ($campos[1])
 			  for ($i = 0 ; $i < count($opciones);$i = $i +1)
 			  {
 				  $dato = $opciones[i];
+				  //Se mira si el dato del select coincide con lo que se recibe como variable para asi dejarlo seleccionado
 				  if ($dato == $MOD[explode("-",$campos[0])[1]])
 					echo '<option selected>'.$dato.'</option>';
 				else
@@ -167,5 +171,6 @@ switch ($campos[1])
 		</div>
 		';
 	break;
+}
 }
 ?>

@@ -7,6 +7,11 @@
 // para insertar un nuevo objeto en la base de datos
 //=====================================================================================================================
 
+//$NombreFormulario es la variable que contiene el indice del array de formularios que se desea mostrar o generar.
+// El bucle accede al formulario en cuestion y recorre los campos que tenga, creando la estrucutura html que tendra el formulario resultante.
+foreach($formularios[$NombreFormulario] as $campos)
+{
+
 // $campos contendra el campo concreto a mostrar y si necesita de validación con funcion personalizada
 if (strpos(explode(":",$campos[2])[0],'js') !== false)
 {
@@ -14,6 +19,7 @@ if (strpos(explode(":",$campos[2])[0],'js') !== false)
 	global $VALIDACIONFORMULARIO;
 	
 	//Se miran para que eventos se desea aplicar la formular de validacion
+	// En este caso una funcion puede ser activada por distintos eventos
 	$eventosSoportar = explode(",",explode("|",explode(":",$campos[2])[1])[0]);
 	
 	//Y añadimos a lo que ya haya de validaciones js del formulario la nueva funcion necesaria para el campo rellenando 
@@ -200,5 +206,6 @@ switch ($campos[1])
 		</div>
 		';
 	break;
+}
 }
 ?>

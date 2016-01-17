@@ -109,8 +109,16 @@ function DisplayContent($idioma,$Emp,$Ins,$Grup)
 	}
 	catch(Exception $e)
 	{
-		$errorRescrito = explode("=>",$e->getMessage());
-		$_SESSION['error'] = 'CON ERR MIEMBROS'."=>".$errorRescrito[1];
+		//En caso de test no se muestra un mensaje al usuario, sino que se deja salir la excepcion para que la detecte el testeo de errores
+		if (!isset($_COOKIE["TEST"]))
+		{
+			$errorRescrito = explode("=>",$e->getMessage());
+			$_SESSION['error'] = 'ERROR CON C'."=>".$errorRescrito[1];
+		}
+		else
+		{
+			throw new Exception($e->getMessage());
+		}
 	}
 
 

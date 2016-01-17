@@ -1,5 +1,13 @@
 <?php
 
+//=====================================================================================================================
+// Fichero :C_ModX.php
+// Creado por : Francisco Rojas Rodriguez
+// Fecha : 25/12/2015
+// Controlador para Modificacion de objetos, simplemente carga la vista con el formulario generado con los campos necesarios
+// para la modificacion de la BD
+//=====================================================================================================================
+
 //Variable que almacena el nombre de la carpeta Raiz del directorio
 $Raiz = explode('/',$_SERVER['PHP_SELF'])[count(explode('/',$_SERVER['PHP_SELF']))-4];
 
@@ -31,7 +39,7 @@ $RutaRelativaControlador = getRuta();
 //Ruta Relativa del ArchivoComun
 include_once $RutaRelativaControlador.'Comun/ArchivoComun.php';
 
-$miPaginaPorDefecto = $PaginaError;
+$miPaginaPorDefecto = $controladores[$identificadoresPrivados["Transferencias"]];
 include_once$RutaRelativaControlador.'GESTAPP/controlPages.php';
 
 
@@ -39,7 +47,7 @@ include_once$RutaRelativaControlador.'GESTAPP/controlPages.php';
 $idioma = CargarIdioma2($RutaRelativaControlador);
 
 //Variable que almacenara el identificador de la pagina actual, se establece su valor en el SWITCH
-$PagID = "MTP";
+$PagID = $identificadoresPrivados["MTransferencias"];
 
 //Se incluye la vista concreta que se desea mostrar, utilizando el array
 // el array vistas se encuentra en el archivo ArchivoComun.php

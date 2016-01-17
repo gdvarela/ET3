@@ -1,5 +1,12 @@
 <?php
 
+//=====================================================================================================================
+// Fichero :C_PrensaP.php
+// Creado por : Francisco Rojas Rodriguez
+// Fecha : 25/12/2015
+// Controlador que muestra un listado de las noticias de la base de datos
+//=====================================================================================================================
+
 //Variable que almacena el nombre de la carpeta Raiz del directorio
 $Raiz = explode('/',$_SERVER['PHP_SELF'])[count(explode('/',$_SERVER['PHP_SELF']))-4];
 

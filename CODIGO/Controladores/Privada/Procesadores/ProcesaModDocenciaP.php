@@ -1,5 +1,13 @@
 <?php
 
+//=====================================================================================================================
+// Fichero :ProcesaModX.php
+// Creado por : Francisco Rojas Rodriguez
+// Fecha : 25/12/2015
+// Archivo procesador encargado de la modificacion de los objetos
+// Todos los procesadores son similares, solo cambia las consultas realizadas en el.
+//=====================================================================================================================
+
 //Variable que almacena el nombre de la carpeta Raiz del directorio
 $Raiz = explode('/',$_SERVER['PHP_SELF'])[count(explode('/',$_SERVER['PHP_SELF']))-5];
 
@@ -35,6 +43,9 @@ include_once $RutaRelativaControlador.'Comun/ArchivoComun.php';
 $idioma = CargarIdioma2($RutaRelativaControlador);
 try
 	{
+		//Por POST recibimos el tipo de objeto que es, y en funcion de este valor usamos la talba correspondiente 
+		// para gestionarlo, pasandole directamente los valores recibidos 
+		//'array_slice($_POST, 1)' elimina el primer campo recibido 'TIPO' ya que es ajeno a los campos de las tablas
 		switch ($_POST["TIPO"])
 		{
 			case "D":
@@ -44,17 +55,19 @@ try
 			$consulta = $_TABLAMATERIAS->Update(array_slice($_POST, 1) );
 			break;
 		}
-	
+		
+		//En caso de test no se realizan redirecciones a ninguna otra pagina
 		if (!isset($_COOKIE["TEST"]))
-		header("Location: ".$controladores[$identificadoresPrivados["Docencia"]]);
+			header("Location: ".$controladores[$identificadoresPrivados["Docencia"]]);
 	}
 	catch(Exception $e)
 	{
+		//En caso de test no se realizan redirecciones a ninguna otra pagina
 		if (!isset($_COOKIE["TEST"]))
 		{
-		$errorRescrito = explode("=>",$e->getMessage());
-		$_SESSION['error'] = 'ID CONCRETO REPETIDO D'."=>".$errorRescrito[1];
-		header("Location: ".$controladores[$identificadoresPrivados["Docencia"]]);
+			$errorRescrito = explode("=>",$e->getMessage());
+			$_SESSION['error'] = 'ERROR MOD D'."=>".$errorRescrito[1];
+			header("Location: ".$controladores[$identificadoresPrivados["Docencia"]]);
 		}
 	}
 ?>

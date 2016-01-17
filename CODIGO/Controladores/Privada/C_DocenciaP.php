@@ -1,5 +1,12 @@
 <?php
 
+//=====================================================================================================================
+// Fichero :C_DocenciaP.php
+// Creado por : Francisco Rojas Rodriguez
+// Fecha : 25/12/2015
+// Controlador que carga los datos de doncencia de los miembros
+//=====================================================================================================================
+
 //Variable que almacena el nombre de la carpeta Raiz del directorio
 $Raiz = explode('/',$_SERVER['PHP_SELF'])[count(explode('/',$_SERVER['PHP_SELF']))-4];
 
@@ -31,7 +38,7 @@ $RutaRelativaControlador = getRuta();
 //Ruta Relativa del ArchivoComun
 include_once $RutaRelativaControlador.'Comun/ArchivoComun.php';
 
-$miPaginaPorDefecto = $PaginaError;
+$miPaginaPorDefecto = $controladores[$identificadoresPrivados["Home"]];
 include_once$RutaRelativaControlador.'GESTAPP/controlPages.php';
 
 

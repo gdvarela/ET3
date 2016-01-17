@@ -1,5 +1,12 @@
 <?php
 
+//=====================================================================================================================
+// Fichero :V_DocenciaP.php
+// Creado por : Francisco Rojas Rodriguez
+// Fecha : 18/12/2015
+// Clase que contiene una de las vistas del sistema
+//=====================================================================================================================
+
 Class DocenciaPrivada
 {
 
@@ -47,7 +54,7 @@ function DisplayContent($idioma,$Dc,$materias)
 									</div>
 									<ul class="list-group">
 						<?php
-						 
+						 //Se recorren los objetos a mostrar por la vista, recibidos por parametro de la consulta
 						foreach($materias as $e2)
 						{
 							echo '
@@ -74,6 +81,8 @@ function DisplayContent($idioma,$Dc,$materias)
 						<div class="row">
 						<?php
 						$mostrado=array();
+						//Se recorren los objetos a mostrar por la vista, recibidos por parametro de la consulta
+						// Al ser una relacion primero se recorren todas miembro por miembro
 						foreach($Dc as $e)
 						{
 							if(!in_array($e["Login"], $mostrado))
@@ -85,7 +94,8 @@ function DisplayContent($idioma,$Dc,$materias)
 										  <h3 class="panel-title">'.$e["Login"].'</h3>
 										</div>
 										<ul class="list-group">';
-									
+									//Se recorren los objetos a mostrar por la vista, recibidos por parametro de la consulta
+									// Y en el segundo bucle se recorren las materias impartidas por cada miembro.
 									foreach($Dc as $e2)
 									{
 										if($e["Login"]==$e2["Login"]){
@@ -139,8 +149,16 @@ function DisplayContent($idioma,$Dc,$materias)
 	}
 	catch(Exception $e)
 	{
-		$errorRescrito = explode("=>",$e->getMessage());
-		$_SESSION['error'] = 'CON ERR MIEMBROS'."=>".$errorRescrito[1];
+		//En caso de test no se muestra un mensaje al usuario, sino que se deja salir la excepcion para que la detecte el testeo de errores
+		if (!isset($_COOKIE["TEST"]))
+		{
+			$errorRescrito = explode("=>",$e->getMessage());
+			$_SESSION['error'] = 'ERROR CON D'."=>".$errorRescrito[1];
+		}
+		else
+		{
+			throw new Exception($e->getMessage());
+		}
 	}
 
 //Inicializamos la vista Correspondiente

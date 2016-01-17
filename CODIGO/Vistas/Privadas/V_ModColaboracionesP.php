@@ -1,5 +1,13 @@
 <?php
 
+//=====================================================================================================================
+// Fichero :V_ModX.php
+// Creado por : Francisco Rojas Rodriguez
+// Fecha : 18/12/2015
+// Clase que contiene una de las vistas del sistema En este caso, sera el formulario generado para la modificacion de
+// objetos de la BD
+//=====================================================================================================================
+
 Class ModColaboracionesPrivada
 {
 
@@ -21,6 +29,7 @@ function DisplayContent($idioma,$MOD)
 	<div class="container">
 		<form id="borrarActual" action="<?php echo $procesadores[$identificadoresPrivados["DColaboraciones"]]?>" method="POST">
 		<?php
+			//En funcion del tipo de campo que recibe por post se le "dice" al formulario el tipo de objeto que esta tratando
 			$campoClave = "";
 			switch ($_POST["TIPO"])
 			{
@@ -47,12 +56,16 @@ function DisplayContent($idioma,$MOD)
 					<input type="hidden" name="TIPO" value="<?php echo $_POST["TIPO"]?>"/>
 					<input type="hidden" name="ClaveAnt" value="<?php echo $campoClave?>=><?php echo $MOD[$campoClave]?>" />
 					<?php
-					foreach($formularios[$identificadoresPrivados["MColaboraciones"].$_POST["TIPO"]] as $campos)
-					{
-						global $generadorMod;
-						include $generadorMod;
-						
-					}
+					$NombreFormulario = $identificadoresPrivados["MColaboraciones"].$_POST["TIPO"];
+					// En $NombreFormulario  se pone el nombre del formulario correspondiente que se tenga que mostrar y crea dinamicamente los campos necesarios
+					// en funcion de lo indicado en lo que pongais en Archivo Comun. No es que sea lo mas eficiente del mundo pero almenos
+					// facilita el trabajo en grupo permitiendo modificaciones rapidamente y centralizadas a un único fichero
+					
+					 //Se accede a la variable global $generadorMOD que contiene la direccion del fichero en cuestion.
+					 // Se hace asi por si en futuras iteraciones se decide cambiar de lugar, no tener que ir vista por vista cambiandolo, basta
+					 // con cambiar la variable y las vistas siempre acceder al fichero.
+					global $generadorMod;
+					include $generadorMod;
 					?>
 					
 					<button type="submit" class="btn btn-default"><?php echo $idioma["Aceptar"]?></button>
@@ -77,6 +90,8 @@ function DisplayContent($idioma,$MOD)
 		//Consultamos datos
 try
 	{
+		//Por POST recibimos el tipo de objeto que es, y en funcion de este valor usamos la talba correspondiente 
+		// para para la obtencion del registro en concreto
 		switch ($_POST["TIPO"])
 		{
 			case "I":
@@ -97,8 +112,16 @@ try
 	}
 	catch(Exception $e)
 	{
-		$errorRescrito = explode("=>",$e->getMessage());
-		$_SESSION['error'] = 'OBTENCION C'."=>".$errorRescrito[1];
+		//En caso de test no se muestra un mensaje al usuario, sino que se deja salir la excepcion para que la detecte el testeo de errores
+		if (!isset($_COOKIE["TEST"]))
+		{
+			$errorRescrito = explode("=>",$e->getMessage());
+			$_SESSION['error'] = 'OBTENCION C'."=>".$errorRescrito[1];
+		}
+		else
+		{
+			throw new Exception($e->getMessage());
+		}
 		header("Location: ".$controladores[$identificadoresPrivados["Colaboraciones"]]);
 	}
 		

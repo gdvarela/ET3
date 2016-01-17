@@ -27,7 +27,7 @@ function DisplayContent($idioma,$Dc,$materias)
 									</div>
 									<ul class="list-group">
 						<?php
-						 
+						 //Se recorren los datos recibidos para incluirlos en el HTML
 						foreach($materias as $e2)
 						{
 							echo '
@@ -51,6 +51,8 @@ function DisplayContent($idioma,$Dc,$materias)
 						<div class="row">
 						<?php
 						$mostrado=array();
+						//Se recorren los datos recibidos para incluirlos en el HTML
+						// Como es una relacion doble primero se recorre para ir 1 a 1 por los miembros
 						foreach($Dc as $e)
 						{
 							if(!in_array($e["Login"], $mostrado))
@@ -62,7 +64,8 @@ function DisplayContent($idioma,$Dc,$materias)
 										  <h3 class="panel-title">'.$e["Login"].'</h3>
 										</div>
 										<ul class="list-group">';
-									
+									//Se recorren los datos recibidos para incluirlos en el HTML
+									//En el segundo bucle, para cada miembro externo se muestran sus materias que imparten
 									foreach($Dc as $e2)
 									{
 										if($e["Login"]==$e2["Login"]){
@@ -113,8 +116,16 @@ function DisplayContent($idioma,$Dc,$materias)
 	}
 	catch(Exception $e)
 	{
-		$errorRescrito = explode("=>",$e->getMessage());
-		$_SESSION['error'] = 'CON ERR MIEMBROS'."=>".$errorRescrito[1];
+		//En caso de test no se muestra un mensaje al usuario, sino que se deja salir la excepcion para que la detecte el testeo de errores
+		if (!isset($_COOKIE["TEST"]))
+		{
+			$errorRescrito = explode("=>",$e->getMessage());
+			$_SESSION['error'] = 'ERROR CON D'."=>".$errorRescrito[1];
+		}
+		else
+		{
+			throw new Exception($e->getMessage());
+		}
 	}
 
 

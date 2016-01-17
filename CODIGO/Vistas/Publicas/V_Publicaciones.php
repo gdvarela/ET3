@@ -1,5 +1,12 @@
 <?php
 
+//=====================================================================================================================
+// Fichero :V_Transferencia.php
+// Creado por : Francisco Rojas Rodriguez
+// Fecha : 18/12/2015
+// Clase que contiene una de las vistas del sistema
+//=====================================================================================================================
+
 Class Publicaciones
 {
 
@@ -25,6 +32,7 @@ function DisplayContent($idioma,$Lib,$Art,$Conf)
                 </div>
 				<ul class="list-group">
 				<?php
+				//Se recorren los datos recibidos para incluirlos en el HTML
 					foreach($Lib as $e)
 					{
 						
@@ -50,6 +58,7 @@ function DisplayContent($idioma,$Lib,$Art,$Conf)
                 </div>
 				<ul class="list-group">
 					<?php
+					//Se recorren los datos recibidos para incluirlos en el HTML
 					foreach($Art as $e)
 					{
 						
@@ -74,6 +83,7 @@ function DisplayContent($idioma,$Lib,$Art,$Conf)
                 </div>
 				<ul class="list-group">
 					<?php
+					//Se recorren los datos recibidos para incluirlos en el HTML
 					foreach($Conf as $e)
 					{
 						
@@ -121,8 +131,16 @@ function DisplayContent($idioma,$Lib,$Art,$Conf)
 	}
 	catch(Exception $e)
 	{
-		$errorRescrito = explode("=>",$e->getMessage());
-		$_SESSION['error'] = 'CON ERR MIEMBROS'."=>".$errorRescrito[1];
+		//En caso de test no se muestra un mensaje al usuario, sino que se deja salir la excepcion para que la detecte el testeo de errores
+		if (!isset($_COOKIE["TEST"]))
+		{
+			$errorRescrito = explode("=>",$e->getMessage());
+			$_SESSION['error'] = 'ERROR CON Pu'."=>".$errorRescrito[1];
+		}
+		else
+		{
+			throw new Exception($e->getMessage());
+		}
 	}
 
 ?>

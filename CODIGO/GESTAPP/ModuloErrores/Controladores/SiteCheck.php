@@ -88,7 +88,6 @@ class SiteCheck
 			
 			$RUTARELATIVA = str_replace(' ','%20',$RUTARELATIVA);
 			
-			echo $RUTARELATIVA;
 			//Con todos los parametros de la pagina establecidos se crea.
 			$this->Paginas[] = new Page($RUTARELATIVA .$elementos[0],$elementos[1],$arrayPropiedades,$port, $host);
 		}
@@ -148,7 +147,15 @@ class SiteCheck
 			//remove this error message from the page, so that we can check for further errors
 			$page = str_replace($matches[0], "", $page);
 		}
-		
+		$message2 = "#.*#";
+		while ( ereg("<b>($error)</b>: ($message2)", $page, $matches))
+		{
+			$pageErrors[$errorCount] = new ErrorMessage($matches[0], $matches[1], $matches[2], "", "");				
+			$errorCount++;
+			
+			//remove this error message from the page, so that we can check for further errors
+			$page = str_replace($matches[0], "", $page);
+		}
 		return $pageErrors;
 	}
 	/**

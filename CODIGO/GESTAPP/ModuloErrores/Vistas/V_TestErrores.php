@@ -196,7 +196,12 @@ function Display($idioma)
 						/Controladores/Publica/ControladorWEB.php@GET@PagMenu=P;
 						/Controladores/Publica/ControladorWEB.php@GET@PagMenu=T;
 						/Controladores/Publica/ControladorWEB.php@GET@PagMenu=C;
-						/Controladores/Publica/ControladorWEB.php@GET@PagMenu=L;		
+						/Controladores/Publica/ControladorWEB.php@GET@PagMenu=L;
+						/Controladores/Publica/ControladorWEB.php@GET@PagMenu=Pu;	
+						/Controladores/Publica/ControladorWEB.php@GET@PagMenu=D;							
+						/Controladores/Publica/ControladorWEB.php@GET@PagMenu=A;
+						
+						
 						/Controladores/Privada/C_HomeP.php@POST@;			
 						/Controladores/Privada/C_AltaMiembrosP.php@POST@;
 						/Controladores/Privada/C_MiembrosP.php@POST@;

@@ -206,7 +206,32 @@ function DisplayContent($idioma,$arrayObjetos)
 		
 	}
 }
-
+	$miembros = array();
+	//Consultamos datos
+	try
+	{
+		//Se buscan los mienbros en la base de datos
+		$consulta = $_TABLAMIEMBRO->ListadoRegistros(" where Login IN (Select login from HACE_DE where ROL_nombre = '".$ROLMIEMBRO."')");
+		
+		//Con los datos los cargamos en el array
+		for ($i = 0; $i < $consulta->num_rows ;$i++)
+		{
+			$miembros[] = $consulta->fetch_assoc();
+		}
+	}
+	catch(Exception $e)
+	{
+		//En caso de test no se muestra un mensaje al usuario, sino que se deja salir la excepcion para que la detecte el testeo de errores
+		if (!isset($_COOKIE["TEST"]))
+		{
+			$errorRescrito = explode("=>",$e->getMessage());
+			$_SESSION['error'] = 'CON ERR U'."=>".$errorRescrito[1];
+		}
+		else
+		{
+			throw new Exception($e->getMessage());
+		}
+	}
 	
 
 ?>

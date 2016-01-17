@@ -1,5 +1,12 @@
 <?php
 
+//=====================================================================================================================
+// Fichero :V_TransferenciasP.php
+// Creado por : Francisco Rojas Rodriguez
+// Fecha : 18/12/2015
+// Clase que contiene una de las vistas del sistema
+//=====================================================================================================================
+
 Class TransferenciaPrivada
 {
 
@@ -52,6 +59,7 @@ function DisplayContent($idioma,$Po,$Pa,$Co)
                 </div>
 				<ul class="list-group">
 				<?php
+				//Se recorren los datos recibidos para incluirlos en el HTML
 					foreach($Pa as $e)
 					{
 						echo '<form id="'.$e["IDPatente"].'PA" action="'.$controladores[$identificadoresPrivados["MTransferencias"]].'" method="POST">
@@ -74,6 +82,7 @@ function DisplayContent($idioma,$Po,$Pa,$Co)
                 </div>
 				<ul class="list-group">
 					<?php
+					//Se recorren los datos recibidos para incluirlos en el HTML
 					foreach($Po as $e)
 					{
 						echo '<form id="'.$e["IDProyecto"].'PO" action="'.$controladores[$identificadoresPrivados["MTransferencias"]].'" method="POST">
@@ -95,6 +104,7 @@ function DisplayContent($idioma,$Po,$Pa,$Co)
                 </div>
 				<ul class="list-group">
 					<?php
+					//Se recorren los datos recibidos para incluirlos en el HTML
 					foreach($Co as $e)
 					{
 						echo '<form id="'.$e["IDContrato"].'CO" action="'.$controladores[$identificadoresPrivados["MTransferencias"]].'" method="POST">
@@ -145,8 +155,16 @@ function DisplayContent($idioma,$Po,$Pa,$Co)
 	}
 	catch(Exception $e)
 	{
-		$errorRescrito = explode("=>",$e->getMessage());
-		$_SESSION['error'] = 'CON ERR MIEMBROS'."=>".$errorRescrito[1];
+		//En caso de test no se muestra un mensaje al usuario, sino que se deja salir la excepcion para que la detecte el testeo de errores
+		if (!isset($_COOKIE["TEST"]))
+		{
+			$errorRescrito = explode("=>",$e->getMessage());
+			$_SESSION['error'] = 'ERROR CON T'."=>".$errorRescrito[1];
+		}
+		else
+		{
+			throw new Exception($e->getMessage());
+		}
 	}
 
 //Inicializamos la vista Correspondiente

@@ -1,5 +1,12 @@
 <?php
 
+//=====================================================================================================================
+// Fichero :V_Publicacionesphp
+// Creado por : Francisco Rojas Rodriguez
+// Fecha : 18/12/2015
+// Clase que contiene una de las vistas del sistema
+//=====================================================================================================================
+
 Class PublicacionesPrivada
 {
 
@@ -52,6 +59,7 @@ function DisplayContent($idioma,$Lib,$Art,$Conf)
                 </div>
 				<ul class="list-group">
 				<?php
+				//Se recorren los datos recibidos para incluirlos en el HTML
 					foreach($Lib as $e)
 					{
 						echo '<form id="'.$e["ISBN"].'L" action="'.$controladores[$identificadoresPrivados["MPublicaciones"]].'" method="POST">
@@ -81,6 +89,7 @@ function DisplayContent($idioma,$Lib,$Art,$Conf)
                 </div>
 				<ul class="list-group">
 					<?php
+					//Se recorren los datos recibidos para incluirlos en el HTML
 					foreach($Art as $e)
 					{
 						echo '<form id="'.$e["IDArticulo"].'A" action="'.$controladores[$identificadoresPrivados["MPublicaciones"]].'" method="POST">
@@ -109,6 +118,7 @@ function DisplayContent($idioma,$Lib,$Art,$Conf)
                 </div>
 				<ul class="list-group">
 					<?php
+					//Se recorren los datos recibidos para incluirlos en el HTML
 					foreach($Conf as $e)
 					{
 						echo '<form id="'.$e["IDConferencia"].'C" action="'.$controladores[$identificadoresPrivados["MPublicaciones"]].'" method="POST">
@@ -160,8 +170,16 @@ function DisplayContent($idioma,$Lib,$Art,$Conf)
 	}
 	catch(Exception $e)
 	{
-		$errorRescrito = explode("=>",$e->getMessage());
-		$_SESSION['error'] = 'CON ERR MIEMBROS'."=>".$errorRescrito[1];
+		//En caso de test no se muestra un mensaje al usuario, sino que se deja salir la excepcion para que la detecte el testeo de errores
+		if (!isset($_COOKIE["TEST"]))
+		{
+			$errorRescrito = explode("=>",$e->getMessage());
+			$_SESSION['error'] = 'ERROR CON Pu'."=>".$errorRescrito[1];
+		}
+		else
+		{
+			throw new Exception($e->getMessage());
+		}
 	}
 
 //Inicializamos la vista Correspondiente

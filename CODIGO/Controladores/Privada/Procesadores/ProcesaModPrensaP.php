@@ -1,5 +1,13 @@
 <?php
 
+//=====================================================================================================================
+// Fichero :ProcesaModX.php
+// Creado por : Francisco Rojas Rodriguez
+// Fecha : 25/12/2015
+// Archivo procesador encargado de la modificacion de los objetos
+// Todos los procesadores son similares, solo cambia las consultas realizadas en el.
+//=====================================================================================================================
+
 //Variable que almacena el nombre de la carpeta Raiz del directorio
 $Raiz = explode('/',$_SERVER['PHP_SELF'])[count(explode('/',$_SERVER['PHP_SELF']))-5];
 
@@ -37,17 +45,20 @@ $idioma = CargarIdioma2($RutaRelativaControlador);
 try
 	{
 		$consulta = $_TABLANOTICIAS->Update($_POST);
+		
+		//En caso de test no se realizan redirecciones a ninguna otra pagina
 		if (!isset($_COOKIE["TEST"]))
-		header("Location: ".$controladores[$identificadoresPrivados["Prensa"]]);
+			header("Location: ".$controladores[$identificadoresPrivados["Prensa"]]);
 	}
 	catch(Exception $e)
 	{
+		//En caso de test no se realizan redirecciones a ninguna otra pagina
 		if (!isset($_COOKIE["TEST"]))
 		{
 			$errorRescrito = explode("=>",$e->getMessage());
 			session_start();
-			$_SESSION['error'] = 'CON ERR MIEMBROS'."=>".$errorRescrito[1];
-			header("Location: ".$controladores[$identificadoresPrivados["MPrensa"]]);
+			$_SESSION['error'] = 'ERROR MOD P'."=>".$errorRescrito[1];
+			header("Location: ".$controladores[$identificadoresPrivados["Prensa"]]);
 		}
 	}
 ?>

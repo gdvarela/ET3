@@ -1,5 +1,13 @@
 <?php
 
+//=====================================================================================================================
+// Fichero :ProcesaAltaX.php
+// Creado por : Francisco Rojas Rodriguez
+// Fecha : 25/12/2015
+// Archivo procesador encargado del borrado de los objetos
+// Todos los procesadores son similares, solo cambia las consultas realizadas en el.
+//=====================================================================================================================
+
 //Variable que almacena el nombre de la carpeta Raiz del directorio
 $Raiz = explode('/',$_SERVER['PHP_SELF'])[count(explode('/',$_SERVER['PHP_SELF']))-5];
 
@@ -39,6 +47,10 @@ $idioma = CargarIdioma2($RutaRelativaControlador);
 
 try
 	{
+		//Por POST recibimos el tipo de objeto que es, y en funcion de este valor añadimos unos valores a la tabla de participantes
+		// Es un caso especial ya que los datos asociados a esta tabla estan en una Generalizacion Disjunta en la BD y se requiere de
+		// codigo adicional para mantener la relacion correcta en la base de datos ("Se podria meter como un procedimiento directamente en la BD
+		// pero desde codigo es mas facil realizar futuras modificaciones")
 		switch ($_POST["TIPO"])
 		{
 			case "I":
@@ -51,20 +63,24 @@ try
 			TablaBD::ConsultaGenerica("Insert into ".$_TABLAPARTICIPANTES->nombreTabla." Values ('".$_POST['MP-IDParticipante']."', 'Empresa') ");
 			break;
 		}
-		}
+	}
 	catch(Exception $e)
 	{
+		//En caso de test no se realizan redirecciones a ninguna otra pagina
 		if (!isset($_COOKIE["TEST"]))
 		{
 			session_start();
-		$errorRescrito = explode("=>",$e->getMessage());
-		$_SESSION['error'] = 'ID Part REP'."=>".$errorRescrito[1];
-		header("Location: ".$controladores[$identificadoresPrivados["Colaboraciones"]]);
+			$errorRescrito = explode("=>",$e->getMessage());
+			$_SESSION['error'] = 'ID Part REP'."=>".$errorRescrito[1];
+			header("Location: ".$controladores[$identificadoresPrivados["Colaboraciones"]]);
 		}
 	}
 	
 try
 	{
+		//Por POST recibimos el tipo de objeto que es, y en funcion de este valor usamos la talba correspondiente 
+		// para gestionarlo, pasandole directamente los valores recibidos 
+		//'array_slice($_POST, 1)' elimina el primer campo recibido 'TIPO' ya que es ajeno a los campos de las tablas
 		switch ($_POST["TIPO"])
 		{
 			case "I":
@@ -77,17 +93,19 @@ try
 			$consulta = $_TABLAEMPRESAS->AlmacenarBD(array_slice($_POST, 1) );
 			break;
 		}
+		
+		//En caso de test no se realizan redirecciones a ninguna otra pagina
 		if (!isset($_COOKIE["TEST"]))
-		header("Location: ".$controladores[$identificadoresPrivados["Colaboraciones"]]);
+			header("Location: ".$controladores[$identificadoresPrivados["Colaboraciones"]]);
 	}
 	catch(Exception $e)
 	{
-		
+		//En caso de test no se realizan redirecciones a ninguna otra pagina
 		if (!isset($_COOKIE["TEST"]))
 		{
 			session_start();
 			$errorRescrito = explode("=>",$e->getMessage());
-		$_SESSION['error'] = 'ID CONCRETO REPETIDO C'."=>".$errorRescrito[1];
+			$_SESSION['error'] = 'ID CONCRETO REPETIDO C'."=>".$errorRescrito[1];
 			header("Location: ".$controladores[$identificadoresPrivados["Colaboraciones"]]);
 		}
 	}

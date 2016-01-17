@@ -1,5 +1,12 @@
 <?php
 
+//=====================================================================================================================
+// Fichero :C_ActividadesP.php
+// Creado por : Francisco Rojas Rodriguez
+// Fecha : 25/12/2015
+// Controlador que carga los datos de las actividades del grupo
+//=====================================================================================================================
+
 //Variable que almacena el nombre de la carpeta Raiz del directorio
 $Raiz = explode('/',$_SERVER['PHP_SELF'])[count(explode('/',$_SERVER['PHP_SELF']))-4];
 

@@ -1,5 +1,12 @@
 <?php
 
+//=====================================================================================================================
+// Fichero :V_ActividadesP.php
+// Creado por : Francisco Rojas Rodriguez
+// Fecha : 18/12/2015
+// Muestra una lista de las actividades del grupo
+//=====================================================================================================================
+
 Class ActividadesPrivada
 {
 
@@ -52,6 +59,7 @@ function DisplayContent($idioma,$Ed,$Re,$Co)
                 </div>
 				<ul class="list-group">
 				<?php
+				//Se recorren los objetos a mostrar por la vista, recibidos por parametro de la consulta
 					foreach($Ed as $e)
 					{
 						echo '<form id="'.$e["IDTablon"].'ED" action="'.$controladores[$identificadoresPrivados["MActividades"]].'" method="POST">
@@ -81,6 +89,7 @@ function DisplayContent($idioma,$Ed,$Re,$Co)
                 </div>
 				<ul class="list-group">
 					<?php
+					//Se recorren los objetos a mostrar por la vista, recibidos por parametro de la consulta
 					foreach($Re as $e)
 					{
 						echo '<form id="'.$e["IDRevista"].'RE" action="'.$controladores[$identificadoresPrivados["MActividades"]].'" method="POST">
@@ -109,6 +118,7 @@ function DisplayContent($idioma,$Ed,$Re,$Co)
                 </div>
 				<ul class="list-group">
 					<?php
+					//Se recorren los objetos a mostrar por la vista, recibidos por parametro de la consulta
 					foreach($Co as $e)
 					{
 						echo '<form id="'.$e["IDConferencia_Org"].'CON" action="'.$controladores[$identificadoresPrivados["MActividades"]].'" method="POST">
@@ -160,8 +170,16 @@ function DisplayContent($idioma,$Ed,$Re,$Co)
 	}
 	catch(Exception $e)
 	{
-		$errorRescrito = explode("=>",$e->getMessage());
-		$_SESSION['error'] = 'CON ERR MIEMBROS'."=>".$errorRescrito[1];
+		//En caso de test no se muestra un mensaje al usuario, sino que se deja salir la excepcion para que la detecte el testeo de errores
+		if (!isset($_COOKIE["TEST"]))
+		{
+			$errorRescrito = explode("=>",$e->getMessage());
+			$_SESSION['error'] = 'ERROR CON A'."=>".$errorRescrito[1];
+		}
+		else
+		{
+			throw new Exception($e->getMessage());
+		}
 	}
 
 //Inicializamos la vista Correspondiente

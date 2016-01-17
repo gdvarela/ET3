@@ -73,75 +73,30 @@ include_once $vistas[$PagID];
 
 //Se procede a la creacion de la vista en funcion del PagID recibido por GET
 include_once$RutaRelativaControlador.'Comun/Cabecera.php'; //Se incluye la cabecera publica de las vistas
+
+//Cuando querais añadir paginas a la parte publica no olvideis modificar este Swicht añadiendo el case correspondiente
 switch($PagID)
 {
 	//Se cargara y mostrar la pagina correspondiente en cada caso
 	case $identificadores['Home']:
+		//Inicializamos la vista Correspondiente
 		$princ_view = new Home();
+		//Se procede a la creacion de la vista
 		$princ_view->DisplayContent($idioma);
 	break;
 	
 	case $identificadores['Miembros']:
-		$miembros = array();
-		//Consultamos datos
-		try
-		{
-			//Se buscan los mienbros en la base de datos
-			$consulta = $_TABLAMIEMBRO->ListadoRegistros(" where Login IN (Select login from HACE_DE where ROL_nombre = '".$ROLMIEMBRO."')");
-			//Con los datos los cargamos en el array
-			for ($i = 0; $i < $consulta->num_rows ;$i++)
-			{
-				$miembros[] = $consulta->fetch_assoc();
-			}
-		}
-		catch(Exception $e)
-		{
-			$errorRescrito = explode("=>",$e->getMessage());
-			$_SESSION['error'] = 'CON ERR R'."=>".$errorRescrito[1];
-		}
-
-
 		//Inicializamos la vista Correspondiente
 		$princ_view = new Miembros();
 		//Se procede a la creacion de la vista
-		$princ_view->DisplayContent($idioma,$miembros);
+		$princ_view->DisplayContent($idioma,$miembros); //miembros vienen rellnados cuando se incluye la vista correspondiente
 	break;
-	
-	
-	case $identificadores['Prensa']:
-		$noticias = array ();
-		//Consultamos datos
-		try
-		{
-			$consulta = $_TABLANOTICIAS->ListadoRegistros("");
-			//Con los datos los cargamos en el array
-			for ($i = 0; $i < $consulta->num_rows ;$i++)
-			{
-				$noticias[] = $consulta->fetch_assoc();
-			}
-		}
-		catch(Exception $e)
-		{
-			$errorRescrito = explode("=>",$e->getMessage());
-			$_SESSION['error'] = 'CON ERR NOTICIAS'."=>".$errorRescrito[1];
-		}
 		
-		//Para la vista de noticias la llamada GET incluye el numero de Pagina que se quiere mostrar
-		// ()Las noticias se muestran paginadas)
-		$pagCargar = 1;
-		if (isset($_GET['NumPag']))
-		{
-			$pagCargar =$_GET['NumPag'];
-			if ($pagCargar < 1)
-				$pagCargar = 1;
-			
-			if($pagCargar > ceil(count($noticias)/$NumporPags))
-				$pagCargar = ceil(count($noticias)/$NumporPags);
-		}
+	case $identificadores['Prensa']:
 		//Inicializamos la vista Correspondiente
 		$princ_view = new Prensa();
 		//Se procede a la creacion de la vista
-		$princ_view->DisplayContent($idioma,$noticias,$pagCargar,ceil(count($noticias)/$NumporPags));
+		$princ_view->DisplayContent($idioma,$noticias,$pagCargar,ceil(count($noticias)/$NumporPags)); //noticiasvienen rellnados cuando se incluye la vista correspondiente
 	break;
 	
 	case $identificadores['Transferencias']:
@@ -175,7 +130,7 @@ switch($PagID)
 		//Inicializamos la vista Correspondiente
 		$princ_view = new Docencia();
 		//Se procede a la creacion de la vista
-		$princ_view->DisplayContent($idioma,$Dc,$materias);
+		$princ_view->DisplayContent($idioma,$Dc,$materias); //Dc materias vienen rellnados cuando se incluye la vista correspondiente
 	break;
 	
 	case $identificadores['Login']:

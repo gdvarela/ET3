@@ -1,5 +1,13 @@
 <?php
 
+//=====================================================================================================================
+// Fichero :C_AltaX.php
+// Creado por : Francisco Rojas Rodriguez
+// Fecha : 25/12/2015
+// Controlador para la creacion de objetos, simplemente carga la vista con el formulario generado con los campos necesarios
+// para la inserccion de la BD
+//=====================================================================================================================
+
 //Variable que almacena el nombre de la carpeta Raiz del directorio
 $Raiz = explode('/',$_SERVER['PHP_SELF'])[count(explode('/',$_SERVER['PHP_SELF']))-4];
 

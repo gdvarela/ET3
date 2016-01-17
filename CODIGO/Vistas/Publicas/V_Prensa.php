@@ -116,5 +116,41 @@ function DisplayContent($idioma,$noticias,$pagAct,$ultimaPagina)
 }
 
 }
-
+	$noticias = array ();
+	//Consultamos datos
+	try
+	{
+		$consulta = $_TABLANOTICIAS->ListadoRegistros("");
+		//Con los datos los cargamos en el array
+		for ($i = 0; $i < $consulta->num_rows ;$i++)
+		{
+			$noticias[] = $consulta->fetch_assoc();
+		}
+	}
+	catch(Exception $e)
+	{
+		//En caso de test no se muestra un mensaje al usuario, sino que se deja salir la excepcion para que la detecte el testeo de errores
+		if (!isset($_COOKIE["TEST"]))
+		{
+			$errorRescrito = explode("=>",$e->getMessage());
+			$_SESSION['error'] = 'ERROR CON P'."=>".$errorRescrito[1];
+		}
+		else
+		{
+			throw new Exception($e->getMessage());
+		}
+	}
+	
+	//Para la vista de noticias la llamada GET incluye el numero de Pagina que se quiere mostrar
+	// ()Las noticias se muestran paginadas)
+	$pagCargar = 1;
+	if (isset($_GET['NumPag']))
+	{
+		$pagCargar =$_GET['NumPag'];
+		if ($pagCargar < 1)
+			$pagCargar = 1;
+		
+		if($pagCargar > ceil(count($noticias)/$NumporPags))
+			$pagCargar = ceil(count($noticias)/$NumporPags);
+	}
 ?>

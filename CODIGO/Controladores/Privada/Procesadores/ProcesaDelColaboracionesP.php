@@ -1,5 +1,13 @@
 <?php
 
+//=====================================================================================================================
+// Fichero :ProcesaDelX.php
+// Creado por : Francisco Rojas Rodriguez
+// Fecha : 25/12/2015
+// Archivo procesador encargado del borrado de los objetos
+// Todos los procesadores son similares, solo cambia las consultas realizadas en el.
+//=====================================================================================================================
+
 //Variable que almacena el nombre de la carpeta Raiz del directorio
 $Raiz = explode('/',$_SERVER['PHP_SELF'])[count(explode('/',$_SERVER['PHP_SELF']))-5];
 
@@ -36,6 +44,9 @@ $idioma = CargarIdioma2($RutaRelativaControlador);
 
 try
 	{
+		//Por POST recibimos el tipo de objeto que es, y en funcion de este valor usamos la talba correspondiente 
+		// para gestionarlo, pasandole directamente los valores recibidos 
+		//'array_slice($_POST, 1)' elimina el primer campo recibido 'TIPO' ya que es ajeno a los campos de las tablas
 		switch ($_POST["TIPO"])
 		{
 			case "I":
@@ -48,18 +59,24 @@ try
 			$consulta = $_TABLAEMPRESAS->EliminarRegistro(array_slice($_POST, 1) );
 			break;
 		}
+		
+		//En este caso y teniendo en cuenta la relacion en la base de datos y para mantener la integridad, se borra de la tabla participantes lo que este asociado
+		// con el borrado del objeto que se este procesando
 		$val = explode("=>",$_POST["OTRO"]);
 		TablaBD::ConsultaGenerica("DELETE FROM ".$_TABLAPARTICIPANTES->nombreTabla." WHERE ". $val[0]."='". $val[1]."'");
+		
+		//En caso de test no se realizan redirecciones a ninguna otra pagina
 		if (!isset($_COOKIE["TEST"]))
-		header("Location: ".$controladores[$identificadoresPrivados["Colaboraciones"]]);
+			header("Location: ".$controladores[$identificadoresPrivados["Colaboraciones"]]);
 	}
 	catch(Exception $e)
 	{
+		//En caso de test no se realizan redirecciones a ninguna otra pagina
 		if (!isset($_COOKIE["TEST"]))
 		{
 			$errorRescrito = explode("=>",$e->getMessage());
 			session_start();
-			$_SESSION['error'] = 'ID CONCRETO REPETIDO C'."=>".$errorRescrito[1];
+			$_SESSION['error'] = 'ERROR BORRADO C'."=>".$errorRescrito[1];
 			header("Location: ".$controladores[$identificadoresPrivados["Colaboraciones"]]);
 		}
 	}

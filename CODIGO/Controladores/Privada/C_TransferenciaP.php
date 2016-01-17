@@ -1,5 +1,12 @@
 <?php
 
+//=====================================================================================================================
+// Fichero :C_TransferenciaP.php
+// Creado por : Francisco Rojas Rodriguez
+// Fecha : 25/12/2015
+// Controlador que muestra un listado de Transferencias de la base de datos
+//=====================================================================================================================
+
 //Variable que almacena el nombre de la carpeta Raiz del directorio
 $Raiz = explode('/',$_SERVER['PHP_SELF'])[count(explode('/',$_SERVER['PHP_SELF']))-4];
 
@@ -31,7 +38,7 @@ $RutaRelativaControlador = getRuta();
 //Ruta Relativa del ArchivoComun
 include_once $RutaRelativaControlador.'Comun/ArchivoComun.php';
 
-$miPaginaPorDefecto = $PaginaError;
+$miPaginaPorDefecto = $controladores[$identificadoresPrivados["Home"]];
 include_once$RutaRelativaControlador.'GESTAPP/controlPages.php';
 
 
@@ -39,7 +46,7 @@ include_once$RutaRelativaControlador.'GESTAPP/controlPages.php';
 $idioma = CargarIdioma2($RutaRelativaControlador);
 
 //Variable que almacenara el identificador de la pagina actual, se establece su valor en el SWITCH
-$PagID = "TP";
+$PagID = $identificadoresPrivados["Transferencias"];
 
 //Se incluye la vista concreta que se desea mostrar, utilizando el array
 // el array vistas se encuentra en el archivo ArchivoComun.php

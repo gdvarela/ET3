@@ -33,7 +33,9 @@ Class BaseDatosControl
 				//Si dejamos que salga hacia afuera siemplemente se cargara la pagina normalmente pero mostrando un error al usuario
 				// un proceso de test automatico no detectaria que se ha producido una excepcion, por tanto si estamos en el test
 				// mostramos un texto de excepcion indicando que la pagina no funciona correctamente
-				echo '<br><b>Warning</b>: '.$this->conexionBD->error.' in <b>/BaseDatosControl.php</b> on line <b>36</b><br>'; //Hay que tener en cuenta que tambien
+				
+				//Para que el control de errores detecte este error se ha modificado el patron de busqueda para que se adapte a este estilo de mensaje que asi se 'echo'.
+				echo '<br><b>Warning</b>: #ERROR PERSONALIZADO: '.$this->conexionBD->error.'#'; 
 				exit();
 			}
 			else

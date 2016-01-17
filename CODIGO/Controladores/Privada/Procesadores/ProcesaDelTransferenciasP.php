@@ -1,5 +1,13 @@
 <?php
 
+//=====================================================================================================================
+// Fichero :ProcesaDelX.php
+// Creado por : Francisco Rojas Rodriguez
+// Fecha : 25/12/2015
+// Archivo procesador encargado del borrado de los objetos
+// Todos los procesadores son similares, solo cambia las consultas realizadas en el.
+//=====================================================================================================================
+
 //Variable que almacena el nombre de la carpeta Raiz del directorio
 $Raiz = explode('/',$_SERVER['PHP_SELF'])[count(explode('/',$_SERVER['PHP_SELF']))-5];
 
@@ -36,10 +44,12 @@ $idioma = CargarIdioma2($RutaRelativaControlador);
 
 try
 	{
+		//Por POST recibimos el tipo de objeto que es, y en funcion de este valor usamos la talba correspondiente 
+		// para gestionarlo, pasandole directamente los valores recibidos 
+		//'array_slice($_POST, 1)' elimina el primer campo recibido 'TIPO' ya que es ajeno a los campos de las tablas
 		switch ($_POST["TIPO"])
 		{
 			case "PO":
-			
 			$consulta = $_TABLAPROYECTOS->EliminarRegistro(array_slice($_POST, 1) );
 			break;
 			case "PA":
@@ -49,16 +59,19 @@ try
 			$consulta = $_TABLACONTRATOS->EliminarRegistro(array_slice($_POST, 1) );
 			break;
 		}
+		
+		//En caso de test no se realizan redirecciones a ninguna otra pagina
 		if (!isset($_COOKIE["TEST"]))
 		header("Location: ".$controladores[$identificadoresPrivados["Transferencias"]]);
 	}
 	catch(Exception $e)
 	{
+		//En caso de test no se realizan redirecciones a ninguna otra pagina
 		if (!isset($_COOKIE["TEST"]))
 		{
 			$errorRescrito = explode("=>",$e->getMessage());
 			session_start();
-			$_SESSION['error'] = 'ID CONCRETO REPETIDO T'."=>".$errorRescrito[1];
+			$_SESSION['error'] = 'ERROR BORRADO T'."=>".$errorRescrito[1];
 			header("Location: ".$controladores[$identificadoresPrivados["Transferencias"]]);
 		}
 	}
