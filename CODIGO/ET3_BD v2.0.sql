@@ -396,10 +396,14 @@ INSERT INTO `S_ARTICULO` (`ISSN_Revista`, `Nombre_Revista`, `Titulo_Articulo`, `
 DROP TABLE IF EXISTS `S_CONFERENCIAS`;
 CREATE TABLE IF NOT EXISTS `S_CONFERENCIAS` (
   `Nombre_Conferencia` varchar(50) COLLATE latin1_spanish_ci NOT NULL,
-  `Charla_Conferencia` varchar(50) COLLATE latin1_spanish_ci NOT NULL,
+  `Charla_Conferencia` varchar(500) COLLATE latin1_spanish_ci NOT NULL,
   `Fecha_Conferencia` date NOT NULL,
   `IDConferencia` varchar(10) COLLATE latin1_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
+
+INSERT INTO `S_CONFERENCIAS` (`Nombre_Conferencia`, `Charla_Conferencia`, `Fecha_Conferencia`, `IDConferencia`) VALUES
+('Nuevas Tecnologias','¿Todo en un Telefono?','1992-1-19',"1"),
+('Despachando el Pasado','Big DATA','1992-1-19',"2");
 
 -- --------------------------------------------------------
 
@@ -736,7 +740,18 @@ CREATE TABLE IF NOT EXISTS `S_USUARIO_CONFERENCIA` (
   `IDConferencia` varchar(10) COLLATE latin1_spanish_ci NOT NULL,
   `Login` varchar(25) COLLATE latin1_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
-
+INSERT INTO `S_USUARIO_CONFERENCIA` (`IDConferencia`, `Login`) VALUES
+('1', 'samu');
+INSERT INTO `S_USUARIO_CONFERENCIA` (`IDConferencia`, `Login`) VALUES
+('1', 'guille');
+INSERT INTO `S_USUARIO_CONFERENCIA` (`IDConferencia`, `Login`) VALUES
+('1', 'pabloh');
+INSERT INTO `S_USUARIO_CONFERENCIA` (`IDConferencia`, `Login`) VALUES
+('1', 'pablog');
+INSERT INTO `S_USUARIO_CONFERENCIA` (`IDConferencia`, `Login`) VALUES
+('2', 'fran');
+INSERT INTO `S_USUARIO_CONFERENCIA` (`IDConferencia`, `Login`) VALUES
+('2', 'luis');
 -- --------------------------------------------------------
 
 --
