@@ -1,5 +1,6 @@
 ﻿<?php
 $Idioma = array(
+
 //-------------------------------------------------------------------------Login
 'ERR Pass' => 'Pass incorrecta.',
 'ERR Login' => 'No existe Login.',
@@ -16,7 +17,6 @@ $Idioma = array(
 
 'MSG ORD BUT' => 'Ordenar',
 'Fecha' => 'Fecha',
-
 
 'ALT U OK' => 'Alta de Usuario realizada Correctamente.',
 'ALT ERR U' => 'Error durante la inserccion de Usuario.',
@@ -107,7 +107,6 @@ $Idioma = array(
 //-------------------------------------------------------------------------Funcionalidades
 'ERR CLAVE F' => 'Ya existe una Funcionalidad con ese nombre.',
 
-
 'ALT F OK' => 'Alta de Funcionalidad realizada Correctamente.',
 'ALT ERR F' => 'Error durante la inserccion de Funcionalidad.',
 
@@ -193,8 +192,6 @@ $Idioma = array(
 'PropiedadesPeticion' => 'Valores de POST/GET',
 'ListaPaginasErrores' => 'Paginas a Testear',
 'PAG_DIR' => 'Paginas Directorio WEB',
-
-
 //-------------------------------------------------------------------------Terminologia
 'Aplicacion GESTAPP' => 'Aplicacion GESTAPP',
 'LOGIN' => 'Inicia Sesion',
@@ -263,22 +260,13 @@ PIXEL
 'Resultados' => "Resultados",
 'ESCRITURA' => "Debe tener permisos de escritura en el directorio",
 
-
 'EjecutarPruebas' => 'Pruebas Preconfiguradas',
 'Personalizada' => 'Pruebas Personalizadas',
 'PC-pagename' => 'Click en el menu lateral para añadir directamente',
 'PC-pageprop' => 'Clave1=Valor1,Clave2=Valor2.....',
 'EXP' => 'Para testear vistas, Seleccionar el controlador relacionado. El codigo de las vistas por si solas esta incompleto y dará error.',
 
-
-
-
-
 'Barra_Titulo' => 'Pixel',
-
-
-
-
 
 //Nombres de Pagina PagName[ID]
 'PagNameH' => 'Home',
@@ -313,7 +301,6 @@ PIXEL
 'PagNameAAP' => 'Alta Actividades',
 'PagNameMAP' => 'Modificar Actividades',
 'PagNameG' => 'GESTAPP',
-'PagNameERRORPERM' => '¡Lo Sentimos!',
 
 //Resto de terminología
 'Otros' => 'Otros',
@@ -351,6 +338,12 @@ PIXEL
 'MP-IDPDF_Noticia' => ' ID PDF',
 'MP-Publicador_Noticia' => 'Miembro Publicador',
 
+'ID CONCRETO REPETIDO P' => "Error producido durante el Alta",
+'OBTENCION P' => 'Error Ocurrido en la base de datos obteniendo los datos',
+'ERROR CON P' => 'Error en el listado de los datos',
+'ERROR BORRADO P' => 'Error mientras se eliminaba el registro',
+'ERROR MOD P' => 'Error mientras se modificaba el registro',
+
 //COLABORACIONES
 
 'MP-IDEmpresa'=>"Identificador",
@@ -358,16 +351,11 @@ PIXEL
 	 'MP-Nombre_Empresa'=>"Nombre Corporativo",
 	 'MP-IDImagen_Empresa'=>"Imagen",
 	 'MP-IDParticipante'=>"Identificador",
-
-	 'MP-IDGrupo'=>"Nombre Grupo",
-	 
+	 'MP-IDGrupo'=>"Nombre Grupo",	 
 	 'MP-Nombre_Grupo'=>"Nombre Grupo",
 	 'MP-Web_Grupo'=>"Sito Web",
 	 'MP-IDImagen_Grupo'=>"Imagen Grupo",
 	 'MP-IDParticipante'=>"Identificador",
-	 'MP-IDParticipante'=>"Identificador",
-
-
 	 'MP-IDInstitucion'=>"Identificador",
 	 'MP-Web_Institucion'=>"Sito Web",
 	 'MP-IDImagen_Institucion'=>"Imagen Institucion",
@@ -383,8 +371,12 @@ PIXEL
 'Alta_GRUPO' => "Añadir Grupo",
 
 'ID Part REP' =>"El ID de participante ya existe",
-'ID CONCRETO REPETIDO C' => "El ID de Empresa/Institucion o Grupo ya Existe",
+'ID CONCRETO REPETIDO C' => "Error producido durante el Alta",
 'OBTENCION C' => 'Error Ocurrido en la base de datos obteniendo los datos',
+'ERROR CON C' => 'Error en el listado de los datos',
+'ERROR BORRADO C' => 'Error mientras se eliminaba el registro',
+'ERROR MOD C' => 'Error mientras se modificaba el registro',
+
 //Transferencias
 
 'MP-Nombre_Patente' => 'Nombre para la Patente',
@@ -410,16 +402,20 @@ PIXEL
 	"Inicio" => "Inicio",
 	"Fin" => "Fin",
 	"Duracion" => "Duracion",
-	'ID CONCRETO REPETIDO T' => "El ID de Proyecto/Patente o Contrato ya Existe",
-	'OBTENCION T' => 'Error Ocurrido en la base de datos obteniendo los datos',
 	
+	'ID CONCRETO REPETIDO T' => "Error producido durante el Alta",
+'OBTENCION T' => 'Error Ocurrido en la base de datos obteniendo los datos',
+'ERROR CON T' => 'Error en el listado de los datos',
+	'ERROR BORRADO T' => 'Error mientras se eliminaba el registro',
+'ERROR MOD T' => 'Error mientras se modificaba el registro',
+
 	//Publicaciones
 
 'MP-Titulo_Libro' => 'Titulo del Libro',
 'MP-ISBN'=> 'ISBN',
 'MP-Fecha_Libro' => 'Fecha de Publicacion',
 'MP-Pais_Libro'=> 'Pais',
-'MP-ISSN_Revista' => 'ISSN Tevista',
+'MP-ISSN_Revista' => 'ISSN Revista',
 'MP-Nombre_Revista'=> 'Nombre de la Revista',
 'MP-Titulo_Articulo'=> 'Titulo del Articulo',
 'MP-Anotaciones_Articulo'=> 'Anotaciones',
@@ -433,7 +429,6 @@ PIXEL
 'MP-MC-S_USUARIO_ARTICULO@Login'=> 'Miembros Creadores o Mencionados',
 'MP-MC-S_USUARIO_CONFERENCIA@Login'=> 'Miembros que participan',
 
-
 "Libro" => "Libro",
 	"Articulo" => "Articulo",
 	"Conferencia" => "Conferencia",
@@ -441,7 +436,13 @@ PIXEL
 'Alta_L' => "Nuevo Libro",
 'Alta_C' => "Nueva Conferencia",
 'Alta_A' => "Nuevo Articulo", 
-	'ID CONCRETO REPETIDO Pu' => "El ID de del Libro, Articulo o Conferencia ya Existe",
+
+	'ID CONCRETO REPETIDO Pu' => "Error producido durante el Alta",
+'OBTENCION Pu' => 'Error Ocurrido en la base de datos obteniendo los datos',
+'ERROR CON Pu' => 'Error en el listado de los datos',
+'ERROR BORRADO Pu' => 'Error mientras se eliminaba el registro',
+'ERROR MOD Pu' => 'Error mientras se modificaba el registro',
+
 //Docencia
 
 'Alta_DC' => "Nueva Docencia",
@@ -451,10 +452,14 @@ PIXEL
 'MP-Login' => 'Profesor',
 'MP-FechaIni_Materia' => 'Fecha Inicio',
 'MP-FechaFin_Materia' => 'Fecha Fin',
-
 'MatImpr' => 'Materias Impartidas',
 
-'ID CONCRETO REPETIDO Pu' => "El ID de de Docencia o Nueva Materia ya Existe",
+'ID CONCRETO REPETIDO D' => "Error producido durante el Alta",
+'OBTENCION D' => 'Error Ocurrido en la base de datos obteniendo los datos',
+'ERROR CON D' => 'Error en el listado de los datos',
+'ERROR BORRADO D' => 'Error mientras se eliminaba el registro',
+'ERROR MOD D' => 'Error mientras se modificaba el registro',
+
 //Actividades
 
 'MP-Titulo_Conferencia_Org' => 'Titulo de la Conferencia',
@@ -470,15 +475,20 @@ PIXEL
 'MP-Fecha_Tablon'=> 'Fecha Tablon',
 'MP-IDTablon'=> 'Identificador del Tablon',
 
-
 "Editorial" => "Editorial",
 	"Revista" => "Revista",
 	"ConferenciaG" => "Conferencia de Grupo",
 
 'Alta_ED' => "Nueva Editorial",
 'Alta_RE' => "Nueva Revista",
-'Alta_CON' => "Nueva Conferencia", 
-	'ID CONCRETO REPETIDO A' => "El ID de de la Editorial, Revista o Conferencia ya Existe",
+'Alta_CON' => "Nueva Conferencia",
+ 
+'ID CONCRETO REPETIDO A' => "Error producido durante el Alta",
+'OBTENCION A' => 'Error Ocurrido en la base de datos obteniendo los datos',
+'ERROR CON A' => 'Error en el listado de los datos',
+'ERROR BORRADO A' => 'Error mientras se eliminaba el registro',
+'ERROR MOD A' => 'Error mientras se modificaba el registro',
+
 //Pagina HOME
 
 'Globex' => 'Globex',
@@ -511,13 +521,14 @@ PIXEL
 //Textos Home
 
 'Texto Principal' => 'La informática es una ciencia que estudia métodos, técnicas, procesos, con el fin de almacenar, procesar y transmitir información y datos en formato digital. Se define como la rama de la tecnología que estudia el tratamiento automático de la información.',
+'Texto Principal' => 'La informática es una ciencia que estudia métodos, técnicas, procesos, con el fin de almacenar, procesar y transmitir información y datos en formato digital. Se define como la rama de la tecnología que estudia el tratamiento automático de la información.',
 
 //Citas HOME
 
 'Homer Simpson' => 'Homer Simpson',
 'Cita 1' => 'Tendrá todo el dinero del mundo, pero hay algo que nunca podrá comprar... un dinosaurio',
 'Stave Ballmer' => 'Stave Ballmer',
-'Cita 2' => 'Developers, developers, developers, developers, developers, developers, developers, developers, developers, developers, developers, developers, developers, developers, developers, developers, developers, developers, developers, developers, developers,...!!!!!!!',
+'Cita 2' =>'Developers, developers, developers, developers, developers, developers, developers, developers, developers, developers, developers, developers, developers, developers,...!!!!!!!',
 'Mariano Rajoy' => 'Mariano Rajoy',
 'Cita 3' => 'Es el vecino el que elige el alcalde y es el alcalde el que quiere que sean los vecinos el alcalde',
 'C-3PO' => 'C-3PO',
@@ -534,6 +545,5 @@ PIXEL
 'Politica de privacidad' => 'Politica de privacidad',
 'Terminos y Condiciones' => 'Terminos y Condiciones',
 'Ultimos eventos' => 'Ultimos eventos'
-
-);
+)
 ?>
